@@ -1,1 +1,12 @@
-/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+#vboxStyle{
+	-fx-padding: 30px;
+}
+
+#buttonProfile, #buttonOptio, #buttonSetting, #buttonLogin{
+	-fx-padding: 8px 0 8px 0;
+	
+}
+#buttonProfile:hover, #buttonOptio:hover, #buttonSetting:hover, #buttonLogin:hover{
+	-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, .8), 3, 3, 3, 3);
+}

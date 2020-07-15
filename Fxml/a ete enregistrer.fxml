@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="556.0" prefWidth="877.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <left>
+      <VBox prefHeight="447.0" prefWidth="166.0" spacing="20.0" style="-fx-background-color: #423167;" BorderPane.alignment="CENTER">
+         <children>
+            <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="25.0" prefWidth="186.0" style="-fx-background-color: none;" text="Profile" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <padding>
+                  <Insets left="40.0" />
+               </padding>
+            </Button>
+            <Button alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: none;" text="Quelque option" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <padding>
+                  <Insets left="40.0" />
+               </padding>
+            </Button>
+            <Button alignment="TOP_LEFT" layoutX="10.0" layoutY="35.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: none;" text="Parametre" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <padding>
+                  <Insets left="40.0" />
+               </padding>
+            </Button>
+            <Button alignment="TOP_LEFT" layoutX="10.0" layoutY="140.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: none;" text="Se deconnecter" textFill="WHITE">
+               <VBox.margin>
+                  <Insets top="150.0" />
+               </VBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <padding>
+                  <Insets left="40.0" />
+               </padding>
+            </Button>
+         </children>
+         <padding>
+            <Insets top="40.0" />
+         </padding>
+      </VBox>
+   </left>
+   <top>
+      <Pane prefHeight="109.0" prefWidth="858.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="74.0" layoutY="28.0" prefHeight="53.0" prefWidth="288.0" text="Quelque chose" textFill="WHITE">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </top>
+   <center>
+      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text layoutX="199.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Votre demmande a ete bien enregistrer" wrappingWidth="312.13671875">
+               <font>
+                  <Font name="Tahoma" size="32.0" />
+               </font>
+            </Text>
+            <Button layoutX="455.0" layoutY="260.0" mnemonicParsing="false" text="Telecharger le recu" />
+            <Button layoutX="141.0" layoutY="260.0" mnemonicParsing="false" text="Reteur au page prinipale" />
+         </children>
+      </Pane>
+   </center>
+</BorderPane>
