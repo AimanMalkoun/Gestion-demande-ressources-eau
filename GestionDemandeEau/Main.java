@@ -16,6 +16,7 @@ public class Main extends Application {
 			//    -----Modify Folder-----
 			BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("../Fxml/ModifyFolder.fxml"));
 			Scene scene = new Scene(root);
+			primaryStage.setTitle("Gestion des demandes d'autorisation pour l'utilisation des ressources en eau.");
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {
