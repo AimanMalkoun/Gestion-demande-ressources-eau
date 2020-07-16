@@ -1,5 +1,5 @@
 package Connectivity;
-/*
+
 import java.sql.DriverManager;
 
 import com.sun.corba.se.pept.transport.Connection;
@@ -24,4 +24,3 @@ public class ConnectionClass {
 		return connection;
 	}
 }
-*/
