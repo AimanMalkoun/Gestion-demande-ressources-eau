@@ -15,9 +15,11 @@ public class Test extends Application{
 		
 		@Override
 		public void start(Stage primaryStage) {
+			
 			window = primaryStage;
+			
+			//Les informations du demandeur
 			try {
-				
 				
 				Parent root = FXMLLoader.load(Test.class.getClassLoader().getResource("Fxml/InformationsDuDemandeur.fxml"));
 				Scene scene = new Scene(root);
@@ -36,27 +38,17 @@ public class Test extends Application{
 		}
 	}
 
-	//-----Dashbaord-----
-	/*
-			BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("../Fxml/Dashboard.fxml"));
+	
+
+//Les informations du demandeur
+	  /*try {
+	
+			Parent root = FXMLLoader.load(Test.class.getClassLoader().getResource("Fxml/InformationsDuDemandeur.fxml"));
 			Scene scene = new Scene(root);
+			primaryStage.setTitle("Gestion des demandes d'autorisation pour l'utilisation des ressources en eau.");
 			primaryStage.setScene(scene);
 			primaryStage.show();
-	*/
-
-	//-----Login Stage-----
-	/*
-			Pane root = (Pane)FXMLLoader.load(getClass().getResource("../Fxml/LoginStage.fxml"));
-			Scene scene = new Scene(root);
-			primaryStage.setScene(scene);
-			primaryStage.show();
-	*/
-
-	//-----Modify Folder-----
-	/*
-			BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("../Fxml/ModifyFolder.fxml"));
-			Scene scene = new Scene(root);
-			primaryStage.setScene(scene);
-			primaryStage.show();
-	*/
-
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}*/
