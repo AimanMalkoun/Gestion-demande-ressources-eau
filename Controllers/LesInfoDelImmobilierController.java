@@ -53,7 +53,7 @@ public class LesInfoDelImmobilierController implements Initializable{
     			InfoSurImmobilier.setAttestationDePocession(attestationFile);
     			
     			try {
-        			Test.window.setScene(new Scene(FXMLLoader.load(getClass().getResource("../Fxml/.fxml"))));
+        			Test.window.setScene(new Scene(FXMLLoader.load(getClass().getResource("../Fxml/les informations concernant le point d'eau.fxml"))));
         		} catch (IOException e) {
         			// TODO Auto-generated catch block
         			e.printStackTrace();
