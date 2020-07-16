@@ -50,9 +50,11 @@ public class Demandeur {
 	}
 
 
+
 	public String getCin() {
 		return cin;
 	}
+
 
 
 	public void setCin(String cin) {
@@ -97,6 +99,7 @@ public class Demandeur {
 
 	public void setDemandeFile(File demandeFile) {
 		this.demandeFile = demandeFile;
+
 	}
 
 }
