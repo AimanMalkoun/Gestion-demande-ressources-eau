@@ -14,8 +14,11 @@ public class DashboardController {
 
 
     @FXML
-    void CreateNewFolder(MouseEvent event) {
-    	System.out.println("new folder created");
+    void CreateNewFolder(MouseEvent event) throws IOException {
+    	Parent deamandeurInfoRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/InformationsDuDemandeur.fxml"));
+		Scene deamandeurInfoScene = new Scene(deamandeurInfoRoot);
+		Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		primaryStage.setScene(deamandeurInfoScene);
     }
 
     @FXML
