@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="877.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="877.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.EnregistrerController">
    <left>
       <VBox prefHeight="447.0" prefWidth="166.0" spacing="20.0" style="-fx-background-color: #423167;" BorderPane.alignment="CENTER">
          <children>
@@ -69,7 +69,7 @@
          </children>
       </Pane>
    </top>
-   <center>
+   <right>
       <ScrollPane prefHeight="397.0" prefWidth="711.0" BorderPane.alignment="CENTER">
          <content>
             <Pane prefHeight="806.0" prefWidth="694.0">
@@ -107,12 +107,12 @@
                         <Label layoutX="10.0" layoutY="118.0" prefHeight="31.0" prefWidth="236.0" text="Date de depot du dossier" GridPane.rowIndex="3" />
                         <Label layoutX="10.0" layoutY="165.0" prefHeight="31.0" prefWidth="265.0" text="Demande de forage(resp Pompage)" GridPane.rowIndex="5" />
                         <Label layoutX="10.0" layoutY="220.0" prefHeight="31.0" prefWidth="255.0" text="Le type de demande" GridPane.rowIndex="4" />
-                        <Label layoutX="10.0" layoutY="10.0" prefHeight="31.0" prefWidth="256.0" text="Tazribine" GridPane.columnIndex="1" />
-                        <Label layoutX="10.0" layoutY="42.0" prefHeight="31.0" prefWidth="233.0" text="Aiman" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label layoutX="10.0" layoutY="77.0" prefHeight="31.0" prefWidth="235.0" text="EA11111111" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Label layoutX="10.0" layoutY="115.0" prefHeight="31.0" prefWidth="236.0" text="32/13/2100" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <Label layoutX="10.0" layoutY="153.0" prefHeight="31.0" prefWidth="255.0" text="Forage/Pompage" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <Label layoutX="10.0" layoutY="229.0" prefHeight="31.0" prefWidth="265.0" text="Fichier.jpg (Fichier.pdf)" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <Label fx:id="firstName" layoutX="10.0" layoutY="10.0" prefHeight="31.0" prefWidth="256.0" text="Tazribine" GridPane.columnIndex="1" />
+                        <Label fx:id="lastName" layoutX="10.0" layoutY="42.0" prefHeight="31.0" prefWidth="233.0" text="Aiman" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="codeCin" layoutX="10.0" layoutY="77.0" prefHeight="31.0" prefWidth="235.0" text="EA11111111" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="dateDepot" layoutX="10.0" layoutY="115.0" prefHeight="31.0" prefWidth="236.0" text="32/13/2100" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label fx:id="typeDemande" layoutX="10.0" layoutY="153.0" prefHeight="31.0" prefWidth="255.0" text="Forage/Pompage" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label fx:id="demandeForagePompage" layoutX="10.0" layoutY="229.0" prefHeight="31.0" prefWidth="265.0" text="Fichier.jpg (Fichier.pdf)" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                      </children>
                   </GridPane>
                   <Label layoutY="305.0" prefHeight="30.0" prefWidth="711.0" style="-fx-background-color: #9f70c4;" text="Informations concernant l'immobilier :" textFill="WHITE">
@@ -141,11 +141,11 @@
                         <Label layoutX="10.0" layoutY="67.0" prefHeight="31.0" prefWidth="237.0" text="Douar" GridPane.rowIndex="1" />
                         <Label layoutX="10.0" layoutY="118.0" prefHeight="31.0" prefWidth="235.0" text="Province" GridPane.rowIndex="3" />
                         <Label layoutX="10.0" layoutY="148.0" prefHeight="31.0" prefWidth="236.0" text="Attestation de possession de l'immobilier" GridPane.rowIndex="4" />
-                        <Label layoutX="10.0" layoutY="10.0" prefHeight="27.0" prefWidth="236.0" text="Localisation X/Y" GridPane.columnIndex="1" />
-                        <Label layoutX="10.0" layoutY="37.0" prefHeight="31.0" prefWidth="237.0" text="Douar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label layoutX="10.0" layoutY="70.0" prefHeight="31.0" prefWidth="238.0" text="Commune" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Label layoutX="10.0" layoutY="105.0" prefHeight="31.0" prefWidth="235.0" text="Province" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <Label layoutX="10.0" layoutY="141.0" prefHeight="31.0" prefWidth="236.0" text="Fichier.jpg (Fichier.pdf)" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label fx:id="lcationImm" layoutX="10.0" layoutY="10.0" prefHeight="27.0" prefWidth="236.0" text="Localisation X/Y" GridPane.columnIndex="1" />
+                        <Label fx:id="douar" layoutX="10.0" layoutY="37.0" prefHeight="31.0" prefWidth="237.0" text="Douar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="commune" layoutX="10.0" layoutY="70.0" prefHeight="31.0" prefWidth="238.0" text="Commune" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="province" layoutX="10.0" layoutY="105.0" prefHeight="31.0" prefWidth="235.0" text="Province" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label fx:id="AttestationPossession" layoutX="10.0" layoutY="141.0" prefHeight="31.0" prefWidth="236.0" text="Fichier.jpg (Fichier.pdf)" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                      </children>
                   </GridPane>
                   <Label layoutY="499.0" prefHeight="30.0" prefWidth="711.0" style="-fx-background-color: #9f70c4;" text="Informations concernant le point d'eau :" textFill="WHITE">
@@ -174,19 +174,19 @@
                         <Label layoutX="10.0" layoutY="67.0" prefHeight="31.0" prefWidth="237.0" text="Debit" GridPane.rowIndex="1" />
                         <Label layoutX="10.0" layoutY="118.0" prefHeight="31.0" prefWidth="236.0" text="Rabattement" GridPane.rowIndex="3" />
                         <Label layoutX="10.0" layoutY="148.0" prefHeight="31.0" prefWidth="236.0" text="Plan d'eau" GridPane.rowIndex="4" />
-                        <Label layoutX="10.0" layoutY="10.0" prefHeight="28.0" prefWidth="251.0" text="Localisation X/Y" GridPane.columnIndex="1" />
-                        <Label layoutX="10.0" layoutY="39.0" prefHeight="31.0" prefWidth="237.0" text="320.5" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label layoutX="10.0" layoutY="72.0" prefHeight="31.0" prefWidth="234.0" text="15" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Label layoutX="10.0" layoutY="108.0" prefHeight="31.0" prefWidth="236.0" text="30.15" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <Label layoutX="10.0" layoutY="144.0" prefHeight="31.0" prefWidth="236.0" text="Fichier.jpg (Fichier.pdf)" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label fx:id="locationPoin" layoutX="10.0" layoutY="10.0" prefHeight="28.0" prefWidth="251.0" text="Localisation X/Y" GridPane.columnIndex="1" />
+                        <Label fx:id="debit" layoutX="10.0" layoutY="39.0" prefHeight="31.0" prefWidth="237.0" text="320.5" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="profondeur" layoutX="10.0" layoutY="72.0" prefHeight="31.0" prefWidth="234.0" text="15" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="rabattement" layoutX="10.0" layoutY="108.0" prefHeight="31.0" prefWidth="236.0" text="30.15" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label fx:id="planEau" layoutX="10.0" layoutY="144.0" prefHeight="31.0" prefWidth="236.0" text="Fichier.jpg (Fichier.pdf)" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                      </children>
                   </GridPane>
-                  <Button layoutX="50.0" layoutY="719.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="91.0" text="Modifier">
+                  <Button fx:id="modifyButton" layoutX="50.0" layoutY="719.0" mnemonicParsing="false" onAction="#modifyButtonMethode" prefHeight="25.0" prefWidth="91.0" text="Modifier">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Button>
-                  <Button layoutX="509.0" layoutY="719.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="108.0" text="Enregistrer">
+                  <Button fx:id="saveBuuton" layoutX="509.0" layoutY="719.0" mnemonicParsing="false" onAction="#savebuttonMethode" prefHeight="37.0" prefWidth="108.0" text="Enregistrer">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -195,5 +195,5 @@
             </Pane>
          </content>
       </ScrollPane>
-   </center>
+   </right>
 </BorderPane>
