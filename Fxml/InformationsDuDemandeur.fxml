@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="556.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LesInfoDuDemandeurController">
+   <left>
+      <VBox prefHeight="447.0" prefWidth="166.0" spacing="20.0" style="-fx-background-color: #423167;" BorderPane.alignment="CENTER">
+         <children>
+            <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="25.0" prefWidth="186.0" style="-fx-background-color: none;" text="Profile" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <padding>
+                  <Insets left="40.0" />
+               </padding>
+            </Button>
+            <Button alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: none;" text="Quelque option" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <padding>
+                  <Insets left="40.0" />
+               </padding>
+            </Button>
+            <Button alignment="TOP_LEFT" layoutX="10.0" layoutY="35.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: none;" text="Parametre" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <padding>
+                  <Insets left="40.0" />
+               </padding>
+            </Button>
+            <Button alignment="TOP_LEFT" layoutX="10.0" layoutY="140.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: none;" text="Se deconnecter" textFill="WHITE">
+               <VBox.margin>
+                  <Insets top="150.0" />
+               </VBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <padding>
+                  <Insets left="40.0" />
+               </padding>
+            </Button>
+         </children>
+         <padding>
+            <Insets top="40.0" />
+         </padding>
+      </VBox>
+   </left>
+   <top>
+      <Pane prefHeight="109.0" prefWidth="858.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="74.0" layoutY="28.0" prefHeight="53.0" prefWidth="288.0" text="Quelque chose" textFill="WHITE">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </top>
+   <center>
+      <Pane prefHeight="447.0" prefWidth="698.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="159.0" layoutY="14.0" prefHeight="46.0" prefWidth="367.0" style="-fx-border-color: #000000; -fx-border-radius: 10;" text="Les informations du demandeur">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <GridPane layoutX="102.0" layoutY="86.0" prefHeight="335.0" prefWidth="481.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="234.0" minWidth="10.0" prefWidth="205.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="247.0" minWidth="10.0" prefWidth="211.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints maxHeight="61.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="78.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="83.0" minHeight="10.0" prefHeight="63.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="165.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="165.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="165.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="165.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="165.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label prefHeight="31.0" prefWidth="256.0" text="Nom" />
+                  <Label layoutX="10.0" layoutY="18.0" prefHeight="31.0" prefWidth="235.0" text="Code d'Identite National (CIN)" GridPane.rowIndex="2" />
+                  <Label layoutX="10.0" layoutY="67.0" prefHeight="31.0" prefWidth="233.0" text="Prenom" GridPane.rowIndex="1" />
+                  <Label layoutX="10.0" layoutY="118.0" prefHeight="31.0" prefWidth="236.0" text="Date de depot du dossier" GridPane.rowIndex="3" />
+                  <Label layoutX="10.0" layoutY="124.0" prefHeight="31.0" prefWidth="238.0" text="Telecharger CIN" GridPane.rowIndex="5" />
+                  <Label layoutX="10.0" layoutY="165.0" prefHeight="31.0" prefWidth="265.0" text="Telecharger la demande" GridPane.rowIndex="6" />
+                  <Label layoutX="10.0" layoutY="220.0" prefHeight="31.0" prefWidth="255.0" text="Le type de demande" GridPane.rowIndex="4" />
+                  <TextField fx:id="nomIput" prefHeight="30.0" prefWidth="247.0" GridPane.columnIndex="1" />
+                  <TextField fx:id="prenomInput" layoutX="179.0" layoutY="19.0" prefHeight="30.0" prefWidth="247.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="cinInput" layoutX="179.0" layoutY="68.0" prefHeight="30.0" prefWidth="215.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <DatePicker fx:id="dateDepotDossierInput" prefHeight="25.0" prefWidth="249.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <ChoiceBox fx:id="typeDemandeChoice" prefHeight="25.0" prefWidth="248.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ChoiceBox>
+                  <Button fx:id="cinFileButton" mnemonicParsing="false" onMouseClicked="#uploadFile" prefHeight="25.0" prefWidth="258.0" text="Choisir un fichier" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="demandeFileButton" mnemonicParsing="false"  onMouseClicked="#uploadFile" prefHeight="25.0" prefWidth="258.0" text="Choisir un fichier" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="suivantButton" mnemonicParsing="false" onMouseClicked="#suivant" prefHeight="25.0" prefWidth="74.0" text="Suivant" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                     <GridPane.margin>
+                        <Insets left="180.0" />
+                     </GridPane.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </GridPane>
+         </children>
+      </Pane>
+   </center>
+</BorderPane>
