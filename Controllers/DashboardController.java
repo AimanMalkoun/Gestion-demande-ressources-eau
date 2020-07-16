@@ -3,6 +3,7 @@ package Controllers;
 
 import java.io.IOException;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -28,5 +29,11 @@ public class DashboardController {
 		Scene searchModifyFolderScene = new Scene(searchModifyFolderRoot);
 		Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		primaryStage.setScene(searchModifyFolderScene);
+    }
+    
+    @FXML
+    void disconnect(ActionEvent event) {
+		Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		primaryStage.close();
     }
 }
