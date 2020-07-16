@@ -1,5 +1,5 @@
 package Connectivity;
-
+/*
 import java.sql.DriverManager;
 import com.mysql.jdbc.Connection;
 
@@ -23,3 +23,4 @@ public class ConnectionClass {
 		return connection;
 	}
 }
+*/
