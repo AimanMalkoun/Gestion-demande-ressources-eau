@@ -29,10 +29,7 @@ public class ChangeFileAlert {
 		//choose file
 		input.setOnMouseClicked(e -> {
 				FileChooser fc = new FileChooser();
-				FileChooser.ExtensionFilter ext1 = new FileChooser.ExtensionFilter("JPG files(*.jpg)", "*JPG");
-				FileChooser.ExtensionFilter ext2 = new FileChooser.ExtensionFilter("PNG files(*.png)", "*PNG");
-				FileChooser.ExtensionFilter ext3 = new FileChooser.ExtensionFilter("PDF files(*.pdf)", "*PDF");
-				fc.getExtensionFilters().addAll(ext1, ext2, ext3);
+				fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("image/pdf/docx", "*.jpg", "*.png", "*.pdf", "*.docx"));
 				File file = fc.showOpenDialog(new Stage());
 		        result = file;
 			});
