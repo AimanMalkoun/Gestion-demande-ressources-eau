@@ -1,19 +1,19 @@
 package GestionDemandeEau;
 	
-import Classes.Demandeur;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 
 public class Main extends Application {
+	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
 			//    -----Modify Folder-----
-			BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("../Fxml/Enregistrer.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("../Fxml/InformationsConcernantPointDeau.fxml"));
 			Scene scene = new Scene(root);
 			primaryStage.setTitle("Gestion des demandes d'autorisation pour l'utilisation des ressources en eau.");
 			primaryStage.setScene(scene);

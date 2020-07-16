@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="556.0" prefWidth="877.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="borderPan" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="556.0" prefWidth="877.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.InformationsConcernantPointDeauController">
    <left>
       <VBox prefHeight="447.0" prefWidth="166.0" spacing="20.0" style="-fx-background-color: #423167;" BorderPane.alignment="CENTER">
          <children>
@@ -95,20 +95,25 @@
                   <Label layoutX="10.0" layoutY="18.0" prefHeight="31.0" prefWidth="208.0" text="Profondeur" GridPane.rowIndex="2" />
                   <Label layoutX="10.0" layoutY="67.0" prefHeight="31.0" prefWidth="208.0" text="Debit" GridPane.rowIndex="1" />
                   <Label layoutX="10.0" layoutY="118.0" prefHeight="31.0" prefWidth="208.0" text="Rabattement" GridPane.rowIndex="3" />
-                  <TextField prefHeight="30.0" prefWidth="247.0" GridPane.columnIndex="1" />
-                  <TextField layoutX="179.0" layoutY="19.0" prefHeight="30.0" prefWidth="247.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TextField layoutX="179.0" layoutY="68.0" prefHeight="30.0" prefWidth="247.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="89.0" text="Suivant" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                  <TextField fx:id="locationEau" prefHeight="30.0" prefWidth="247.0" GridPane.columnIndex="1" />
+                  <TextField fx:id="debit" layoutX="179.0" layoutY="19.0" prefHeight="30.0" prefWidth="247.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="profondeur" layoutX="179.0" layoutY="68.0" prefHeight="30.0" prefWidth="247.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Button fx:id="goButton" mnemonicParsing="false" onAction="#goMethode" prefHeight="25.0" prefWidth="89.0" text="Suivant" GridPane.columnIndex="1" GridPane.rowIndex="5">
                      <GridPane.margin>
                         <Insets left="160.0" />
                      </GridPane.margin>
                   </Button>
-                  <TextField layoutX="179.0" layoutY="125.0" prefHeight="30.0" prefWidth="247.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <TextField fx:id="rabattement" layoutX="179.0" layoutY="125.0" prefHeight="30.0" prefWidth="247.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                   <Label layoutX="10.0" layoutY="148.0" prefHeight="31.0" prefWidth="236.0" text="Plan d'eau" GridPane.rowIndex="4" />
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="252.0" text="Choisir un fihier" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <Button layoutX="405.0" layoutY="247.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="89.0" text="Precedent" GridPane.rowIndex="5" />
+                  <Button fx:id="chooseFileImageButton" mnemonicParsing="false" onAction="#chooseFileImageMethode" prefHeight="25.0" prefWidth="252.0" text="Choisir un fihier" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Button fx:id="backMethode" layoutX="405.0" layoutY="247.0" mnemonicParsing="false" onAction="#backMethode" prefHeight="25.0" prefWidth="89.0" text="Precedent" GridPane.rowIndex="5" />
                </children>
             </GridPane>
+            <Label fx:id="textError" contentDisplay="CENTER" layoutX="181.0" layoutY="374.0" prefHeight="29.0" prefWidth="350.0" textFill="#ff2d2d">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </center>

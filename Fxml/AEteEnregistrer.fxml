@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="556.0" prefWidth="877.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="boderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="556.0" prefWidth="877.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AEteEnregistrerController">
    <left>
       <VBox prefHeight="447.0" prefWidth="166.0" spacing="20.0" style="-fx-background-color: #423167;" BorderPane.alignment="CENTER">
          <children>
@@ -75,7 +75,7 @@
                </font>
             </Text>
             <Button layoutX="455.0" layoutY="260.0" mnemonicParsing="false" text="Telecharger le recu" />
-            <Button layoutX="141.0" layoutY="260.0" mnemonicParsing="false" text="Reteur au page prinipale" />
+            <Button fx:id="back" layoutX="141.0" layoutY="260.0" mnemonicParsing="false" onAction="#handelBackMethode" text="Reteur au page prinipale" />
          </children>
       </Pane>
    </center>
