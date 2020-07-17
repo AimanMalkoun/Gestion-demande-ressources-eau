@@ -1,8 +1,8 @@
 package Connectivity;
 
+import java.sql.Connection;
 import java.sql.DriverManager;
 
-import com.sun.corba.se.pept.transport.Connection;
 
 public class ConnectionClass {
 	public Connection connection;
