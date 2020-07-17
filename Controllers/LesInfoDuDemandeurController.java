@@ -8,6 +8,8 @@ import java.util.ResourceBundle;
 import Classes.Demandeur;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -71,7 +73,12 @@ public class LesInfoDuDemandeurController implements Initializable{
     		demandeur.setDemandeFile(demandeFile);
 		
     		try {
-    			Test.window.setScene(new Scene(FXMLLoader.load(getClass().getResource("../Fxml/Les-informations-concernant-l'immobilier.fxml"))));
+    			
+    			Parent dashboardRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/Les-informations-concernant-l'immobilier.fxml"));
+				Scene dashboardScene = new Scene(dashboardRoot);
+				Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+				primaryStage.setScene(dashboardScene);
+				
     		} catch (IOException e) {
     			// TODO Auto-generated catch block
     			e.printStackTrace();

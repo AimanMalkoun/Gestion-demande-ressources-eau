@@ -9,6 +9,8 @@ import Classes.Immobilier;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -47,7 +49,12 @@ public class LesInfoDelImmobilierController implements Initializable{
     @FXML
     void precedent(MouseEvent event) {
     	try {
-			Test.window.setScene(new Scene(FXMLLoader.load(getClass().getResource("../Fxml/InformationsDuDemandeur.fxml"))));
+    		
+			Parent dashboardRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/InformationsDuDemandeur.fxml"));
+			Scene dashboardScene = new Scene(dashboardRoot);
+			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			primaryStage.setScene(dashboardScene);
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -65,7 +72,12 @@ public class LesInfoDelImmobilierController implements Initializable{
     			InfoSurImmobilier.setAttestationDePocession(attestationFile);
     			
     			try {
-        			Test.window.setScene(new Scene(FXMLLoader.load(getClass().getResource("../Fxml/InformationsConcernantPointDeau.fxml"))));
+
+    				Parent dashboardRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/InformationsConcernantPointDeau.fxml"));
+    				Scene dashboardScene = new Scene(dashboardRoot);
+    				Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+    				primaryStage.setScene(dashboardScene);
+    				
         		} catch (IOException e) {
         			// TODO Auto-generated catch block
         			e.printStackTrace();
