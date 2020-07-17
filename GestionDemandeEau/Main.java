@@ -6,7 +6,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 
 import javafx.stage.Stage;
-import Controllers.LoginStageController;
 
 
 public class Main extends Application {
@@ -29,25 +28,10 @@ public class Main extends Application {
  * he ges an error message
  * 
  */
-			
-			
-			
-			
-			//This will be uncomented in the end
-			/*
-			Pane loginRoot = (Pane)FXMLLoader.load(getClass().getResource("../Fxml/LoginStage.fxml")); //load the scene in root
+			Parent loginRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/LoginStage.fxml")); //load the scene in root
 			Scene loginScene = new Scene(loginRoot);
 			primaryStage.setTitle("Gestion des demandes d'autorisation pour l'utilisation des ressources en eau.");
 			primaryStage.setScene(loginScene);
-			primaryStage.show();
-			*/
-			
-			
-			Parent dashboardRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/Dashboard.fxml"));
-			Scene dashboardScene = new Scene(dashboardRoot);
-			
-			primaryStage.setTitle("Gestion des demandes d'autorisation pour l'utilisation des ressources en eau.");
-			primaryStage.setScene(dashboardScene);
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();

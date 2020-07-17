@@ -3,6 +3,7 @@ package Controllers;
 
 import java.io.IOException;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -15,8 +16,11 @@ public class DashboardController {
 
 
     @FXML
-    void CreateNewFolder(MouseEvent event) {
-    	System.out.println("new folder created");
+    void CreateNewFolder(MouseEvent event) throws IOException {
+    	Parent deamandeurInfoRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/InformationsDuDemandeur.fxml"));
+		Scene deamandeurInfoScene = new Scene(deamandeurInfoRoot);
+		Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		primaryStage.setScene(deamandeurInfoScene);
     }
 
     @FXML
@@ -25,5 +29,11 @@ public class DashboardController {
 		Scene searchModifyFolderScene = new Scene(searchModifyFolderRoot);
 		Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		primaryStage.setScene(searchModifyFolderScene);
+    }
+    
+    @FXML
+    void disconnect(ActionEvent event) {
+		Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		primaryStage.close();
     }
 }
