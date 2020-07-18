@@ -58,7 +58,7 @@ public class AEteEnregistrerController implements Initializable {
 		ConnectionClass conn = new ConnectionClass();
 		Connection connection = conn.getConnection();
 		Statement stat = connection.createStatement();
-		String sql = "SELECT Nom, Prenom, `Carte d'identite National`, `Localisation de l'immobilier`, Douar, Commune, Province, `	Date de dépôt du dossier`  FROM dossier WHERE idDossier = " + EnregistrerController.idDossier;
+		String sql = "SELECT Nom, Prenom, cin, localisationImmobilier, Douar, Commune, Province, DateDepot   FROM dossier WHERE idDossier = " + EnregistrerController.idDossier;
 		ResultSet result = stat.executeQuery(sql);
 		if (result.next()) {
 			nomPrenom = result.getString("Nom") + result.getString("Prenom");

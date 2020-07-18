@@ -1,10 +1,6 @@
 package Connectivity;
-<<<<<<< HEAD
-/*
-=======
 
 import java.sql.Connection;
->>>>>>> master
 import java.sql.DriverManager;
 
 public class ConnectionClass {
@@ -26,4 +22,4 @@ public Connection connection;
 		return connection;
 	}
 }
-*/
+

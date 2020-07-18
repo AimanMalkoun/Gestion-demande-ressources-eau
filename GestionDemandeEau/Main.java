@@ -28,12 +28,12 @@ public class Main extends Application {
  * he ges an error message
  * 
  */
-			Parent loginRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/InformationsDuDemandeur.fxml")); //load the scene in root
+			Parent loginRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/InformationsConcernantPointDeau.fxml")); //load the scene in root
 			Scene loginScene = new Scene(loginRoot);
 			primaryStage.setTitle("Gestion des demandes d'autorisation pour l'utilisation des ressources en eau.");
 			primaryStage.setScene(loginScene);
 			primaryStage.show();
-			*/
+
 			
 			
 			Parent dashboardRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/InformationsConcernantPointDeau.fxml"));
