@@ -43,7 +43,7 @@ public class Main extends Application {
 			*/
 			
 			
-			Parent dashboardRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/Dashboard.fxml"));
+			Parent dashboardRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/InformationsConcernantPointDeau.fxml"));
 			Scene dashboardScene = new Scene(dashboardRoot);
 			
 			primaryStage.setTitle("Gestion des demandes d'autorisation pour l'utilisation des ressources en eau.");

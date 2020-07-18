@@ -41,13 +41,13 @@ public class InformationsConcernantPointDeauController implements Initializable 
 	@FXML
 	private Button backMethode;
 	private File file;
-	public static PointDeau poinDeau;
+	public static  PointDeau poinDeau;
 
 	@FXML
 	public void chooseFileImageMethode(ActionEvent event) {
 		/*
-		 *la m�thode a pour but d'ouvrir une session dans laquelle l'utilisateur peut 
-		 *s�lectionner un fichier ou une image.
+		 *la méthode a pour but d'ouvrir une session dans laquelle l'utilisateur peut 
+		 *sélectionner un fichier ou une image.
 		 */
 		FileChooser fileChoosed = new FileChooser();
 		fileChoosed.setTitle("Uplouding an image");
@@ -61,25 +61,27 @@ public class InformationsConcernantPointDeauController implements Initializable 
 		/*
 		 *initialisation de l'objet <<poinDeau>> par les champs remplis. 
 		 */
-		if (isStringValide(locationEau) & isFloatValide(debit) & isFloatValide(profondeur) & isFloatValide(rabattement)
+		if ( !isNotValideString(locationEau) & isValideFloat(debit) & isValideFloat(profondeur) & isValideFloat(rabattement)
 				& file != null) {
 			poinDeau = new PointDeau(locationEau.getText().toString(), new Float(debit.getText()),
 					new Float(profondeur.getText()), file, new Float(rabattement.getText()));
 			Parent root = FXMLLoader.load(getClass().getResource("../Fxml/Enregistrer.fxml"));
 			borderPan.getChildren().setAll(root);
 		} else {
-			textError.setText("S.V.P veuillez remplir tous les champs correctement");
+			//textError.setText("S.V.P veuillez remplir tous les champs correctement");
+			textError.setText("المملكة المغربية   وزارة التجهيز والنقل واللوجيستيك والماء");
 		}
 	}
 
 	@FXML
-	public void backMethode(ActionEvent event) {
-
+	public void backMethode(ActionEvent event) throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("../Fxml/Les-informations-concernant-l'immobilier.fxml"));
+		borderPan.getChildren().setAll(root);
 	}
 
-	public boolean isFloatValide(TextField text) {
+	public boolean isValideFloat(TextField text) {
 		/*
-		 *La m�thode a pour but de v�rifier est ce que le param�tre texte est du type Float.
+		 *La méthode a pour but de vérifier est ce que le paramètre texte est du type Float.
 		 */
 		try {
 			float nbr = Float.parseFloat(text.getText());
@@ -90,16 +92,16 @@ public class InformationsConcernantPointDeauController implements Initializable 
 		}
 	}
 
-	public boolean isStringValide(TextField text) {
+	public boolean isNotValideString(TextField text) {
 		/*
-		 *La m�thode a pour but de v�rifier est ce que le param�tre texte est du type String.
+		 *La méthode a pour but de vérifier est ce que le paramètre texte est du type String.
 		 */
 		try {
 			float nbr = Float.parseFloat(text.getText());
+			return true;
+		} catch (NumberFormatException e) {
 			text.setStyle("-fx-border-color: red;");
 			return false;
-		} catch (NumberFormatException e) {
-			return true;
 		}
 	}
 
