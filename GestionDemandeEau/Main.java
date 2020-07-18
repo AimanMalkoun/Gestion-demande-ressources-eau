@@ -33,6 +33,15 @@ public class Main extends Application {
 			primaryStage.setTitle("Gestion des demandes d'autorisation pour l'utilisation des ressources en eau.");
 			primaryStage.setScene(loginScene);
 			primaryStage.show();
+			*/
+			
+			
+			Parent dashboardRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/InformationsConcernantPointDeau.fxml"));
+			Scene dashboardScene = new Scene(dashboardRoot);
+			
+			primaryStage.setTitle("Gestion des demandes d'autorisation pour l'utilisation des ressources en eau.");
+			primaryStage.setScene(dashboardScene);
+			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

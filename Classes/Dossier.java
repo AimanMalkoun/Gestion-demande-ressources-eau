@@ -2,6 +2,8 @@ package Classes;
 
 import java.sql.Date;
 
+import javafx.scene.control.Label;
+
 public class Dossier {
 	/* 
 	 * declaration des attributs (private) 
@@ -9,24 +11,24 @@ public class Dossier {
 
 	private int idDossier;
 	private Demandeur demandeur;
-	private Limmobilier immobilier;
+	private Immobilier immobilier;
 	private PointDeau pointDeau;
 	private Date dateDepot;
 	private Date dateEnvoiA_LABHOER;
 	private Date dateDebutde_EP;
 	private Date dateFin_EP;
 	private Date dateSignateureDuPv;
-	private boolean avisDe_CEP;
+	private String avisDe_CEP;
 	private Date dateEnvoiDuPVa_LABHOER;
-	private boolean avisABHOER;
+	private String avisABHOER;
 
 	/* 
 	 *le constricteur de la classe initialisé par les attributs 
 	 */
 
-	public Dossier(int idDossier, Demandeur demandeur, Limmobilier immobilier, PointDeau pointDeau, Date dateDepot,
-			Date dateEnvoiA_LABHOER, Date dateDebutde_EP, Date dateFin_EP, Date dateSignateureDuPv, boolean avisDe_CEP,
-			Date dateEnvoiDuPVa_LABHOER, boolean avisABHOER) {
+	public Dossier(int idDossier, Demandeur demandeur, Immobilier immobilier, PointDeau pointDeau, Date dateDepot,
+			Date dateEnvoiA_LABHOER, Date dateDebutde_EP, Date dateFin_EP, Date dateSignateureDuPv, String avisDe_CEP,
+			Date dateEnvoiDuPVa_LABHOER, String avisABHOER) {
 		setIdDossier(idDossier);
 		setDemandeur(demandeur);
 		setImmobilier(immobilier);
@@ -65,6 +67,23 @@ public class Dossier {
 	 * les getters et les setters des attributs de la classe.
 	 */
 	
+	public Dossier(int idDossier2, Demandeur demandeur2, Immobilier infosurimmobilier, PointDeau poinDeau,
+			Label dateDepot2) {
+		setIdDossier(idDossier);
+		setDemandeur(demandeur);
+		setImmobilier(immobilier);
+		setPointDeau(pointDeau);
+		setDateDepot(dateDepot);
+		setDateEnvoiA_LABHOER(null);
+		setDateDebutde_EP(null);
+		setDateFin_EP(null);
+		setDateSignateureDuPv(null);
+		setAvisDe_CEP(null);
+		setDateEnvoiDuPVa_LABHOER(null);
+		setAvisABHOER(null);
+		
+	}
+
 	public int getIdDossier() {
 		return idDossier;
 	}
@@ -81,11 +100,11 @@ public class Dossier {
 		this.demandeur = demandeur;
 	}
 
-	public Limmobilier getImmobilier() {
+	public Immobilier getImmobilier() {
 		return immobilier;
 	}
 
-	public void setImmobilier(Limmobilier immobilier) {
+	public void setImmobilier(Immobilier immobilier) {
 		this.immobilier = immobilier;
 	}
 
@@ -137,11 +156,11 @@ public class Dossier {
 		this.dateSignateureDuPv = dateSignateureDuPv;
 	}
 
-	public boolean isAvisDe_CEP() {
+	public String isAvisDe_CEP() {
 		return avisDe_CEP;
 	}
 
-	public void setAvisDe_CEP(boolean avisDe_CEP) {
+	public void setAvisDe_CEP(String avisDe_CEP) {
 		this.avisDe_CEP = avisDe_CEP;
 	}
 
@@ -153,11 +172,11 @@ public class Dossier {
 		this.dateEnvoiDuPVa_LABHOER = dateEnvoiDuPVa_LABHOER;
 	}
 
-	public boolean isAvisABHOER() {
+	public String isAvisABHOER() {
 		return avisABHOER;
 	}
 
-	public void setAvisABHOER(boolean avisABHOER) {
+	public void setAvisABHOER(String avisABHOER) {
 		this.avisABHOER = avisABHOER;
 	}
 

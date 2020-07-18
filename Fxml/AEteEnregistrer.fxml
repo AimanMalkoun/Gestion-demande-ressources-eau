@@ -74,7 +74,7 @@
                   <Font name="Tahoma" size="32.0" />
                </font>
             </Text>
-            <Button layoutX="455.0" layoutY="260.0" mnemonicParsing="false" text="Telecharger le recu" />
+            <Button fx:id="downloadReceipt" layoutX="455.0" layoutY="260.0" mnemonicParsing="false" onAction="#downloadReceiptMethode" text="Telecharger le reçu " />
             <Button fx:id="back" layoutX="141.0" layoutY="260.0" mnemonicParsing="false" onAction="#handelBackMethode" text="Reteur au page prinipale" />
          </children>
       </Pane>
