@@ -12,8 +12,9 @@ import javafx.stage.Stage;
 
 public class ChangeChoiceAlert {
 	
+	static String result = null;
+	
 	public static String desplay(String title, String[] items, String selectedValue) {
-		String result = null;
 		
 		Stage window = new Stage();
 		window.setResizable(false);
@@ -27,6 +28,23 @@ public class ChangeChoiceAlert {
 		
 		Button okButton = new Button("OK"), annulerButton = new Button("annuler");
 		
+		//Handeling actions
+		okButton.setOnMouseClicked(e -> {
+				result = input.getValue();
+				window.close();
+		});
+				
+		annulerButton.setOnMouseClicked(e -> {
+			result = null;
+			window.close();
+		});
+				
+		window.setOnCloseRequest(e -> {
+			result = null;
+		});
+				
+				
+		//Creating scene
 		HBox layout = new HBox(30);
 		layout.getChildren().addAll(annulerButton, okButton);
 		layout.setAlignment(Pos.CENTER);
