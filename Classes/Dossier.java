@@ -2,6 +2,8 @@ package Classes;
 
 import java.time.LocalDate;
 
+import javafx.scene.control.Label;
+
 public class Dossier {
 	/* 
 	 * declaration des attributs (private) 
@@ -25,7 +27,7 @@ public class Dossier {
 	private boolean autorisation;
 
 	/* 
-	 *le constricteur de la classe initialisé par les attributs 
+	 *le constricteur de la classe initialisï¿½ par les attributs 
 	 */
 
 	public Dossier(int idDossier, Demandeur demandeur, Immobilier immobilier, PointDeau pointDeau, LocalDate dateDepot,
@@ -47,7 +49,7 @@ public class Dossier {
 	}
 
 	/* 
-	 * le constricteur de la classe initialisé par l'objet Dossier 
+	 * le constricteur de la classe initialisï¿½ par l'objet Dossier 
 	 */
 	
 	public Dossier(Dossier dossier) {
@@ -79,6 +81,23 @@ public class Dossier {
 	 * les getters et les setters des attributs de la classe.
 	 */
 	
+	public Dossier(int idDossier2, Demandeur demandeur2, Immobilier infosurimmobilier, PointDeau poinDeau,
+			Label dateDepot2) {
+		setIdDossier(idDossier);
+		setDemandeur(demandeur);
+		setImmobilier(immobilier);
+		setPointDeau(pointDeau);
+		setDateDepot(dateDepot);
+		setDateEnvoiA_LABHOER(null);
+		setDateDebutde_EP(null);
+		setDateFin_EP(null);
+		setDateSignateureDuPv(null);
+		setAvisDe_CEP(null);
+		setDateEnvoiDuPVa_LABHOER(null);
+		setAvisABHOER(null);
+		
+	}
+
 	public int getIdDossier() {
 		return idDossier;
 	}
@@ -155,7 +174,7 @@ public class Dossier {
 		return avisDe_CEP;
 	}
 
-	public void setAvisDe_CEP(boolean avisDe_CEP) {
+	public void setAvisDe_CEP(String avisDe_CEP) {
 		this.avisDe_CEP = avisDe_CEP;
 	}
 
@@ -171,7 +190,7 @@ public class Dossier {
 		return avisABHOER;
 	}
 
-	public void setAvisABHOER(boolean avisABHOER) {
+	public void setAvisABHOER(String avisABHOER) {
 		this.avisABHOER = avisABHOER;
 	}
 
