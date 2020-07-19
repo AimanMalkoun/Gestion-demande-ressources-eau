@@ -128,7 +128,7 @@ public class EnregistrerController implements Initializable {
 			/* l'insertion des el�ments dans la base de donn�es */
 
 			PreparedStatement stat = connection.prepareStatement(sql);
-			stat.setInt(1, dossier.getIdDossier());
+			stat.setInt(1, idDossier);
 			stat.setString(2, LesInfoDuDemandeurController.demandeur.getNom());
 			stat.setString(3, LesInfoDuDemandeurController.demandeur.getPrenom());
 			stat.setString(4, LesInfoDuDemandeurController.demandeur.getCin());
