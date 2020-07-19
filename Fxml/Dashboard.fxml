@@ -24,11 +24,11 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <Button layoutX="10.0" layoutY="35.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: #3f2f62;" text="Parametre" textFill="WHITE">
+            <Button layoutX="10.0" layoutY="35.0" mnemonicParsing="false" onAction="#ChangePassword" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: #3f2f62;" text="Change Password" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <Button layoutX="10.0" layoutY="140.0" mnemonicParsing="false" onAction="#disconnect" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: #3f2f62;" text="Se deconnecter" textFill="WHITE">
+            <Button layoutX="10.0" layoutY="140.0" mnemonicParsing="false" onAction="#disconnect" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: #3f2f62;" text="Exit" textFill="WHITE">
                <VBox.margin>
                   <Insets top="150.0" />
                </VBox.margin>

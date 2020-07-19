@@ -36,4 +36,12 @@ public class DashboardController {
 		Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		primaryStage.close();
     }
+    
+    @FXML
+    void ChangePassword(ActionEvent event) throws IOException {
+    	Parent ChangePasswordRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/ChangePassword.fxml"));
+		Scene ChangePasswordScene = new Scene(ChangePasswordRoot);
+		Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		primaryStage.setScene(ChangePasswordScene);
+    }
 }
