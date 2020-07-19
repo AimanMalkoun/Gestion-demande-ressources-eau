@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -88,24 +89,24 @@ public class EnregistrerController implements Initializable {
 		String sqlId = "SELECT MAX(IdDossier)  FROM dossier";
 		ResultSet result = statId.executeQuery(sqlId);
 		if (result.next()) {
-			idDossier = result.getInt(idDossier) + 1;
+			idDossier = result.getInt(1) + 1;
 		}
 
 		/*
 		 * l'initialisation de l'objet Dossier avec les éléments de la page précédente
 		 */
 
-		Dossier dossier = new Dossier(idDossier, LesInfoDuDemandeurController.demandeur,
+		/*Dossier dossier = new Dossier(idDossier, LesInfoDuDemandeurController.demandeur,
 				LesInfoDelImmobilierController.InfoSurImmobilier, InformationsConcernantPointDeauController.poinDeau,
-				dateDepot);
+				dateDepot);*/
 
 
 		/* Détermination de path de chaque fichier */
 
-		String pathCIN = dossier.getDemandeur().getCinFile().getAbsolutePath();
-		String pathDemandeCreusement = dossier.getDemandeur().getDemandeFile().getAbsolutePath();
-		String pathAttistation = dossier.getImmobilier().getAttestationDePocession().getAbsolutePath();
-		String pathPlanEau = dossier.getPointDeau().getPlanEau().getAbsolutePath();
+		String pathCIN = LesInfoDuDemandeurController.demandeur.getCinFile().getAbsolutePath();
+		String pathDemandeCreusement = LesInfoDuDemandeurController.demandeur.getDemandeFile().getAbsolutePath();
+		String pathAttistation = LesInfoDelImmobilierController.InfoSurImmobilier.getAttestationDePocession().getAbsolutePath();
+		String pathPlanEau = InformationsConcernantPointDeauController.poinDeau.getPlanEau().getAbsolutePath();
 
 		/* Création de l'objet InputStream afin de le stocker dans la base de données */
 
@@ -122,32 +123,33 @@ public class EnregistrerController implements Initializable {
 			/* l'insertion des eléments dans la base de données */
 
 			PreparedStatement stat = connection.prepareStatement(sql);
-			stat.setInt(1, dossier.getIdDossier());
-			stat.setString(2, dossier.getDemandeur().getNom());
-			stat.setString(3, dossier.getDemandeur().getPrenom());
-			stat.setString(4, dossier.getDemandeur().getCin());
+			
+			stat.setInt(1, idDossier);
+			stat.setString(2, LesInfoDuDemandeurController.demandeur.getNom());
+			stat.setString(3, LesInfoDuDemandeurController.demandeur.getPrenom());
+			stat.setString(4, LesInfoDuDemandeurController.demandeur.getCin());
 			stat.setBlob(5, cinFile);
-			stat.setString(6, dossier.getDemandeur().getTypeDemande());
+			stat.setString(6, LesInfoDuDemandeurController.demandeur.getTypeDemande());
 			stat.setBlob(7, demandeCreusement);
-			stat.setString(8, null);
+			stat.setString(8, LesInfoDelImmobilierController.InfoSurImmobilier.getLocalisation());
 			stat.setBlob(9, attistation);
-			stat.setString(10, dossier.getImmobilier().getDouar());
-			stat.setString(11, dossier.getImmobilier().getCommune());
-			stat.setString(12, dossier.getImmobilier().getProvince());
-			stat.setString(13, dossier.getPointDeau().getLocalisationPoint());
-			stat.setFloat(14, dossier.getPointDeau().getDebit());
-			stat.setFloat(15, dossier.getPointDeau().getProfondeur());
+			stat.setString(10, LesInfoDelImmobilierController.InfoSurImmobilier.getDouar());
+			stat.setString(11, LesInfoDelImmobilierController.InfoSurImmobilier.getCommune());
+			stat.setString(12, LesInfoDelImmobilierController.InfoSurImmobilier.getProvince());
+			stat.setString(13, InformationsConcernantPointDeauController.poinDeau.getLocalisationPoint());
+			stat.setFloat(14, InformationsConcernantPointDeauController.poinDeau.getDebit());
+			stat.setFloat(15, InformationsConcernantPointDeauController.poinDeau.getProfondeur());
 			stat.setBlob(16, planEau);
-			stat.setFloat(17, dossier.getPointDeau().getRabattement());
-			stat.setDate(18, dossier.getDateDepot());
-			stat.setDate(19, null);
-			stat.setDate(20, null);
-			stat.setDate(21, null);
-			stat.setDate(22, null);
-			stat.setString(23, null);
-			stat.setDate(24, null);
-			stat.setString(25, null);
-			stat.setString(26, null);
+			stat.setFloat(17, InformationsConcernantPointDeauController.poinDeau.getRabattement());
+			stat.setDate(18,  Date.valueOf(  LesInfoDuDemandeurController.demandeur.getDateDepotDossier()));
+			stat.setDate(19, Date.valueOf(  LesInfoDuDemandeurController.demandeur.getDateDepotDossier()));
+			stat.setDate(20, Date.valueOf(  LesInfoDuDemandeurController.demandeur.getDateDepotDossier()));
+			stat.setDate(21, Date.valueOf(  LesInfoDuDemandeurController.demandeur.getDateDepotDossier()));
+			stat.setDate(22, Date.valueOf(  LesInfoDuDemandeurController.demandeur.getDateDepotDossier()));
+			stat.setString(23, "");
+			stat.setDate(24, Date.valueOf(  LesInfoDuDemandeurController.demandeur.getDateDepotDossier()));
+			stat.setString(25, "");
+			stat.setString(26, "");
 			stat.execute();
 
 		} catch (SQLException e) {
