@@ -82,7 +82,6 @@ public class LesInfoDelImmobilierController implements Initializable{
         			// TODO Auto-generated catch block
         			e.printStackTrace();
         		}
-    			System.out.println(InfoSurImmobilier);
     			
     		}else {
         		textError.setText("veuillez remplir tous les champs correctement");

@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import Classes.Dossier;
@@ -117,7 +118,11 @@ public class EnregistrerController implements Initializable {
 
 		/* la requête sql de l'insertion */
 
-		String sql = "INSERT INTO dossier (`IdDossier`, `Nom`, `Prenom`, `Carte d'identite National`, `CIN (PDF/Img)`, `Type de demande`, `Demande de creusement (PDF)`, `Localisation de l'immobilier`, `Attistation de pocession de l'immobilier`, `Douar`, `Commune`, `Province`, `Localisation du point d'eau`, `Debit`, `Profendeur`, `Plan d'eau`, `Rabatement`, `Date de dépôt du dossier`, `Date d'envoi à la délégation de l'ABHOER à El Jadida`, `Date début de l'enquête publique`, `Date fin de l'enquête publique (EP)`, `Date signature du PV par la commission de l'EP`, `Avis de la CEP`, `Date d'envoi du PV à la D.ABHOER à EL Jadida`, `Avis ABHOER`, `Autorisation`) "
+		String sql = "INSERT INTO `dossier`(`IdDossier`, `Nom`, `Prenom`, `cin`, `cinImg`, `typeDemande`, `demandeCreusement`,"
+				   + " `localisationImmobilier`, `attistationPocession`, `Douar`, `Commune`, `Province`,"
+				   + " `localisationPointEau`, `Debit`, `Profendeur`, `PlanDeau`, `Rabatement`,"
+				   + " `DateDepot`, `dateEnvoiABHOER`, `dateDebut_EP`, `dateFin_EP`, `dateSignature_PV`,"
+				   + " `AvisDeCEP`, `DateEnvoiDuPV_ABHOER`, `AvisABHOER`, `Autorisation`) "
 				   + "VALUES (?, ?, ?, ?, ?,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,?,? ,? ,? )";
 		try {
 
@@ -131,25 +136,28 @@ public class EnregistrerController implements Initializable {
 			stat.setBlob(5, cinFile);
 			stat.setString(6, LesInfoDuDemandeurController.demandeur.getTypeDemande());
 			stat.setBlob(7, demandeCreusement);
-			stat.setString(8, null);
+			
+			stat.setString(8, LesInfoDelImmobilierController.InfoSurImmobilier.getLocalisation());
 			stat.setBlob(9, attistation);
 			stat.setString(10, LesInfoDelImmobilierController.InfoSurImmobilier.getDouar());
 			stat.setString(11, LesInfoDelImmobilierController.InfoSurImmobilier.getCommune());
 			stat.setString(12, LesInfoDelImmobilierController.InfoSurImmobilier.getProvince());
+			
 			stat.setString(13, InformationsConcernantPointDeauController.poinDeau.getLocalisationPoint());
 			stat.setFloat(14, InformationsConcernantPointDeauController.poinDeau.getDebit());
 			stat.setFloat(15, InformationsConcernantPointDeauController.poinDeau.getProfondeur());
 			stat.setBlob(16, planEau);
 			stat.setFloat(17, InformationsConcernantPointDeauController.poinDeau.getRabattement());
+			
 			stat.setDate(18, Date.valueOf(LesInfoDuDemandeurController.demandeur.getDateDepotDossier()));
-			stat.setDate(19, null);
-			stat.setDate(20, null);
-			stat.setDate(21, null);
-			stat.setDate(22, null);
-			stat.setString(23, null);
-			stat.setDate(24, null);
-			stat.setString(25, null);
-			stat.setString(26, null);
+			stat.setDate(19, Date.valueOf(LesInfoDuDemandeurController.demandeur.getDateDepotDossier()));
+			stat.setDate(20, Date.valueOf(LesInfoDuDemandeurController.demandeur.getDateDepotDossier()));
+			stat.setDate(21, Date.valueOf(LesInfoDuDemandeurController.demandeur.getDateDepotDossier()));
+			stat.setDate(22, Date.valueOf(LesInfoDuDemandeurController.demandeur.getDateDepotDossier()));
+			stat.setString(23, "");
+			stat.setDate(24, Date.valueOf(LesInfoDuDemandeurController.demandeur.getDateDepotDossier()));
+			stat.setString(25, "");
+			stat.setString(26, "");
 			stat.execute();
 
 		} catch (SQLException e) {

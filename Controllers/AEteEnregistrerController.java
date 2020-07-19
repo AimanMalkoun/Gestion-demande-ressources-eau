@@ -53,12 +53,12 @@ public class AEteEnregistrerController implements Initializable {
 		String nomPrenom = null, cin = null, nomImmobiler = null, commune = null, prevince = null;
 		Date dateDepot = null;
 		  
-		/* se connecter avec la base de donnÃ©es */
+		/* se connecter avec la base de données */
 		
 		ConnectionClass conn = new ConnectionClass();
 		Connection connection = conn.getConnection();
 		Statement stat = connection.createStatement();
-		String sql = "SELECT `Nom`, `Prenom`, `Carte d'identite National`, `Localisation de l'immobilier`, `Douar`, `Commune`, `Province`, `Date de dépôt du dossier`   FROM dossier WHERE `IdDossier` = " + Integer.toString(EnregistrerController.idDossier);
+		String sql = "SELECT `Nom`,`Prenom`,`cin`,`localisationImmobilier`,`Douar`,`Commune`,`Province`, `DateDepot` FROM dossier WHERE `IdDossier` = " + Integer.toString(EnregistrerController.idDossier);
 		ResultSet result = stat.executeQuery(sql);
 		if (result.next()) {
 			nomPrenom = result.getString("Nom") + result.getString("Prenom");
@@ -82,53 +82,53 @@ public class AEteEnregistrerController implements Initializable {
 			/* les elements du paragraphe 1 */
 
 			Paragraph para1 = new Paragraph(30);
-			para1.add(new Phrase("\n  \n", big0));// ÙˆØ²Ø§Ø±Ø© Ø§Ù„ØªØ¬Ù‡ÙŠØ² ÙˆØ§Ù„Ù†Ù‚Ù„ ÙˆØ§Ù„Ù„ÙˆØ¬ÙŠØ³ØªÙŠÙƒ ÙˆØ§Ù„Ù…Ø§Ø¡ ",
+			para1.add(new Phrase("\n المملكة المغربية \n", big0));// وزارة التجهيز والنقل واللوجيستيك والماء ",
 																	// normal));
-			para1.add(new Phrase("", big0));
-			para1.add(new Phrase("\n\n", big));
+			para1.add(new Phrase("وزارة التجهيز والنقل واللوجيستيك والماء", big0));
+			para1.add(new Phrase("\n قطاع الماء\n", big));
 			para1.add(new Phrase(
-					" \n",
+					"المدرية الاقليمية للتجهيز والنقل واللوجيستيك والماء بأسفي \n المصلحة الاقليمية للماء بأسفي \n",
 					normal));
-			para1.add(new Phrase("\n ÙˆØµÙ„ Ø¥ÙŠØ¯Ø§Ø¹\n", big));
+			para1.add(new Phrase("\n وصل إيداع\n", big));
 			para1.setAlignment(Paragraph.ALIGN_CENTER);
 
 			/* les elements du paragraphe 2 */
 
-			Paragraph para2 = new Paragraph(30);// " \n ÙŠØ´Ù‡Ø¯ Ø±Ø¦ÙŠØ³ Ø§Ù„Ù…ØµÙ„Ø­Ø© Ø§Ù„Ø§Ù‚Ù„ÙŠÙ…ÙŠØ© Ù„Ù„Ù…Ø§Ø¡ Ø¨Ø£Ø³Ù�ÙŠ Ø§Ù† Ø§Ù„Ø³ÙŠØ¯", normal);
-			para2.add(new Phrase("\n  ", normal));
+			Paragraph para2 = new Paragraph(30);// " \n يشهد رئيس المصلحة الاقليمية للماء بأسفي ان السيد", normal);
+			para2.add(new Phrase("\n يشهد رئيس المصلحة الاقليمية للماء بأسفي ان السيد ", normal));
 			para2.add(new Phrase(nomPrenom, big));
-			para2.add(new Phrase("  ", normal));
+			para2.add(new Phrase(" حامل للبطاقة الوطنية رقم ", normal));
 			para2.add(new Phrase(cin, big));
-			para2.add(new Phrase("  ", normal));
+			para2.add(new Phrase(" قد وضع  لذا هذه المصلحة  بتاريخ ", normal));
 			para2.add(new Phrase(""+dateDepot, big));
-			para2.add(new Phrase("  ", normal));
+			para2.add(new Phrase(" ملف طلب الترخيص لإنجاز ثقب  مائي من أجل سقي بالعقار المسمى : ", normal));
 			para2.add(new Phrase(nomImmobiler, big));
 			para2.setAlignment(Paragraph.ALIGN_LEFT);
 			para2.setSpacingAfter(30);
 			/* les elements du paragraphe 3 */
 
 			Paragraph para3 = new Paragraph(30);
-			para3.add(new Phrase("", normal));
+			para3.add(new Phrase("الجماعة", normal));
 			para3.add(new Phrase(commune, big));
-			para3.add(new Phrase("  ", normal));
-			para3.add(new Phrase("   ", big));
-			para3.add(new Phrase("  ", normal));
-			para3.add(new Phrase("   ", big));
-			para3.add(new Phrase("  ", normal));
+			para3.add(new Phrase(" القيادة ", normal));
+			para3.add(new Phrase(" اسم القيادة  ", big));
+			para3.add(new Phrase(" الدائرة ", normal));
+			para3.add(new Phrase(" اسم الدائرة  ", big));
+			para3.add(new Phrase(" الاقليم ", normal));
 			para3.add(new Phrase(prevince+ ".", big));
 			para3.setAlignment(Paragraph.ALIGN_LEFT);
 
 			/* les elements du paragraphe 4 */
 
-			Paragraph para4 = new Paragraph("\n  : \n", big);
+			Paragraph para4 = new Paragraph("\n  إمضاء : \n", big);
 			para4.setAlignment(Paragraph.ALIGN_CENTER);
 			para4.setSpacingAfter(35);
 
 			/* les elements du paragraphe 5 */
 
 			Paragraph para5 = new Paragraph(30);
-			para5.add(new Phrase(" ", big0));
-			para5.add(new Phrase("",
+			para5.add(new Phrase("ملحوظة : ", big0));
+			para5.add(new Phrase("هذا الوصل يثبت فقط إيداع ملف الترخيص  ولا يمكن اعتباره ترخيصا بحفر او جلب ماء .",
 					small));
 			para5.setAlignment(Paragraph.ALIGN_LEFT);
 			para5.setSpacingAfter(50);

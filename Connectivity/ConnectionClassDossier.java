@@ -36,24 +36,23 @@ public class ConnectionClassDossier {
 			Statement stm = conection.connection.createStatement();
 			ResultSet result = stm.executeQuery(sqlRequette);
 			if(result.next()) {
-				System.out.println("i am in");
 				dossier.setIdDossier(ID);
 				
 				dossier.setDemandeur(getDemandeurInfo(result));
 				dossier.setImmobilier(getImmobilierInfo(result));
 				dossier.setPointDeau(getPointDeauInfo(result));
 				
-				dossier.setAvisABHOER((result.getString("Avis ABHOER")));
-				dossier.setAvisDe_CEP((result.getString("Avis de la CEP")));
+				dossier.setAvisABHOER((result.getString("AvisABHOER")));
+				dossier.setAvisDe_CEP((result.getString("AvisDeCEP")));
 				dossier.setAutorisation(result.getString("Autorisation"));
 				
 				//we need first to convert java.sql.Date to java.time.LocalDate to match the argument of the setter  
-				dossier.setDateDepot(result.getDate("Date de dépôt du dossier").toLocalDate());											
-				dossier.setDateEnvoiA_LABHOER(result.getDate("Date d'envoi à la délégation de l'ABHOER à El Jadida").toLocalDate());
-				dossier.setDateDebutde_EP(result.getDate("Date début de l'enquête publique").toLocalDate());
-				dossier.setDateFin_EP(result.getDate("Date fin de l'enquête publique (EP)").toLocalDate());
-				dossier.setDateSignateureDuPv(result.getDate("Date signature du PV par la commission de l'EP").toLocalDate());
-				dossier.setDateEnvoiDuPVa_LABHOER(result.getDate("Date d'envoi du PV à la D.ABHOER à EL Jadida").toLocalDate());
+				dossier.setDateDepot(result.getDate("DateDepot").toLocalDate());											
+				dossier.setDateEnvoiA_LABHOER(result.getDate("dateEnvoiABHOER").toLocalDate());
+				dossier.setDateDebutde_EP(result.getDate("dateDebut_EP").toLocalDate());
+				dossier.setDateFin_EP(result.getDate("dateFin_EP").toLocalDate());
+				dossier.setDateSignateureDuPv(result.getDate("dateSignature_PV").toLocalDate());
+				dossier.setDateEnvoiDuPVa_LABHOER(result.getDate("DateEnvoiDuPV_ABHOER").toLocalDate());
 			}
 			
 		} catch (SQLException e) {
@@ -72,9 +71,9 @@ public class ConnectionClassDossier {
 		
 		demandeur.setNom(result.getString("Nom"));
 		demandeur.setPrenom(result.getString("Prenom"));
-		demandeur.setCin(result.getString("Carte d'identite National"));
-		demandeur.setTypeDemande(result.getString("Type de demande"));
-		demandeur.setDateDepotDossier(result.getDate("Date de dépôt du dossier").toLocalDate());
+		demandeur.setCin(result.getString("cin"));
+		demandeur.setTypeDemande(result.getString("typeDemande"));
+		demandeur.setDateDepotDossier(result.getDate("DateDepot").toLocalDate());
 		//demandeur.setCinFile(result.getBlob(""));
 		//demandeur.setDemandeFile(result.getBlob(""));
 		
@@ -84,7 +83,7 @@ public class ConnectionClassDossier {
 	private Immobilier getImmobilierInfo(ResultSet result) throws SQLException{
 		Immobilier immobilier = new Immobilier();
 		
-		immobilier.setLocalisation(result.getString("Localisation de l'immobilier"));
+		immobilier.setLocalisation(result.getString("localisationImmobilier"));
 		immobilier.setDouar(result.getString("Douar"));
 		immobilier.setCommune(result.getString("Commune"));
 		immobilier.setProvince(result.getString("Province"));
@@ -96,7 +95,7 @@ public class ConnectionClassDossier {
 	private PointDeau getPointDeauInfo(ResultSet result) throws SQLException{
 		PointDeau pointDeau = new PointDeau();
 		
-		pointDeau.setLocalisationPoint(result.getString("Localisation du point d'eau"));
+		pointDeau.setLocalisationPoint(result.getString("localisationPointEau"));
 		pointDeau.setProfondeur(result.getFloat("Profendeur"));
 		pointDeau.setDebit(result.getFloat("Debit"));
 		pointDeau.setRabattement(result.getFloat("Rabatement"));
@@ -120,28 +119,28 @@ public class ConnectionClassDossier {
 		String sqlRequete = "UPDATE `dossier` " + 
 							"SET `Nom`= ?," + 
 							"    `Prenom`= ?," + 
-							"    `Carte d'identite National`= ?," + 
-							"    `CIN (PDF/Img)`= ?," + 
-							"    `Type de demande`= ?," + 
-							"    `Demande de creusement (PDF)`= ?," + 
-							"    `Localisation de l'immobilier`= ?," + 
-							"    `Attistation de pocession de l'immobilier`= ?," + 
+							"    `cin`= ?," + 
+							"    `cinImg`= ?," + 
+							"    `typeDemande`= ?," + 
+							"    `demandeCreusement`= ?," + 
+							"    `localisationImmobilier`= ?," + 
+							"    `attistationPocession`= ?," + 
 							"    `Douar`= ?," + 
 							"    `Commune`= ?," + 
 							"    `Province`= ?," + 
-							"    `Localisation du point d'eau`= ?," + 
+							"    `localisationPointEau`= ?," + 
 							"    `Debit`= ?," + 
 							"    `Profendeur`= ?," + 
-							"    `Plan d'eau`= ?," + 
+							"    `PlanDeau`= ?," + 
 							"    `Rabatement`= ?," + 
-							"    `Date de dépôt du dossier`= ?," + 
-							"    `Date d'envoi à la délégation de l'ABHOER à El Jadida`= ?," + 
-							"    `Date début de l'enquête publique`= ?," + 
-							"    `Date fin de l'enquête publique (EP)`= ?," + 
-							"    `Date signature du PV par la commission de l'EP`= ?," + 
-							"    `Avis de la CEP`= ?," + 
-							"    `Date d'envoi du PV à la D.ABHOER à EL Jadida`= ?," + 
-							"    `Avis ABHOER`= ?," + 
+							"    `DateDepot`= ?," + 
+							"    `dateEnvoiABHOER`= ?," + 
+							"    `dateDebut_EP`= ?," + 
+							"    `dateFin_EP`= ?," + 
+							"    `dateSignature_PV`= ?," + 
+							"    `AvisDeCEP`= ?," + 
+							"    `DateEnvoiDuPV_ABHOER`= ?," + 
+							"    `AvisABHOER`= ?," + 
 							"    `Autorisation`= ? " + 
 							"WHERE `IdDossier`= ?";
 		try {

@@ -359,21 +359,12 @@ public class modifierInfoDuDossierController implements Initializable{
     			dateSignaturPVparCEPLabel.setText(result.toString());
     			
     		}else if(event.getSource() == AvisDeCEPButton) {
-    			/*
-    			 * 
-    			 * 
-    			 * */
     			//choice
     			String items[] =  {"pas encor decide", "oui", "non"};
     			String result = ChangeChoiceAlert.desplay("changer l'Avis de CEP", items, "pas encor decide");
     			
     			dossier.setAvisDe_CEP(result);
     			AvisDeCEPLabel.setText(result);
-    			
-    			/*
-    			 * 
-    			 * 
-    			 * */
     			
     		}else if(event.getSource() == dateEnvoitPvAbhoerEljadidaButton) {
     			//date
@@ -383,10 +374,6 @@ public class modifierInfoDuDossierController implements Initializable{
     			dateEnvoitPvAbhoerEljadidaLabel.setText(result.toString());
     			
     		}else if(event.getSource() == AvisAbhoerButton) {
-    			/*
-    			 * 
-    			 * 
-    			 * */
     			//choice
     			String items[] =  {"pas encor decide", "oui", "non"};
     			String result = ChangeChoiceAlert.desplay("changer l'Avis d'ABOHER", items, "pas encor decide");
@@ -394,10 +381,6 @@ public class modifierInfoDuDossierController implements Initializable{
     			dossier.setAvisABHOER(result);
     			AvisAbhoerLabel.setText(result);
     			
-    			/*
-    			 * 
-    			 * 
-    			 * */
     		}else if(event.getSource() == ProfondeurButton) {
     			//float
     			float result = ChangeNumberAlert.desplay("Pofondeur", "changer le pofondeur");
@@ -430,7 +413,6 @@ public class modifierInfoDuDossierController implements Initializable{
 
     @FXML
     void enregistrer(MouseEvent event) {
-    	System.out.println(dossier);
     	ConnectionClassDossier myDataBaseFolder = new ConnectionClassDossier();
     	int rows = myDataBaseFolder.updateDossierToDatabase(dossier);
     	System.out.println("rows updated = " + rows);
@@ -453,8 +435,7 @@ public class modifierInfoDuDossierController implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
 		ConnectionClassDossier myDataBaseFolder = new ConnectionClassDossier();
-		dossier = myDataBaseFolder.getDossierFromDatabase(1);
-		System.out.println(dossier);
+		dossier = myDataBaseFolder.getDossierFromDatabase(3);
 		initializeTextForLabels();
 		
 	}
