@@ -84,7 +84,6 @@ public class LesInfoDuDemandeurController implements Initializable{
     			// TODO Auto-generated catch block
     			e.printStackTrace();
     		}
-        	System.out.println(demandeur);
     
     	}else {
     		textError.setText("veuillez remplir tous les champs correctement");

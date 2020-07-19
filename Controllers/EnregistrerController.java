@@ -78,14 +78,14 @@ public class EnregistrerController implements Initializable {
 	@FXML
 	public void savebuttonMethode(ActionEvent event) throws IOException, SQLException {
 
-		/*se connecter avec la base de données */
+		/*se connecter avec la base de donnï¿½es */
 
 		ConnectionClass conn = new ConnectionClass();
 		Connection connection = conn.getConnection();
 		
 		Statement statId = connection.createStatement();
 
-		/* Sélectionner le plus grand idDossier*/
+		/* Sï¿½lectionner le plus grand idDossier*/
 
 		String sqlId = "SELECT MAX(IdDossier)  FROM dossier";
 		ResultSet result = statId.executeQuery(sqlId);
@@ -94,29 +94,28 @@ public class EnregistrerController implements Initializable {
 		}
 
 		/*
-		 * l'initialisation de l'objet Dossier avec les éléments de la page précédente
+		 * l'initialisation de l'objet Dossier avec les ï¿½lï¿½ments de la page prï¿½cï¿½dente
 		 */
 
-		Dossier dossier = new Dossier(idDossier, LesInfoDuDemandeurController.demandeur,
+		/*Dossier dossier = new Dossier(idDossier, LesInfoDuDemandeurController.demandeur,
 				LesInfoDelImmobilierController.InfoSurImmobilier, InformationsConcernantPointDeauController.poinDeau,
-				dateDepot);
+				dateDepot);*/
 
 
-		/* Détermination de path de chaque fichier */
-		
+		/* Dï¿½termination de path de chaque fichier */
 		String pathCIN = LesInfoDuDemandeurController.demandeur.getCinFile().getAbsolutePath();
 		String pathDemandeCreusement = LesInfoDuDemandeurController.demandeur.getDemandeFile().getAbsolutePath();
 		String pathAttistation = LesInfoDelImmobilierController.InfoSurImmobilier.getAttestationDePocession().getAbsolutePath();
 		String pathPlanEau = InformationsConcernantPointDeauController.poinDeau.getPlanEau().getAbsolutePath();
 
-		/* Création de l'objet InputStream afin de le stocker dans la base de données */
+		/* Crï¿½ation de l'objet InputStream afin de le stocker dans la base de donnï¿½es */
 
 		InputStream cinFile = new FileInputStream(new File(pathCIN));
 		InputStream demandeCreusement = new FileInputStream(new File(pathDemandeCreusement));
 		InputStream attistation = new FileInputStream(new File(pathAttistation));
 		InputStream planEau = new FileInputStream(new File(pathPlanEau));
 
-		/* la requête sql de l'insertion */
+		/* la requï¿½te sql de l'insertion */
 
 		String sql = "INSERT INTO `dossier`(`IdDossier`, `Nom`, `Prenom`, `cin`, `cinImg`, `typeDemande`, `demandeCreusement`,"
 				   + " `localisationImmobilier`, `attistationPocession`, `Douar`, `Commune`, `Province`,"
@@ -126,7 +125,7 @@ public class EnregistrerController implements Initializable {
 				   + "VALUES (?, ?, ?, ?, ?,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,?,? ,? ,? )";
 		try {
 
-			/* l'insertion des eléments dans la base de données */
+			/* l'insertion des elï¿½ments dans la base de donnï¿½es */
 
 			PreparedStatement stat = connection.prepareStatement(sql);
 			stat.setInt(1, dossier.getIdDossier());
@@ -136,13 +135,11 @@ public class EnregistrerController implements Initializable {
 			stat.setBlob(5, cinFile);
 			stat.setString(6, LesInfoDuDemandeurController.demandeur.getTypeDemande());
 			stat.setBlob(7, demandeCreusement);
-			
 			stat.setString(8, LesInfoDelImmobilierController.InfoSurImmobilier.getLocalisation());
 			stat.setBlob(9, attistation);
 			stat.setString(10, LesInfoDelImmobilierController.InfoSurImmobilier.getDouar());
 			stat.setString(11, LesInfoDelImmobilierController.InfoSurImmobilier.getCommune());
 			stat.setString(12, LesInfoDelImmobilierController.InfoSurImmobilier.getProvince());
-			
 			stat.setString(13, InformationsConcernantPointDeauController.poinDeau.getLocalisationPoint());
 			stat.setFloat(14, InformationsConcernantPointDeauController.poinDeau.getDebit());
 			stat.setFloat(15, InformationsConcernantPointDeauController.poinDeau.getProfondeur());

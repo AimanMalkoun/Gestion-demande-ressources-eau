@@ -24,6 +24,7 @@ public class Dossier {
 	
 	private String avisDe_CEP;
 	private String avisABHOER;
+	
 	private String autorisation;
 
 	/* 

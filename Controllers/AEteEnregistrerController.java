@@ -61,11 +61,11 @@ public class AEteEnregistrerController implements Initializable {
 		String sql = "SELECT `Nom`,`Prenom`,`cin`,`localisationImmobilier`,`Douar`,`Commune`,`Province`, `DateDepot` FROM dossier WHERE `IdDossier` = " + Integer.toString(EnregistrerController.idDossier);
 		ResultSet result = stat.executeQuery(sql);
 		if (result.next()) {
-			nomPrenom = result.getString("Nom") + result.getString("Prenom");
-			cin = result.getString("cin");
-			nomImmobiler = result.getString("localisationImmobilier") + result.getString("Douar");
-			commune = result.getString("Commune");
-			prevince = result.getString("Province");
+			nomPrenom = " " + result.getString("Nom") + "  " + result.getString("Prenom") + " " ;
+			cin = " " + result.getString("cin") + " ";
+			nomImmobiler = " " + result.getString("localisationImmobilier") + " " + result.getString("Douar") + " ";
+			commune = " " + result.getString("Commune") + " ";
+			prevince = " " + result.getString("Province") + " ";
 			dateDepot = result.getDate("DateDepot");
 		}
 		Document document = new Document();
@@ -100,7 +100,7 @@ public class AEteEnregistrerController implements Initializable {
 			para2.add(new Phrase(" حامل للبطاقة الوطنية رقم ", normal));
 			para2.add(new Phrase(cin, big));
 			para2.add(new Phrase(" قد وضع  لذا هذه المصلحة  بتاريخ ", normal));
-			para2.add(new Phrase(""+dateDepot, big));
+			para2.add(new Phrase(" "+dateDepot + " ", big));
 			para2.add(new Phrase(" ملف طلب الترخيص لإنجاز ثقب  مائي من أجل سقي بالعقار المسمى : ", normal));
 			para2.add(new Phrase(nomImmobiler, big));
 			para2.setAlignment(Paragraph.ALIGN_LEFT);

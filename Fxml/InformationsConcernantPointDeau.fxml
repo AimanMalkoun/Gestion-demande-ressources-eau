@@ -89,6 +89,7 @@
                   <RowConstraints maxHeight="165.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="165.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="165.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="165.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
                   <Label prefHeight="31.0" prefWidth="208.0" text="Localisation X/Y" />
@@ -98,7 +99,7 @@
                   <TextField fx:id="locationEau" prefHeight="30.0" prefWidth="247.0" GridPane.columnIndex="1" />
                   <TextField fx:id="debit" layoutX="179.0" layoutY="19.0" prefHeight="30.0" prefWidth="247.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <TextField fx:id="profondeur" layoutX="179.0" layoutY="68.0" prefHeight="30.0" prefWidth="247.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Button fx:id="goButton" mnemonicParsing="false" onAction="#goMethode" prefHeight="25.0" prefWidth="89.0" text="Suivant" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                  <Button fx:id="goButton" mnemonicParsing="false" onAction="#goMethode" prefHeight="0.0" prefWidth="87.0" text="Suivant" GridPane.columnIndex="1" GridPane.rowIndex="6">
                      <GridPane.margin>
                         <Insets left="160.0" />
                      </GridPane.margin>
@@ -106,7 +107,8 @@
                   <TextField fx:id="rabattement" layoutX="179.0" layoutY="125.0" prefHeight="30.0" prefWidth="247.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                   <Label layoutX="10.0" layoutY="148.0" prefHeight="31.0" prefWidth="236.0" text="Plan d'eau" GridPane.rowIndex="4" />
                   <Button fx:id="chooseFileImageButton" mnemonicParsing="false" onAction="#chooseFileImageMethode" prefHeight="25.0" prefWidth="252.0" text="Choisir un fihier" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <Button fx:id="backMethode" layoutX="405.0" layoutY="247.0" mnemonicParsing="false" onAction="#backMethode" prefHeight="25.0" prefWidth="89.0" text="Precedent" GridPane.rowIndex="5" />
+                  <Button fx:id="backButton" layoutX="405.0" layoutY="247.0" mnemonicParsing="false" onAction="#backButtonMethode" prefHeight="11.0" prefWidth="89.0" text="Precedent" GridPane.rowIndex="6" />
+                  <Label fx:id="pathPlandeau" prefHeight="19.0" prefWidth="247.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                </children>
             </GridPane>
             <Label fx:id="textError" contentDisplay="CENTER" layoutX="181.0" layoutY="374.0" prefHeight="29.0" prefWidth="350.0" textFill="#ff2d2d">
