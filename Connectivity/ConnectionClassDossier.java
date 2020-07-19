@@ -5,7 +5,6 @@ package Connectivity;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.sql.Blob;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -44,9 +43,9 @@ public class ConnectionClassDossier {
 				dossier.setImmobilier(getImmobilierInfo(result));
 				dossier.setPointDeau(getPointDeauInfo(result));
 				
-				dossier.setAvisABHOER((result.getInt("Avis ABHOER") == 1));
-				dossier.setAvisDe_CEP((result.getInt("Avis de la CEP") == 1));
-				dossier.setAutorisation(result.getInt("Autorisation") == 1);
+				dossier.setAvisABHOER((result.getString("Avis ABHOER")));
+				dossier.setAvisDe_CEP((result.getString("Avis de la CEP")));
+				dossier.setAutorisation(result.getString("Autorisation"));
 				
 				//we need first to convert java.sql.Date to java.time.LocalDate to match the argument of the setter  
 				dossier.setDateDepot(result.getDate("Date de dépôt du dossier").toLocalDate());											
@@ -59,6 +58,7 @@ public class ConnectionClassDossier {
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
 			e.printStackTrace();
 		}
 		
@@ -151,12 +151,12 @@ public class ConnectionClassDossier {
 			stm.setString(1, dossier.getDemandeur().getNom());
 			stm.setString(2, dossier.getDemandeur().getPrenom());
 			stm.setString(3, dossier.getDemandeur().getCin());
-			stm.setBlob(4, FieoBlob(dossier.getDemandeur().getCinFile()));
+			stm.setBlob(4, FiletoBlob(dossier.getDemandeur().getCinFile()));
 			stm.setString(5, dossier.getDemandeur().getTypeDemande());
-			stm.setBlob(6, FieoBlob(dossier.getDemandeur().getDemandeFile()));
+			stm.setBlob(6, FiletoBlob(dossier.getDemandeur().getDemandeFile()));
 			
 			stm.setString(7, dossier.getImmobilier().getLocalisation());
-			stm.setBlob(8, FieoBlob(dossier.getImmobilier().getAttestationDePocession()));
+			stm.setBlob(8, FiletoBlob(dossier.getImmobilier().getAttestationDePocession()));
 			stm.setString(9, dossier.getImmobilier().getDouar());
 			stm.setString(10, dossier.getImmobilier().getCommune());
 			stm.setString(11, dossier.getImmobilier().getProvince());
@@ -164,7 +164,7 @@ public class ConnectionClassDossier {
 			stm.setString(12, dossier.getPointDeau().getLocalisationPoint());
 			stm.setFloat(13, dossier.getPointDeau().getDebit());
 			stm.setFloat(14, dossier.getPointDeau().getProfondeur());
-			stm.setBlob(15, FieoBlob(dossier.getPointDeau().getPlanEau()));
+			stm.setBlob(15, FiletoBlob(dossier.getPointDeau().getPlanEau()));
 			stm.setFloat(16, dossier.getPointDeau().getRabattement());
 			
 			stm.setDate(17, Date.valueOf(dossier.getDemandeur().getDateDepotDossier()));
@@ -172,10 +172,10 @@ public class ConnectionClassDossier {
 			stm.setDate(19, Date.valueOf(dossier.getDateDebutde_EP()));
 			stm.setDate(20, Date.valueOf(dossier.getDateFin_EP()));
 			stm.setDate(21, Date.valueOf(dossier.getDateSignateureDuPv()));
-			stm.setInt(22, dossier.getAvisDe_CEP() ? 1 : 0);
+			stm.setString(22, dossier.getAvisDe_CEP());
 			stm.setDate(23, Date.valueOf(dossier.getDateEnvoiDuPVa_LABHOER()));
-			stm.setInt(24, dossier.getAvisABHOER() ? 1 : 0);
-			stm.setInt(25, dossier.getAutorisation() ? 1 : 0);
+			stm.setString(24, dossier.getAvisABHOER());
+			stm.setString(25, dossier.getAutorisation());
 			
 			stm.setInt(26, dossier.getIdDossier());
 			
@@ -197,7 +197,7 @@ public class ConnectionClassDossier {
 		
 	}
 	
-	private FileInputStream FieoBlob(File file) {
+	private FileInputStream FiletoBlob(File file) {
 		try {
 			return  new FileInputStream(file);
 		} catch (FileNotFoundException e) {

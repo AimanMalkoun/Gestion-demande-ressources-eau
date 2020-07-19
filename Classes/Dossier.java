@@ -10,10 +10,11 @@ public class Dossier {
 	 */
 
 	private int idDossier;
+	
 	private Demandeur demandeur;
 	private Immobilier immobilier;
-	
 	private PointDeau pointDeau;
+	
 	private LocalDate dateDepot;
 	private LocalDate dateEnvoiA_LABHOER;
 	private LocalDate dateDebutde_EP;
@@ -21,18 +22,17 @@ public class Dossier {
 	private LocalDate dateSignateureDuPv;
 	private LocalDate dateEnvoiDuPVa_LABHOER;
 	
-	private boolean avisDe_CEP;
-	private boolean avisABHOER;
-	
-	private boolean autorisation;
+	private String avisDe_CEP;
+	private String avisABHOER;
+	private String autorisation;
 
 	/* 
 	 *le constricteur de la classe initialis� par les attributs 
 	 */
 
 	public Dossier(int idDossier, Demandeur demandeur, Immobilier immobilier, PointDeau pointDeau, LocalDate dateDepot,
-				   LocalDate dateEnvoiA_LABHOER, LocalDate dateDebutde_EP, LocalDate dateFin_EP, LocalDate dateSignateureDuPv, boolean avisDe_CEP,
-			       LocalDate dateEnvoiDuPVa_LABHOER, boolean avisABHOER) {
+				   LocalDate dateEnvoiA_LABHOER, LocalDate dateDebutde_EP, LocalDate dateFin_EP, LocalDate dateSignateureDuPv, String avisDe_CEP,
+			       LocalDate dateEnvoiDuPVa_LABHOER, String avisABHOER) {
 		setIdDossier(idDossier);
 		setDemandeur(demandeur);
 		setImmobilier(immobilier);
@@ -107,7 +107,7 @@ public class Dossier {
 	}
 
 	public Demandeur getDemandeur() {
-		return demandeur;
+		return this.demandeur;
 	}
 
 	public void setDemandeur(Demandeur demandeur) {
@@ -170,7 +170,7 @@ public class Dossier {
 		this.dateSignateureDuPv = dateSignateureDuPv;
 	}
 
-	public boolean getAvisDe_CEP() {
+	public String getAvisDe_CEP() {
 		return avisDe_CEP;
 	}
 
@@ -186,7 +186,7 @@ public class Dossier {
 		this.dateEnvoiDuPVa_LABHOER = dateEnvoiDuPVa_LABHOER;
 	}
 
-	public boolean getAvisABHOER() {
+	public String getAvisABHOER() {
 		return avisABHOER;
 	}
 
@@ -194,16 +194,15 @@ public class Dossier {
 		this.avisABHOER = avisABHOER;
 	}
 
-	public boolean getAutorisation() {
+	public String getAutorisation() {
 		return autorisation;
 	}
 
-	public void setAutorisation(boolean autorisation) {
+	public void setAutorisation(String autorisation) {
 		this.autorisation = autorisation;
 	}
 	
 	public String toString() {
 		return demandeur.toString() + immobilier.toString() + pointDeau.toString();
 	}
-
 }

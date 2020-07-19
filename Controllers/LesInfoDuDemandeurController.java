@@ -64,6 +64,7 @@ public class LesInfoDuDemandeurController implements Initializable{
     void suivant(MouseEvent event) {
     	
     	if(checked()) {
+    		
     		demandeur.setNom(nomIput.getText());
     		demandeur.setPrenom(prenomInput.getText());
     		demandeur.setCin(cinInput.getText());

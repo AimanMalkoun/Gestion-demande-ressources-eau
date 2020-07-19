@@ -66,7 +66,7 @@ public class LesInfoDelImmobilierController implements Initializable{
     	
     		if(checked()) {
     			InfoSurImmobilier.setLocalisation(localisation.getText());
-    			InfoSurImmobilier.setLocalisation(douar.getText());
+    			InfoSurImmobilier.setDouar(douar.getText());
     			InfoSurImmobilier.setCommune(commune.getText());
     			InfoSurImmobilier.setProvince(province.getText());
     			InfoSurImmobilier.setAttestationDePocession(attestationFile);

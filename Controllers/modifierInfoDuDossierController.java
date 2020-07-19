@@ -23,7 +23,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import matrouhTest.Test;
 
 public class modifierInfoDuDossierController implements Initializable{
 
@@ -368,7 +367,7 @@ public class modifierInfoDuDossierController implements Initializable{
     			String items[] =  {"pas encor decide", "oui", "non"};
     			String result = ChangeChoiceAlert.desplay("changer l'Avis de CEP", items, "pas encor decide");
     			
-    			dossier.setAvisDe_CEP(false);
+    			dossier.setAvisDe_CEP(result);
     			AvisDeCEPLabel.setText(result);
     			
     			/*
@@ -392,7 +391,7 @@ public class modifierInfoDuDossierController implements Initializable{
     			String items[] =  {"pas encor decide", "oui", "non"};
     			String result = ChangeChoiceAlert.desplay("changer l'Avis d'ABOHER", items, "pas encor decide");
 
-    			dossier.getDemandeur().setNom(result);
+    			dossier.setAvisABHOER(result);
     			AvisAbhoerLabel.setText(result);
     			
     			/*
@@ -418,21 +417,13 @@ public class modifierInfoDuDossierController implements Initializable{
     			}
     			
     		}else if(event.getSource() == autorisationButton) {
-    			/*
-    			 * 
-    			 * 
-    			 * */
     			//choice
     			String items[] =  {"pas encor decide", "oui", "non"};
     			String result = ChangeChoiceAlert.desplay("changer l'autoriation", items, "pas encor decide");
     			
-    			dossier.getDemandeur().setNom(result);
+    			dossier.setAutorisation(result);
     			autorisationLabel.setText(result);
     			
-    			/*
-    			 * 
-    			 * 
-    			 * */
     		}
     		
     }
@@ -507,10 +498,10 @@ public class modifierInfoDuDossierController implements Initializable{
     	dateDebutEnquetePublicLabel.setText(dossier.getDateDebutde_EP().toString());
     	dateFinEnquetePublicLabel.setText(dossier.getDateFin_EP().toString());
     	dateSignaturPVparCEPLabel.setText(dossier.getDateSignateureDuPv().toString());
-    	AvisDeCEPLabel.setText(Boolean.toString(dossier.getAvisDe_CEP()));
+    	AvisDeCEPLabel.setText(dossier.getAvisDe_CEP());
     	dateEnvoitPvAbhoerEljadidaLabel.setText(dossier.getDateEnvoiDuPVa_LABHOER().toString());
-    	AvisAbhoerLabel.setText(Boolean.toString(dossier.getAvisABHOER()));
-    	autorisationLabel.setText(Boolean.toString(dossier.getAutorisation()));
+    	AvisAbhoerLabel.setText(dossier.getAvisABHOER());
+    	autorisationLabel.setText(dossier.getAutorisation());
     	
     }
     
