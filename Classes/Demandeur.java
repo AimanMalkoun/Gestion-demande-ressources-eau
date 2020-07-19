@@ -1,7 +1,6 @@
 package Classes;
 
 import java.io.File;
-import java.sql.Blob;
 import java.time.LocalDate;
 
 public class Demandeur {
@@ -87,8 +86,8 @@ public class Demandeur {
 	}
 
 
-	public void setCinFile(File cinImg) {
-		this.cinFile = cinImg;
+	public void setCinFile(File cinFile) {
+		this.cinFile = cinFile;
 	}
 
 

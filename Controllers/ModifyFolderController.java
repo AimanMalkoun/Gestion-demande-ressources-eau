@@ -4,8 +4,9 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import Pages.FolderSearch;
+
 import Connectivity.ConnectionClassMaria;
+//import Pages.FolderSearch;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,7 +21,7 @@ import javafx.stage.Stage;
 
 public class ModifyFolderController{
 	
-    ObservableList<FolderSearch> data;
+    //ObservableList<FolderSearch> data;
     
     static String cinToModify;
 

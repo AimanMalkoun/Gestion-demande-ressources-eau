@@ -13,6 +13,13 @@ public class PointDeau {
 	private File planEau;
 	private float rabattement;
 
+	
+
+	//Constructeur par defaut il metre tout les atribut null
+	public PointDeau() {
+		
+	}
+
 	/*
 	 * le constricteur de la classe initialisé par les attributs .
 	 */
@@ -37,7 +44,7 @@ public class PointDeau {
 		setPlanEau(pointDeau.planEau);
 		setRabattement(pointDeau.rabattement);
 	}
-
+	
 	/*
 	 * les getters et les setters des attributs de la classe.
 	 */

@@ -33,6 +33,7 @@ public class Main extends Application {
 			primaryStage.setTitle("Gestion des demandes d'autorisation pour l'utilisation des ressources en eau.");
 			primaryStage.setScene(loginScene);
 			primaryStage.show();
+
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
