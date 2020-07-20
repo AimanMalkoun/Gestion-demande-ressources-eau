@@ -7,7 +7,6 @@ import java.sql.Statement;
 
 import Connectivity.ConnectionClassMaria;
 //import Pages.FolderSearch;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,7 +20,6 @@ import javafx.stage.Stage;
 
 public class ModifyFolderController{
 	
-    //ObservableList<FolderSearch> data;
     
     static String cinToModify;
 
@@ -45,12 +43,12 @@ public class ModifyFolderController{
 		try {
 			Statement statement = conection.connection.createStatement();
 	    	ResultSet query;
-			query = statement.executeQuery("select `IdDossier`,concat(nom, ' ' , prenom) as 'nom complet', `Carte d'identite National` from dossier where `Carte d'identite National`= '" + cinInputSearch.getText()+ " '");
+			query = statement.executeQuery("select `IdDossier`,concat(nom, ' ' , prenom) as 'nom complet', `cin` from dossier where `cin`= '" + cinInputSearch.getText()+ " '");
 			while(query.next())
 			{
 				folderId.setText(query.getString("IdDossier"));
 				nomComplet.setText(query.getString("nom complet"));
-				cinDemandeur.setText(query.getString("Carte d'identite National"));
+				cinDemandeur.setText(query.getString("cin"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -84,7 +82,7 @@ public class ModifyFolderController{
     }
     
     @FXML
-    void ChangePassword(ActionEvent event) throws IOException {
+    void changePassword(ActionEvent event) throws IOException {
     	Parent ChangePasswordRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/ChangePassword.fxml"));
 		Scene ChangePasswordScene = new Scene(ChangePasswordRoot);
 		Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();

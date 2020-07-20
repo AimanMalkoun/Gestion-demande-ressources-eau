@@ -44,9 +44,9 @@ public class ConnectionClassDossier {
 				dossier.setImmobilier(getImmobilierInfo(result));
 				dossier.setPointDeau(getPointDeauInfo(result));
 				
-				dossier.setAvisABHOER((result.getInt("Avis ABHOER") == 1));
-				dossier.setAvisDe_CEP((result.getInt("Avis de la CEP") == 1));
-				dossier.setAutorisation(result.getInt("Autorisation") == 1);
+				dossier.setAvisABHOER((result.getString("Avis ABHOER")));
+				dossier.setAvisDe_CEP((result.getString("Avis de la CEP")));
+				dossier.setAutorisation(result.getString("Autorisation"));
 				
 				//we need first to convert java.sql.Date to java.time.LocalDate to match the argument of the setter  
 				dossier.setDateDepot(result.getDate("Date de dépôt du dossier").toLocalDate());											
@@ -172,10 +172,10 @@ public class ConnectionClassDossier {
 			stm.setDate(19, Date.valueOf(dossier.getDateDebutde_EP()));
 			stm.setDate(20, Date.valueOf(dossier.getDateFin_EP()));
 			stm.setDate(21, Date.valueOf(dossier.getDateSignateureDuPv()));
-			stm.setInt(22, dossier.getAvisDe_CEP() ? 1 : 0);
+			stm.setString(22, dossier.getAvisDe_CEP());
 			stm.setDate(23, Date.valueOf(dossier.getDateEnvoiDuPVa_LABHOER()));
-			stm.setInt(24, dossier.getAvisABHOER() ? 1 : 0);
-			stm.setInt(25, dossier.getAutorisation() ? 1 : 0);
+			stm.setString(24, dossier.getAvisABHOER());
+			stm.setString(25, dossier.getAutorisation());
 			
 			stm.setInt(26, dossier.getIdDossier());
 			

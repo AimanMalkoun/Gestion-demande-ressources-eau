@@ -2,17 +2,20 @@ package Controllers;
 
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class DashboardController {
+public class DashboardController implements Initializable{
 
 
     @FXML
@@ -44,4 +47,10 @@ public class DashboardController {
 		Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		primaryStage.setScene(ChangePasswordScene);
     }
+
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+			
+		
+	}
 }

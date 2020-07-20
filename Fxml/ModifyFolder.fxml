@@ -29,7 +29,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button id="buttonSetting" layoutX="10.0" layoutY="35.0" mnemonicParsing="false" onAction="#cahngePassword" prefHeight="33.0" prefWidth="143.0" style="-fx-background-color: #A7BDE7;" text="Change password">
+            <Button id="buttonSetting" layoutX="10.0" layoutY="35.0" mnemonicParsing="false" onAction="#changePassword" prefHeight="33.0" prefWidth="143.0" style="-fx-background-color: #A7BDE7;" text="Change password">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
