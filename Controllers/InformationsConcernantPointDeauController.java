@@ -35,53 +35,58 @@ public class InformationsConcernantPointDeauController implements Initializable 
 	@FXML
 	private TextField rabattement;
 	@FXML
-	private Label textError;
+	private Label textError, pathPlandeau;
 	@FXML
 	private Button chooseFileImageButton;
 	@FXML
 	private Button backMethode;
 	private File file;
-	public static  PointDeau poinDeau;
+
+	public static PointDeau poinDeau = new PointDeau();
 
 	@FXML
 	public void chooseFileImageMethode(ActionEvent event) {
 		/*
-		 *la méthode a pour but d'ouvrir une session dans laquelle l'utilisateur peut 
-		 *sélectionner un fichier ou une image.
+		 * la méthode a pour but d'ouvrir une session dans laquelle l'utilisateur peut
+		 * sélectionner un fichier ou une image.
 		 */
 		FileChooser fileChoosed = new FileChooser();
 		fileChoosed.setTitle("Uplouding an image");
 		fileChoosed.getExtensionFilters()
 				.add(new FileChooser.ExtensionFilter("image/pdf/docx", "*.jpg", "*.png", "*.pdf", "*.docx"));
 		file = fileChoosed.showOpenDialog(null);
+		pathPlandeau.setText(file.getAbsolutePath());
 	}
 
 	@FXML
 	public void goMethode(ActionEvent event) throws IOException {
 		/*
-		 *initialisation de l'objet <<poinDeau>> par les champs remplis. 
+		 * initialisation de l'objet <<poinDeau>> par les champs remplis.
 		 */
-		if ( !isNotValideString(locationEau) & isValideFloat(debit) & isValideFloat(profondeur) & isValideFloat(rabattement)
-				& file != null) {
+		if (isValideString(locationEau) & isValideFloat(debit) & isValideFloat(profondeur) & isValideFloat(rabattement)
+				& isNotValideFile(file)) {
 			poinDeau = new PointDeau(locationEau.getText().toString(), new Float(debit.getText()),
 					new Float(profondeur.getText()), file, new Float(rabattement.getText()));
+
 			Parent root = FXMLLoader.load(getClass().getResource("../Fxml/Enregistrer.fxml"));
 			borderPan.getChildren().setAll(root);
 		} else {
-			//textError.setText("S.V.P veuillez remplir tous les champs correctement");
-			textError.setText("المملكة المغربية   وزارة التجهيز والنقل واللوجيستيك والماء");
+			textError.setText("S.V.P veuillez remplir tous les champs correctement");
+
 		}
 	}
 
 	@FXML
-	public void backMethode(ActionEvent event) throws IOException {
+	public void backButtonMethode(ActionEvent event) throws IOException {
+
 		Parent root = FXMLLoader.load(getClass().getResource("../Fxml/Les-informations-concernant-l'immobilier.fxml"));
 		borderPan.getChildren().setAll(root);
 	}
 
 	public boolean isValideFloat(TextField text) {
 		/*
-		 *La méthode a pour but de vérifier est ce que le paramètre texte est du type Float.
+		 * La méthode a pour but de vérifier est ce que le paramètre texte est du type
+		 * Float.
 		 */
 		try {
 			float nbr = Float.parseFloat(text.getText());
@@ -92,23 +97,62 @@ public class InformationsConcernantPointDeauController implements Initializable 
 		}
 	}
 
-	public boolean isNotValideString(TextField text) {
+	public boolean isValideString(TextField text) {
 		/*
-		 *La méthode a pour but de vérifier est ce que le paramètre texte est du type String.
+		 * La méthode a pour but de vérifier est ce que le paramètre text est du type
+		 * String.
 		 */
-		try {
-			float nbr = Float.parseFloat(text.getText());
-			return true;
-		} catch (NumberFormatException e) {
+		if (text.getText().isEmpty()) {
 			text.setStyle("-fx-border-color: red;");
 			return false;
+		} else {
+			try {
+				float nbr = Float.parseFloat(text.getText());
+				text.setStyle("-fx-border-color: red;");
+				return false;
+			} catch (NumberFormatException e) {
+
+				return true;
+			}
 		}
+	}
+
+	public boolean isNotValideFile(File file) {
+		if (file == null) {
+			chooseFileImageButton.setStyle("-fx-border-color: red;");
+			return false;
+		}
+		return true;
 	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
 
+		initialiserInputs();
+		pathPlandeau.setText(file != null ? file.getAbsolutePath() : "");
+	}
+
+	public void initialiserInputs() {
+
+		// initialiser le champs du localisation point d'eau
+		if (poinDeau.getLocalisationPoint() != null)
+			locationEau.setText(poinDeau.getLocalisationPoint());
+
+		// initialiser le champs du debit
+		if (poinDeau.getDebit() != 0)
+			debit.setText("" + poinDeau.getDebit());
+
+		// initialiser le champs du profondeur
+		if (poinDeau.getProfondeur() != 0)
+			profondeur.setText("" + poinDeau.getProfondeur());
+
+		// initialiser le chapms du type du rabattement
+		if (poinDeau.getRabattement() != 0)
+			rabattement.setText("" + poinDeau.getRabattement());
+
+		// initialiser le path du fichier d'attestation de pocession d'immobilier
+		if (poinDeau.getPlanEau() != null)
+			file = poinDeau.getPlanEau();
 	}
 
 }
