@@ -98,14 +98,17 @@ public class LesInfoDelImmobilierController implements Initializable {
 				.addAll(new FileChooser.ExtensionFilter("image/pdf/docx", "*.jpg", "*.png", "*.pdf", "*.docx"));
 
 		File file = fc.showOpenDialog(new Stage());
-		attestationFile = file;
+		if(file != null) {
+			attestationFile = file;
+			attestationFilePath.setText(file.getName());
+		}
 	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		initialiserInputs();
-		attestationFilePath.setText(attestationFile != null ? attestationFile.getPath() : "");
+		attestationFilePath.setText(attestationFile != null ? attestationFile.getName() : "");
 
 	}
 

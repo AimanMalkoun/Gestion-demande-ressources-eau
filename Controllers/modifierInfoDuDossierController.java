@@ -1,8 +1,11 @@
 package Controllers;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Blob;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
@@ -11,7 +14,7 @@ import Classes.ChangeDateAlert;
 import Classes.ChangeFileAlert;
 import Classes.ChangeNumberAlert;
 import Classes.ChangeStringAlert;
-import Classes.Dossier;
+import Classes.DossierForDownload;
 import Connectivity.ConnectionClassDossier;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,7 +29,7 @@ import javafx.stage.Stage;
 
 public class modifierInfoDuDossierController implements Initializable{
 
-	private Dossier dossier = new Dossier(); 
+	private DossierForDownload dossier = new DossierForDownload(); 
 
 	@FXML
     private Label nomLabel;
@@ -196,7 +199,7 @@ public class modifierInfoDuDossierController implements Initializable{
     }
 
     @FXML
-    void changeAttribut(MouseEvent event) {
+    void changeAttribut(MouseEvent event) throws FileNotFoundException {
     	
     		if(event.getSource() == nomButton){
     			//string
@@ -204,7 +207,7 @@ public class modifierInfoDuDossierController implements Initializable{
     			
     			if(result != null){
     				
-    				dossier.getDemandeur().setNom(result);
+    				dossier.setNom(result);
     				nomLabel.setText(result);
     				
     			}
@@ -215,7 +218,7 @@ public class modifierInfoDuDossierController implements Initializable{
     			String result = ChangeStringAlert.desplay("Prenom", "changer le prenom");
     			
     			if(result != null){
-    				dossier.getDemandeur().setPrenom(result);
+    				dossier.setPrenom(result);
     				prenomLabel.setText(result);
     			}
     			
@@ -224,7 +227,7 @@ public class modifierInfoDuDossierController implements Initializable{
     			String result = ChangeStringAlert.desplay("CIN", "changer le CIN");
     			
     			if(result != null){
-    				dossier.getDemandeur().setCin(result);
+    				dossier.setCin(result);
     				codCinLabel.setText(result);
     			}
     			
@@ -233,7 +236,7 @@ public class modifierInfoDuDossierController implements Initializable{
     			String result = ChangeStringAlert.desplay("Province", "changer le provine");
 
     			if(result != null){
-    				dossier.getImmobilier().setProvince(result);
+    				dossier.setProvince(result);
     				provinceLabel.setText(result);
     			}
     			
@@ -242,7 +245,7 @@ public class modifierInfoDuDossierController implements Initializable{
     			String result = ChangeStringAlert.desplay("Commune", "changer la commune");
 
     			if(result != null){
-    				dossier.getImmobilier().setCommune(result);
+    				dossier.setCommune(result);
     				communeLabel.setText(result);
     			}
     			
@@ -251,7 +254,7 @@ public class modifierInfoDuDossierController implements Initializable{
     			String result = ChangeStringAlert.desplay("Douar", "Changer le douar");
 
     			if(result != null){
-    				dossier.getImmobilier().setDouar(result);
+    				dossier.setDouar(result);
     				douarLabel.setText(result);
     			}
     			
@@ -260,7 +263,7 @@ public class modifierInfoDuDossierController implements Initializable{
     			File result = ChangeFileAlert.desplay("Changer l'attestation de pocession de l'immobilier");
     			
     			if(result != null){
-    				dossier.getImmobilier().setAttestationDePocession(result);
+    				dossier.setAttestationDePocession((Blob) new FileInputStream(result));
     				attestationPoscessionLocalisationImmobilierLabel.setText(result.getPath());
     			}
     			
@@ -269,7 +272,7 @@ public class modifierInfoDuDossierController implements Initializable{
     			String result = ChangeStringAlert.desplay("Localisation de l'immobilier", "changer la localisation de l'immobilier");
 
     			if(result != null){
-    				dossier.getImmobilier().setLocalisation(result);
+    				dossier.setLocalisation(result);
     				localisationImmobilierLabel.setText(result);
     			}
     			
@@ -278,7 +281,7 @@ public class modifierInfoDuDossierController implements Initializable{
     			File result = ChangeFileAlert.desplay("Changer la demande");
     			
     			if(result != null){
-    				dossier.getDemandeur().setDemandeFile(result);
+    				dossier.setDemandeFile((Blob) new FileInputStream(result));
     				demandeDeCreusementPathLabel.setText(result.getPath());
     			}
     			
@@ -287,14 +290,14 @@ public class modifierInfoDuDossierController implements Initializable{
     			String items[] =  {"forage", "pompage"};
     			String result = ChangeChoiceAlert.desplay("changer le type de demande", items, "pompage");
     			
-    			dossier.getDemandeur().setTypeDemande(result);
+    			dossier.setTypeDemande(result);
     			typeDeDemandeLabel.setText(result);
     			
     		}else if(event.getSource() == cinFileButton) {
     			//file
     			File result = ChangeFileAlert.desplay("Changer la CIN");
     			if(result != null){
-    				dossier.getDemandeur().setCinFile(result);
+    				dossier.setCinFile((Blob) new FileInputStream(result));
     				carteCinPathLabel.setText(result.getPath());
     			}
     		}else if(event.getSource() == localisationPointEauButton) {
@@ -302,7 +305,7 @@ public class modifierInfoDuDossierController implements Initializable{
     			String result = ChangeStringAlert.desplay("Localistaion du point d'eau", "changer la localistaion du point d'eau");
 
     			if(result != null){
-    				dossier.getPointDeau().setLocalisationPoint(result);
+    				dossier.setLocalisationPoint(result);
     				LocalisationPointEauLabel.setText(result);
     			}
     			
@@ -310,7 +313,7 @@ public class modifierInfoDuDossierController implements Initializable{
     			//file
     			File result = ChangeFileAlert.desplay("Changer le plan d'eau");
     			if(result != null){
-    				dossier.getPointDeau().setPlanEau(result);
+    				dossier.setPlanEau((Blob) new FileInputStream(result));
     				planEauPathLabel.setText(result.getPath());
     			}
     		}else if(event.getSource() == rabatementButton) {
@@ -318,7 +321,7 @@ public class modifierInfoDuDossierController implements Initializable{
     			float result = ChangeNumberAlert.desplay("Debit", "changer le debit");
     			
     			if(result != 0) {
-    				dossier.getPointDeau().setRabattement(result);
+    				dossier.setRabattement(result);
     				rabattementLabel.setText(Float.toString(result));
     			}
     			
@@ -326,7 +329,7 @@ public class modifierInfoDuDossierController implements Initializable{
     			//date
     			LocalDate result = ChangeDateAlert.desplay("Changer la date du depot du dossier", LocalDate.of(2020, 12, 21));
     			
-    			dossier.getDemandeur().setDateDepotDossier(result);
+    			dossier.setDateDepotDossier(result);
     			DateDepotDossierLabel.setText(result.toString());
     			
     			
@@ -386,7 +389,7 @@ public class modifierInfoDuDossierController implements Initializable{
     			float result = ChangeNumberAlert.desplay("Pofondeur", "changer le pofondeur");
 
     			if(result != 0) {
-    				dossier.getPointDeau().setProfondeur(result);
+    				dossier.setProfondeur(result);
     				profondeurLabel.setText(Float.toString(result));
     			}
     			
@@ -395,7 +398,7 @@ public class modifierInfoDuDossierController implements Initializable{
     			float result = ChangeNumberAlert.desplay("Debit", "changer le debit");
 
     			if(result != 0) {
-    				dossier.getPointDeau().setDebit(result);
+    				dossier.setDebit(result);
     				debitLabel.setText(Float.toString(result));
     			}
     			
@@ -414,7 +417,9 @@ public class modifierInfoDuDossierController implements Initializable{
     @FXML
     void enregistrer(MouseEvent event) {
     	ConnectionClassDossier myDataBaseFolder = new ConnectionClassDossier();
+    	System.out.println(dossier);
     	int rows = myDataBaseFolder.updateDossierToDatabase(dossier);
+    	
     	System.out.println("rows updated = " + rows);
 
     	try {
@@ -443,38 +448,27 @@ public class modifierInfoDuDossierController implements Initializable{
 
     private void initializeTextForLabels() {
     	
-    	/**
-    	 * this zone for demandeur informations
-    	 **/
-    	nomLabel.setText(dossier.getDemandeur().getNom());
-    	prenomLabel.setText(dossier.getDemandeur().getPrenom());
-    	codCinLabel.setText(dossier.getDemandeur().getCin());
-    	typeDeDemandeLabel.setText(dossier.getDemandeur().getTypeDemande());
-    	//demandeDeCreusementPathLabel.setText(dossier.getDemandeur().getDemandeFile().getName());
-    	//carteCinPathLabel.setText(dossier.getDemandeur().getCinFile().getName());
-    	DateDepotDossierLabel.setText(dossier.getDemandeur().getDateDepotDossier().toString());
+    	//Set text for labels
+    	nomLabel.setText(dossier.getNom());
+    	prenomLabel.setText(dossier.getPrenom());
+    	codCinLabel.setText(dossier.getCin());
+    	typeDeDemandeLabel.setText(dossier.getTypeDemande());
+    	demandeDeCreusementPathLabel.setText(dossier.getCin() + "Demande_de_creusement.pdf");
+    	carteCinPathLabel.setText(dossier.getCin() + "CIN.pdf");
+    	DateDepotDossierLabel.setText(dossier.getDateDepotDossier().toString());
     	
-    	/**
-    	 * this zone for immobilier informations
-    	 **/
-    	provinceLabel.setText(dossier.getImmobilier().getProvince());
-    	communeLabel.setText(dossier.getImmobilier().getCommune());
-    	douarLabel.setText(dossier.getImmobilier().getDouar());
-    	//attestationPoscessionLocalisationImmobilierLabel.setText(dossier.getImmobilier().getAttestationDePocession().getName());
-    	localisationImmobilierLabel.setText(dossier.getImmobilier().getLocalisation());
+    	provinceLabel.setText(dossier.getProvince());
+    	communeLabel.setText(dossier.getCommune());
+    	douarLabel.setText(dossier.getDouar());
+    	attestationPoscessionLocalisationImmobilierLabel.setText(dossier.getCin() + "Attesteation_de_pocession.pdf");
+    	localisationImmobilierLabel.setText(dossier.getLocalisation());
     	
-    	/**
-    	 * this zone for point d'eau informations
-    	 **/
-    	LocalisationPointEauLabel.setText(dossier.getPointDeau().getLocalisationPoint());
-    	rabattementLabel.setText(Float.toString(dossier.getPointDeau().getRabattement()));
-    	profondeurLabel.setText(Float.toString(dossier.getPointDeau().getProfondeur()));
-    	debitLabel.setText(Float.toString(dossier.getPointDeau().getDebit()));
-    	//planEauPathLabel.setText(dossier.getPointDeau().getPlanEau().getName());
+    	LocalisationPointEauLabel.setText(dossier.getLocalisationPoint());
+    	rabattementLabel.setText(Float.toString(dossier.getRabattement()));
+    	profondeurLabel.setText(Float.toString(dossier.getProfondeur()));
+    	debitLabel.setText(Float.toString(dossier.getDebit()));
+    	planEauPathLabel.setText(dossier.getCin() + "Plan_d_eau.pdf");
     	
-    	/**
-    	 * this zone for suivi de dossier informations
-    	 **/
     	dateDenvoiAlabhouerEljaidaLabel.setText(dossier.getDateEnvoiA_LABHOER().toString());
     	dateDebutEnquetePublicLabel.setText(dossier.getDateDebutde_EP().toString());
     	dateFinEnquetePublicLabel.setText(dossier.getDateFin_EP().toString());

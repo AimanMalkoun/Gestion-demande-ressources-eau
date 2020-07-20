@@ -97,12 +97,14 @@ public class LesInfoDuDemandeurController implements Initializable{
     	fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("image/pdf/docx", "*.jpg", "*.png", "*.pdf", "*.docx"));
         
         File file = fc.showOpenDialog(new Stage());
-        if(event.getSource() == cinFileButton) {
-        	cinFile = file;
-        	cinFilePath.setText(cinFile.getPath());
-        }else if(event.getSource() == demandeFileButton){
-        	demandeFile = file;
-        	demandeFilePath.setText(demandeFile.getPath());
+        if(file != null) {
+        	if(event.getSource() == cinFileButton) {
+        		cinFile = file;
+        		cinFilePath.setText(cinFile.getName());
+        	}else if(event.getSource() == demandeFileButton){
+        		demandeFile = file;
+        		demandeFilePath.setText(demandeFile.getName());
+        	}
         }
         
     }
@@ -113,8 +115,8 @@ public class LesInfoDuDemandeurController implements Initializable{
 		
 		typeDemandeChoice.getItems().addAll("Type de demande","Forage", "Pompage");
 		initialiserInputs();
-		cinFilePath.setText(cinFile != null ? cinFile.getPath() : "");
-		demandeFilePath.setText(demandeFile != null ? demandeFile.getPath() : "");
+		cinFilePath.setText(cinFile != null ? cinFile.getName() : "");
+		demandeFilePath.setText(demandeFile != null ? demandeFile.getName() : "");
 		
 	}
 	
