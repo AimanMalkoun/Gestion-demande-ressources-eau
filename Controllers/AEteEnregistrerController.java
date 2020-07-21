@@ -44,8 +44,31 @@ public class AEteEnregistrerController implements Initializable {
 	// Event Listener on Button[#back].onAction
 	@FXML
 	public void handelBackMethode(ActionEvent event) throws IOException {
+		cleanup(); // will clean the previous input except the import files
 		Parent root = FXMLLoader.load(getClass().getResource("../Fxml/Dashboard.fxml"));
 		boderPane.getChildren().setAll(root);
+	}
+
+	private void cleanup() {
+		LesInfoDuDemandeurController.demandeur.setNom("");
+		LesInfoDuDemandeurController.demandeur.setPrenom("");
+		LesInfoDuDemandeurController.demandeur.setCin("");
+		LesInfoDuDemandeurController.demandeur.setTypeDemande("");
+		
+		LesInfoDelImmobilierController.InfoSurImmobilier.setLocalisation("");
+		LesInfoDelImmobilierController.InfoSurImmobilier.setDouar("");
+		LesInfoDelImmobilierController.InfoSurImmobilier.setCommune("");
+		LesInfoDelImmobilierController.InfoSurImmobilier.setProvince("");
+		
+		InformationsConcernantPointDeauController.poinDeau.setLocalisationPoint("");
+		InformationsConcernantPointDeauController.poinDeau.setDebit(0);
+		InformationsConcernantPointDeauController.poinDeau.setRabattement(0);
+		InformationsConcernantPointDeauController.poinDeau.setProfondeur(0);
+		
+		LesInfoDuDemandeurController.demandeur.setDateDepotDossier(null);
+		
+		
+		
 	}
 
 	@FXML
@@ -53,7 +76,7 @@ public class AEteEnregistrerController implements Initializable {
 		String nomPrenom = null, cin = null, nomImmobiler = null, commune = null, prevince = null;
 		Date dateDepot = null;
 		  
-		/* se connecter avec la base de données */
+		/* se connecter avec la base de donnÃ©es */
 		
 		ConnectionClass conn = new ConnectionClass();
 		Connection connection = conn.getConnection();
@@ -70,7 +93,7 @@ public class AEteEnregistrerController implements Initializable {
 		}
 		Document document = new Document();
 		try {
-			PdfWriter.getInstance(document, new FileOutputStream("C:\\Users\\user\\Desktop\\Demandes\\" + nomPrenom +".pdf"));
+			PdfWriter.getInstance(document, new FileOutputStream("C:\\Users\\" + System.getProperty("user.name") + "\\Desktop\\Demandes\\" + nomPrenom +".pdf"));
 			Font small = FontFactory.getFont("C:/Windows/Fonts/arial.ttf", BaseFont.IDENTITY_H, 14);
 			Font normal = FontFactory.getFont("C:/Windows/Fonts/arial.ttf", BaseFont.IDENTITY_H, 18);
 			Font big0 = FontFactory.getFont("C:/Windows/Fonts/arial.ttf", BaseFont.IDENTITY_H, 22);
@@ -82,53 +105,53 @@ public class AEteEnregistrerController implements Initializable {
 			/* les elements du paragraphe 1 */
 
 			Paragraph para1 = new Paragraph(30);
-			para1.add(new Phrase("\n المملكة المغربية \n", big0));// وزارة التجهيز والنقل واللوجيستيك والماء ",
+			para1.add(new Phrase("\n \u0627\u0644\u0645\u0645\u0644\u0643\u0629 \u0627\u0644\u0645\u063a\u0631\u0628\u064a\u0629 \n", big0));// ÙˆØ²Ø§Ø±Ø© Ø§Ù„ØªØ¬Ù‡ÙŠØ² ÙˆØ§Ù„Ù†Ù‚Ù„ ÙˆØ§Ù„Ù„ÙˆØ¬ÙŠØ³ØªÙŠÙƒ ÙˆØ§Ù„Ù…Ø§Ø¡ ",
 																	// normal));
-			para1.add(new Phrase("وزارة التجهيز والنقل واللوجيستيك والماء", big0));
-			para1.add(new Phrase("\n قطاع الماء\n", big));
+			para1.add(new Phrase("\u0648\u0632\u0627\u0631\u0629 \u0627\u0644\u062a\u062c\u0647\u064a\u0632 \u0648\u0627\u0644\u0646\u0642\u0644 \u0648\u0627\u0644\u0644\u0648\u062c\u064a\u0633\u062a\u064a\u0643 \u0648\u0627\u0644\u0645\u0627\u0621", big0));
+			para1.add(new Phrase("\n \u0642\u0637\u0627\u0639 \u0627\u0644\u0645\u0627\u0621\n", big));
 			para1.add(new Phrase(
-					"المدرية الاقليمية للتجهيز والنقل واللوجيستيك والماء بأسفي \n المصلحة الاقليمية للماء بأسفي \n",
+					"\u0627\u0644\u0645\u062f\u0631\u064a\u0629 \u0627\u0644\u0627\u0642\u0644\u064a\u0645\u064a\u0629 \u0644\u0644\u062a\u062c\u0647\u064a\u0632 \u0648\u0627\u0644\u0646\u0642\u0644 \u0648\u0627\u0644\u0644\u0648\u062c\u064a\u0633\u062a\u064a\u0643 \u0648\u0627\u0644\u0645\u0627\u0621 \u0628\u0623\u0633\u0641\u064a \u005c\u006e \u0627\u0644\u0645\u0635\u0644\u062d\u0629 \u0627\u0644\u0627\u0642\u0644\u064a\u0645\u064a\u0629 \u0644\u0644\u0645\u0627\u0621 \u0628\u0623\u0633\u0641\u064a \n",
 					normal));
-			para1.add(new Phrase("\n وصل إيداع\n", big));
+			para1.add(new Phrase("\n \u0648\u0635\u0644 \u0625\u064a\u062f\u0627\u0639\n", big));
 			para1.setAlignment(Paragraph.ALIGN_CENTER);
 
 			/* les elements du paragraphe 2 */
 
-			Paragraph para2 = new Paragraph(30);// " \n يشهد رئيس المصلحة الاقليمية للماء بأسفي ان السيد", normal);
-			para2.add(new Phrase("\n يشهد رئيس المصلحة الاقليمية للماء بأسفي ان السيد ", normal));
+			Paragraph para2 = new Paragraph(30);// " \n ÙŠØ´Ù‡Ø¯ Ø±Ø¦ÙŠØ³ Ø§Ù„Ù…ØµÙ„Ø­Ø© Ø§Ù„Ø§Ù‚Ù„ÙŠÙ…ÙŠØ© Ù„Ù„Ù…Ø§Ø¡ Ø¨Ø£Ø³Ù�ÙŠ Ø§Ù† Ø§Ù„Ø³ÙŠØ¯", normal);
+			para2.add(new Phrase("\n \u064a\u0634\u0647\u062f \u0631\u0626\u064a\u0633 \u0627\u0644\u0645\u0635\u0644\u062d\u0629 \u0627\u0644\u0627\u0642\u0644\u064a\u0645\u064a\u0629 \u0644\u0644\u0645\u0627\u0621 \u0628\u0623\u0633\u0641\u064a \u0627\u0646 \u0627\u0644\u0633\u064a\u062f ", normal));
 			para2.add(new Phrase(nomPrenom, big));
-			para2.add(new Phrase(" حامل للبطاقة الوطنية رقم ", normal));
+			para2.add(new Phrase(" \u062d\u0627\u0645\u0644 \u0644\u0644\u0628\u0637\u0627\u0642\u0629 \u0627\u0644\u0648\u0637\u0646\u064a\u0629 \u0631\u0642\u0645 ", normal));
 			para2.add(new Phrase(cin, big));
-			para2.add(new Phrase(" قد وضع  لذا هذه المصلحة  بتاريخ ", normal));
+			para2.add(new Phrase(" \u0642\u062f \u0648\u0636\u0639  \u0644\u0630\u0627 \u0647\u0630\u0647 \u0627\u0644\u0645\u0635\u0644\u062d\u0629  \u0628\u062a\u0627\u0631\u064a\u062e ", normal));
 			para2.add(new Phrase(" "+dateDepot + " ", big));
-			para2.add(new Phrase(" ملف طلب الترخيص لإنجاز ثقب  مائي من أجل سقي بالعقار المسمى : ", normal));
+			para2.add(new Phrase(" \u0645\u0644\u0641 \u0637\u0644\u0628 \u0627\u0644\u062a\u0631\u062e\u064a\u0635 \u0644\u0625\u0646\u062c\u0627\u0632 \u062b\u0642\u0628  \u0645\u0627\u0626\u064a \u0645\u0646 \u0623\u062c\u0644 \u0633\u0642\u064a \u0628\u0627\u0644\u0639\u0642\u0627\u0631 \u0627\u0644\u0645\u0633\u0645\u0649 ", normal));
 			para2.add(new Phrase(nomImmobiler, big));
 			para2.setAlignment(Paragraph.ALIGN_LEFT);
 			para2.setSpacingAfter(30);
 			/* les elements du paragraphe 3 */
 
 			Paragraph para3 = new Paragraph(30);
-			para3.add(new Phrase("الجماعة", normal));
+			para3.add(new Phrase(" \u0627\u0644\u062c\u0645\u0627\u0639\u0629", normal));
 			para3.add(new Phrase(commune, big));
-			para3.add(new Phrase(" القيادة ", normal));
-			para3.add(new Phrase(" اسم القيادة  ", big));
-			para3.add(new Phrase(" الدائرة ", normal));
-			para3.add(new Phrase(" اسم الدائرة  ", big));
-			para3.add(new Phrase(" الاقليم ", normal));
+			para3.add(new Phrase(" \u0627\u0644\u0642\u064a\u0627\u062f\u0629  ", normal));
+			para3.add(new Phrase(" \u0627\u0633\u0645 \u0627\u0644\u0642\u064a\u0627\u062f\u0629  ", big));
+			para3.add(new Phrase(" \u0627\u0644\u062f\u0627\u0626\u0631\u0629  ", normal));
+			para3.add(new Phrase(" \u0627\u0633\u0645 \u0627\u0644\u062f\u0627\u0626\u0631\u0629  ", big));
+			para3.add(new Phrase(" \u0627\u0644\u0627\u0642\u0644\u064a\u0645  ", normal));
 			para3.add(new Phrase(prevince+ ".", big));
 			para3.setAlignment(Paragraph.ALIGN_LEFT);
 
 			/* les elements du paragraphe 4 */
 
-			Paragraph para4 = new Paragraph("\n  إمضاء : \n", big);
+			Paragraph para4 = new Paragraph("\n  Ø¥Ù…Ø¶Ø§Ø¡ : \n", big);
 			para4.setAlignment(Paragraph.ALIGN_CENTER);
 			para4.setSpacingAfter(35);
 
 			/* les elements du paragraphe 5 */
 
 			Paragraph para5 = new Paragraph(30);
-			para5.add(new Phrase("ملحوظة : ", big0));
-			para5.add(new Phrase("هذا الوصل يثبت فقط إيداع ملف الترخيص  ولا يمكن اعتباره ترخيصا بحفر او جلب ماء .",
+			para5.add(new Phrase("\u0625\u0645\u0636\u0627\u0621  : ", big0));
+			para5.add(new Phrase("\u0645\u0644\u062d\u0648\u0638\u0629 ",
 					small));
 			para5.setAlignment(Paragraph.ALIGN_LEFT);
 			para5.setSpacingAfter(50);
@@ -144,7 +167,7 @@ public class AEteEnregistrerController implements Initializable {
 			table.setWidthPercentage(100);
 			document.add(table);
 			document.close();
-			Desktop.getDesktop().open(new File("C:\\Users\\user\\Desktop\\Demandes\\" + nomPrenom +".pdf"));
+			Desktop.getDesktop().open(new File("C:\\Users\\" + System.getProperty("user.name") + "\\Desktop\\Demandes\\" + nomPrenom +".pdf"));
 
 		} catch (FileNotFoundException | DocumentException e) {
 			// TODO Auto-generated catch block

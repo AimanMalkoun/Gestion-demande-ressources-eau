@@ -368,7 +368,7 @@ public class modifierInfoDuDossierController implements Initializable{
     			String items[] =  {"pas encor decide", "oui", "non"};
     			String result = ChangeChoiceAlert.desplay("changer l'Avis de CEP", items, "pas encor decide");
     			
-    			dossier.setAvisDe_CEP(false);
+    			dossier.setAvisDe_CEP("false");
     			AvisDeCEPLabel.setText(result);
     			
     			/*
@@ -507,10 +507,10 @@ public class modifierInfoDuDossierController implements Initializable{
     	dateDebutEnquetePublicLabel.setText(dossier.getDateDebutde_EP().toString());
     	dateFinEnquetePublicLabel.setText(dossier.getDateFin_EP().toString());
     	dateSignaturPVparCEPLabel.setText(dossier.getDateSignateureDuPv().toString());
-    	AvisDeCEPLabel.setText(Boolean.toString(dossier.getAvisDe_CEP()));
+    	AvisDeCEPLabel.setText(dossier.getAvisDe_CEP());
     	dateEnvoitPvAbhoerEljadidaLabel.setText(dossier.getDateEnvoiDuPVa_LABHOER().toString());
-    	AvisAbhoerLabel.setText(Boolean.toString(dossier.getAvisABHOER()));
-    	autorisationLabel.setText(Boolean.toString(dossier.getAutorisation()));
+    	AvisAbhoerLabel.setText(dossier.getAvisABHOER());
+    	autorisationLabel.setText(dossier.getAutorisation());
     	
     }
     

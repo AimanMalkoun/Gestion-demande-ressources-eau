@@ -128,6 +128,7 @@ public class InformationsConcernantPointDeauController implements Initializable 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
+		pathPlandeau.setText(null);
 		initialiserInputs();
 		pathPlandeau.setText(file != null ? file.getAbsolutePath() : "");
 	}
