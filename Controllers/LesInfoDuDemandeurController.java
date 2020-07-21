@@ -169,6 +169,7 @@ public class LesInfoDuDemandeurController implements Initializable{
 	 //---------
 	 private void initialiserInputs() {
 		 
+
 		 //initialiser le champs du nom
 		 if(demandeur.getNom() != null)
 			 nomIput.setText(demandeur.getNom());

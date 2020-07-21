@@ -1,5 +1,20 @@
 package GestionDemandeEau;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.BaseFont;
+import com.itextpdf.text.pdf.PdfWriter;
+
+import Connectivity.ConnectionClassMaria;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,9 +25,12 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
 	@Override
-	public void start(Stage primaryStage) {
+	public void start(Stage primaryStage) throws IOException {
 		try {
+<<<<<<< HEAD
 			
+=======
+>>>>>>> 7a6ff9c9842b07b7eff4946e114618de1b7af07e
 			
 			
 /*
@@ -26,6 +44,9 @@ public class Main extends Application {
  * he ges an error message
  * 
  */
+
+
+	    	
 			Parent loginRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/LoginStage.fxml")); //load the scene in root
 			Scene loginScene = new Scene(loginRoot);
 			primaryStage.setTitle("Gestion des demandes d'autorisation pour l'utilisation des ressources en eau.");
@@ -35,6 +56,7 @@ public class Main extends Application {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+		
 	}
 
 	public static void main(String[] args) {
