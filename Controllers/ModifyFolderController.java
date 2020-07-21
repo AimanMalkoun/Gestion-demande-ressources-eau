@@ -71,7 +71,7 @@ public class ModifyFolderController{
 			try {
 		    	ConnectionClassMaria conection =  new ConnectionClassMaria(); 				
 				statement = conection.connection.createStatement();
-				ResultSet query = statement.executeQuery("select 'IdDossier' from dossier where `cin`= '" + cinInputSearch.getText()+ " '");
+				ResultSet query = statement.executeQuery("select `IdDossier` from dossier where `cin`= '" + cinInputSearch.getText()+ " '");
 				while(query.next())
 				{
 					FXMLLoader loader= new FXMLLoader();

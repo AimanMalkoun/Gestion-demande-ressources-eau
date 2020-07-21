@@ -440,10 +440,6 @@ public class modifierInfoDuDossierController implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
-		ConnectionClassDossier myDataBaseFolder = new ConnectionClassDossier();
-		dossier = myDataBaseFolder.getDossierFromDatabase(3);
-		initializeTextForLabels();
-		
 	}
 	
 
@@ -481,7 +477,14 @@ public class modifierInfoDuDossierController implements Initializable{
     	
     }
     
-    
+  //recieve the message from the last controler
+  	 public void setMessage(int id) {
+
+ 		ConnectionClassDossier myDataBaseFolder = new ConnectionClassDossier();
+ 		dossier = myDataBaseFolder.getDossierFromDatabase(id);
+ 		initializeTextForLabels();
+ 		
+  	 }
 
 }
 

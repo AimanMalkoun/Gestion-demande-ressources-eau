@@ -56,7 +56,6 @@ public class ShowPdf {
 		image.setFitWidth(400);
 		image.setFitHeight(550);
 		image.fitWidthProperty().bind(primaryStage.widthProperty());
-		//image.fitHeightProperty().bind(primaryStage.heightProperty());
 		
 		
 		//creating hbox
@@ -137,27 +136,30 @@ public class ShowPdf {
 
 	}
 
-	private static WritableImage getPageAsImage(int page, PdfDecoder pdf) {
+	private static Image getPageAsImage(int page, PdfDecoder pdf) {
 
 	    BufferedImage img;
 	    try {
 	    	
 	        img = pdf.getPageAsImage(page);
 
-
 	        //Use deprecated method since there's no real alternative 
 	        //(for JavaFX 2.2+ can use SwingFXUtils instead).
-	        WritableImage wr = null;
+	        WritableImage image = null;
 	        if (img != null) {
-	            wr = new WritableImage(img.getWidth(), img.getHeight());
-	            PixelWriter pw = wr.getPixelWriter();
+	            image = new WritableImage(img.getWidth(), img.getHeight());
+	            PixelWriter pw = image.getPixelWriter();
+	            
 	            for (int x = 0; x < img.getWidth(); x++) {
 	                for (int y = 0; y < img.getHeight(); y++) {
 	                    pw.setArgb(x, y, img.getRGB(x, y));
 	                }
 	            }
 	        }
-	        return wr;
+	        
+	      //Image image = SwingFXUtils.toFXImage(img, null); // this line of code doesn't worck for mes, if it works with you please tell me
+	        
+	        return image;
 
 	    } catch(Exception e) {
 	        e.printStackTrace();

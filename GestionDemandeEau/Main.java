@@ -27,10 +27,6 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 		try {
-<<<<<<< HEAD
-			
-=======
->>>>>>> 7a6ff9c9842b07b7eff4946e114618de1b7af07e
 			
 			
 /*

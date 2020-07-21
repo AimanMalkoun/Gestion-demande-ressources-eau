@@ -23,7 +23,6 @@ public class LesInfoDelImmobilierController implements Initializable {
 
 	public static final Immobilier InfoSurImmobilier = new Immobilier();
 	private File attestationFile;
-	private String message;
 
 	@FXML
 	private TextField localisation;
@@ -65,7 +64,6 @@ public class LesInfoDelImmobilierController implements Initializable {
 	@FXML
 	void suivant(MouseEvent event) {
 
-		System.out.println(message);
 		if (checked()) {
 			InfoSurImmobilier.setLocalisation(localisation.getText());
 			InfoSurImmobilier.setDouar(douar.getText());
@@ -108,10 +106,8 @@ public class LesInfoDelImmobilierController implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-
-		System.out.println(message);
+		
 		initialiserInputs();
-		attestationFilePath.setText(attestationFile != null ? attestationFile.getName() : "");
 
 	}
 
@@ -163,12 +159,13 @@ public class LesInfoDelImmobilierController implements Initializable {
 			province.setText(InfoSurImmobilier.getProvince());
 
 		// initialiser le path du fichier d'attestation de pocession d'immobilier
-		if (InfoSurImmobilier.getAttestationDePocession() != null)
+		if (InfoSurImmobilier.getAttestationDePocession() != null) {
+			
 			attestationFile = InfoSurImmobilier.getAttestationDePocession();
+			attestationFilePath.setText( attestationFile.getName());
+			
+		}
 	}
 	
-	public void setMessage(String msg) {
-		message = msg;
-	}
 
 }

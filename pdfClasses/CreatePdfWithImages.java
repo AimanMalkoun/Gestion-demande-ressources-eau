@@ -21,11 +21,11 @@ import javafx.stage.Stage;
 
 
 
-public class CretePdfWithImages extends Application{
+public class CreatePdfWithImages extends Application{
 	
 	public static File createPdf(List<File> imagesList, String fileName) {
 		//get destination path
-		String destPath = CretePdfWithImages.class.getClassLoader().getResource("tempFiles").getPath() + "/" + fileName;
+		String destPath = CreatePdfWithImages.class.getClassLoader().getResource("tempFiles").getPath() + "/" + fileName;
 		
 		//creating pdf writer
 		Document document = new Document();
