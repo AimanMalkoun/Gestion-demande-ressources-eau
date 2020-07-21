@@ -81,7 +81,7 @@ public class AEteEnregistrerController implements Initializable {
 		ConnectionClass conn = new ConnectionClass();
 		Connection connection = conn.getConnection();
 		Statement stat = connection.createStatement();
-		String sql = "SELECT Nom, Prenom, cin, localisationImmobilier, Douar, Commune, Province, DateDepot   FROM dossier WHERE idDossier = " + EnregistrerController.idDossier;
+		String sql = "SELECT `Nom`,`Prenom`,`cin`,`localisationImmobilier`,`Douar`,`Commune`,`Province`, `DateDepot` FROM dossier WHERE `IdDossier` = " + Integer.toString(EnregistrerController.idDossier);
 		ResultSet result = stat.executeQuery(sql);
 		if (result.next()) {
 			nomPrenom = " " + result.getString("Nom") + "  " + result.getString("Prenom") + " " ;
@@ -93,6 +93,7 @@ public class AEteEnregistrerController implements Initializable {
 		}
 		Document document = new Document();
 		try {
+
 			PdfWriter.getInstance(document, new FileOutputStream("C:\\Users\\" + System.getProperty("user.name") + "\\Desktop\\Demandes\\" + nomPrenom +".pdf"));
 			Font small = FontFactory.getFont("C:/Windows/Fonts/arial.ttf", BaseFont.IDENTITY_H, 14);
 			Font normal = FontFactory.getFont("C:/Windows/Fonts/arial.ttf", BaseFont.IDENTITY_H, 18);
@@ -167,6 +168,7 @@ public class AEteEnregistrerController implements Initializable {
 			table.setWidthPercentage(100);
 			document.add(table);
 			document.close();
+
 			Desktop.getDesktop().open(new File("C:\\Users\\" + System.getProperty("user.name") + "\\Desktop\\Demandes\\" + nomPrenom +".pdf"));
 
 		} catch (FileNotFoundException | DocumentException e) {

@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import Classes.Dossier;
@@ -77,14 +78,14 @@ public class EnregistrerController implements Initializable {
 	@FXML
 	public void savebuttonMethode(ActionEvent event) throws IOException, SQLException {
 
-		/*se connecter avec la base de données */
+		/*se connecter avec la base de donnï¿½es */
 
 		ConnectionClass conn = new ConnectionClass();
 		Connection connection = conn.getConnection();
 		
 		Statement statId = connection.createStatement();
 
-		/* Sélectionner le plus grand idDossier*/
+		/* Sï¿½lectionner le plus grand idDossier*/
 
 		String sqlId = "SELECT MAX(IdDossier)  FROM dossier";
 		ResultSet result = statId.executeQuery(sqlId);
@@ -93,7 +94,7 @@ public class EnregistrerController implements Initializable {
 		}
 
 		/*
-		 * l'initialisation de l'objet Dossier avec les éléments de la page précédente
+		 * l'initialisation de l'objet Dossier avec les ï¿½lï¿½ments de la page prï¿½cï¿½dente
 		 */
 
 		/*Dossier dossier = new Dossier(idDossier, LesInfoDuDemandeurController.demandeur,
@@ -101,29 +102,32 @@ public class EnregistrerController implements Initializable {
 				dateDepot);*/
 
 
-		/* Détermination de path de chaque fichier */
-
+		/* Dï¿½termination de path de chaque fichier */
 		String pathCIN = LesInfoDuDemandeurController.demandeur.getCinFile().getAbsolutePath();
 		String pathDemandeCreusement = LesInfoDuDemandeurController.demandeur.getDemandeFile().getAbsolutePath();
 		String pathAttistation = LesInfoDelImmobilierController.InfoSurImmobilier.getAttestationDePocession().getAbsolutePath();
 		String pathPlanEau = InformationsConcernantPointDeauController.poinDeau.getPlanEau().getAbsolutePath();
 
-		/* Création de l'objet InputStream afin de le stocker dans la base de données */
+		/* Crï¿½ation de l'objet InputStream afin de le stocker dans la base de donnï¿½es */
 
 		InputStream cinFile = new FileInputStream(new File(pathCIN));
 		InputStream demandeCreusement = new FileInputStream(new File(pathDemandeCreusement));
 		InputStream attistation = new FileInputStream(new File(pathAttistation));
 		InputStream planEau = new FileInputStream(new File(pathPlanEau));
 
-		/* la requête sql de l'insertion */
+		/* la requï¿½te sql de l'insertion */
 
-		String sql = "INSERT INTO dossier (IdDossier, Nom, Prenom, cin, cinImg, typeDemande, demandeCreusement, localisationImmobilier, attistationPocession, Douar, Commune, Province, localisationPointEau,Debit, Profendeur, PlanDeau, Rabatement, DateDepot, dateEnvoiABHOER, dateDebut_EP, dateFin_EP,dateSignature_PV, AvisDeCEP, DateEnvoiDuPV_ABHOER, AvisABHOER, Autorisation) VALUES (?, ?, ?, ?, ?,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,?,? ,? ,? )";
+		String sql = "INSERT INTO `dossier`(`IdDossier`, `Nom`, `Prenom`, `cin`, `cinImg`, `typeDemande`, `demandeCreusement`,"
+				   + " `localisationImmobilier`, `attistationPocession`, `Douar`, `Commune`, `Province`,"
+				   + " `localisationPointEau`, `Debit`, `Profendeur`, `PlanDeau`, `Rabatement`,"
+				   + " `DateDepot`, `dateEnvoiABHOER`, `dateDebut_EP`, `dateFin_EP`, `dateSignature_PV`,"
+				   + " `AvisDeCEP`, `DateEnvoiDuPV_ABHOER`, `AvisABHOER`, `Autorisation`) "
+				   + "VALUES (?, ?, ?, ?, ?,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,?,? ,? ,? )";
 		try {
 
-			/* l'insertion des eléments dans la base de données */
+			/* l'insertion des elï¿½ments dans la base de donnï¿½es */
 
 			PreparedStatement stat = connection.prepareStatement(sql);
-			
 			stat.setInt(1, idDossier);
 			stat.setString(2, LesInfoDuDemandeurController.demandeur.getNom());
 			stat.setString(3, LesInfoDuDemandeurController.demandeur.getPrenom());
@@ -141,13 +145,14 @@ public class EnregistrerController implements Initializable {
 			stat.setFloat(15, InformationsConcernantPointDeauController.poinDeau.getProfondeur());
 			stat.setBlob(16, planEau);
 			stat.setFloat(17, InformationsConcernantPointDeauController.poinDeau.getRabattement());
-			stat.setDate(18,  Date.valueOf(  LesInfoDuDemandeurController.demandeur.getDateDepotDossier()));
-			stat.setDate(19, Date.valueOf(  LesInfoDuDemandeurController.demandeur.getDateDepotDossier()));
-			stat.setDate(20, Date.valueOf(  LesInfoDuDemandeurController.demandeur.getDateDepotDossier()));
-			stat.setDate(21, Date.valueOf(  LesInfoDuDemandeurController.demandeur.getDateDepotDossier()));
-			stat.setDate(22, Date.valueOf(  LesInfoDuDemandeurController.demandeur.getDateDepotDossier()));
+			
+			stat.setDate(18, Date.valueOf(LesInfoDuDemandeurController.demandeur.getDateDepotDossier()));
+			stat.setDate(19, Date.valueOf(LesInfoDuDemandeurController.demandeur.getDateDepotDossier()));
+			stat.setDate(20, Date.valueOf(LesInfoDuDemandeurController.demandeur.getDateDepotDossier()));
+			stat.setDate(21, Date.valueOf(LesInfoDuDemandeurController.demandeur.getDateDepotDossier()));
+			stat.setDate(22, Date.valueOf(LesInfoDuDemandeurController.demandeur.getDateDepotDossier()));
 			stat.setString(23, "");
-			stat.setDate(24, Date.valueOf(  LesInfoDuDemandeurController.demandeur.getDateDepotDossier()));
+			stat.setDate(24, Date.valueOf(LesInfoDuDemandeurController.demandeur.getDateDepotDossier()));
 			stat.setString(25, "");
 			stat.setString(26, "");
 			stat.execute();
