@@ -19,7 +19,7 @@
    <left>
       <VBox id="vboxStyle" prefHeight="556.0" prefWidth="186.0" spacing="20.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
          <children>
-            <Button id="buttonProfile" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="189.0" style="-fx-background-color: #A7BDE7;" text="Profile">
+            <Button id="buttonProfile" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToHome" prefHeight="25.0" prefWidth="189.0" style="-fx-background-color: #A7BDE7;" text="Home">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>

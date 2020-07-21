@@ -107,5 +107,11 @@ public class ModifyFolderController{
 		primaryStage.setScene(ChangePasswordScene);
     }
     
-    
+    @FXML
+    void goToHome(ActionEvent event) throws IOException {
+    	Parent dashboardRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/Dashboard.fxml"));
+		Scene dashboardScene = new Scene(dashboardRoot);
+		Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		primaryStage.setScene(dashboardScene);
+    }
 }
