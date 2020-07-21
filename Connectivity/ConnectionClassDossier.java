@@ -63,6 +63,7 @@ public class ConnectionClassDossier {
 				
 				dossier.setAvisABHOER((result.getString("AvisABHOER")));
 				dossier.setAvisDe_CEP((result.getString("AvisDeCEP")));
+
 				dossier.setAutorisation(result.getString("Autorisation"));
 				
 				//we need first to convert java.sql.Date to java.time.LocalDate to match the argument of the setter  

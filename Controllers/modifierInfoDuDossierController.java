@@ -367,6 +367,7 @@ public class modifierInfoDuDossierController implements Initializable{
     			String result = ChangeChoiceAlert.desplay("changer l'Avis de CEP", items, "pas encor decide");
     			
     			dossier.setAvisDe_CEP(result);
+
     			AvisDeCEPLabel.setText(result);
     			
     		}else if(event.getSource() == dateEnvoitPvAbhoerEljadidaButton) {

@@ -12,8 +12,7 @@ public Connection connection;
 		String password = "";
 
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			 connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+dbName, userName, password);
+			 connection = DriverManager.getConnection("jdbc:mariadb://localhost:3306/"+dbName, userName, password);
 		
 		} catch (Exception e) {
 			

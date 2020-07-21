@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="556.0" prefWidth="877.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LesInfoDelImmobilierController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="556.0" prefWidth="877.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LesInfoDelImmobilierController">
    <left>
       <VBox prefHeight="447.0" prefWidth="166.0" spacing="20.0" style="-fx-background-color: #423167;" BorderPane.alignment="CENTER">
          <children>
@@ -107,7 +107,7 @@
                   <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="2.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                      <children>
                         <Button fx:id="attistationFileButton" mnemonicParsing="false" onMouseClicked="#uploadFile" prefHeight="25.0" prefWidth="252.0" text="Choisir un fihier" />
-                        <Label fx:id="attestationFilePath" prefHeight="25.0" prefWidth="247.0" />
+                        <Label fx:id="attestationFilePath" prefHeight="25.0" prefWidth="247.0" text=" " />
                      </children>
                      <padding>
                         <Insets top="11.0" />
