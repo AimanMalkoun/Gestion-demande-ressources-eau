@@ -67,11 +67,29 @@ public class ModifyFolderController{
     	}
     	else
     	{
-    		Parent deamandeurInfoRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/ModifyFolderInfo.fxml"));
-    		Scene deamandeurInfoScene = new Scene(deamandeurInfoRoot);
-    		cinToModify = cinInputSearch.getText();
-    		Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-    		primaryStage.setScene(deamandeurInfoScene);
+    		Statement statement;
+			try {
+		    	ConnectionClassMaria conection =  new ConnectionClassMaria(); 				
+				statement = conection.connection.createStatement();
+				ResultSet query = statement.executeQuery("select 'IdDossier' from dossier where `cin`= '" + cinInputSearch.getText()+ " '");
+				while(query.next())
+				{
+					FXMLLoader loader= new FXMLLoader();
+					loader.setLocation(getClass().getResource("../Fxml/modifier les informations du dossier.fxml"));
+					Parent modifyFolderInfo = loader.load();
+					
+					modifierInfoDuDossierController nextControler = loader.getController();
+					nextControler.setMessage(query.getInt("IdDossier"));
+					
+					Scene demandeurScene = new Scene(modifyFolderInfo);
+					Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+					primaryStage.setScene(demandeurScene);
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+    		
     	}
     }
     
