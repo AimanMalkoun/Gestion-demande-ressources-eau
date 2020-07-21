@@ -22,7 +22,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import pdfClasses.ConvertBloboPdf;
+import pdfClasses.ConvertBlobToPdf;
 import pdfClasses.ShowPdf;
 
 public class DisplayFolderController implements Initializable {
@@ -121,22 +121,22 @@ public class DisplayFolderController implements Initializable {
 
     	if(event.getSource() == attestationFileButton) {
     		
-    		String path =ConvertBloboPdf.getPdfFromBlob(dossier.getAttestationDePocession(), "attestationFile.pdf");
+    		String path =ConvertBlobToPdf.getPdfFromBlob(dossier.getAttestationDePocession(), "attestationFile.pdf");
     		ShowPdf.display(path, "attestationFile.pdf");
     		
     	}else if(event.getSource() == demandeFileButton) {
     		
-    		String path =ConvertBloboPdf.getPdfFromBlob(dossier.getDemandeFile(), "demandeFile.pdf");
+    		String path =ConvertBlobToPdf.getPdfFromBlob(dossier.getDemandeFile(), "demandeFile.pdf");
     		ShowPdf.display(path, "demandeFile.pdf");
     		
     	}else if(event.getSource() == cinFileButton) {
     		
-    		String path =ConvertBloboPdf.getPdfFromBlob(dossier.getCinFile(), "CIN.pdf");
+    		String path =ConvertBlobToPdf.getPdfFromBlob(dossier.getCinFile(), "CIN.pdf");
     		ShowPdf.display(path, "CIN.pdf");
     		
     	}else if(event.getSource() == planEauFileButton) {
     		
-    		String path =ConvertBloboPdf.getPdfFromBlob(dossier.getPlanEau(), "planEauFile.pdf");
+    		String path =ConvertBlobToPdf.getPdfFromBlob(dossier.getPlanEau(), "planEauFile.pdf");
     		ShowPdf.display(path, "planEauFile.pdf");
     		
     	}
