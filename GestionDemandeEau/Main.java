@@ -42,7 +42,7 @@ public class Main extends Application {
  */
 
 	    	
-			Parent loginRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/LoginStage.fxml")); //load the scene in root
+			Parent loginRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/AEteEnregistrer.fxml")); //load the scene in root
 			Scene loginScene = new Scene(loginRoot);
 			primaryStage.setTitle("Gestion des demandes d'autorisation pour l'utilisation des ressources en eau.");
 			primaryStage.setScene(loginScene);
