@@ -24,11 +24,11 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <Button layoutX="10.0" layoutY="35.0" mnemonicParsing="false" onAction="#ChangePassword" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: #3f2f62;" text="Change Password" textFill="WHITE">
+            <Button layoutX="10.0" layoutY="35.0" mnemonicParsing="false" onAction="#ChangePassword" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: #3f2f62;" text="تغيير كلمة السر" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <Button layoutX="10.0" layoutY="140.0" mnemonicParsing="false" onAction="#disconnect" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: #3f2f62;" text="Exit" textFill="WHITE">
+            <Button layoutX="10.0" layoutY="140.0" mnemonicParsing="false" onAction="#disconnect" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: #3f2f62;" text="تسجيل الخروج" textFill="WHITE">
                <VBox.margin>
                   <Insets top="150.0" />
                </VBox.margin>
@@ -87,7 +87,7 @@
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </padding>
             </HBox>
-            <Label layoutX="60.0" layoutY="296.0" prefHeight="35.0" prefWidth="161.0" text="Creer un nouveau dossier" underline="true">
+            <Label layoutX="60.0" layoutY="296.0" prefHeight="35.0" prefWidth="161.0" text="انشاء مجلد جديد" underline="true">
                <font>
                   <Font size="14.0" />
                </font>
@@ -95,7 +95,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <Label layoutX="274.0" layoutY="296.0" prefHeight="35.0" prefWidth="126.0" text="Modifier un  dossier" underline="true">
+            <Label layoutX="274.0" layoutY="296.0" prefHeight="35.0" prefWidth="126.0" text="تعديل مجلد" underline="true">
                <font>
                   <Font size="14.0" />
                </font>
@@ -103,7 +103,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <Label layoutX="425.0" layoutY="296.0" prefHeight="35.0" prefWidth="228.0" text="afficher les informations d'un dossier" underline="true">
+            <Label layoutX="425.0" layoutY="296.0" prefHeight="35.0" prefWidth="228.0" text="عرض معلومات مجلد" underline="true">
                <font>
                   <Font size="14.0" />
                </font>

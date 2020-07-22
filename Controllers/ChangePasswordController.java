@@ -1,11 +1,15 @@
 package Controllers;
 
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import Connectivity.ConnectionClassMaria;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -64,4 +68,12 @@ public class ChangePasswordController {
 		primaryStage.close();
     }
 
+    @FXML
+    void goToHome(ActionEvent event) throws IOException {
+    	
+    	Parent dashboardRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/Dashboard.fxml"));
+		Scene dashboardScene = new Scene(dashboardRoot);
+		Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		primaryStage.setScene(dashboardScene);
+    }
 }

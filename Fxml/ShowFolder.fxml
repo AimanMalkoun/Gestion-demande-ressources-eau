@@ -19,7 +19,7 @@
    <left>
       <VBox id="vboxStyle" prefHeight="556.0" prefWidth="186.0" spacing="20.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
          <children>
-            <Button id="buttonProfile" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToHome" prefHeight="25.0" prefWidth="189.0" style="-fx-background-color: #A7BDE7;" text="Home">
+            <Button id="buttonProfile" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToHome" prefHeight="25.0" prefWidth="189.0" style="-fx-background-color: #A7BDE7;" text="الصفحة الرئيسية">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -34,7 +34,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button id="buttonLogin" layoutX="10.0" layoutY="140.0" mnemonicParsing="false" onAction="#disconnect" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: #A7BDE7;" text="Exit">
+            <Button id="buttonLogin" layoutX="10.0" layoutY="140.0" mnemonicParsing="false" onAction="#disconnect" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: #A7BDE7;" text="تسجيل الخروج">
                <VBox.margin>
                   <Insets top="150.0" />
                </VBox.margin>
@@ -84,8 +84,8 @@
          <content>
             <Pane prefHeight="585.0" prefWidth="657.0">
                <children>
-                  <TextField fx:id="cinInputSearch" layoutX="67.0" layoutY="45.0" prefHeight="30.0" prefWidth="163.0" promptText="CIN" />
-                  <Button layoutX="277.0" layoutY="45.0" mnemonicParsing="false" onAction="#SearchFolderUsingCin" style="-fx-background-color: #2b4067;" text="Chercher un dossier" textFill="WHITE">
+                  <TextField fx:id="cinInputSearch" layoutX="67.0" layoutY="45.0" prefHeight="30.0" prefWidth="163.0" promptText="بطاقة الهوية الوطنية" />
+                  <Button layoutX="277.0" layoutY="45.0" mnemonicParsing="false" onAction="#SearchFolderUsingCin" style="-fx-background-color: #2b4067;" text="ابحث عن مجلد" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font></Button>
@@ -97,7 +97,7 @@
                      <children>
                         <VBox prefHeight="200.0" prefWidth="166.6">
                            <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="166.6" text="Id du dossier" textAlignment="CENTER" textFill="#280808">
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="166.6" text="معرف المجلد" textAlignment="CENTER" textFill="#280808">
                                  <font>
                                     <Font size="19.0" />
                                  </font>
@@ -112,7 +112,7 @@
                         </VBox>
                         <VBox prefHeight="200.0" prefWidth="166.6">
                            <children>
-                              <Label prefHeight="40.0" prefWidth="167.0" text="Cin du demandeur">
+                              <Label prefHeight="40.0" prefWidth="167.0" text="بطاقة الهوية الوطنية لمقدم الطلب">
                                  <font>
                                     <Font size="19.0" />
                                  </font>
@@ -127,7 +127,7 @@
                         </VBox>
                         <VBox prefHeight="200.0" prefWidth="166.6">
                            <children>
-                              <Label prefHeight="40.0" prefWidth="167.0" text="Nom complete du demandeur">
+                              <Label prefHeight="40.0" prefWidth="167.0" text="الاسم الكامل لمقدم الطلب">
                                  <font>
                                     <Font size="19.0" />
                                  </font>
