@@ -2,19 +2,19 @@ package Controllers;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Blob;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ResourceBundle;
 
 import Classes.DossierForDownload;
-import Classes.Dossier;
+
+import pdfClasses.ShowPdf;
+import pdfClasses.ConvertBlobToPdf;
+
 import Connectivity.ConnectionClassDossier;
-import Connectivity.ConnectionClassMaria;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -22,8 +22,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import pdfClasses.ConvertBlobToPdf;
-import pdfClasses.ShowPdf;
+
 
 public class DisplayFolderController implements Initializable {
 
@@ -162,13 +161,19 @@ public class DisplayFolderController implements Initializable {
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		setMessage(5);
+	}
+
+	
+	public void setMessage(int idDossier) {
 		
 		ConnectionClassDossier myDataBaseFolder = new ConnectionClassDossier();
-		dossier = myDataBaseFolder.getDossierFromDatabase(5);
+		dossier = myDataBaseFolder.getDossierFromDatabase(idDossier);
 		initializeTextForLabels();
 		
 	}
-
+	
+	
 	private void initializeTextForLabels() {
     	
     	/**
@@ -213,4 +218,5 @@ public class DisplayFolderController implements Initializable {
     	autorisationLabel.setText(dossier.getAutorisation());
     	
     }
+	
 }
