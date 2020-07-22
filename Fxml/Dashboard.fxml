@@ -74,9 +74,9 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <ImageView fitHeight="121.0" fitWidth="158.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="121.0" fitWidth="158.0" onMouseClicked="#ShowFolderInformations" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../Public/Pictures/Sample%20Pictures/Penguins.jpg" />
+                        <Image url="@../Image/folder.png" />
                      </image>
                      <cursor>
                         <Cursor fx:constant="HAND" />

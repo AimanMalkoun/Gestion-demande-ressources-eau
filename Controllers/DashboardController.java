@@ -47,6 +47,14 @@ public class DashboardController implements Initializable{
 		Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		primaryStage.setScene(ChangePasswordScene);
     }
+    
+    @FXML
+    void ShowFolderInformations(MouseEvent event) throws IOException {
+    	Parent ShowFolderRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/ShowFolder.fxml"));
+		Scene ShowFolderScene = new Scene(ShowFolderRoot);
+		Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		primaryStage.setScene(ShowFolderScene);
+    }
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
