@@ -106,9 +106,8 @@ public class LesInfoDelImmobilierController implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
+		
 		initialiserInputs();
-		attestationFilePath.setText(attestationFile != null ? attestationFile.getName() : "");
 
 	}
 
@@ -142,7 +141,7 @@ public class LesInfoDelImmobilierController implements Initializable {
 		return condition;
 	}
 
-	public void initialiserInputs() {
+	private void initialiserInputs() {
 		// initialiser le champs du localisation
 		if (InfoSurImmobilier.getLocalisation() != null)
 			localisation.setText(InfoSurImmobilier.getLocalisation());
@@ -160,8 +159,13 @@ public class LesInfoDelImmobilierController implements Initializable {
 			province.setText(InfoSurImmobilier.getProvince());
 
 		// initialiser le path du fichier d'attestation de pocession d'immobilier
-		if (InfoSurImmobilier.getAttestationDePocession() != null)
+		if (InfoSurImmobilier.getAttestationDePocession() != null) {
+			
 			attestationFile = InfoSurImmobilier.getAttestationDePocession();
+			attestationFilePath.setText( attestationFile.getName());
+			
+		}
 	}
+	
 
 }

@@ -439,14 +439,18 @@ public class modifierInfoDuDossierController implements Initializable{
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
-		ConnectionClassDossier myDataBaseFolder = new ConnectionClassDossier();
-		dossier = myDataBaseFolder.getDossierFromDatabase(3);
-		initializeTextForLabels();
-		
+		setMessage(5);
 	}
 	
+	//recieve the message from the last controler
+ 	 public void setMessage(int id) {
 
+		ConnectionClassDossier myDataBaseFolder = new ConnectionClassDossier();
+		dossier = myDataBaseFolder.getDossierFromDatabase(id);
+		initializeTextForLabels();
+		
+ 	 }
+	
     private void initializeTextForLabels() {
     	
     	//Set text for labels
@@ -480,8 +484,6 @@ public class modifierInfoDuDossierController implements Initializable{
     	autorisationLabel.setText(dossier.getAutorisation());
     	
     }
-    
-    
 
 }
 

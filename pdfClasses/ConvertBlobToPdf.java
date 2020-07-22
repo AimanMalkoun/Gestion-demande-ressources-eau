@@ -8,14 +8,14 @@ import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.SQLException;
 
-public class ConvertBloboPdf{
+public class ConvertBlobToPdf{
 
 	public static String getPdfFromBlob(Blob blobFile, String filename) {
 		
 		String path = null;
 		try {
 			
-			path = ConvertBloboPdf.class.getClassLoader().getResource("tempFiles").getPath() + "/" +filename;
+			path = ConvertBlobToPdf.class.getClassLoader().getResource("tempFiles").getPath() + "/" +filename;
 			
 			File tempFile = new File(path);
 			FileOutputStream output = new FileOutputStream(tempFile);
