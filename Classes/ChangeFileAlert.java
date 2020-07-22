@@ -33,9 +33,8 @@ public class ChangeFileAlert {
 		//choose file
 		input.setOnMouseClicked(e -> {
 			
-				FileChooser fc = new FileChooser();
-				fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("image/pdf/docx", "*.jpg", "*.png", "*.pdf", "*.docx"));
-				File file = fc.showOpenDialog(new Stage());
+			ImagesOrPdfChooser.desplay("Choisir l'attestation de pcession de l'immobilier", "Attestation_pocession_Immobilier.pdf");
+			File file = ImagesOrPdfChooser.result;
 				
 				if(file != null) {
 					path.setText(file.getPath());

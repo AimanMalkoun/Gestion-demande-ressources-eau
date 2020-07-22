@@ -161,7 +161,7 @@ public class DisplayFolderController implements Initializable {
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		setMessage(5);
+		//setMessage(1);
 	}
 
 	

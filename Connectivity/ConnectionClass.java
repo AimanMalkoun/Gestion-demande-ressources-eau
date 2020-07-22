@@ -12,7 +12,7 @@ public Connection connection;
 		String password = "";
 
 		try {
-			 connection = DriverManager.getConnection("jdbc:mariadb://localhost:3306/"+dbName, userName, password);
+			 connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+dbName, userName, password);
 		
 		} catch (Exception e) {
 			

@@ -279,6 +279,7 @@ public class modifierInfoDuDossierController implements Initializable{
     		}else if(event.getSource() == demandeCreusementFileButton) {
     			//file
     			File result = ChangeFileAlert.desplay("Changer la demande");
+    			System.out.println(result);
     			
     			if(result != null){
     				dossier.setDemandeFile((Blob) new FileInputStream(result));
@@ -439,7 +440,7 @@ public class modifierInfoDuDossierController implements Initializable{
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		setMessage(5);
+		
 	}
 	
 	//recieve the message from the last controler

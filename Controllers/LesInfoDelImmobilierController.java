@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import Classes.ImagesOrPdfChooser;
 import Classes.Immobilier;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -97,8 +98,9 @@ public class LesInfoDelImmobilierController implements Initializable {
 		fc.getExtensionFilters()
 				.addAll(new FileChooser.ExtensionFilter("image/pdf/docx", "*.jpg", "*.png", "*.pdf", "*.docx"));
 
-		File file = fc.showOpenDialog(new Stage());
-		if(file != null) {
+		ImagesOrPdfChooser.desplay("Choisir l'attestation de pcession de l'immobilier", "Attestation_pocession_Immobilier.pdf");
+		File file = ImagesOrPdfChooser.result;
+    	if(file != null) {
 			attestationFile = file;
 			attestationFilePath.setText(file.getName());
 		}
