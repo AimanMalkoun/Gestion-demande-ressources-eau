@@ -41,6 +41,7 @@ public class Main extends Application {
  * 
  */
 
+
 	    	
 			Parent loginRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/AEteEnregistrer.fxml")); //load the scene in root
 			Scene loginScene = new Scene(loginRoot);

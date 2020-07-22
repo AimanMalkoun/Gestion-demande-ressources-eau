@@ -10,10 +10,11 @@ public class Dossier {
 	 */
 
 	private int idDossier;
+	
 	private Demandeur demandeur;
 	private Immobilier immobilier;
-	
 	private PointDeau pointDeau;
+	
 	private LocalDate dateDepot;
 	private LocalDate dateEnvoiA_LABHOER;
 	private LocalDate dateDebutde_EP;
@@ -23,7 +24,6 @@ public class Dossier {
 	
 	private String avisDe_CEP;
 	private String avisABHOER;
-	
 	private String autorisation;
 
 	/* 
@@ -107,7 +107,7 @@ public class Dossier {
 	}
 
 	public Demandeur getDemandeur() {
-		return demandeur;
+		return this.demandeur;
 	}
 
 	public void setDemandeur(Demandeur demandeur) {
@@ -205,5 +205,4 @@ public class Dossier {
 	public String toString() {
 		return demandeur.toString() + immobilier.toString() + pointDeau.toString();
 	}
-
 }

@@ -4,9 +4,6 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 import javafx.fxml.FXMLLoader;
 
 public class Test extends Application{
@@ -21,7 +18,7 @@ public class Test extends Application{
 			//Les informations du demandeur
 			try {
 				
-				Parent root = FXMLLoader.load(Test.class.getClassLoader().getResource("Fxml/modifier les informations du dossier.fxml"));
+				Parent root = FXMLLoader.load(Test.class.getClassLoader().getResource("Fxml/afficher-un-dossier.fxml"));
 				Scene scene = new Scene(root);
 				primaryStage.setTitle("Gestion des demandes d'autorisation pour l'utilisation des ressources en eau.");
 				primaryStage.setScene(scene);

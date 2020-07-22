@@ -19,7 +19,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import matrouhTest.Test;
 import javafx.fxml.Initializable;
 
 public class LesInfoDuDemandeurController implements Initializable{
@@ -64,6 +63,7 @@ public class LesInfoDuDemandeurController implements Initializable{
     void suivant(MouseEvent event) {
     	
     	if(checked()) {
+    		
     		demandeur.setNom(nomIput.getText());
     		demandeur.setPrenom(prenomInput.getText());
     		demandeur.setCin(cinInput.getText());
@@ -74,10 +74,13 @@ public class LesInfoDuDemandeurController implements Initializable{
 		
     		try {
     			
-    			Parent dashboardRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/Les-informations-concernant-l'immobilier.fxml"));
-				Scene dashboardScene = new Scene(dashboardRoot);
+    			FXMLLoader loader= new FXMLLoader();
+    			loader.setLocation(getClass().getResource("../Fxml/Les-informations-concernant-l'immobilier.fxml"));
+    			Parent demandeurRoot = loader.load();
+    			
+				Scene demandeurScene = new Scene(demandeurRoot);
 				Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-				primaryStage.setScene(dashboardScene);
+				primaryStage.setScene(demandeurScene);
 				
     		} catch (IOException e) {
     			// TODO Auto-generated catch block
@@ -96,12 +99,14 @@ public class LesInfoDuDemandeurController implements Initializable{
     	fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("image/pdf/docx", "*.jpg", "*.png", "*.pdf", "*.docx"));
         
         File file = fc.showOpenDialog(new Stage());
-        if(event.getSource() == cinFileButton) {
-        	cinFile = file;
-        	cinFilePath.setText(cinFile.getPath());
-        }else if(event.getSource() == demandeFileButton){
-        	demandeFile = file;
-        	demandeFilePath.setText(demandeFile.getPath());
+        if(file != null) {
+        	if(event.getSource() == cinFileButton) {
+        		cinFile = file;
+        		cinFilePath.setText(cinFile.getName());
+        	}else if(event.getSource() == demandeFileButton){
+        		demandeFile = file;
+        		demandeFilePath.setText(demandeFile.getName());
+        	}
         }
         
     }
@@ -112,8 +117,8 @@ public class LesInfoDuDemandeurController implements Initializable{
 		
 		typeDemandeChoice.getItems().addAll("Type de demande","Forage", "Pompage");
 		initialiserInputs();
-		cinFilePath.setText(cinFile != null ? cinFile.getPath() : "");
-		demandeFilePath.setText(demandeFile != null ? demandeFile.getPath() : "");
+		cinFilePath.setText(cinFile != null ? cinFile.getName() : "");
+		demandeFilePath.setText(demandeFile != null ? demandeFile.getName() : "");
 		
 	}
 	
@@ -135,7 +140,7 @@ public class LesInfoDuDemandeurController implements Initializable{
 	    		condition = condition && false;
 	    	}
 	    	
-	    	if(dateDepotDossierInput == null) {
+	    	if(dateDepotDossierInput.getValue() == null) {
 	    		dateDepotDossierInput.setStyle("-fx-border-color: red");
 	    		condition = condition && false;
 	    	}
@@ -193,5 +198,5 @@ public class LesInfoDuDemandeurController implements Initializable{
 			 demandeFile = demandeur.getDemandeFile();
 		    
 	 }
-	
+	 
 }

@@ -18,7 +18,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class ModifyFolderController{
+public class ShowFolderController{
 	
     
     static String cinToModify;
@@ -75,15 +75,15 @@ public class ModifyFolderController{
 				while(query.next())
 				{
 					FXMLLoader loader= new FXMLLoader();
-					loader.setLocation(getClass().getResource("../Fxml/modifier les informations du dossier.fxml"));
-					Parent modifyFolderInfo = loader.load();
+					loader.setLocation(getClass().getResource("../Fxml/afficher-un-dossier.fxml"));
+					Parent showFolderInfo = loader.load();
 					
-					modifierInfoDuDossierController nextControler = loader.getController();
+					DisplayFolderController nextControler = loader.getController();
 					nextControler.setMessage(query.getInt("IdDossier"));
 					
-					Scene demandeurScene = new Scene(modifyFolderInfo);
+					Scene showFolderInfoScene = new Scene(showFolderInfo);
 					Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-					primaryStage.setScene(demandeurScene);
+					primaryStage.setScene(showFolderInfoScene);
 				}
 				
 			} catch (SQLException e) {
@@ -114,4 +114,6 @@ public class ModifyFolderController{
 		Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		primaryStage.setScene(dashboardScene);
     }
+    
+  
 }
