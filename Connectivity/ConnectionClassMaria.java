@@ -12,7 +12,7 @@ public class ConnectionClassMaria {
 		String password = "";
 
 		try {
-			connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/" + dbName, userName, password);
+			connection = (Connection) DriverManager.getConnection("jdbc:sqlite:src\\SQLiteDB\\gestiondeamndeeau.sqlite");
 		} catch (Exception e) {
 
 			e.printStackTrace();

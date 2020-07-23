@@ -47,8 +47,8 @@ public class LoginStageController {
 	    	{
 	    		Alert a = new Alert(Alert.AlertType.WARNING);
 	    		a.setHeaderText(null);
-	    		a.setTitle("Mot de passe erone");
-	    		a.setContentText("Vous avez un entrer un mot de passe faux");
+	    		a.setTitle("\u0643\u0644\u0645\u0629 \u0627\u0644\u0645\u0631\u0648\u0631 \u0644\u064a\u0633\u062a \u0635\u062d\u064a\u062d\u0629");
+	    		a.setContentText("\u0647\u0645\u0645\u0645\u0645\u0645\u002c \u0643\u0644\u0645\u0629 \u0627\u0644\u0645\u0631\u0648\u0631 \u0644\u064a\u0633\u062a \u0635\u062d\u064a\u062d\u0629\u002e \u0645\u0646 \u0641\u0636\u0644\u0643 \u062d\u0627\u0648\u0644 \u0645\u0631\u0629 \u0627\u062e\u0631\u0649");
 	    		a.showAndWait();
 	    	}
 				
