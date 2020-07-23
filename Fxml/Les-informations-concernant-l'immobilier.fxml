@@ -35,48 +35,53 @@
                </columnConstraints>
                <rowConstraints>
                   <RowConstraints maxHeight="61.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="61.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="78.0" minHeight="10.0" prefHeight="46.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="89.0" minHeight="10.0" prefHeight="49.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="165.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="165.0" minHeight="10.0" prefHeight="72.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="165.0" minHeight="10.0" prefHeight="72.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="165.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Label alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="246.0" text="Localisation X/Y" GridPane.columnIndex="1" />
-                  <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="18.0" prefHeight="31.0" prefWidth="248.0" text="جماعة" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <Label alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="246.0" text="دائرة" GridPane.columnIndex="1">
                      <font>
                         <Font size="21.0" />
                      </font></Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="67.0" prefHeight="31.0" prefWidth="247.0" text="دوار" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="18.0" prefHeight="31.0" prefWidth="248.0" text="جماعة" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <font>
                         <Font size="21.0" />
                      </font></Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="118.0" prefHeight="31.0" prefWidth="249.0" text="عمالة" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="67.0" prefHeight="31.0" prefWidth="247.0" text="دوار" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font size="21.0" />
                      </font></Label>
-                  <TextField fx:id="localisation" prefHeight="30.0" prefWidth="247.0" />
-                  <TextField fx:id="douar" layoutX="179.0" layoutY="19.0" prefHeight="30.0" prefWidth="247.0" GridPane.rowIndex="1" />
-                  <TextField fx:id="commune" layoutX="179.0" layoutY="68.0" prefHeight="30.0" prefWidth="247.0" GridPane.rowIndex="2" />
-                  <Button fx:id="suivant" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#suivant" prefHeight="25.0" prefWidth="89.0" text="التالي" GridPane.rowIndex="5">
+                  <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="118.0" prefHeight="31.0" prefWidth="249.0" text="عمالة" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                     <font>
+                        <Font size="21.0" />
+                     </font></Label>
+                  <TextField fx:id="daaira" alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="247.0" />
+                  <TextField fx:id="douar" alignment="CENTER_RIGHT" layoutX="179.0" layoutY="19.0" prefHeight="30.0" prefWidth="247.0" GridPane.rowIndex="2" />
+                  <TextField fx:id="commune" alignment="CENTER_RIGHT" layoutX="179.0" layoutY="68.0" prefHeight="30.0" prefWidth="247.0" GridPane.rowIndex="3" />
+                  <Button fx:id="suivant" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#suivant" prefHeight="25.0" prefWidth="89.0" text="التالي" GridPane.rowIndex="7">
                      <GridPane.margin>
                         <Insets />
                      </GridPane.margin>
                   </Button>
-                  <Button fx:id="precedent" layoutX="405.0" layoutY="247.0" mnemonicParsing="false" onMouseClicked="#precedent" prefHeight="25.0" prefWidth="89.0" text="السابق" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                  <Button fx:id="precedent" layoutX="405.0" layoutY="247.0" mnemonicParsing="false" onMouseClicked="#precedent" prefHeight="25.0" prefWidth="89.0" text="السابق" GridPane.columnIndex="1" GridPane.rowIndex="7">
                      <GridPane.margin>
                         <Insets left="160.0" />
                      </GridPane.margin></Button>
-                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="2.0" GridPane.rowIndex="4">
+                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="2.0" GridPane.rowIndex="5">
                      <children>
                         <Button fx:id="attistationFileButton" mnemonicParsing="false" onMouseClicked="#uploadFile" prefHeight="25.0" prefWidth="252.0" text="اختيار ملف" />
-                        <Label fx:id="attestationFilePath" prefHeight="25.0" prefWidth="247.0" text=" " />
+                        <Label fx:id="attestationFilePath" alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="247.0" text=" " />
                      </children>
                      <padding>
                         <Insets top="11.0" />
                      </padding>
                   </VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                      <children>
                         <Label alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="249.0" text="شهادة ملكية العقار">
                            <font>
@@ -87,7 +92,34 @@
                         <Insets top="10.0" />
                      </padding>
                   </VBox>
-                  <TextField fx:id="province" layoutX="245.0" layoutY="107.0" prefHeight="30.0" prefWidth="247.0" GridPane.rowIndex="3" />
+                  <TextField fx:id="province" alignment="CENTER_RIGHT" layoutX="245.0" layoutY="107.0" prefHeight="30.0" prefWidth="247.0" GridPane.rowIndex="4" />
+                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="2.0" GridPane.rowIndex="6">
+                     <children>
+                        <Button fx:id="planImmobilierFileButton" mnemonicParsing="false" onMouseClicked="#uploadFile" prefHeight="25.0" prefWidth="252.0" text="اختيار ملف" />
+                        <Label fx:id="planImmobilierFilePath" alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="247.0" text=" " />
+                     </children>
+                     <padding>
+                        <Insets top="11.0" />
+                     </padding>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                     <children>
+                        <Label alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="249.0" text="تصميم العقار">
+                           <font>
+                              <Font size="21.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </VBox>
+                  <Label alignment="CENTER_RIGHT" prefHeight="36.0" prefWidth="247.0" text="قيادة" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="quiada" alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="247.0" GridPane.rowIndex="1" />
                </children>
             </GridPane>
             <Label fx:id="textError" contentDisplay="CENTER" layoutX="162.0" layoutY="382.0" prefHeight="29.0" prefWidth="350.0" textFill="#ff2d2d">
