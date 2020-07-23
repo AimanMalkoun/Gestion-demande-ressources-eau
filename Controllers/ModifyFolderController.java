@@ -43,7 +43,7 @@ public class ModifyFolderController{
 		try {
 			Statement statement = conection.connection.createStatement();
 	    	ResultSet query;
-			query = statement.executeQuery("select `IdDossier`,concat(nom, ' ' , prenom) as 'nom complet', `cin` from dossier where `cin`= '" + cinInputSearch.getText()+ " '");
+			query = statement.executeQuery("select `IdDossier`,`nom` || ' ' || `prenom` as 'nom complet', `cin` from dossier where `cin`= '" + cinInputSearch.getText()+ "'");
 			while(query.next())
 			{
 				folderId.setText(query.getString("IdDossier"));
@@ -71,7 +71,7 @@ public class ModifyFolderController{
 			try {
 		    	ConnectionClassMaria conection =  new ConnectionClassMaria(); 				
 				statement = conection.connection.createStatement();
-				ResultSet query = statement.executeQuery("select `IdDossier` from dossier where `cin`= '" + cinInputSearch.getText()+ " '");
+				ResultSet query = statement.executeQuery("select `IdDossier` from dossier where `cin`= '" + cinInputSearch.getText()+ "'");
 				while(query.next())
 				{
 					FXMLLoader loader= new FXMLLoader();
