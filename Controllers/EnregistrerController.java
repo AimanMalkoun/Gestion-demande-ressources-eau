@@ -106,16 +106,15 @@ public class EnregistrerController implements Initializable {
 		String pathCIN = LesInfoDuDemandeurController.demandeur.getCinFile().getAbsolutePath();
 		String pathDemandeCreusement = LesInfoDuDemandeurController.demandeur.getDemandeFile().getAbsolutePath();
 		String pathAttistation = LesInfoDelImmobilierController.InfoSurImmobilier.getAttestationDePocession().getAbsolutePath();
-		String pathPlanEau = InformationsConcernantPointDeauController.poinDeau.getPlanEau().getAbsolutePath();
-
-		/* Cr�ation de l'objet InputStream afin de le stocker dans la base de donn�es */
+		
+		/* Creation de l'objet InputStream afin de le stocker dans la base de donn�es */
 
 		InputStream cinFile = new FileInputStream(new File(pathCIN));
 		InputStream demandeCreusement = new FileInputStream(new File(pathDemandeCreusement));
 		InputStream attistation = new FileInputStream(new File(pathAttistation));
-		InputStream planEau = new FileInputStream(new File(pathPlanEau));
+		
 
-		/* la requ�te sql de l'insertion */
+		/* la requite sql de l'insertion */
 
 		String sql = "INSERT INTO `dossier`(`IdDossier`, `Nom`, `Prenom`, `cin`, `cinImg`, `typeDemande`, `demandeCreusement`,"
 				   + " `localisationImmobilier`, `attistationPocession`, `Douar`, `Commune`, `Province`,"
@@ -143,7 +142,7 @@ public class EnregistrerController implements Initializable {
 			stat.setString(13, InformationsConcernantPointDeauController.poinDeau.getLocalisationPoint());
 			stat.setFloat(14, InformationsConcernantPointDeauController.poinDeau.getDebit());
 			stat.setFloat(15, InformationsConcernantPointDeauController.poinDeau.getProfondeur());
-			stat.setBlob(16, planEau);
+			stat.setFloat(16, InformationsConcernantPointDeauController.poinDeau.getPlanEau());
 			stat.setFloat(17, InformationsConcernantPointDeauController.poinDeau.getRabattement());
 			
 			stat.setDate(18, Date.valueOf(LesInfoDuDemandeurController.demandeur.getDateDepotDossier()));

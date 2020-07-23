@@ -1,7 +1,5 @@
 package Classes;
 
-import java.io.File;
-
 public class PointDeau {
 	/*
 	 * declaration des attributs (private) .
@@ -10,7 +8,7 @@ public class PointDeau {
 	private String localisationPoint;
 	private float debit;
 	private float profondeur;
-	private File planEau;
+	private float planEau;
 	private float rabattement;
 
 	
@@ -24,12 +22,12 @@ public class PointDeau {
 	 * le constricteur de la classe initialisé par les attributs .
 	 */
 
-	public PointDeau(String localisationPoint, float debit, float profondeur, File planEau, float rabattement) {
+	public PointDeau(String localisationPoint, float debit, float profondeur, float poinEau, float rabattement) {
 
 		setLocalisationPoint(localisationPoint);
 		setDebit(debit);
 		setProfondeur(profondeur);
-		setPlanEau(planEau);
+		setPlanEau(poinEau);
 		setRabattement(rabattement);
 	}
 
@@ -73,11 +71,11 @@ public class PointDeau {
 		this.profondeur = profondeur;
 	}
 
-	public File getPlanEau() {
+	public float getPlanEau() {
 		return planEau;
 	}
 
-	public void setPlanEau(File planEau) {
+	public void setPlanEau(float planEau) {
 		this.planEau = planEau;
 	}
 
