@@ -7,8 +7,6 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -16,20 +14,84 @@
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="485.0" minWidth="800.0" prefHeight="485.0" prefWidth="858.0" stylesheets="@../GestionDemandeEau/application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ModifyFolderController">
-   <left>
+   <top>
+      <Pane prefHeight="109.0" prefWidth="858.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER" />
+   </top>
+   <center>
+      <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <content>
+            <Pane prefHeight="585.0" prefWidth="657.0">
+               <children>
+                  <TextField fx:id="cinInputSearch" layoutX="67.0" layoutY="45.0" prefHeight="30.0" prefWidth="163.0" promptText="بطاقة الهوية الوطنية" />
+                  <Button layoutX="277.0" layoutY="45.0" mnemonicParsing="false" onAction="#SearchFolderUsingCin" style="-fx-background-color: #2b4067;" text="ابحث عن مجلد" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Button>
+                  <Button layoutX="439.0" layoutY="45.0" mnemonicParsing="false" onAction="#showFolderUsingCin" style="-fx-background-color: #2b4067;" text="Affichr tout les dossier" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Button>
+                  <HBox alignment="CENTER" layoutX="48.0" layoutY="108.0" prefHeight="281.0" prefWidth="500.0" spacing="10.0" style="-fx-border-color: #000000;">
+                     <children>
+                        <VBox prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #000000;">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="166.6" text="معرف المجلد" textAlignment="CENTER" textFill="#280808">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                              </Label>
+                              <Separator prefHeight="20.0" prefWidth="167.0" />
+                              <Label fx:id="folderId" onMouseClicked="#modifySelectedFolder" prefHeight="40.0" prefWidth="166.6">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #000000;">
+                           <children>
+                              <Label prefHeight="40.0" prefWidth="167.0" text="بطاقة الهوية الوطنية لمقدم الطلب">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                              </Label>
+                              <Separator prefHeight="20.0" prefWidth="167.0" />
+                              <Label fx:id="cinDemandeur" onMouseClicked="#modifySelectedFolder" prefHeight="40.0" prefWidth="200.0">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="279.0" prefWidth="200.0" style="-fx-border-color: #000000;">
+                           <children>
+                              <Label prefHeight="40.0" prefWidth="211.0" text="الاسم الكامل لمقدم الطلب">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                              </Label>
+                              <Separator prefHeight="20.0" prefWidth="199.0" />
+                              <Label fx:id="nomComplet" onMouseClicked="#modifySelectedFolder" prefHeight="40.0" prefWidth="166.6">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </Pane>
+         </content>
+      </ScrollPane>
+   </center>
+   <right>
       <VBox id="vboxStyle" prefHeight="556.0" prefWidth="186.0" spacing="20.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
          <children>
             <Button id="buttonProfile" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToHome" prefHeight="25.0" prefWidth="189.0" style="-fx-background-color: #A7BDE7;" text="الصفحة الرئيسية">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button id="buttonOptio" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: #A7BDE7;" text="Quelque options">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button id="buttonSetting" layoutX="10.0" layoutY="35.0" mnemonicParsing="false" onAction="#changePassword" prefHeight="33.0" prefWidth="143.0" style="-fx-background-color: #A7BDE7;" text="Change password">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -47,104 +109,5 @@
             <Insets top="40.0" />
          </padding>
       </VBox>
-   </left>
-   <top>
-      <Pane prefHeight="109.0" prefWidth="858.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fitHeight="95.0" fitWidth="143.0" layoutX="722.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Image/logo.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="95.0" fitWidth="141.0" layoutX="43.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Image/royaumedumaroc.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="376.0" layoutY="14.0" text="ROYAUME DU MAROC" textFill="WHITE">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <Label layoutX="311.0" layoutY="46.0" text="MINISTÈRE DE L’EQUIPEMENT, DU TRANSPORT" textFill="WHITE">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <Label layoutX="353.0" layoutY="78.0" text="DE LA LOGISTIQUE ET DE L’EAU" textFill="WHITE">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
-   </top>
-   <center>
-      <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <content>
-            <Pane prefHeight="585.0" prefWidth="657.0">
-               <children>
-                  <TextField fx:id="cinInputSearch" layoutX="67.0" layoutY="45.0" prefHeight="30.0" prefWidth="163.0" promptText="بطاقة الهوية الوطنية" />
-                  <Button layoutX="277.0" layoutY="45.0" mnemonicParsing="false" onAction="#SearchFolderUsingCin" style="-fx-background-color: #2b4067;" text="ابحث عن مجلد" textFill="WHITE">
-                     <font>
-                        <Font size="14.0" />
-                     </font></Button>
-                  <Button layoutX="439.0" layoutY="45.0" mnemonicParsing="false" onAction="#showFolderUsingCin" style="-fx-background-color: #2b4067;" text="Affichr tout les dossier" textFill="WHITE">
-                     <font>
-                        <Font size="14.0" />
-                     </font></Button>
-                  <HBox layoutX="48.0" layoutY="108.0" prefHeight="281.0" prefWidth="500.0">
-                     <children>
-                        <VBox prefHeight="200.0" prefWidth="166.6">
-                           <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="166.6" text="معرف المجلد" textAlignment="CENTER" textFill="#280808">
-                                 <font>
-                                    <Font size="19.0" />
-                                 </font>
-                              </Label>
-                              <Separator prefHeight="20.0" prefWidth="167.0" />
-                              <Label fx:id="folderId" onMouseClicked="#modifySelectedFolder" prefHeight="40.0" prefWidth="166.6">
-                                 <font>
-                                    <Font size="19.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </VBox>
-                        <VBox prefHeight="200.0" prefWidth="166.6">
-                           <children>
-                              <Label prefHeight="40.0" prefWidth="167.0" text="بطاقة الهوية الوطنية لمقدم الطلب">
-                                 <font>
-                                    <Font size="19.0" />
-                                 </font>
-                              </Label>
-                              <Separator prefHeight="20.0" prefWidth="167.0" />
-                              <Label fx:id="cinDemandeur" onMouseClicked="#modifySelectedFolder" prefHeight="40.0" prefWidth="166.6">
-                                 <font>
-                                    <Font size="19.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </VBox>
-                        <VBox prefHeight="200.0" prefWidth="166.6">
-                           <children>
-                              <Label prefHeight="40.0" prefWidth="167.0" text="الاسم الكامل لمقدم الطلب">
-                                 <font>
-                                    <Font size="19.0" />
-                                 </font>
-                              </Label>
-                              <Separator prefHeight="20.0" prefWidth="167.0" />
-                              <Label fx:id="nomComplet" onMouseClicked="#modifySelectedFolder" prefHeight="40.0" prefWidth="166.6">
-                                 <font>
-                                    <Font size="19.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </VBox>
-                     </children>
-                  </HBox>
-               </children>
-            </Pane>
-         </content>
-      </ScrollPane>
-   </center>
+   </right>
 </BorderPane>

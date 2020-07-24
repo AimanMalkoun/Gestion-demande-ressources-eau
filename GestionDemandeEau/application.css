@@ -5,7 +5,7 @@
 
 #buttonProfile, #buttonOptio, #buttonSetting, #buttonLogin{
 	-fx-padding: 8px 0 8px 0;
-	/*-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, .8), 3, 3, 3, 3);*/
+	
 }
 #switchButton:hover{
 	-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, .8), 3, 3, 3, 3);
