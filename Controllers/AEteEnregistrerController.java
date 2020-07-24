@@ -58,6 +58,7 @@ public class AEteEnregistrerController implements Initializable {
 		LesInfoDuDemandeurController.demandeur.setDemandeFile(null);
 		LesInfoDuDemandeurController.demandeur.setDateDepotDossier(null);
 		
+		LesInfoDelImmobilierController.InfoSurImmobilier.setNomImmobilier("");
 		LesInfoDelImmobilierController.InfoSurImmobilier.setDaaira("");
 		LesInfoDelImmobilierController.InfoSurImmobilier.setQuiada("");
 		LesInfoDelImmobilierController.InfoSurImmobilier.setAttestationDePocession(null);

@@ -1,31 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.Cursor?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="473.0" prefWidth="654.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LoginStageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="563.0" prefWidth="753.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LoginStageController">
    <children>
-      <Label layoutX="184.0" layoutY="122.0" prefHeight="46.0" prefWidth="241.0" text="تسجيل الدخول">
-         <font>
-            <Font name="Tahoma" size="24.0" />
-         </font>
-      </Label>
-      <PasswordField fx:id="password" layoutX="184.0" layoutY="207.0" prefHeight="45.0" prefWidth="287.0" promptText="كلمة المرور" style="-fx-background-color: none; -fx-border-color: rgb(130, 199, 255); -fx-border-radius: 10;">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </PasswordField>
-      <Button layoutX="340.0" layoutY="306.0" mnemonicParsing="false" onAction="#login" prefHeight="45.0" prefWidth="130.0" style="-fx-border-radius: 15; -fx-background-color: rgb(60, 138, 255); -fx-border-color: rgb(60, 138, 255); -fx-border-radius: 20;" text="تسجيل الدخول" textFill="WHITE">
-         <font>
-            <Font size="18.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
+      <StackPane prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <effect>
+            <DropShadow />
+         </effect>
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <VBox style="-fx-background-color: #2b4067;" HBox.hgrow="ALWAYS" />
+                  <VBox alignment="TOP_RIGHT" style="-fx-background-color: white;" HBox.hgrow="ALWAYS">
+                     <children>
+                        <ImageView fitHeight="120.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Image/Logo5.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <StackPane.margin>
+                  <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+               </StackPane.margin>
+               <children>
+                  <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="450.0" prefWidth="450.0" style="-fx-background-color: white; -fx-border-color: #2b4067; -fx-border-width: 4px;">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <children>
+                        <Label alignment="CENTER" prefHeight="37.0" prefWidth="372.0" text="مرحبا بكم" textFill="#2b4067">
+                           <VBox.margin>
+                              <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="450.0" style="-fx-background-color: transparent;">
+                           <children>
+                              <PasswordField fx:id="password" alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="246.0" promptText="كلمة المرور " style="-fx-border-color: #2b4067; -fx-border-width: 2px;" HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </PasswordField>
+                              <ImageView fitHeight="32.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/lock.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <Label fx:id="msgError" alignment="CENTER" prefHeight="34.0" prefWidth="279.0" textFill="RED">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Button id="switchButton" mnemonicParsing="false" onAction="#login" prefHeight="39.0" prefWidth="178.0" style="-fx-background-color: #2b4067; -fx-border-color: #2b4067; -fx-border-width: 2px;" stylesheets="@../GestionDemandeEau/application.css" text="تسجيل الدخول" textFill="WHITE">
+                           <VBox.margin>
+                              <Insets bottom="30.0" left="30.0" right="30.0" top="40.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </children>
+      </StackPane>
    </children>
-</Pane>
+</AnchorPane>

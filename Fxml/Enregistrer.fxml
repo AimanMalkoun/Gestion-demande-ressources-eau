@@ -293,12 +293,12 @@
                            </font></Label>
                      </children>
                   </GridPane>
-                  <Button fx:id="modifyButton" layoutX="563.0" layoutY="770.0" mnemonicParsing="false" onAction="#modifyButtonMethode" prefHeight="25.0" prefWidth="91.0" style="-fx-background-color: #2b4067;" text="تعديل" textFill="WHITE">
+                  <Button id="switchButton" fx:id="modifyButton" layoutX="563.0" layoutY="770.0" mnemonicParsing="false" onAction="#modifyButtonMethode" prefHeight="25.0" prefWidth="91.0" style="-fx-background-color: #2b4067;" text="تعديل" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Button>
-                  <Button fx:id="saveBuuton" layoutX="50.0" layoutY="770.0" mnemonicParsing="false" onAction="#savebuttonMethode" prefHeight="37.0" prefWidth="108.0" style="-fx-background-color: #2b4067;" text="حفظ" textFill="WHITE">
+                  <Button id="switchButton" fx:id="saveBuuton" layoutX="50.0" layoutY="770.0" mnemonicParsing="false" onAction="#savebuttonMethode" prefHeight="37.0" prefWidth="108.0" style="-fx-background-color: #2b4067;" stylesheets="@../GestionDemandeEau/application.css" text="حفظ" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -354,6 +354,9 @@
                <effect>
                   <DropShadow height="8.0" offsetX="8.0" offsetY="8.0" radius="3.5" spread="0.8" width="8.0" />
                </effect>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
          </children>
          <padding>

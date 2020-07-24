@@ -16,14 +16,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="601.0" prefWidth="877.0" stylesheets="@../GestionDemandeEau/application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LesInfoDuDemandeurController">
    <top>
-      <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="104.0" prefWidth="877.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="93.0" prefWidth="877.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
          <children>
             <Label alignment="CENTER" prefHeight="53.0" prefWidth="453.0" text="المعلومات الخاصة بالمواطن" textFill="WHITE" HBox.hgrow="ALWAYS">
                <font>
-                  <Font size="36.0" />
+                  <Font size="30.0" />
                </font>
                <HBox.margin>
                   <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
@@ -134,7 +133,7 @@
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <Button fx:id="suivantButton" mnemonicParsing="false" onMouseClicked="#suivant" prefHeight="29.0" prefWidth="104.0" style="-fx-background-color: #2b4067;" text="التالي" textFill="WHITE" GridPane.rowIndex="7">
+                                    <Button id="switchButton" fx:id="suivantButton" mnemonicParsing="false" onMouseClicked="#suivant" prefHeight="29.0" prefWidth="104.0" style="-fx-background-color: #2b4067;" text="التالي" textFill="WHITE" GridPane.rowIndex="7">
                                        <cursor>
                                           <Cursor fx:constant="HAND" />
                                        </cursor>
@@ -188,7 +187,7 @@
                   <DropShadow height="8.0" offsetX="8.0" offsetY="8.0" radius="3.5" spread="0.8" width="8.0" />
                </effect>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="106.0" style="-fx-background-color: #ffffff;" text="العقار" textFill="#2b4067">
+            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="106.0" style="-fx-background-color: #ffffff;" text="العقار" textFill="#2b4067">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -196,7 +195,7 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="106.0" style="-fx-background-color: #ffffff;" text="نقطة الماء" textFill="#2b4067">
+            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="106.0" style="-fx-background-color: #ffffff;" text="نقطة الماء" textFill="#2b4067">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -204,7 +203,7 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="121.0" style="-fx-background-color: #ffffff;" text="التسجيل">
+            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="121.0" style="-fx-background-color: #ffffff;" text="التسجيل" textFill="#2b4067">
                <font>
                   <Font size="14.0" />
                </font>
