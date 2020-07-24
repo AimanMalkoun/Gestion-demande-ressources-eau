@@ -78,9 +78,9 @@
                   <TextField fx:id="poinEau" alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="235.0" GridPane.rowIndex="2" />
                </children>
             </GridPane>
-            <Label fx:id="textError" contentDisplay="CENTER" layoutX="181.0" layoutY="374.0" prefHeight="29.0" prefWidth="350.0" textFill="#ff2d2d">
+            <Label fx:id="textError" alignment="CENTER" contentDisplay="CENTER" layoutX="176.0" layoutY="366.0" prefHeight="35.0" prefWidth="350.0" textFill="RED">
                <font>
-                  <Font size="15.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
          </children>
@@ -89,7 +89,7 @@
    <right>
       <VBox id="vboxStyle" alignment="CENTER" prefHeight="447.0" prefWidth="166.0" spacing="20.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
          <children>
-            <Button id="buttonProfile" alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="186.0" style="-fx-background-color: #4cd4b9;" text="المواطن" textFill="WHITE">
+            <Button id="buttonProfile2" alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="186.0" style="-fx-background-color: #4cd4b9;" text="المواطن" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -100,7 +100,7 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button id="buttonOptio" alignment="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: #4cd4b9;" text="العقار" textFill="WHITE">
+            <Button id="buttonOptio2" alignment="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: #4cd4b9;" text="العقار" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -111,7 +111,7 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button id="buttonSetting" alignment="CENTER" layoutX="10.0" layoutY="35.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="106.0" style="-fx-background-color: #ffffff;" text="نقطة الماء" textFill="#2b4067">
+            <Button id="buttonSetting2" alignment="CENTER" layoutX="10.0" layoutY="35.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="106.0" style="-fx-background-color: #ffffff;" text="نقطة الماء" textFill="#2b4067">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
