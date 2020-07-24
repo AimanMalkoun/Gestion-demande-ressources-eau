@@ -9,26 +9,23 @@ public class PointDeau {
 	private float debit;
 	private float profondeur;
 	private float planEau;
-	private float rabattement;
 
-	
-
-	//Constructeur par defaut il metre tout les atribut null
+	// Constructeur par defaut il metre tout les atribut null
 	public PointDeau() {
-		
+
 	}
 
 	/*
 	 * le constricteur de la classe initialisé par les attributs .
 	 */
 
-	public PointDeau(String localisationPoint, float debit, float profondeur, float poinEau, float rabattement) {
+	public PointDeau(String localisationPoint, float debit, float profondeur, float poinEau) {
 
 		setLocalisationPoint(localisationPoint);
 		setDebit(debit);
 		setProfondeur(profondeur);
 		setPlanEau(poinEau);
-		setRabattement(rabattement);
+
 	}
 
 	/*
@@ -40,9 +37,9 @@ public class PointDeau {
 		setDebit(pointDeau.debit);
 		setProfondeur(pointDeau.profondeur);
 		setPlanEau(pointDeau.planEau);
-		setRabattement(pointDeau.rabattement);
+
 	}
-	
+
 	/*
 	 * les getters et les setters des attributs de la classe.
 	 */
@@ -78,14 +75,5 @@ public class PointDeau {
 	public void setPlanEau(float planEau) {
 		this.planEau = planEau;
 	}
-
-	public float getRabattement() {
-		return rabattement;
-	}
-
-	public void setRabattement(float rabattement) {
-		this.rabattement = rabattement;
-	}
-
 
 }

@@ -26,14 +26,14 @@ public class Main extends Application {
 			 * 
 			 */
 
-			Parent loginRoot = (Parent) FXMLLoader.load(getClass().getResource("../Fxml/Dashboard.fxml")); // load the
+			Parent loginRoot = (Parent) FXMLLoader.load(getClass().getResource("../Fxml/InformationsDuDemandeur.fxml")); // load the
 																											// scene in
 																											// root
 			Scene loginScene = new Scene(loginRoot);
 			primaryStage.setTitle("Gestion des demandes d'autorisation pour l'utilisation des ressources en eau.");
 			primaryStage.setScene(loginScene);
 
-			primaryStage.getIcons().add(new Image("/Image/Logo4.png"));
+			primaryStage.getIcons().add(new Image("/Image/Logo5.png"));
 			primaryStage.show();
 
 		} catch (Exception e) {

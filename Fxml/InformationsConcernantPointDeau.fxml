@@ -42,28 +42,23 @@
                   <RowConstraints maxHeight="165.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="165.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="165.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="165.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Label contentDisplay="RIGHT" prefHeight="30.0" prefWidth="239.0" text=" الاحداثيات ( X / Y )                     :       " textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Label contentDisplay="RIGHT" prefHeight="30.0" prefWidth="239.0" text=" الاحداثيات ( X / Y )               :    " textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="18.0" />
                      </font></Label>
-                  <Label layoutX="10.0" layoutY="18.0" prefHeight="31.0" prefWidth="237.0" text="العمق ( m )                               :       " textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                  <Label layoutX="10.0" layoutY="18.0" prefHeight="31.0" prefWidth="237.0" text="العمق ( m )                         :    " textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="4">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="18.0" />
                      </font></Label>
-                  <Label layoutX="10.0" layoutY="67.0" prefHeight="31.0" prefWidth="242.0" text="الصبيب      ( l / s )                     :       " textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <Label layoutX="10.0" layoutY="67.0" prefHeight="31.0" prefWidth="242.0" text="الصبيب      ( l / s )               :    " textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="18.0" />
                      </font></Label>
-                  <Label layoutX="10.0" layoutY="118.0" prefHeight="31.0" prefWidth="228.0" text="السحب ( s )                               :       " textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="5">
-                     <font>
-                        <Font size="14.0" />
-                     </font></Label>
-                  <TextField fx:id="debit" alignment="CENTER_RIGHT" layoutX="179.0" layoutY="19.0" prefHeight="30.0" prefWidth="247.0" GridPane.rowIndex="3" />
-                  <TextField fx:id="profondeur" alignment="CENTER_RIGHT" layoutX="179.0" layoutY="68.0" prefHeight="30.0" prefWidth="247.0" GridPane.rowIndex="4" />
-                  <Button id="switchButton" fx:id="backButton" alignment="CENTER" mnemonicParsing="false" onAction="#backButtonMethode" prefHeight="30.0" prefWidth="87.0" text="رجوع" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                  <TextField fx:id="locationEau" alignment="CENTER_RIGHT" layoutX="179.0" layoutY="19.0" prefHeight="30.0" prefWidth="235.0" GridPane.rowIndex="1" />
+                  <TextField fx:id="profondeur" alignment="CENTER_RIGHT" layoutX="179.0" layoutY="68.0" prefHeight="30.0" prefWidth="235.0" GridPane.rowIndex="4" />
+                  <Button id="switchButton" fx:id="backButton" alignment="CENTER" mnemonicParsing="false" onAction="#backButtonMethode" prefHeight="30.0" prefWidth="87.0" text="رجوع" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="6">
                      <GridPane.margin>
                         <Insets left="160.0" />
                      </GridPane.margin>
@@ -71,17 +66,16 @@
                         <Font size="15.0" />
                      </font>
                   </Button>
-                  <TextField fx:id="rabattement" alignment="CENTER_RIGHT" layoutX="179.0" layoutY="125.0" prefHeight="30.0" prefWidth="247.0" GridPane.rowIndex="5" />
-                  <Label contentDisplay="RIGHT" layoutX="10.0" layoutY="148.0" prefHeight="31.0" prefWidth="236.0" text="مستوى الماء ( m )                    :       " textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <Label contentDisplay="RIGHT" layoutX="10.0" layoutY="148.0" prefHeight="31.0" prefWidth="236.0" text="مستوى الماء ( m )                :    " textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="18.0" />
                      </font></Label>
-                  <Button id="switchButton" fx:id="goButton" alignment="CENTER" contentDisplay="RIGHT" layoutX="405.0" layoutY="247.0" mnemonicParsing="false" onAction="#goMethode" prefHeight="30.0" prefWidth="89.0" text="التالي " textFill="WHITE" GridPane.rowIndex="7">
+                  <Button id="switchButton" fx:id="goButton" alignment="CENTER" contentDisplay="RIGHT" layoutX="405.0" layoutY="247.0" mnemonicParsing="false" onAction="#goMethode" prefHeight="30.0" prefWidth="89.0" text="التالي " textFill="WHITE" GridPane.rowIndex="6">
                      <font>
                         <Font size="15.0" />
                      </font></Button>
-                  <TextField fx:id="locationEau" alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="247.0" GridPane.rowIndex="1" />
-                  <TextField fx:id="poinEau" alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="217.0" GridPane.rowIndex="2" />
+                  <TextField fx:id="debit" alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="235.0" GridPane.rowIndex="3" />
+                  <TextField fx:id="poinEau" alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="235.0" GridPane.rowIndex="2" />
                </children>
             </GridPane>
             <Label fx:id="textError" contentDisplay="CENTER" layoutX="181.0" layoutY="374.0" prefHeight="29.0" prefWidth="350.0" textFill="#ff2d2d">
@@ -117,7 +111,7 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button id="buttonSetting" alignment="CENTER" layoutX="10.0" layoutY="35.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: #ffffff;" text="نقطة الماء" textFill="#2b4067">
+            <Button id="buttonSetting" alignment="CENTER" layoutX="10.0" layoutY="35.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="106.0" style="-fx-background-color: #ffffff;" text="نقطة الماء" textFill="#2b4067">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -128,8 +122,13 @@
                   <Font size="14.0" />
                </font>
                <effect>
-                  <DropShadow height="10.5" radius="2.125" width="0.0" />
+                  <DropShadow height="8.0" offsetX="8.0" offsetY="8.0" radius="3.5" spread="0.8" width="8.0" />
                </effect>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="106.0" style="-fx-background-color: #ffffff;" text="التسجيل" textFill="#2b4067">
+               <font>
+                  <Font size="14.0" />
+               </font>
             </Button>
          </children>
          <padding>

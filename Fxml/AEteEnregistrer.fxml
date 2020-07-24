@@ -51,7 +51,7 @@
    <right>
       <VBox id="vboxStyle" alignment="CENTER" prefHeight="447.0" prefWidth="166.0" spacing="20.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
          <children>
-            <Button id="buttonProfile" alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="186.0" style="-fx-background-color: #4cd4b9;" text="المواطن" textFill="WHITE">
+            <Button id="buttonProfile2" alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" prefWidth="106.0" style="-fx-background-color: #4cd4b9;" text="المواطن" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -62,7 +62,7 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button id="buttonOptio" alignment="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: #4cd4b9;" text="العقار" textFill="WHITE">
+            <Button id="buttonOptio2" alignment="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: #4cd4b9;" text="العقار" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -73,7 +73,7 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button id="buttonSetting" alignment="CENTER" layoutX="10.0" layoutY="35.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="106.0" style="-fx-background-color: #4cd4b9;" text="نقطة الماء" textFill="#fcfcfc">
+            <Button id="buttonSetting2" alignment="CENTER" layoutX="10.0" layoutY="35.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="106.0" style="-fx-background-color: #4cd4b9;" text="نقطة الماء" textFill="#fcfcfc">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -84,7 +84,7 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="106.0" style="-fx-background-color: #4cd4b9;" text="التسجيل" textFill="WHITE">
+            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="106.0" style="-fx-background-color: #4cd4b9;" text="التسجيل" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>

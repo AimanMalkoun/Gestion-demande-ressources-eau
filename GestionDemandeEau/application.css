@@ -7,9 +7,10 @@
 	-fx-padding: 8px 0 8px 0;
 	
 }
-#buttonProfile:hover, #buttonOptio:hover, #buttonSetting:hover, #buttonLogin:hover, #switchButton:hover{
+#switchButton:hover, #buttonProfile:hover, #buttonOptio:hover, #buttonSetting:hover, #buttonLogin:hover{
 	-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, .8), 3, 3, 3, 3);
 }
+
 #switchButton, #storeFile{
 	-fx-background-color: #2b4067;
 }
@@ -21,7 +22,7 @@
 	-fx-padding:5px 10px 5px 10px;
 
 }
-
-#storeFile{
+#buttonProfile2, #buttonOptio2, #buttonSetting2, #buttonLogin2{
+	-fx-padding: 8px 0 8px 0;
 	
 }
