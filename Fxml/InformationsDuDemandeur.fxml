@@ -16,8 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane fx:id="scrollPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="599.0" prefWidth="851.0" stylesheets="@../GestionDemandeEau/application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LesInfoDuDemandeurController">
-   <content>
+
       <BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="592.0" minWidth="849.0" prefHeight="597.0" prefWidth="849.0" stylesheets="@../GestionDemandeEau/application.css">
          <top>
             <Pane prefHeight="109.0" prefWidth="864.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
@@ -177,5 +176,4 @@
             </VBox>
          </right>
       </BorderPane>
-   </content>
-</ScrollPane>
+
