@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="399.0" minWidth="800.0" prefHeight="529.0" prefWidth="867.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.modifierInfoDuDossierController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="399.0" minWidth="800.0" prefHeight="528.0" prefWidth="867.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.modifierInfoDuDossierController">
    <center>
       <ScrollPane fitToWidth="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <content>
@@ -187,7 +187,7 @@
                               <Font size="16.0" />
                            </font>
                         </Button>
-                        <HBox alignment="CENTER" prefHeight="36.0" prefWidth="314.0" spacing="10.0">
+                        <HBox alignment="CENTER_LEFT" prefHeight="36.0" prefWidth="314.0" spacing="10.0">
                            <children>
                               <Button fx:id="nomButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
                                  <font>
@@ -201,7 +201,7 @@
                               </Label>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER" layoutX="270.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="1">
+                        <HBox alignment="CENTER_LEFT" layoutX="270.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="1">
                            <children>
                               <Button fx:id="prenomButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
                                  <font>
@@ -215,7 +215,7 @@
                               </Label>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER" layoutX="270.0" layoutY="45.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="13">
+                        <HBox alignment="CENTER_LEFT" layoutX="270.0" layoutY="45.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="13">
                            <children>
                               <Button fx:id="provinceButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
                                  <font>
@@ -229,7 +229,7 @@
                               </Label>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="12">
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="12">
                            <children>
                               <Button fx:id="communeButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
                                  <font>
@@ -243,7 +243,7 @@
                               </Label>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="11">
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="11">
                            <children>
                               <Button fx:id="douarButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
                                  <font>
@@ -257,7 +257,7 @@
                               </Label>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="8">
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="8">
                            <children>
                               <Button fx:id="attestationPocessionImmobilierFileButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
                                  <font>
@@ -271,7 +271,7 @@
                               </Label>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="6">
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="6">
                            <children>
                               <Button fx:id="localisationImmobilierButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
                                  <font>
@@ -285,7 +285,7 @@
                               </Label>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="5">
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="5">
                            <children>
                               <Button fx:id="demandeCreusementFileButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
                                  <font>
@@ -299,7 +299,7 @@
                               </Label>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="4">
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="4">
                            <children>
                               <Button fx:id="typeDemandeButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
                                  <font>
@@ -313,7 +313,7 @@
                               </Label>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="3">
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="3">
                            <children>
                               <Button fx:id="cinFileButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
                                  <font>
@@ -327,7 +327,7 @@
                               </Label>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="2">
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="2">
                            <children>
                               <Button fx:id="codCinButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
                                  <font>
@@ -341,7 +341,7 @@
                               </Label>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER" layoutX="270.0" layoutY="354.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="14">
+                        <HBox alignment="CENTER_LEFT" layoutX="270.0" layoutY="354.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="14">
                            <children>
                               <Button fx:id="localisationPointEauButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
                                  <font>
@@ -355,7 +355,7 @@
                               </Label>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="17">
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="17">
                            <children>
                               <Button fx:id="planEauButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
                                  <font>
@@ -369,7 +369,7 @@
                               </Label>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="18">
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="18">
                            <children>
                               <Button fx:id="rabatementButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
                                  <font>
@@ -383,7 +383,7 @@
                               </Label>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="19">
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="19">
                            <children>
                               <Button fx:id="dateDepotDossierButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
                                  <font>
@@ -397,7 +397,7 @@
                               </Label>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="20">
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="20">
                            <children>
                               <Button fx:id="dateDenvoiAlabhouerEljaidaButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
                                  <font>
@@ -411,7 +411,7 @@
                               </Label>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="21">
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="21">
                            <children>
                               <Button fx:id="dateDebutEnquetePublicButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
                                  <font>
@@ -425,7 +425,7 @@
                               </Label>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="22">
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="22">
                            <children>
                               <Button fx:id="dateFinEnquetePublicButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
                                  <font>
@@ -439,7 +439,7 @@
                               </Label>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="23">
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="23">
                            <children>
                               <Button fx:id="dateSignaturPVparCEPButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
                                  <font>
@@ -453,7 +453,7 @@
                               </Label>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="24">
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="24">
                            <children>
                               <Button fx:id="AvisDeCEPButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
                                  <font>
@@ -467,7 +467,7 @@
                               </Label>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="25">
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="25">
                            <children>
                               <Button fx:id="dateEnvoitPvAbhoerEljadidaButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
                                  <font>
@@ -481,7 +481,7 @@
                               </Label>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="26">
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="26">
                            <children>
                               <Button fx:id="AvisAbhoerButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
                                  <font>
@@ -495,7 +495,7 @@
                               </Label>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="16">
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="16">
                            <children>
                               <Button fx:id="ProfondeurButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
                                  <font>
@@ -509,7 +509,7 @@
                               </Label>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="15">
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="15">
                            <children>
                               <Button fx:id="debitButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
                                  <font>
@@ -523,7 +523,7 @@
                               </Label>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER" layoutX="270.0" layoutY="796.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="27">
+                        <HBox alignment="CENTER_LEFT" layoutX="270.0" layoutY="796.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="27">
                            <children>
                               <Button fx:id="autorisationButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
                                  <font>
@@ -542,7 +542,7 @@
                               <Font size="21.0" />
                            </font>
                         </Label>
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="10">
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="10">
                            <children>
                               <Button fx:id="daiaraButton1" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
                                  <font>
@@ -561,7 +561,7 @@
                               <Font size="21.0" />
                            </font>
                         </Label>
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="9">
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="9">
                            <children>
                               <Button fx:id="quiadaButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
                                  <font>
@@ -585,7 +585,7 @@
                               <Font size="21.0" />
                            </font>
                         </Label>
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="7">
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="7">
                            <children>
                               <Button fx:id="planImmobilierFileButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
                                  <font>
