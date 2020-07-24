@@ -22,3 +22,7 @@
 	-fx-padding:5px 10px 5px 10px;
 
 }
+#buttonProfile2, #buttonOptio2, #buttonSetting2, #buttonLogin2{
+	-fx-padding: 8px 0 8px 0;
+	
+}
