@@ -67,6 +67,8 @@ public class EnregistrerController implements Initializable {
 	@FXML
 	private Label palnImm;
 	@FXML
+	private Label nomImmobilier;
+	@FXML
 	BorderPane borderPane;
 	public static int idDossier = 20200000;
 
@@ -130,8 +132,8 @@ public class EnregistrerController implements Initializable {
 				+ " `demandeCreusement`, `attistationPocession`, `Douar`, `Commune`, `Province`, `localisationPointEau`"
 				+ ", `Debit`, `Profendeur`, `PlanDeau`, `daaira`, `DateDepot`, `dateEnvoiABHOER`, "
 				+ "`dateDebut_EP`, `dateFin_EP`, `dateSignature_PV`, `AvisDeCEP`, `DateEnvoiDuPV_ABHOER`, "
-				+ "`AvisABHOER`, `Autorisation`, `qiyada`, `planImmo`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, "
-				+ "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				+ "`AvisABHOER`, `Autorisation`, `qiyada`, `planImmo`, `nomImmobilier`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, "
+				+ "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
 
 			/* l'insertion des el�ments dans la base de donn�es */
@@ -165,6 +167,7 @@ public class EnregistrerController implements Initializable {
 			stat.setString(25, "");
 			stat.setString(26, LesInfoDelImmobilierController.InfoSurImmobilier.getQuiada());
 			stat.setBlob(27, planImmFile);
+			stat.setString(28, LesInfoDelImmobilierController.InfoSurImmobilier.getNomImmobilier());
 			stat.execute();
 
 		} catch (SQLException e) {
@@ -192,14 +195,15 @@ public class EnregistrerController implements Initializable {
 
 		/* Les information concernant l'mmobilier */
 
+		nomImmobilier.setText(LesInfoDelImmobilierController.InfoSurImmobilier.getNomImmobilier());
 		daira.setText(LesInfoDelImmobilierController.InfoSurImmobilier.getDaaira());
 		douar.setText(LesInfoDelImmobilierController.InfoSurImmobilier.getDouar());
 		commune.setText(LesInfoDelImmobilierController.InfoSurImmobilier.getCommune());
 		province.setText(LesInfoDelImmobilierController.InfoSurImmobilier.getProvince());
-		AttestationPossession
-				.setText(LesInfoDelImmobilierController.InfoSurImmobilier.getAttestationDePocession().getName());
+		AttestationPossession.setText(LesInfoDelImmobilierController.InfoSurImmobilier.getAttestationDePocession().getName());
 		qiyada.setText(LesInfoDelImmobilierController.InfoSurImmobilier.getQuiada());
 		palnImm.setText(LesInfoDelImmobilierController.InfoSurImmobilier.getPlanImmobilier().getName());
+		
 		/* Les information concernant le point d'eau */
 
 		locationPoin.setText(InformationsConcernantPointDeauController.poinDeau.getLocalisationPoint());

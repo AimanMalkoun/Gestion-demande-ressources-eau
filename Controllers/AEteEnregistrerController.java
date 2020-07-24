@@ -85,13 +85,13 @@ public class AEteEnregistrerController implements Initializable {
 		ConnectionClass conn = new ConnectionClass();
 		Connection connection = conn.getConnection();
 		Statement stat = connection.createStatement();
-		String sql = "SELECT `Nom`,`Prenom`,`cin`,`Douar`,`Commune`,`Province`, `DateDepot`, `qiyada`, `daaira` FROM dossier WHERE `IdDossier` = "
+		String sql = "SELECT `Nom`,`Prenom`,`cin`,`nomImmobilier`,`Commune`,`Province`, `DateDepot`, `qiyada`, `daaira` FROM dossier WHERE `IdDossier` = "
 				+ Integer.toString(EnregistrerController.idDossier);
 		ResultSet result = stat.executeQuery(sql);
 		if (result.next()) {
 			nomPrenom = " " + result.getString("Nom") + "  " + result.getString("Prenom") + " ";
 			cin = " " + result.getString("cin") + " ";
-			nomImmobiler = " " + result.getString("Douar") + " ";
+			nomImmobiler = " " + result.getString("nomImmobilier") + " ";
 			commune = " " + result.getString("Commune") + " ";
 			prevince = " " + result.getString("Province") + " ";
 			dateDepot = result.getDate("DateDepot");
