@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -15,9 +16,9 @@
 
 <BorderPane fx:id="borderPane" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="877.0" stylesheets="@../GestionDemandeEau/application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.EnregistrerController">
    <top>
-      <Pane prefHeight="110.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
+      <Pane prefHeight="90.0" prefWidth="877.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="223.0" layoutY="29.0" prefHeight="53.0" prefWidth="516.0" text="الفحص الأخير للبيانات " textAlignment="RIGHT" textFill="WHITE">
+            <Label layoutX="215.0" layoutY="19.0" prefHeight="53.0" prefWidth="516.0" text="الفحص الأخير للبيانات " textAlignment="RIGHT" textFill="WHITE">
                <font>
                   <Font size="30.0" />
                </font>
@@ -30,7 +31,7 @@
          <content>
             <Pane id="paneStyle" maxWidth="0.0" prefHeight="806.0" prefWidth="694.0">
                <children>
-                  <Label alignment="CENTER" layoutX="46.0" layoutY="35.0" prefHeight="40.0" prefWidth="608.0" style="-fx-background-color: #4cd4b9;" text="Informations du demendeur :" textFill="#2b4067">
+                  <Label alignment="CENTER" layoutX="46.0" layoutY="11.0" prefHeight="45.0" prefWidth="608.0" style="-fx-background-color: #4cd4b9;" text="المعلومات الخاصة بالمواطن :" textFill="#2b4067">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -38,10 +39,10 @@
                         <Insets left="40.0" />
                      </padding>
                   </Label>
-                  <GridPane layoutX="100.0" layoutY="91.0" prefHeight="181.0" prefWidth="527.0">
+                  <GridPane alignment="CENTER" layoutX="77.0" layoutY="72.0" prefHeight="190.0" prefWidth="514.0" style="-fx-border-color: #2b4067;">
                      <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="284.0" minWidth="10.0" prefWidth="218.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="299.0" minWidth="10.0" prefWidth="299.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="284.0" minWidth="10.0" prefWidth="225.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="340.0" minWidth="10.0" prefWidth="231.0" />
                      </columnConstraints>
                      <rowConstraints>
                         <RowConstraints maxHeight="61.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
@@ -50,64 +51,75 @@
                         <RowConstraints maxHeight="165.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="165.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="165.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="165.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Label prefHeight="22.0" prefWidth="266.0" text="Nom                                                           :" GridPane.columnIndex="1">
+                        <Label alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="229.0" text="الإسم العائلي                                :" textAlignment="RIGHT" GridPane.columnIndex="1">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="10.0" layoutY="18.0" prefHeight="30.0" prefWidth="271.0" text="Code dIdentite National (CIN)                   :" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="18.0" prefHeight="26.0" prefWidth="230.0" text="رقم بطاقة التعريف الوطنية            :" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="10.0" layoutY="67.0" prefHeight="26.0" prefWidth="270.0" text="Prenom                                                      :" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="67.0" prefHeight="23.0" prefWidth="229.0" text="الإسم الشخصي                              :" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="10.0" layoutY="118.0" prefHeight="31.0" prefWidth="269.0" text="Date de depot du dossier                          :" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="118.0" prefHeight="27.0" prefWidth="229.0" text="تاريخ إيداع الملف                           :" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Label fx:id="firstName" layoutX="10.0" layoutY="10.0" prefHeight="22.0" prefWidth="270.0" text="Tazribine">
+                        <Label fx:id="firstName" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="22.0" prefWidth="270.0" text="Tazribine" textFill="#0b328b">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lastName" layoutX="10.0" layoutY="42.0" prefHeight="26.0" prefWidth="248.0" text="Aiman" GridPane.rowIndex="1">
+                        <Label fx:id="lastName" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="42.0" prefHeight="26.0" prefWidth="248.0" text="Aiman" textFill="#0b328b" GridPane.rowIndex="1">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Label fx:id="codeCin" layoutX="10.0" layoutY="77.0" prefHeight="31.0" prefWidth="235.0" text="EA11111111" GridPane.rowIndex="2">
+                        <Label fx:id="codeCin" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="77.0" prefHeight="26.0" prefWidth="248.0" text="EA11111111" textFill="#0b328b" GridPane.rowIndex="2">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Label fx:id="dateDepot" layoutX="10.0" layoutY="115.0" prefHeight="31.0" prefWidth="236.0" text="32/13/2100" GridPane.rowIndex="3">
+                        <Label fx:id="dateDepot" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="115.0" prefHeight="27.0" prefWidth="247.0" text="32/13/2100" textFill="#0b328b" GridPane.rowIndex="3">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Label fx:id="typeDemande" layoutX="10.0" layoutY="153.0" prefHeight="31.0" prefWidth="255.0" text="Forage/Pompage" GridPane.rowIndex="4">
+                        <Label fx:id="typeDemande" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="153.0" prefHeight="31.0" prefWidth="255.0" text="Forage/Pompage" textFill="#0b328b" GridPane.rowIndex="4">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Label fx:id="demandeForagePompage" layoutX="10.0" layoutY="229.0" prefHeight="31.0" prefWidth="265.0" text="Fichier.jpg (Fichier.pdf)" GridPane.rowIndex="5">
+                        <Label fx:id="cinFile" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="229.0" prefHeight="31.0" prefWidth="265.0" text="Fichier.jpg (Fichier.pdf)" textFill="#0b328b" GridPane.rowIndex="5">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Label prefHeight="31.0" prefWidth="271.0" text="Le type de demande                                  :" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                        <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="228.0" text="نوع الطلب                                    :" GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Label prefHeight="31.0" prefWidth="276.0" text="Demande de forage(resp Pompage)         :" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                        <Label alignment="CENTER_RIGHT" prefHeight="28.0" prefWidth="228.0" text="تحميل بطاقة التعريف الوطنية        :" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="225.0" text="تحميل الطلب                                :" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="demande" alignment="CENTER_RIGHT" prefHeight="28.0" prefWidth="249.0" text="Fichier.jpg (Fichier.pdf)" textFill="#0b328b" GridPane.rowIndex="6">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -117,7 +129,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                   </GridPane>
-                  <Label alignment="CENTER" layoutX="46.0" layoutY="272.0" prefHeight="40.0" prefWidth="608.0" style="-fx-background-color: #4cd4b9;" text="Informations concernant l'immobilier :" textFill="#2b4067">
+                  <Label alignment="CENTER" layoutX="46.0" layoutY="279.0" prefHeight="45.0" prefWidth="608.0" style="-fx-background-color: #4cd4b9;" text="المعلومات الخاصة بالعقار :" textFill="#2b4067">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -125,10 +137,10 @@
                         <Insets left="40.0" />
                      </padding>
                   </Label>
-                  <GridPane alignment="CENTER" layoutX="99.0" layoutY="332.0" prefHeight="164.0" prefWidth="502.0">
+                  <GridPane alignment="CENTER" layoutX="75.0" layoutY="341.0" prefHeight="206.0" prefWidth="518.0" style="-fx-border-color: #2b4067;">
                      <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="307.0" minWidth="10.0" prefWidth="225.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="277.0" minWidth="10.0" prefWidth="277.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="307.0" minWidth="10.0" prefWidth="215.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="277.0" minWidth="10.0" prefWidth="229.0" />
                      </columnConstraints>
                      <rowConstraints>
                         <RowConstraints maxHeight="61.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
@@ -136,41 +148,83 @@
                         <RowConstraints maxHeight="83.0" minHeight="10.0" prefHeight="63.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="165.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="165.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="165.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="165.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Label prefHeight="27.0" prefWidth="274.0" text="Localisation X/Y                                            :" textAlignment="RIGHT" GridPane.columnIndex="1">
+                        <Label alignment="CENTER_RIGHT" prefHeight="23.0" prefWidth="228.0" text="الدائرة                                           :" textAlignment="RIGHT" GridPane.columnIndex="1">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="10.0" layoutY="18.0" prefHeight="31.0" prefWidth="272.0" text="Commune                                                    :" textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="18.0" prefHeight="30.0" prefWidth="228.0" text="الجماعة                                         :" textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="10.0" layoutY="67.0" prefHeight="31.0" prefWidth="277.0" text="Douar                                                           :" textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="67.0" prefHeight="27.0" prefWidth="228.0" text="الدوار                                            :" textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="10.0" layoutY="118.0" prefHeight="31.0" prefWidth="275.0" text="Province                                                       :" textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="118.0" prefHeight="26.0" prefWidth="229.0" text="ﺍﻻﻗﻠﻴﻢ                                           :" textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="10.0" layoutY="148.0" prefHeight="31.0" prefWidth="271.0" text="Attestation de possession de l'immobilier  :" textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="148.0" prefHeight="25.0" prefWidth="229.0" text="شهادة ملكية العقار                        :" textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="5">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lcationImm" layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="242.0" text="Localisation X/Y" />
-                        <Label fx:id="douar" layoutX="10.0" layoutY="37.0" prefHeight="31.0" prefWidth="237.0" text="Douar" GridPane.rowIndex="1" />
-                        <Label fx:id="commune" layoutX="10.0" layoutY="70.0" prefHeight="31.0" prefWidth="238.0" text="Commune" GridPane.rowIndex="2" />
-                        <Label fx:id="province" layoutX="10.0" layoutY="105.0" prefHeight="31.0" prefWidth="235.0" text="Province" GridPane.rowIndex="3" />
-                        <Label fx:id="AttestationPossession" layoutX="10.0" layoutY="141.0" prefHeight="31.0" prefWidth="236.0" text="Fichier.jpg (Fichier.pdf)" GridPane.rowIndex="4" />
+                        <Label fx:id="daira" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="242.0" text="الدائرة" textFill="#0b328b">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="douar" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="37.0" prefHeight="31.0" prefWidth="237.0" text="الدوار" textFill="#0b328b" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="commune" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="70.0" prefHeight="31.0" prefWidth="238.0" text="الجماعة" textFill="#0b328b" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="province" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="105.0" prefHeight="31.0" prefWidth="235.0" text="ﺍﻻﻗﻠﻴﻢ " textFill="#0b328b" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="AttestationPossession" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="141.0" prefHeight="31.0" prefWidth="236.0" text="Fichier.jpg (Fichier.pdf)" textFill="#0b328b" GridPane.rowIndex="5">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="qiyada" alignment="CENTER_RIGHT" prefHeight="28.0" prefWidth="236.0" text="القيادة" textAlignment="RIGHT" textFill="#0b328b" GridPane.rowIndex="4">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="223.0" text="القيادة                                         :" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="229.0" text="التصميم العقاري                            :" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="palnImm" alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="235.0" text="Fichier.jpg (Fichier.pdf)" textFill="#0b328b" GridPane.rowIndex="6">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
                      </children>
                   </GridPane>
-                  <Label alignment="CENTER" layoutX="50.0" layoutY="496.0" prefHeight="40.0" prefWidth="604.0" style="-fx-background-color: #4cd4b9;" text="المعلومات الخاصة بنقطة الماء :" textFill="#2b4067">
+                  <Label alignment="CENTER" layoutX="50.0" layoutY="562.0" prefHeight="45.0" prefWidth="604.0" style="-fx-background-color: #4cd4b9;" text="المعلومات الخاصة بنقطة الماء :" textFill="#2b4067">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -178,7 +232,7 @@
                         <Insets left="40.0" />
                      </padding>
                   </Label>
-                  <GridPane layoutX="73.0" layoutY="552.0" prefHeight="167.0" prefWidth="528.0">
+                  <GridPane layoutX="73.0" layoutY="622.0" prefHeight="125.0" prefWidth="520.0" style="-fx-border-color: #2b4067;">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="285.0" minWidth="10.0" prefWidth="250.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="281.0" minWidth="10.0" prefWidth="278.0" />
@@ -187,7 +241,6 @@
                         <RowConstraints maxHeight="61.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="78.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="83.0" minHeight="10.0" prefHeight="63.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="165.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="165.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
@@ -201,16 +254,19 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="10.0" layoutY="118.0" prefHeight="31.0" prefWidth="271.0" text="السحب ( s )                               :       " GridPane.columnIndex="1" GridPane.rowIndex="4">
+                        <Label fx:id="locationPoin" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="28.0" prefWidth="266.0" text="Localisation X/Y" textAlignment="RIGHT" textFill="#0b328b">
                            <font>
                               <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="locationPoin" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="28.0" prefWidth="266.0" text="Localisation X/Y" textAlignment="RIGHT" />
-                        <Label fx:id="profondeur" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="72.0" prefHeight="31.0" prefWidth="269.0" text="15" GridPane.rowIndex="3" />
-                        <Label fx:id="rabattement" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="108.0" prefHeight="31.0" prefWidth="270.0" text="30.15" GridPane.rowIndex="4" />
-                        <Label fx:id="planEau" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="144.0" prefHeight="31.0" prefWidth="269.0" text="Fichier.jpg (Fichier.pdf)" textAlignment="RIGHT" GridPane.rowIndex="1" />
-                        <Label prefHeight="31.0" prefWidth="275.0" text="مستوى الماء ( m )                     :       " GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           </font></Label>
+                        <Label fx:id="profondeur" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="72.0" prefHeight="31.0" prefWidth="269.0" text="15" textFill="#0b328b" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="14.0" />
+                           </font></Label>
+                        <Label fx:id="planEau" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="144.0" prefHeight="31.0" prefWidth="269.0" text="Fichier.jpg (Fichier.pdf)" textAlignment="RIGHT" textFill="#0b328b" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="14.0" />
+                           </font></Label>
+                        <Label layoutY="10.0" prefHeight="31.0" prefWidth="275.0" text="مستوى الماء ( m )                      :       " GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -220,15 +276,18 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Label fx:id="debit" alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="272.0" text="320.5" GridPane.rowIndex="2" />
+                        <Label fx:id="debit" alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="272.0" text="320.5" textFill="#0b328b" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="14.0" />
+                           </font></Label>
                      </children>
                   </GridPane>
-                  <Button fx:id="modifyButton" layoutX="563.0" layoutY="755.0" mnemonicParsing="false" onAction="#modifyButtonMethode" prefHeight="25.0" prefWidth="91.0" style="-fx-background-color: #2b4067;" text="تعديل" textFill="WHITE">
+                  <Button fx:id="modifyButton" layoutX="563.0" layoutY="770.0" mnemonicParsing="false" onAction="#modifyButtonMethode" prefHeight="25.0" prefWidth="91.0" style="-fx-background-color: #2b4067;" text="تعديل" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Button>
-                  <Button fx:id="saveBuuton" layoutX="50.0" layoutY="755.0" mnemonicParsing="false" onAction="#savebuttonMethode" prefHeight="37.0" prefWidth="108.0" style="-fx-background-color: #2b4067;" text="حفظ" textFill="WHITE">
+                  <Button fx:id="saveBuuton" layoutX="50.0" layoutY="770.0" mnemonicParsing="false" onAction="#savebuttonMethode" prefHeight="37.0" prefWidth="108.0" style="-fx-background-color: #2b4067;" text="حفظ" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -281,6 +340,9 @@
                <font>
                   <Font size="14.0" />
                </font>
+               <effect>
+                  <DropShadow height="8.0" offsetX="8.0" offsetY="8.0" radius="3.5" spread="0.8" width="8.0" />
+               </effect>
             </Button>
          </children>
          <padding>

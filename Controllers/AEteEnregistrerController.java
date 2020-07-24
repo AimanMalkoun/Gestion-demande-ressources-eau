@@ -54,24 +54,30 @@ public class AEteEnregistrerController implements Initializable {
 		LesInfoDuDemandeurController.demandeur.setPrenom("");
 		LesInfoDuDemandeurController.demandeur.setCin("");
 		LesInfoDuDemandeurController.demandeur.setTypeDemande("");
-
-		LesInfoDelImmobilierController.InfoSurImmobilier.setLocalisation("");
+		LesInfoDuDemandeurController.demandeur.setCinFile(null);
+		LesInfoDuDemandeurController.demandeur.setDemandeFile(null);
+		LesInfoDuDemandeurController.demandeur.setDateDepotDossier(null);
+		
+		LesInfoDelImmobilierController.InfoSurImmobilier.setDaaira("");
+		LesInfoDelImmobilierController.InfoSurImmobilier.setQuiada("");
+		LesInfoDelImmobilierController.InfoSurImmobilier.setAttestationDePocession(null);
 		LesInfoDelImmobilierController.InfoSurImmobilier.setDouar("");
 		LesInfoDelImmobilierController.InfoSurImmobilier.setCommune("");
 		LesInfoDelImmobilierController.InfoSurImmobilier.setProvince("");
-
+		LesInfoDelImmobilierController.InfoSurImmobilier.setPlanImmobilier(null);;
+		
+		
 		InformationsConcernantPointDeauController.poinDeau.setLocalisationPoint("");
 		InformationsConcernantPointDeauController.poinDeau.setDebit(0);
-		InformationsConcernantPointDeauController.poinDeau.setRabattement(0);
 		InformationsConcernantPointDeauController.poinDeau.setProfondeur(0);
-
-		LesInfoDuDemandeurController.demandeur.setDateDepotDossier(null);
+		InformationsConcernantPointDeauController.poinDeau.setPlanEau(0);
+		
 
 	}
 
 	@FXML
 	public void downloadReceiptMethode(ActionEvent event) throws SQLException {
-		String nomPrenom = null, cin = null, nomImmobiler = null, commune = null, prevince = null;
+		String nomPrenom = null, cin = null, nomImmobiler = null, commune = null, prevince = null, daaira = null, qiyada = null;
 		Date dateDepot = null;
 
 		/* se connecter avec la base de donnÃ©es */
@@ -79,22 +85,24 @@ public class AEteEnregistrerController implements Initializable {
 		ConnectionClass conn = new ConnectionClass();
 		Connection connection = conn.getConnection();
 		Statement stat = connection.createStatement();
-		String sql = "SELECT `Nom`,`Prenom`,`cin`,`localisationImmobilier`,`Douar`,`Commune`,`Province`, `DateDepot` FROM dossier WHERE `IdDossier` = "
+		String sql = "SELECT `Nom`,`Prenom`,`cin`,`Douar`,`Commune`,`Province`, `DateDepot`, `qiyada`, `daaira` FROM dossier WHERE `IdDossier` = "
 				+ Integer.toString(EnregistrerController.idDossier);
 		ResultSet result = stat.executeQuery(sql);
 		if (result.next()) {
 			nomPrenom = " " + result.getString("Nom") + "  " + result.getString("Prenom") + " ";
 			cin = " " + result.getString("cin") + " ";
-			nomImmobiler = " " + result.getString("localisationImmobilier") + " " + result.getString("Douar") + " ";
+			nomImmobiler = " " + result.getString("Douar") + " ";
 			commune = " " + result.getString("Commune") + " ";
 			prevince = " " + result.getString("Province") + " ";
 			dateDepot = result.getDate("DateDepot");
+			daaira  = " " + result.getString("daaira") + " ";
+			qiyada = " " + result.getString("qiyada") + " ";
 		}
 		Document document = new Document();
 		try {
 
 			PdfWriter.getInstance(document, new FileOutputStream(
-					"C:\\Users\\" + System.getProperty("user.name") + "\\Desktop\\Demandes\\" + nomPrenom + ".pdf"));
+					"C:\\Users\\" + System.getProperty("user.name") + "\\Desktop\\Demandes\\" + cin + ".pdf"));
 			Font small = FontFactory.getFont("C:/Windows/Fonts/arial.ttf", BaseFont.IDENTITY_H, 14);
 			Font normal = FontFactory.getFont("C:/Windows/Fonts/arial.ttf", BaseFont.IDENTITY_H, 18);
 			Font big0 = FontFactory.getFont("C:/Windows/Fonts/arial.ttf", BaseFont.IDENTITY_H, 22);
@@ -148,9 +156,9 @@ public class AEteEnregistrerController implements Initializable {
 			para3.add(new Phrase(" \u0627\u0644\u062c\u0645\u0627\u0639\u0629", normal));
 			para3.add(new Phrase(commune, big));
 			para3.add(new Phrase(" \u0627\u0644\u0642\u064a\u0627\u062f\u0629  ", normal));
-			para3.add(new Phrase(" \u0627\u0633\u0645 \u0627\u0644\u0642\u064a\u0627\u062f\u0629  ", big));
+			para3.add(new Phrase(qiyada, big));
 			para3.add(new Phrase(" \u0627\u0644\u062f\u0627\u0626\u0631\u0629  ", normal));
-			para3.add(new Phrase(" \u0627\u0633\u0645 \u0627\u0644\u062f\u0627\u0626\u0631\u0629  ", big));
+			para3.add(new Phrase(daaira, big));
 			para3.add(new Phrase(" \u0627\u0644\u0627\u0642\u0644\u064a\u0645  ", normal));
 			para3.add(new Phrase(prevince + ".", big));
 			para3.setAlignment(Paragraph.ALIGN_LEFT);
@@ -182,7 +190,7 @@ public class AEteEnregistrerController implements Initializable {
 			document.close();
 
 			Desktop.getDesktop().open(new File(
-					"C:\\Users\\" + System.getProperty("user.name") + "\\Desktop\\Demandes\\" + nomPrenom + ".pdf"));
+					"C:\\Users\\" + System.getProperty("user.name") + "\\Desktop\\Demandes\\" + cin + ".pdf"));
 
 		} catch (FileNotFoundException | DocumentException e) {
 			// TODO Auto-generated catch block

@@ -5,11 +5,12 @@
 
 #buttonProfile, #buttonOptio, #buttonSetting, #buttonLogin{
 	-fx-padding: 8px 0 8px 0;
-	
+	/*-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, .8), 3, 3, 3, 3);*/
 }
-#buttonProfile:hover, #buttonOptio:hover, #buttonSetting:hover, #buttonLogin:hover, #switchButton:hover{
+#switchButton:hover{
 	-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, .8), 3, 3, 3, 3);
 }
+
 #switchButton, #storeFile{
 	-fx-background-color: #2b4067;
 }
@@ -20,8 +21,4 @@
 	-fx-background-color: #ffffff;
 	-fx-padding:5px 10px 5px 10px;
 
-}
-
-#storeFile{
-	
 }

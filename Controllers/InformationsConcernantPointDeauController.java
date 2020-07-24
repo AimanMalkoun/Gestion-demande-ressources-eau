@@ -55,10 +55,10 @@ public class InformationsConcernantPointDeauController implements Initializable 
 		/*
 		 * initialisation de l'objet <<poinDeau>> par les champs remplis.
 		 */
-		if (isValideString(locationEau) & isValideFloat(debit) & isValideFloat(profondeur) & isValideFloat(rabattement) & 
+		if (isValideString(locationEau) & isValideFloat(debit) & isValideFloat(profondeur) &  
 				isValideFloat(poinEau)	) {
 			poinDeau = new PointDeau(locationEau.getText().toString(), new Float(debit.getText()),
-					new Float(profondeur.getText()), new Float(poinEau.getText()), new Float(rabattement.getText()));
+					new Float(profondeur.getText()), new Float(poinEau.getText()));
 
 			Parent root = FXMLLoader.load(getClass().getResource("../Fxml/Enregistrer.fxml"));
 			borderPan.getChildren().setAll(root);
@@ -137,9 +137,6 @@ public class InformationsConcernantPointDeauController implements Initializable 
 		if (poinDeau.getProfondeur() != 0)
 			profondeur.setText("" + poinDeau.getProfondeur());
 
-		// initialiser le chapms du type du rabattement
-		if (poinDeau.getRabattement() != 0)
-			rabattement.setText("" + poinDeau.getRabattement());
 
 		// initialiser le path du fichier d'attestation de pocession d'immobilier
 		if (poinDeau.getPlanEau() != 0)

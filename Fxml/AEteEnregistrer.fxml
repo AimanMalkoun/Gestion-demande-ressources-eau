@@ -51,7 +51,7 @@
    <right>
       <VBox id="vboxStyle" alignment="CENTER" prefHeight="447.0" prefWidth="166.0" spacing="20.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
          <children>
-            <Button id="buttonProfile" alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="186.0" style="-fx-background-color: #4cd4b9;" text="المواطن" textFill="WHITE">
+            <Button id="buttonProfile" alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" prefWidth="106.0" style="-fx-background-color: #4cd4b9;" text="المواطن" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
