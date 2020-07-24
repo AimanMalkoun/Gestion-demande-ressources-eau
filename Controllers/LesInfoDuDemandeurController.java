@@ -20,7 +20,8 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.FileChooser;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.fxml.Initializable;
 
@@ -30,10 +31,18 @@ public class LesInfoDuDemandeurController implements Initializable{
 	private File cinFile = null, demandeFile = null;
 	
 	@FXML
+    private HBox hbox1;
+
+    @FXML
+    private Pane pane1;
+
+    @FXML
+    private HBox titleHbox;
+	@FXML
 	private BorderPane borderPane;
 	
-	 @FXML
-	    private ScrollPane scrollPane;
+	@FXML
+	private ScrollPane scrollPane;
 	
 	@FXML
     private TextField nomIput;
@@ -129,6 +138,7 @@ public class LesInfoDuDemandeurController implements Initializable{
     
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		
 		
 		typeDemandeChoice.getItems().addAll("Type de demande","Forage", "Pompage");
 		initialiserInputs();

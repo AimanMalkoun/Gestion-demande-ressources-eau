@@ -24,13 +24,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class modifierInfoDuDossierController implements Initializable{
 
 	private DossierForDownload dossier = new DossierForDownload(); 
-
+	
 	@FXML
     private Label nomLabel;
 
@@ -62,7 +64,7 @@ public class modifierInfoDuDossierController implements Initializable{
     private Button douarButton;
 
     @FXML
-    private Label attestationPoscessionLocalisationImmobilierLabel;
+    private Label attestationPoscessionImmobilierLabel;
 
     @FXML
     private Button attestationPocessionImmobilierFileButton;
@@ -264,7 +266,7 @@ public class modifierInfoDuDossierController implements Initializable{
     			
     			if(result != null){
     				dossier.setAttestationDePocession((Blob) new FileInputStream(result));
-    				attestationPoscessionLocalisationImmobilierLabel.setText(result.getPath());
+    				attestationPoscessionImmobilierLabel.setText(result.getPath());
     			}
     			
     		}else if(event.getSource() == localisationImmobilierButton) {
@@ -440,7 +442,6 @@ public class modifierInfoDuDossierController implements Initializable{
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
 	}
 	
 	//recieve the message from the last controler
@@ -448,6 +449,7 @@ public class modifierInfoDuDossierController implements Initializable{
 
 		ConnectionClassDossier myDataBaseFolder = new ConnectionClassDossier();
 		dossier = myDataBaseFolder.getDossierFromDatabase(id);
+		System.out.println(dossier);
 		initializeTextForLabels();
 		
  	 }
@@ -466,7 +468,7 @@ public class modifierInfoDuDossierController implements Initializable{
     	provinceLabel.setText(dossier.getProvince());
     	communeLabel.setText(dossier.getCommune());
     	douarLabel.setText(dossier.getDouar());
-    	attestationPoscessionLocalisationImmobilierLabel.setText(dossier.getCin() + "Attesteation_de_pocession.pdf");
+    	attestationPoscessionImmobilierLabel.setText(dossier.getCin() + "Attesteation_de_pocession.pdf");
     	localisationImmobilierLabel.setText(dossier.getLocalisation());
     	
     	LocalisationPointEauLabel.setText(dossier.getLocalisationPoint());

@@ -4,6 +4,7 @@ import java.io.File;
 
 public class Immobilier {
 
+	private String nomImmobilier;
 	private String daiira;
 	private String quiada;
 	private String douar;
@@ -79,6 +80,14 @@ public class Immobilier {
 
 	public void setQuiada(String quiada) {
 		this.quiada = quiada;
+	}
+
+	public String getNomImmobilier() {
+		return nomImmobilier;
+	}
+
+	public void setNomImmobilier(String nomImmobilier) {
+		this.nomImmobilier = nomImmobilier;
 	}
 
 }

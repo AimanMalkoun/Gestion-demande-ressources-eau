@@ -32,13 +32,14 @@ public class ConnectionClassDossier {
 		
 		String sqlRequette = "SELECT * "
 						   + "FROM `dossier` "
-						   + "WHERE `IdDossier` = "+ ID ;
+						   + "WHERE `IdDossier` = '"+ ID+"'" ;
 		try {
 			
 			Statement stm = conection.connection.createStatement();
 			ResultSet result = stm.executeQuery(sqlRequette);
-			
+			System.out.println("i am entring!");
 			if(result.next()) {
+				System.out.println("i am in!");
 				dossier.setIdDossier(ID);
 				
 				dossier.setNom(result.getString("Nom"));

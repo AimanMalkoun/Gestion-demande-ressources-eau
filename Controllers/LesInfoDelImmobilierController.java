@@ -17,7 +17,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class LesInfoDelImmobilierController implements Initializable {
@@ -26,41 +25,44 @@ public class LesInfoDelImmobilierController implements Initializable {
 	private File attestationFile, planImmobilierFile;
 
 
-    @FXML
-    private TextField daaira;
+	 @FXML
+	    private TextField daaira;
 
-    @FXML
-    private TextField douar;
+	    @FXML
+	    private TextField douar;
 
-    @FXML
-    private TextField commune;
+	    @FXML
+	    private TextField commune;
 
-    @FXML
-    private Button suivant;
+	    @FXML
+	    private Button suivant;
 
-    @FXML
-    private Button precedent;
+	    @FXML
+	    private Button precedent;
 
-    @FXML
-    private Button attistationFileButton;
+	    @FXML
+	    private Button attistationFileButton;
 
-    @FXML
-    private Label attestationFilePath;
+	    @FXML
+	    private Label attestationFilePath;
 
-    @FXML
-    private TextField province;
+	    @FXML
+	    private TextField province;
 
-    @FXML
-    private Button planImmobilierFileButton;
+	    @FXML
+	    private Button planImmobilierFileButton;
 
-    @FXML
-    private Label planImmobilierFilePath;
+	    @FXML
+	    private Label planImmobilierFilePath;
 
-    @FXML
-    private TextField quiada;
+	    @FXML
+	    private TextField quiada;
 
-    @FXML
-    private Label textError;
+	    @FXML
+	    private TextField nomImmobilier;
+
+	    @FXML
+	    private Label textError;
 
 	@FXML
 	void precedent(MouseEvent event) {
@@ -82,6 +84,8 @@ public class LesInfoDelImmobilierController implements Initializable {
 	void suivant(MouseEvent event) {
 
 		if (checked()) {
+			
+			InfoSurImmobilier.setNomImmobilier(nomImmobilier.getText());
 			InfoSurImmobilier.setDaaira(daaira.getText());
 			InfoSurImmobilier.setQuiada(quiada.getText());
 			InfoSurImmobilier.setDouar(douar.getText());
@@ -140,6 +144,12 @@ public class LesInfoDelImmobilierController implements Initializable {
 
 	private boolean checked() {
 		boolean condition = true;
+		
+		if (nomImmobilier.getText().isEmpty()) {
+			nomImmobilier.setStyle("-fx-border-color: red");
+			condition = condition && false;
+		}
+		
 		if (daaira.getText().isEmpty()) {
 			daaira.setStyle("-fx-border-color: red");
 			condition = condition && false;
@@ -179,8 +189,13 @@ public class LesInfoDelImmobilierController implements Initializable {
 	}
 
 	private void initialiserInputs() {
+		
 		// initialiser le champs du daaira
-		if ((InfoSurImmobilier).getDaaira() != null)
+		if (InfoSurImmobilier.getNomImmobilier() != null)
+			nomImmobilier.setText(InfoSurImmobilier.getNomImmobilier());
+				
+		// initialiser le champs du daaira
+		if (InfoSurImmobilier.getDaaira() != null)
 			daaira.setText(InfoSurImmobilier.getDaaira());
 		
 		// initialiser le champs du daaira
