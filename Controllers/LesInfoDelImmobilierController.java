@@ -126,7 +126,7 @@ public class LesInfoDelImmobilierController implements Initializable {
 		}
 		
 		if (event.getSource() == planImmobilierFileButton) {
-			ImagesOrPdfChooser.desplay("Choisir l'attestation de pcession de l'immobilier", "Attestation_pocession_Immobilier.pdf");
+			ImagesOrPdfChooser.desplay("Choisir le plan de l'immobilier", "plan_Immobilier.pdf");
 			File file = ImagesOrPdfChooser.result;
 			if(file != null) {
 				planImmobilierFile = file;
