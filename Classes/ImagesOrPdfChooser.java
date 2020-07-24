@@ -26,7 +26,7 @@ public class ImagesOrPdfChooser {
 		window.setResizable(false);
 		window.initModality(Modality.APPLICATION_MODAL);
 
-		Button inputImages = new Button("images"), inputPdf = new Button("fichier pdf");
+		Button inputImages = new Button("مجموعة صور"), inputPdf = new Button("ملف pdf");
 		inputImages.setPrefSize(150, 30);
 		inputPdf.setPrefSize(150, 30);
 

@@ -36,6 +36,7 @@ public class CreatePdfWithImages extends Application{
 			document.open();
 			
 			for (File image : imagesList) {
+				
 				Image img = Image.getInstance(image.getAbsolutePath());
 				img.setAlignment(Element.ALIGN_CENTER);
 				img.scaleToFit(PageSize.A3.getWidth(), PageSize.A3.getHeight());

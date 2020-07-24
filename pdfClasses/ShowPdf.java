@@ -70,6 +70,7 @@ public class ShowPdf {
 			Scene scene = new Scene(root,400,600);
 			primaryStage.setScene(scene);
 			primaryStage.setTitle(title);
+			primaryStage.getIcons().add(new Image("/Image/Logo5.png"));
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();

@@ -14,16 +14,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="399.0" minWidth="800.0" prefHeight="528.0" prefWidth="867.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.modifierInfoDuDossierController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="582.0" prefWidth="1121.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.modifierInfoDuDossierController">
    <center>
       <ScrollPane fitToWidth="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <content>
-            <StackPane>
+            <StackPane minWidth="920.0">
                <children>
-                  <GridPane alignment="CENTER" prefHeight="1424.0" prefWidth="600.0">
+                  <GridPane alignment="CENTER" maxWidth="810.0" prefHeight="1430.0" StackPane.alignment="CENTER">
                     <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="350.0" minWidth="10.0" prefWidth="251.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="359.0" minWidth="10.0" prefWidth="349.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="376.0" minWidth="10.0" prefWidth="306.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="588.0" minWidth="10.0" prefWidth="512.0" />
                     </columnConstraints>
                     <rowConstraints>
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -54,135 +54,129 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="351.0" text="الاسم العائلي" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER">
+                        <Label alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="605.0" text="الاسم العائلي" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER">
                            <font>
                               <Font size="21.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="352.0" text="الاسم الشخصي" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Label alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="602.0" text="الاسم الشخصي" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
                               <Font size="22.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="48.0" prefHeight="32.0" prefWidth="352.0" text="رقم بطاقة التعريف الوطنية" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="48.0" prefHeight="31.0" prefWidth="635.0" text="رقم بطاقة التعريف الوطنية" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <font>
                               <Font size="21.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="84.0" prefHeight="32.0" prefWidth="368.0" text="نوع الطلب" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="84.0" prefHeight="31.0" prefWidth="622.0" text="نوع الطلب" GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <font>
                               <Font size="21.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="120.0" prefHeight="32.0" prefWidth="358.0" text="اسم العقار" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="120.0" prefHeight="31.0" prefWidth="681.0" text="اسم العقار" GridPane.columnIndex="1" GridPane.rowIndex="6">
                            <font>
                               <Font size="21.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="156.0" prefHeight="32.0" prefWidth="371.0" text="دوار" GridPane.columnIndex="1" GridPane.rowIndex="11">
+                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="156.0" prefHeight="31.0" prefWidth="619.0" text="دوار" GridPane.columnIndex="1" GridPane.rowIndex="11">
                            <font>
                               <Font size="21.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="192.0" prefHeight="32.0" prefWidth="359.0" text="جماعة" GridPane.columnIndex="1" GridPane.rowIndex="12">
+                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="192.0" prefHeight="31.0" prefWidth="643.0" text="جماعة" GridPane.columnIndex="1" GridPane.rowIndex="12">
                            <font>
                               <Font size="21.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="228.0" prefHeight="32.0" prefWidth="360.0" text="إقليم" GridPane.columnIndex="1" GridPane.rowIndex="13">
+                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="228.0" prefHeight="31.0" prefWidth="599.0" text="إقليم" GridPane.columnIndex="1" GridPane.rowIndex="13">
                            <font>
                               <Font size="21.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="264.0" prefHeight="32.0" prefWidth="360.0" text="إحداثيات نقطة الماء" GridPane.columnIndex="1" GridPane.rowIndex="14">
+                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="264.0" prefHeight="31.0" prefWidth="743.0" text="إحداثيات نقطة الماء" GridPane.columnIndex="1" GridPane.rowIndex="14">
                            <font>
                               <Font size="21.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="300.0" prefHeight="32.0" prefWidth="369.0" text="الصبيب" GridPane.columnIndex="1" GridPane.rowIndex="15">
+                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="300.0" prefHeight="31.0" prefWidth="656.0" text="الصبيب" GridPane.columnIndex="1" GridPane.rowIndex="15">
                            <font>
                               <Font size="21.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="336.0" prefHeight="32.0" prefWidth="399.0" text="مستوى  الماء" GridPane.columnIndex="1" GridPane.rowIndex="17">
+                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="336.0" prefHeight="31.0" prefWidth="653.0" text="مستوى  الماء" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="17">
                            <font>
                               <Font size="21.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="408.0" prefHeight="32.0" prefWidth="374.0" text="العمق" GridPane.columnIndex="1" GridPane.rowIndex="16">
+                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="408.0" prefHeight="31.0" prefWidth="597.0" text="العمق" GridPane.columnIndex="1" GridPane.rowIndex="16">
                            <font>
                               <Font size="21.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="12.0" prefHeight="32.0" prefWidth="364.0" text="Date fin de l'enquête publique (EP)" GridPane.columnIndex="1" GridPane.rowIndex="22">
+                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="12.0" prefHeight="31.0" prefWidth="628.0" text="تاريخ نهاية البحث العلني" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="21" GridPane.valignment="CENTER">
                            <font>
                               <Font size="21.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="48.0" prefHeight="32.0" prefWidth="379.0" text="Date signature du PV par la commission de l'EP" GridPane.columnIndex="1" GridPane.rowIndex="23">
+                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="48.0" prefHeight="31.0" prefWidth="624.0" text="تاريخ امضاء المحضر من طرف لجنة البحث العلني" GridPane.columnIndex="1" GridPane.rowIndex="22">
                            <font>
                               <Font size="21.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="156.0" prefHeight="32.0" prefWidth="392.0" text="Autorisation " GridPane.columnIndex="1" GridPane.rowIndex="27">
+                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="156.0" prefHeight="31.0" prefWidth="625.0" text="الرخصة" GridPane.columnIndex="1" GridPane.rowIndex="26">
                            <font>
                               <Font size="21.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="192.0" prefHeight="32.0" prefWidth="374.0" text="Avis ABHOER" GridPane.columnIndex="1" GridPane.rowIndex="26">
+                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="192.0" prefHeight="31.0" prefWidth="601.0" text="رأي وكالة الحوض المائي لام الربيع" GridPane.columnIndex="1" GridPane.rowIndex="25">
                            <font>
                               <Font size="21.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="228.0" prefHeight="32.0" prefWidth="366.0" text="Date d'envoi du PV à la D.ABHOER à EL Jadida" GridPane.columnIndex="1" GridPane.rowIndex="25">
+                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="228.0" prefHeight="31.0" prefWidth="638.0" text="تاريخ إرسال المحضر إلى مندوبية وكالة الحوض المائي لام الربيع بالجديدة" GridPane.columnIndex="1" GridPane.rowIndex="24">
                            <font>
                               <Font size="21.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="264.0" prefHeight="32.0" prefWidth="380.0" text="Avis de la CEP" GridPane.columnIndex="1" GridPane.rowIndex="24">
+                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="264.0" prefHeight="31.0" prefWidth="656.0" text="رأي لجنة البحث العلني" GridPane.columnIndex="1" GridPane.rowIndex="23">
                            <font>
                               <Font size="21.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="300.0" prefHeight="32.0" prefWidth="365.0" text="Date début de l'enquête publique" GridPane.columnIndex="1" GridPane.rowIndex="21">
+                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="300.0" prefHeight="31.0" prefWidth="682.0" text="تاريخ بداية البحث العلني" GridPane.columnIndex="1" GridPane.rowIndex="20">
                            <font>
                               <Font size="21.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="336.0" prefHeight="32.0" prefWidth="366.0" text="Date d'envoi à la délégation de l'ABHOER à El Jadida" GridPane.columnIndex="1" GridPane.rowIndex="20">
+                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="336.0" prefHeight="31.0" prefWidth="591.0" text="تاريخ إرسال الملف إلى مندوبية وكالة الحوض المائي لام الربيع بالجديدة" GridPane.columnIndex="1" GridPane.rowIndex="19">
                            <font>
                               <Font size="21.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="408.0" prefHeight="32.0" prefWidth="362.0" text="تارييخ إيداع الملف" GridPane.columnIndex="1" GridPane.rowIndex="19">
+                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="408.0" prefHeight="31.0" prefWidth="587.0" text="تارييخ إيداع الملف" GridPane.columnIndex="1" GridPane.rowIndex="18">
                            <font>
                               <Font size="21.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="372.0" prefHeight="32.0" prefWidth="360.0" text="السحب" GridPane.columnIndex="1" GridPane.rowIndex="18">
+                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="143.0" prefHeight="31.0" prefWidth="633.0" text="شهادة ملكية العقار" GridPane.columnIndex="1" GridPane.rowIndex="8">
                            <font>
                               <Font size="21.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="143.0" prefHeight="32.0" prefWidth="371.0" text="شهادة ملكية العقار" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="74.0" prefHeight="31.0" prefWidth="586.0" text="صورة رقم بطاقة التعريف الوطنية" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <font>
                               <Font size="21.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="74.0" prefHeight="32.0" prefWidth="352.0" text="صورة رقم بطاقة التعريف الوطنية" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="151.0" prefHeight="31.0" prefWidth="652.0" text="ملف الطلب" GridPane.columnIndex="1" GridPane.rowIndex="5">
                            <font>
                               <Font size="21.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="151.0" prefHeight="32.0" prefWidth="375.0" text="ملف الطلب" GridPane.columnIndex="1" GridPane.rowIndex="5">
-                           <font>
-                              <Font size="21.0" />
-                           </font>
-                        </Label>
-                        <Button alignment="CENTER" mnemonicParsing="false" onMouseClicked="#enregistrer" prefHeight="37.0" prefWidth="87.0" text="حفظ" GridPane.rowIndex="28">
+                        <Button alignment="CENTER" mnemonicParsing="false" onMouseClicked="#enregistrer" prefHeight="37.0" prefWidth="87.0" text="حفظ" GridPane.rowIndex="27">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -273,7 +267,7 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="6">
                            <children>
-                              <Button fx:id="localisationImmobilierButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
+                              <Button fx:id="nomImmobilierButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
@@ -371,20 +365,6 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="18">
                            <children>
-                              <Button fx:id="rabatementButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Button>
-                              <Label fx:id="rabattementLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="226.0">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="19">
-                           <children>
                               <Button fx:id="dateDepotDossierButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
                                  <font>
                                     <Font size="16.0" />
@@ -397,21 +377,21 @@
                               </Label>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="20">
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="19">
                            <children>
                               <Button fx:id="dateDenvoiAlabhouerEljaidaButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Button>
-                              <Label fx:id="dateDenvoiAlabhouerEljaidaLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="227.0">
+                              <Label fx:id="dateDenvoiAlabhouerEljaidaLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="226.0">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Label>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="21">
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="20">
                            <children>
                               <Button fx:id="dateDebutEnquetePublicButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
                                  <font>
@@ -425,7 +405,7 @@
                               </Label>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="22">
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="21">
                            <children>
                               <Button fx:id="dateFinEnquetePublicButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
                                  <font>
@@ -439,7 +419,7 @@
                               </Label>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="23">
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="22">
                            <children>
                               <Button fx:id="dateSignaturPVparCEPButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
                                  <font>
@@ -453,7 +433,7 @@
                               </Label>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="24">
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="23">
                            <children>
                               <Button fx:id="AvisDeCEPButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
                                  <font>
@@ -467,7 +447,7 @@
                               </Label>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="25">
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="24">
                            <children>
                               <Button fx:id="dateEnvoitPvAbhoerEljadidaButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
                                  <font>
@@ -481,7 +461,7 @@
                               </Label>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="26">
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="25">
                            <children>
                               <Button fx:id="AvisAbhoerButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
                                  <font>
@@ -523,7 +503,7 @@
                               </Label>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="270.0" layoutY="796.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="27">
+                        <HBox alignment="CENTER_LEFT" layoutX="270.0" layoutY="796.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="26">
                            <children>
                               <Button fx:id="autorisationButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
                                  <font>
@@ -537,14 +517,14 @@
                               </Label>
                            </children>
                         </HBox>
-                        <Label alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="378.0" text="الدائرة" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                        <Label alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="601.0" text="الدائرة" GridPane.columnIndex="1" GridPane.rowIndex="10">
                            <font>
                               <Font size="21.0" />
                            </font>
                         </Label>
                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="10">
                            <children>
-                              <Button fx:id="daiaraButton1" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
+                              <Button fx:id="daairaButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
@@ -556,7 +536,7 @@
                               </Label>
                            </children>
                         </HBox>
-                        <Label alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="379.0" text="القيادة" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                        <Label alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="587.0" text="القيادة" GridPane.columnIndex="1" GridPane.rowIndex="9">
                            <font>
                               <Font size="21.0" />
                            </font>
@@ -575,12 +555,12 @@
                               </Label>
                            </children>
                         </HBox>
-                        <Button alignment="CENTER" mnemonicParsing="false" onMouseClicked="#annuler" prefHeight="37.0" prefWidth="87.0" text="إلغاء" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="28" GridPane.valignment="CENTER">
+                        <Button alignment="CENTER" mnemonicParsing="false" onMouseClicked="#annuler" prefHeight="37.0" prefWidth="87.0" text="إلغاء" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="27" GridPane.valignment="CENTER">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Button>
-                        <Label alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="358.0" text="تصميم العقار" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                        <Label alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="585.0" text="تصميم العقار" GridPane.columnIndex="1" GridPane.rowIndex="7">
                            <font>
                               <Font size="21.0" />
                            </font>
@@ -600,6 +580,12 @@
                            </children>
                         </HBox>
                      </children>
+                     <StackPane.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="40.0" />
+                     </StackPane.margin>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
                   </GridPane>
                </children>
                <padding>
