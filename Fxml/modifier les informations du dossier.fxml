@@ -16,7 +16,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="580.0" prefWidth="1129.0" style="-fx-background-color: #2b4067;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.modifierInfoDuDossierController">
    <content>
       <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="578.0" prefWidth="1121.0" stylesheets="@../GestionDemandeEau/application.css">
@@ -403,7 +402,7 @@
                                           <Cursor fx:constant="HAND" />
                                        </cursor>
                                     </Button>
-                                    <Label fx:id="planEauPathLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="225.0" style="-fx-text-fill: #0b328b;" textFill="#0b328b">
+                                    <Label fx:id="planEauLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="225.0" style="-fx-text-fill: #0b328b;" textFill="#0b328b">
                                        <font>
                                           <Font size="16.0" />
                                        </font>
@@ -693,7 +692,7 @@
          <right>
             <VBox id="vboxStyle" alignment="CENTER" spacing="20.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
                <children>
-                  <Button id="buttonProfile" mnemonicParsing="false" prefHeight="35.0" prefWidth="126.0" style="-fx-background-color: #A7BDE7;" text="الصفحة الرئيسية" textFill="#2b4067">
+                  <Button id="buttonProfile" mnemonicParsing="false" onMouseClicked="#goHomePage" prefHeight="35.0" prefWidth="126.0" style="-fx-background-color: #A7BDE7;" text="الصفحة الرئيسية" textFill="#2b4067">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -701,7 +700,7 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button id="buttonLogin" mnemonicParsing="false" prefHeight="35.0" prefWidth="126.0" style="-fx-background-color: #A7BDE7;" text="تسجيل الخروج" textFill="#2b4067">
+                  <Button id="buttonLogin" mnemonicParsing="false" onMouseClicked="#logOut" prefHeight="35.0" prefWidth="126.0" style="-fx-background-color: #A7BDE7;" text="تسجيل الخروج" textFill="#2b4067">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
