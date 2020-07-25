@@ -473,9 +473,43 @@ public class modifierInfoDuDossierController implements Initializable{
     	
     }
 
+    @FXML
+    void goHomePage(MouseEvent event) {
+    	
+    	try {
+    		
+    		Parent ModifyFolderRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/Dashboard.fxml"));
+			Scene ModifyFolderScene = new Scene(ModifyFolderRoot);
+			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			primaryStage.setScene(ModifyFolderScene);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    }
+
+    @FXML
+    void logOut(MouseEvent event) {
+
+    	try {
+    		
+    		Parent ModifyFolderRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/LoginStage.fxml"));
+			Scene ModifyFolderScene = new Scene(ModifyFolderRoot);
+			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			primaryStage.setScene(ModifyFolderScene);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    }
+    
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
+		setMessage(1);
 	}
 	
 	//recieve the message from the last controler
