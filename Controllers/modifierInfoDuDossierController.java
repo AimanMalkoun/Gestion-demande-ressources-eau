@@ -246,7 +246,7 @@ public class modifierInfoDuDossierController implements Initializable{
     			
     		}else if(event.getSource() == typeDemandeButton) {
     			//choice
-    			String items[] =  {"\u062d\u0641\u0631 \u0628\u0626\u0631", "\u0636\u062e \u0627\u0644\u0645\u0627\u0621"};
+    			String items[] =  {"\u0637\u0644\u0628 \u062d\u0641\u0631 \u062b\u0642\u0628 \u0645\u0627\u0626\u064a", "\u0637\u0644\u0628 \u062c\u0644\u0628 \u0627\u0644\u0645\u0627\u0621"};
     			String result = ChangeChoiceAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u0646\u0648\u0639 \u0627\u0644\u0637\u0644\u0628", items, dossier.getTypeDemande());
     			
     			dossier.setTypeDemande(result);
@@ -475,14 +475,14 @@ public class modifierInfoDuDossierController implements Initializable{
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		
 	}
 	
 	//recieve the message from the last controler
  	 public void setMessage(int id) {
 
 		ConnectionClassDossier myDataBaseFolder = new ConnectionClassDossier();
-		//dossier = myDataBaseFolder.getDossierFromDatabase(id);
-		dossier = myDataBaseFolder.getDossierFromDatabase(3);
+		dossier = myDataBaseFolder.getDossierFromDatabase(id);
 		System.out.println(dossier);
 		initializeTextForLabels();
 		
@@ -511,7 +511,7 @@ public class modifierInfoDuDossierController implements Initializable{
     	LocalisationPointEauLabel.setText(dossier.getLocalisationPoint());
     	profondeurLabel.setText(Float.toString(dossier.getProfondeur()));
     	debitLabel.setText(Float.toString(dossier.getDebit()));
-    	planEauLabel.setText(dossier.getCin() + "Plan_d_eau.pdf");
+    	planEauLabel.setText(Float.toString(dossier.getPlanEau()));
     	
     	dateDenvoiAlabhouerEljaidaLabel.setText(dossier.getDateEnvoiA_LABHOER().toString());
     	dateDebutEnquetePublicLabel.setText(dossier.getDateDebutde_EP().toString());

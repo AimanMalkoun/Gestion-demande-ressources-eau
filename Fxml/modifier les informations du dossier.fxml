@@ -356,7 +356,7 @@
                                     <Font size="16.0" />
                                  </font>
                               </Button>
-                              <Label fx:id="planEauPathLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="225.0">
+                              <Label fx:id="planEauLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="225.0">
                                  <font>
                                     <Font size="16.0" />
                                  </font>

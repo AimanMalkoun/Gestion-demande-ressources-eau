@@ -106,7 +106,7 @@ public class LesInfoDuDemandeurController implements Initializable{
     		}
     
     	}else {
-    		textError.setText("veuillez remplir tous les champs correctement");
+    		textError.setText("\u0627\u0644\u0645\u0631\u062c\u0648 \u0645\u0644\u0626 \u0643\u0644 \u0627\u0644\u062e\u0627\u0646\u0627\u062a \u0628\u0645\u0627 \u064a\u0646\u0627\u0633\u0628");
     	}
     }
 	
@@ -115,7 +115,7 @@ public class LesInfoDuDemandeurController implements Initializable{
     	
         if(event.getSource() == cinFileButton) {
         	
-            ImagesOrPdfChooser.desplay("Choisir la CIN", "CIN.pdf");
+            ImagesOrPdfChooser.desplay("\u0625\u062e\u062a\u064a\u0627\u0631 \u0635\u0648\u0631\u0629 \u0628\u0637\u0627\u0642\u0629 \u0627\u0644\u062a\u0639\u0631\u064a\u0641 \u0627\u0644\u0648\u0637\u0646\u064a\u0629", "CIN.pdf");
             File file = ImagesOrPdfChooser.result;
         	if(file != null) {
         		cinFile = file;
@@ -124,7 +124,7 @@ public class LesInfoDuDemandeurController implements Initializable{
         	
         }else if(event.getSource() == demandeFileButton){
         	
-            ImagesOrPdfChooser.desplay("Choisir la demande de creusement", "Demande_de_creusement.pdf");
+            ImagesOrPdfChooser.desplay("\u0625\u062e\u062a\u064a\u0627\u0631 \u0645\u0644\u0641 \u0627\u0644\u0637\u0644\u0628", "Demande_de_creusement.pdf");
             File file = ImagesOrPdfChooser.result;
         	if(file != null) {
         		demandeFile = file;
@@ -140,7 +140,7 @@ public class LesInfoDuDemandeurController implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
 		
-		typeDemandeChoice.getItems().addAll("Type de demande","Forage", "Pompage");
+		typeDemandeChoice.getItems().addAll("\u0646\u0648\u0639 \u0627\u0644\u0637\u0644\u0628","\u0637\u0644\u0628 \u062d\u0641\u0631 \u062b\u0642\u0628 \u0645\u0627\u0626\u064a", "\u0637\u0644\u0628 \u062c\u0644\u0628 \u0627\u0644\u0645\u0627\u0621");
 		initialiserInputs();
 		cinFilePath.setText(cinFile != null ? cinFile.getName() : "");
 		demandeFilePath.setText(demandeFile != null ? demandeFile.getName() : "");
@@ -170,7 +170,7 @@ public class LesInfoDuDemandeurController implements Initializable{
 	    		condition = condition && false;
 	    	}
 	    	
-	    	if(typeDemandeChoice.getValue() == "Type de demande") {
+	    	if(typeDemandeChoice.getValue() == "\u0646\u0648\u0639 \u0627\u0644\u0637\u0644\u0628") {
 	    		typeDemandeChoice.setStyle("-fx-border-color: red");
 	    		condition = condition && false;
 	    	}
@@ -210,7 +210,7 @@ public class LesInfoDuDemandeurController implements Initializable{
 		 
 		//initialiser le chapms du type de demande
 		 if(demandeur.getTypeDemande() == null)
-			 typeDemandeChoice.setValue("Type de demande");
+			 typeDemandeChoice.setValue("\u0646\u0648\u0639 \u0627\u0644\u0637\u0644\u0628");
 		 else
 			 typeDemandeChoice.setValue(demandeur.getTypeDemande());
 		 

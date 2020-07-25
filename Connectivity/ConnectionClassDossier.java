@@ -32,10 +32,10 @@ public class ConnectionClassDossier {
 		
 		String sqlRequette = "SELECT * "
 						   + "FROM `dossier` "
-						   + "WHERE `IdDossier` = '"+ ID+"'" ;
+						   + "WHERE `IdDossier` = "+ ID +"" ;
 		try {
 			
-			Statement stm = conection.connection.createStatement();
+			Statement stm = conection.getConnection().createStatement();
 			ResultSet result = stm.executeQuery(sqlRequette);
 			if(result.next()) {
 				dossier.setIdDossier(ID);
@@ -86,10 +86,11 @@ public class ConnectionClassDossier {
 	}
 	
 	public int updateDossierToDatabase(DossierForDownload dossier) {
+		System.out.println(dossier);
 		
 		String sqlRequete = "UPDATE `dossier` " + 
 							"SET `Nom`=?," + 
-							"    `Prenom`=3," + 
+							"    `Prenom`=?," + 
 							"    `cin`=?," + 
 							"    `cinImg`=?," + 
 							"    `typeDemande`=?," + 
@@ -118,7 +119,7 @@ public class ConnectionClassDossier {
 							"WHERE `IdDossier`= ?";
 		try {
 			
-			PreparedStatement stm = conection.connection.prepareStatement(sqlRequete);
+			PreparedStatement stm = conection.getConnection().prepareStatement(sqlRequete);
 			
 			stm.setString(1, dossier.getNom());
 			stm.setString(2, dossier.getPrenom());
@@ -146,14 +147,14 @@ public class ConnectionClassDossier {
 			stm.setDate(20, Date.valueOf(dossier.getDateSignateureDuPv()));
 			stm.setString(21, dossier.getAvisDe_CEP());
 			stm.setDate(22, Date.valueOf(dossier.getDateEnvoiDuPVa_LABHOER()));
-			stm.setString(24, dossier.getAvisABHOER());
-			stm.setString(25, dossier.getAutorisation());
+			stm.setString(23, dossier.getAvisABHOER());
+			stm.setString(24, dossier.getAutorisation());
 			
-			stm.setString(26, dossier.getQuiada());
-			stm.setBlob(27, dossier.getPlanImmobilier());
-			stm.setString(28, dossier.getNomImmobilier());
+			stm.setString(25, dossier.getQuiada());
+			stm.setBlob(26, dossier.getPlanImmobilier());
+			stm.setString(27, dossier.getNomImmobilier());
 			
-			stm.setInt(29, dossier.getIdDossier());
+			stm.setInt(28, dossier.getIdDossier());
 			
 			int result = stm.executeUpdate();
 			return result;
