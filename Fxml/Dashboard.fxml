@@ -15,13 +15,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="556.0" prefWidth="877.0" stylesheets="@../GestionDemandeEau/application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.DashboardController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="556.0" prefWidth="877.0" stylesheets="@../GestionDemandeEau/application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.DashboardController">
    <center>
       <StackPane BorderPane.alignment="CENTER">
          <children>
             <VBox alignment="CENTER">
                <children>
-                  <HBox alignment="CENTER" prefHeight="158.0" prefWidth="673.0" spacing="60.0">
+                  <HBox alignment="CENTER" prefHeight="158.0" prefWidth="673.0" spacing="70.0">
                      <children>
                         <ImageView fitHeight="121.0" fitWidth="158.0" onMouseClicked="#ShowFolderInformations" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -31,7 +31,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </ImageView>
-                        <ImageView fitHeight="121.0" fitWidth="158.0" onMouseClicked="#ModifyExistingFolder" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="121.0" fitWidth="132.0" onMouseClicked="#ModifyExistingFolder" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../Image/modifyFolder.png" />
                            </image>
@@ -52,9 +52,9 @@
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </padding>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="35.0" prefWidth="573.0" spacing="60.0">
+                  <HBox alignment="CENTER" prefHeight="35.0" prefWidth="573.0" spacing="70.0">
                      <children>
-                        <Button id="switchButton" mnemonicParsing="false" onMouseClicked="#ShowFolderInformations" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: #2b4067;" text="عرض معلومات مجلد" textFill="WHITE">
+                        <Button id="switchButton" mnemonicParsing="false" onMouseClicked="#ShowFolderInformations" prefHeight="35.0" prefWidth="152.0" style="-fx-background-color: #2b4067;" text="عرض معلومات مجلد" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -86,7 +86,7 @@
       </StackPane>
    </center>
    <right>
-      <VBox id="vboxStyle" alignment="CENTER" prefHeight="443.0" prefWidth="213.0" spacing="20.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
+      <VBox id="vboxStyle" alignment="CENTER" prefHeight="409.0" prefWidth="170.0" spacing="20.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
          <children>
             <Button id="buttonProfile" layoutX="10.0" layoutY="35.0" mnemonicParsing="false" onAction="#ChangePassword" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: #A7BDE7;" text="تغيير كلمة السر" textFill="WHITE">
                <cursor>
@@ -120,8 +120,8 @@
                   <Insets />
                </HBox.margin>
                <columnConstraints>
-                  <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="664.0" />
-                  <ColumnConstraints halignment="CENTER" maxWidth="213.0" minWidth="213.0" prefWidth="213.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="707.0" />
+                  <ColumnConstraints halignment="CENTER" maxWidth="213.0" minWidth="147.0" prefWidth="170.0" />
                </columnConstraints>
                <rowConstraints>
                   <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />

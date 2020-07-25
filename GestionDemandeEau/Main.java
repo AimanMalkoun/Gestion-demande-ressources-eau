@@ -35,6 +35,7 @@ public class Main extends Application {
 
 			primaryStage.getIcons().add(new Image("/Image/Logo5.png"));
 			primaryStage.show();
+			primaryStage.centerOnScreen();
 
 		} catch (Exception e) {
 			e.printStackTrace();

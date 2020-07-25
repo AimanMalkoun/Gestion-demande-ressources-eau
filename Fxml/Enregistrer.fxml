@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="borderPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="877.0" stylesheets="@../GestionDemandeEau/application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.EnregistrerController">
+<BorderPane fx:id="borderPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="877.0" stylesheets="@../GestionDemandeEau/application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.EnregistrerController">
    <center>
       <ScrollPane fitToWidth="true" prefHeight="397.0" prefWidth="681.0" BorderPane.alignment="CENTER">
          <content>
@@ -327,7 +327,7 @@
       </ScrollPane>
    </center>
    <right>
-      <VBox id="vboxStyle" alignment="CENTER" prefHeight="447.0" prefWidth="213.0" spacing="20.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
+      <VBox id="vboxStyle" alignment="CENTER" prefHeight="388.0" prefWidth="167.0" spacing="20.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
          <children>
             <Button id="buttonProfile2" alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="186.0" style="-fx-background-color: #4cd4b9;" text="المواطن" textFill="WHITE">
                <cursor>
@@ -362,7 +362,7 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="106.0" style="-fx-background-color: #ffffff;" text="التسجيل">
+            <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="106.0" style="-fx-background-color: #ffffff;" text="التسجيل">
                <font>
                   <Font size="14.0" />
                </font>
@@ -387,8 +387,8 @@
                   <Insets />
                </HBox.margin>
                <columnConstraints>
-                  <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="664.0" />
-                  <ColumnConstraints halignment="CENTER" maxWidth="213.0" minWidth="213.0" prefWidth="213.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="710.0" />
+                  <ColumnConstraints halignment="CENTER" maxWidth="213.0" minWidth="167.0" prefWidth="167.0" />
                </columnConstraints>
                <rowConstraints>
                   <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />

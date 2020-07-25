@@ -29,6 +29,11 @@
                   <Image url="@../Image/royaumedumaroc.png" />
                </image>
             </ImageView>
+            <Label layoutX="380.0" layoutY="46.0" text="عرض معلومات مجلد" textFill="WHITE">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </top>
