@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -30,7 +31,7 @@ public class ChangeDateAlert {
 		Label textError = new Label("");
 		textError.setStyle("-fx-font-color: red");
 		
-		Button okButton = new Button("OK"), annulerButton = new Button("annuler");
+		Button okButton = new Button("\u062a\u0623\u0643\u064a\u062f"), annulerButton = new Button("\u0625\u0644\u063a\u0627\u0621");
 		
 		//Handling actions
 				okButton.setOnMouseClicked(event -> {
@@ -64,6 +65,7 @@ public class ChangeDateAlert {
 		Scene scene = new Scene(root);
 		window.setScene(scene);
 		window.setTitle(title);
+		window.getIcons().add(new Image("/Image/Logo5.png"));
 		window.showAndWait();
 		
 		return result;

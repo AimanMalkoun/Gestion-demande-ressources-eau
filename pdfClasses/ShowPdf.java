@@ -6,10 +6,9 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 
 import org.jpedal.PdfDecoder;
-import org.jpedal.exception.PdfException;
 
-import javafx.stage.Stage;
-import javafx.embed.swing.SwingFXUtils;
+import com.itextpdf.text.pdf.PdfException;
+
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -19,22 +18,18 @@ import javafx.scene.image.WritableImage;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 
 public class ShowPdf {
 	
 	static int pageCounte = 0;
 	
-	public static void display(String pdfPath, String title) {
+	public static void display(String pdfPath, String title) throws org.jpedal.exception.PdfException {
 		
 		// open file.
 		PdfDecoder pdf = new PdfDecoder();
-		try {
-			pdf.openPdfFile(pdfPath);
-		} catch (PdfException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		pdf.openPdfFile(pdfPath);
 		
 		// creationg the window to desplay the pdf file as images
 		Stage primaryStage = new Stage();
@@ -75,6 +70,7 @@ public class ShowPdf {
 			Scene scene = new Scene(root,400,600);
 			primaryStage.setScene(scene);
 			primaryStage.setTitle(title);
+			primaryStage.getIcons().add(new Image("/Image/Logo5.png"));
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();

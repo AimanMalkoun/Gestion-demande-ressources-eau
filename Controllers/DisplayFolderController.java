@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import org.jpedal.exception.PdfException;
+
 import Classes.DossierForDownload;
 
 import pdfClasses.ShowPdf;
@@ -116,7 +118,7 @@ public class DisplayFolderController implements Initializable {
     private Label autorisationLabel;
     
     @FXML
-    private void displeyFile(MouseEvent event) {
+    private void displeyFile(MouseEvent event) throws PdfException {
 
     	if(event.getSource() == attestationFileButton) {
     		
@@ -161,7 +163,7 @@ public class DisplayFolderController implements Initializable {
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		setMessage(5);
+		//setMessage(1);
 	}
 
 	

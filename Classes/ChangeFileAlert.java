@@ -7,9 +7,9 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -17,14 +17,14 @@ public class ChangeFileAlert {
 	
 	static File result = null;
 	
-	public static File desplay(String title) {
+	public static File desplay(String title, String filename) {
 		
 		
 		Stage window = new Stage();
 		window.setResizable(false);
 		window.initModality(Modality.APPLICATION_MODAL);
 
-		Button input = new Button("Choisir un fichier");
+		Button input = new Button("\u0627\u062e\u062a\u064a\u0627\u0631 \u0645\u0644\u0641");
 		input.setPrefSize(150, 30);
 
 		Label path = new Label("");
@@ -33,9 +33,8 @@ public class ChangeFileAlert {
 		//choose file
 		input.setOnMouseClicked(e -> {
 			
-				FileChooser fc = new FileChooser();
-				fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("image/pdf/docx", "*.jpg", "*.png", "*.pdf", "*.docx"));
-				File file = fc.showOpenDialog(new Stage());
+			ImagesOrPdfChooser.desplay(title, filename);
+			File file = ImagesOrPdfChooser.result;
 				
 				if(file != null) {
 					path.setText(file.getPath());
@@ -44,7 +43,7 @@ public class ChangeFileAlert {
 				
 			});
 		
-		Button okButton = new Button("OK"), annulerButton = new Button("annuler");
+		Button okButton = new Button("\u062a\u0623\u0643\u064a\u062f"), annulerButton = new Button("\u0625\u0644\u063a\u0627\u0621");
 		
 		//Handling buttons actions
 		
@@ -74,6 +73,7 @@ public class ChangeFileAlert {
 		Scene scene = new Scene(root);
 		window.setScene(scene);
 		window.setTitle(title);
+		window.getIcons().add(new Image("/Image/Logo5.png"));
 		window.showAndWait();
 		
 		return result;

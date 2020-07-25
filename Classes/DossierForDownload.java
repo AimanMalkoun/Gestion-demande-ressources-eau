@@ -4,34 +4,7 @@ import java.sql.Blob;
 import java.time.LocalDate;
 
 public class DossierForDownload {
-	@Override
-	public String toString() {
-		return "DossierForDownload [IdDossier=" + IdDossier + ", nom=" + nom + ", prenom=" + prenom + ", cin=" + cin
-				+ ", dateDepotDossier=" + dateDepotDossier + ", typeDemande=" + typeDemande + ", cinFile=" + cinFile
-				+ ", demandeFile=" + demandeFile + ", localisation=" + localisation + ", douar=" + douar + ", commune="
-				+ commune + ", province=" + province + ", attestationDePocession=" + attestationDePocession
-				+ ", localisationPoint=" + localisationPoint + ", debit=" + debit + ", profondeur=" + profondeur
-				+ ", planEau=" + planEau + ", rabattement=" + rabattement + ", dateDepot=" + dateDepot
-				+ ", dateEnvoiA_LABHOER=" + dateEnvoiA_LABHOER + ", dateDebutde_EP=" + dateDebutde_EP + ", dateFin_EP="
-				+ dateFin_EP + ", dateSignateureDuPv=" + dateSignateureDuPv + ", dateEnvoiDuPVa_LABHOER="
-				+ dateEnvoiDuPVa_LABHOER + ", avisDe_CEP=" + avisDe_CEP + ", avisABHOER=" + avisABHOER
-				+ ", autorisation=" + autorisation + ", getIdDossier()=" + getIdDossier() + ", getNom()=" + getNom()
-				+ ", getPrenom()=" + getPrenom() + ", getCin()=" + getCin() + ", getDateDepotDossier()="
-				+ getDateDepotDossier() + ", getTypeDemande()=" + getTypeDemande() + ", getCinFile()=" + getCinFile()
-				+ ", getDemandeFile()=" + getDemandeFile() + ", getLocalisation()=" + getLocalisation()
-				+ ", getDouar()=" + getDouar() + ", getCommune()=" + getCommune() + ", getProvince()=" + getProvince()
-				+ ", getAttestationDePocession()=" + getAttestationDePocession() + ", getLocalisationPoint()="
-				+ getLocalisationPoint() + ", getDebit()=" + getDebit() + ", getProfondeur()=" + getProfondeur()
-				+ ", getPlanEau()=" + getPlanEau() + ", getRabattement()=" + getRabattement() + ", getDateDepot()="
-				+ getDateDepot() + ", getDateEnvoiA_LABHOER()=" + getDateEnvoiA_LABHOER() + ", getDateDebutde_EP()="
-				+ getDateDebutde_EP() + ", getDateFin_EP()=" + getDateFin_EP() + ", getDateSignateureDuPv()="
-				+ getDateSignateureDuPv() + ", getDateEnvoiDuPVa_LABHOER()=" + getDateEnvoiDuPVa_LABHOER()
-				+ ", getAvisDe_CEP()=" + getAvisDe_CEP() + ", getAvisABHOER()=" + getAvisABHOER()
-				+ ", getAutorisation()=" + getAutorisation() + ", getClass()=" + getClass() + ", hashCode()="
-				+ hashCode() + ", toString()=" + super.toString() + "]";
-	}
-
-
+	
 	/*
 	 * declaration des attributs (private) .
 	 */
@@ -47,18 +20,20 @@ public class DossierForDownload {
 	private Blob demandeFile;
 	
 	//immobilier attributs
-	private String localisation;
+	private String nomImmobilier;
+	private String daaira;
+	private String quiada;
 	private String douar;
 	private String commune;
 	private String province;
 	private Blob attestationDePocession;
+	private Blob planImmobilier;
 	
 	//point d'eau attributs
 	private String localisationPoint;
 	private float debit;
 	private float profondeur;
-	private Blob planEau;
-	private float rabattement;
+	private float planEau;
 	
 	//suivi du dossier attributs
 	private LocalDate dateDepot;
@@ -122,12 +97,6 @@ public class DossierForDownload {
 		return demandeFile;
 	}
 
-
-	public String getLocalisation() {
-		return localisation;
-	}
-
-
 	public String getDouar() {
 		return douar;
 	}
@@ -163,13 +132,8 @@ public class DossierForDownload {
 	}
 
 
-	public Blob getPlanEau() {
+	public float getPlanEau() {
 		return planEau;
-	}
-
-
-	public float getRabattement() {
-		return rabattement;
 	}
 
 
@@ -218,12 +182,52 @@ public class DossierForDownload {
 	}
 
 
+	public String getNomImmobilier() {
+		return nomImmobilier;
+	}
+
+
+	public String getDaaira() {
+		return daaira;
+	}
+
+
+	public String getQuiada() {
+		return quiada;
+	}
+
+
+	public Blob getPlanImmobilier() {
+		return planImmobilier;
+	}
+
+
+	//Setters
+	public void setNomImmobilier(String nomImmobilier) {
+		this.nomImmobilier = nomImmobilier;
+	}
+
+
+	public void setDaaira(String daaira) {
+		this.daaira = daaira;
+	}
+
+
+	public void setQuiada(String quiada) {
+		this.quiada = quiada;
+	}
+
+
+	public void setPlanImmobilier(Blob planImmobilier) {
+		this.planImmobilier = planImmobilier;
+	}
+
+
 	public void setIdDossier(int idDossier) {
 		IdDossier = idDossier;
 	}
 
 
-	//Setters
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
@@ -258,12 +262,7 @@ public class DossierForDownload {
 		this.demandeFile = demandeFile;
 	}
 
-
-	public void setLocalisation(String localisation) {
-		this.localisation = localisation;
-	}
-
-
+	
 	public void setDouar(String douar) {
 		this.douar = douar;
 	}
@@ -299,13 +298,8 @@ public class DossierForDownload {
 	}
 
 
-	public void setPlanEau(Blob planEau) {
+	public void setPlanEau(float planEau) {
 		this.planEau = planEau;
-	}
-
-
-	public void setRabattement(float rabattement) {
-		this.rabattement = rabattement;
 	}
 
 
@@ -353,4 +347,24 @@ public class DossierForDownload {
 		this.autorisation = autorisation;
 	}
 
+
+	@Override
+	public String toString() {
+		String message = "DossierForDownload [\nIdDossier=" + IdDossier + ", nom=" + nom + ", prenom=" + prenom + ", cin=" + cin
+				+ ", dateDepotDossier=" + dateDepotDossier + ", typeDemande=" + typeDemande + ", cinFile=" + cinFile
+				+ ", demandeFile=" + demandeFile + ", nomImmobilier=" + nomImmobilier + ", daaira=" + daaira
+				+ ", quiada=" + quiada + ", douar=" + douar + ", commune=" + commune + ", province=" + province
+				+ ", attestationDePocession=" + attestationDePocession + ", planImmobilier=" + planImmobilier
+				+ ", localisationPoint=" + localisationPoint + ", debit=" + debit + ", profondeur=" + profondeur
+				+ ", planEau=" + planEau  + ", dateDepot=" + dateDepot
+				+ ", dateEnvoiA_LABHOER=" + dateEnvoiA_LABHOER + ", dateDebutde_EP=" + dateDebutde_EP + ", dateFin_EP="
+				+ dateFin_EP + ", dateSignateureDuPv=" + dateSignateureDuPv + ", dateEnvoiDuPVa_LABHOER="
+				+ dateEnvoiDuPVa_LABHOER + ", avisDe_CEP=" + avisDe_CEP + ", avisABHOER=" + avisABHOER
+				+ ", autorisation=" + autorisation + "]\n";
+		
+		message.replace(",", "\n");
+		return message;
+	}
+
+	
 }

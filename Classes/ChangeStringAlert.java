@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -29,7 +30,7 @@ public class ChangeStringAlert {
 		Label textError = new Label("");
 		textError.setStyle("-fx-font-color: red");
 		
-		Button okButton = new Button("OK"), annulerButton = new Button("annuler");
+		Button okButton = new Button("\u062a\u0623\u0643\u064a\u062f"), annulerButton = new Button("\u0625\u0644\u063a\u0627\u0621");
 		
 		//handeling actions
 		okButton.setOnMouseClicked(e -> {
@@ -39,7 +40,7 @@ public class ChangeStringAlert {
 				window.close();
 			}else {
 				input.setStyle("-fx-border-color: red;");
-				textError.setText("svp rempliez le champ!");
+				textError.setText("\u0627\u0644\u0645\u0631\u062c\u0648 \u0645\u0644\u0626 \u0627\u0644\u062e\u0627\u0646\u0629 \u0628\u0645\u0627 \u064a\u0646\u0627\u0633\u0628\u0647\u0627");
 			}
 			
 		});
@@ -67,6 +68,7 @@ public class ChangeStringAlert {
 		Scene scene = new Scene(root);
 		window.setScene(scene);
 		window.setTitle(title);
+		window.getIcons().add(new Image("/Image/Logo5.png"));
 		window.showAndWait();
 		
 		return result;
