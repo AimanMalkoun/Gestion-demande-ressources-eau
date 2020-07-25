@@ -1,7 +1,5 @@
 package Classes;
 
-import java.io.File;
-
 public class PointDeau {
 	/*
 	 * declaration des attributs (private) .
@@ -10,27 +8,24 @@ public class PointDeau {
 	private String localisationPoint;
 	private float debit;
 	private float profondeur;
-	private File planEau;
-	private float rabattement;
+	private float planEau;
 
-	
-
-	//Constructeur par defaut il metre tout les atribut null
+	// Constructeur par defaut il metre tout les atribut null
 	public PointDeau() {
-		
+
 	}
 
 	/*
 	 * le constricteur de la classe initialisé par les attributs .
 	 */
 
-	public PointDeau(String localisationPoint, float debit, float profondeur, File planEau, float rabattement) {
+	public PointDeau(String localisationPoint, float debit, float profondeur, float poinEau) {
 
 		setLocalisationPoint(localisationPoint);
 		setDebit(debit);
 		setProfondeur(profondeur);
-		setPlanEau(planEau);
-		setRabattement(rabattement);
+		setPlanEau(poinEau);
+
 	}
 
 	/*
@@ -42,9 +37,9 @@ public class PointDeau {
 		setDebit(pointDeau.debit);
 		setProfondeur(pointDeau.profondeur);
 		setPlanEau(pointDeau.planEau);
-		setRabattement(pointDeau.rabattement);
+
 	}
-	
+
 	/*
 	 * les getters et les setters des attributs de la classe.
 	 */
@@ -73,21 +68,12 @@ public class PointDeau {
 		this.profondeur = profondeur;
 	}
 
-	public File getPlanEau() {
+	public float getPlanEau() {
 		return planEau;
 	}
 
-	public void setPlanEau(File planEau) {
+	public void setPlanEau(float planEau) {
 		this.planEau = planEau;
 	}
-
-	public float getRabattement() {
-		return rabattement;
-	}
-
-	public void setRabattement(float rabattement) {
-		this.rabattement = rabattement;
-	}
-
 
 }

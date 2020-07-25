@@ -30,156 +30,169 @@ import javafx.stage.Stage;
 public class modifierInfoDuDossierController implements Initializable{
 
 	private DossierForDownload dossier = new DossierForDownload(); 
-
+	
 	@FXML
-    private Label nomLabel;
-
-    @FXML
     private Button nomButton;
 
     @FXML
-    private Label prenomLabel;
+    private Label nomLabel;
 
     @FXML
     private Button prenomButton;
 
     @FXML
-    private Label provinceLabel;
+    private Label prenomLabel;
 
     @FXML
     private Button provinceButton;
 
     @FXML
-    private Label communeLabel;
+    private Label provinceLabel;
 
     @FXML
     private Button communeButton;
 
     @FXML
-    private Label douarLabel;
+    private Label communeLabel;
 
     @FXML
     private Button douarButton;
 
     @FXML
-    private Label attestationPoscessionLocalisationImmobilierLabel;
+    private Label douarLabel;
 
     @FXML
     private Button attestationPocessionImmobilierFileButton;
 
     @FXML
-    private Label localisationImmobilierLabel;
+    private Label attestationPoscessionImmobilierLabel;
 
     @FXML
-    private Button localisationImmobilierButton;
+    private Button nomImmobilierButton;
 
     @FXML
-    private Label demandeDeCreusementPathLabel;
+    private Label nomImmobilierLabel;
 
     @FXML
     private Button demandeCreusementFileButton;
 
     @FXML
-    private Label typeDeDemandeLabel;
+    private Label demandeDeCreusementPathLabel;
 
     @FXML
     private Button typeDemandeButton;
 
     @FXML
-    private Label carteCinPathLabel;
+    private Label typeDeDemandeLabel;
 
     @FXML
     private Button cinFileButton;
 
     @FXML
-    private Label codCinLabel;
+    private Label carteCinPathLabel;
 
     @FXML
     private Button codCinButton;
 
     @FXML
-    private Label LocalisationPointEauLabel;
+    private Label codCinLabel;
 
     @FXML
     private Button localisationPointEauButton;
 
     @FXML
-    private Label planEauPathLabel;
+    private Label LocalisationPointEauLabel;
 
     @FXML
     private Button planEauButton;
 
     @FXML
-    private Label rabattementLabel;
+    private Label planEauLabel;
 
     @FXML
-    private Button rabatementButton;
+    private Button dateDepotDossierButton;
 
     @FXML
     private Label DateDepotDossierLabel;
 
     @FXML
-    private Button dateDepotDossierButton;
-    
-    @FXML
-    private Label dateDenvoiAlabhouerEljaidaLabel;
-
-    @FXML
     private Button dateDenvoiAlabhouerEljaidaButton;
 
     @FXML
-    private Label dateDebutEnquetePublicLabel;
+    private Label dateDenvoiAlabhouerEljaidaLabel;
 
     @FXML
     private Button dateDebutEnquetePublicButton;
 
     @FXML
-    private Label dateFinEnquetePublicLabel;
+    private Label dateDebutEnquetePublicLabel;
 
     @FXML
     private Button dateFinEnquetePublicButton;
 
     @FXML
-    private Label dateSignaturPVparCEPLabel;
+    private Label dateFinEnquetePublicLabel;
 
     @FXML
     private Button dateSignaturPVparCEPButton;
 
     @FXML
-    private Label AvisDeCEPLabel;
+    private Label dateSignaturPVparCEPLabel;
 
     @FXML
     private Button AvisDeCEPButton;
 
     @FXML
-    private Label dateEnvoitPvAbhoerEljadidaLabel;
+    private Label AvisDeCEPLabel;
 
     @FXML
     private Button dateEnvoitPvAbhoerEljadidaButton;
 
     @FXML
-    private Label AvisAbhoerLabel;
+    private Label dateEnvoitPvAbhoerEljadidaLabel;
 
     @FXML
     private Button AvisAbhoerButton;
 
     @FXML
-    private Label profondeurLabel;
+    private Label AvisAbhoerLabel;
 
     @FXML
     private Button ProfondeurButton;
 
     @FXML
-    private Label debitLabel;
+    private Label profondeurLabel;
 
     @FXML
     private Button debitButton;
 
     @FXML
-    private Label autorisationLabel;
+    private Label debitLabel;
 
     @FXML
     private Button autorisationButton;
+
+    @FXML
+    private Label autorisationLabel;
+
+    @FXML
+    private Button daairaButton;
+
+    @FXML
+    private Label daairaLabel;
+
+    @FXML
+    private Button quiadaButton;
+
+    @FXML
+    private Label quiadaLabel;
+
+    @FXML
+    private Button planImmobilierFileButton;
+
+    @FXML
+    private Label planImmobilierFilePathLabel;
+
 
     @FXML
     void annuler(MouseEvent event) {
@@ -203,7 +216,7 @@ public class modifierInfoDuDossierController implements Initializable{
     	
     		if(event.getSource() == nomButton){
     			//string
-    			String result = ChangeStringAlert.desplay("Nom", "changer le nom");
+    			String result = ChangeStringAlert.desplay("\u0627\u0644\u0625\u0633\u0645 \u0627\u0644\u0639\u0627\u0626\u0644\u064a", "\u062a\u063a\u064a\u064a\u0631 \u0627\u0644\u0625\u0633\u0645 \u0627\u0644\u0639\u0627\u0626\u0644\u064a");
     			
     			if(result != null){
     				
@@ -215,7 +228,7 @@ public class modifierInfoDuDossierController implements Initializable{
     		}
     		else if(event.getSource() == prenomButton) {
     			//string
-    			String result = ChangeStringAlert.desplay("Prenom", "changer le prenom");
+    			String result = ChangeStringAlert.desplay("\u0627\u0644\u0625\u0633\u0645 \u0627\u0644\u0634\u062e\u0635\u064a", "\u062a\u063a\u064a\u064a\u0631 \u0627\u0644\u0625\u0633\u0645 \u0627\u0644\u0634\u062e\u0635\u064a");
     			
     			if(result != null){
     				dossier.setPrenom(result);
@@ -224,16 +237,90 @@ public class modifierInfoDuDossierController implements Initializable{
     			
     		}else if (event.getSource() == codCinButton) {
     			//string
-    			String result = ChangeStringAlert.desplay("CIN", "changer le CIN");
+    			String result = ChangeStringAlert.desplay("\u0631\u0642\u0645 \u0628\u0637\u0627\u0642\u0629 \u0627\u0644\u062a\u0639\u0631\u064a\u0641 \u0627\u0644\u0648\u0637\u0646\u064a\u0629", "\u062a\u063a\u064a\u064a\u0631 \u0631\u0642\u0645 \u0628\u0637\u0627\u0642\u0629 \u0627\u0644\u062a\u0639\u0631\u064a\u0641 \u0627\u0644\u0648\u0637\u0646\u064a\u0629");
     			
     			if(result != null){
     				dossier.setCin(result);
     				codCinLabel.setText(result);
     			}
     			
+    		}else if(event.getSource() == typeDemandeButton) {
+    			//choice
+    			String items[] =  {"\u062d\u0641\u0631 \u0628\u0626\u0631", "\u0636\u062e \u0627\u0644\u0645\u0627\u0621"};
+    			String result = ChangeChoiceAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u0646\u0648\u0639 \u0627\u0644\u0637\u0644\u0628", items, dossier.getTypeDemande());
+    			
+    			dossier.setTypeDemande(result);
+    			typeDeDemandeLabel.setText(result);
+    			
+    		}else if(event.getSource() == cinFileButton) {
+    			//file
+    			
+    			
+    			
+    			File result = ChangeFileAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u0635\u0648\u0631\u0629 \u0628\u0637\u0627\u0642\u0629 \u0627\u0644\u062a\u0639\u0631\u064a\u0641 \u0627\u0644\u0648\u0637\u0646\u064a\u0629", dossier.getCin() + "CIN.pdf");
+    			if(result != null){
+    				dossier.setCinFile((Blob) new FileInputStream(result));
+    				carteCinPathLabel.setText(result.getPath());
+    			}
+    			
+    		}else if(event.getSource() == demandeCreusementFileButton) {
+    			//file
+    			File result = ChangeFileAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u0645\u0644\u0641 \u0627\u0644\u0637\u0644\u0628", dossier.getCin() + "demandeFile.pdf");
+    			System.out.println(result);
+    			
+    			if(result != null){
+    				dossier.setDemandeFile((Blob) new FileInputStream(result));
+    				demandeDeCreusementPathLabel.setText(result.getPath());
+    			}
+    			
+    		}else if(event.getSource() == nomImmobilierButton) {
+    			//string
+    			String result = ChangeStringAlert.desplay("\u0627\u0633\u0645 \u0627\u0644\u0639\u0642\u0627\u0631", "\u062a\u063a\u064a\u064a\u0631 \u0627\u0633\u0645 \u0627\u0644\u0639\u0642\u0627\u0631");
+
+    			if(result != null){
+    				dossier.setNomImmobilier(result);
+    				nomImmobilierLabel.setText(result);
+    			}
+    			
+    		}else if(event.getSource() == attestationPocessionImmobilierFileButton) {
+    			//file
+    			File result = ChangeFileAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u0634\u0647\u0627\u062f\u0629 \u0645\u0644\u0643\u064a\u0629 \u0627\u0644\u0639\u0642\u0627\u0631", dossier.getCin() + "attestation_Pocession_Immobilier.pdf");
+    			
+    			if(result != null){
+    				dossier.setAttestationDePocession((Blob) new FileInputStream(result));
+    				attestationPoscessionImmobilierLabel.setText(result.getPath());
+    			}
+    			
+    		}else if(event.getSource() == planImmobilierFileButton) {
+    			//file
+    			File result = ChangeFileAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u062a\u0635\u0645\u064a\u0645 \u0627\u0644\u0639\u0642\u0627\u0631", dossier.getCin() + "plan_Immobilier.pdf");
+    			
+    			if(result != null){
+    				dossier.setPlanImmobilier((Blob) new FileInputStream(result));
+    				planImmobilierFilePathLabel.setText(result.getPath());
+    			}
+    			
+    		}else if(event.getSource() == quiadaButton) {
+    			//string
+    			String result = ChangeStringAlert.desplay("\u0627\u0644\u0642\u064a\u0627\u062f\u0629", "\u062a\u063a\u064a\u064a\u0631 \u0627\u0644\u0642\u064a\u0627\u062f\u0629");
+
+    			if(result != null){
+    				dossier.setQuiada(result);
+    				quiadaLabel.setText(result);
+    			}
+    			
+    		}else if(event.getSource() == daairaButton) {
+    			//string
+    			String result = ChangeStringAlert.desplay("\u0627\u0644\u062f\u0627\u0626\u0631\u0629", "\u062a\u063a\u064a\u064a\u0631 \u0627\u0644\u062f\u0627\u0626\u0631\u0629");
+
+    			if(result != null){
+    				dossier.setDaaira(result);
+    				daairaLabel.setText(result);
+    			}
+    			
     		}else if(event.getSource() == provinceButton) {
     			//string
-    			String result = ChangeStringAlert.desplay("Province", "changer le provine");
+    			String result = ChangeStringAlert.desplay("\u0627\u0644\u0625\u0642\u0644\u064a\u0645", "\u062a\u063a\u064a\u064a\u0631 \u0627\u0644\u0625\u0642\u0644\u064a\u0645");
 
     			if(result != null){
     				dossier.setProvince(result);
@@ -242,7 +329,7 @@ public class modifierInfoDuDossierController implements Initializable{
     			
     		}else if(event.getSource() == communeButton) {
     			//string
-    			String result = ChangeStringAlert.desplay("Commune", "changer la commune");
+    			String result = ChangeStringAlert.desplay("\u0627\u0644\u062c\u0645\u0627\u0639\u0629", "\u062a\u063a\u064a\u064a\u0631 \u0627\u0644\u062c\u0645\u0627\u0639\u0629");
 
     			if(result != null){
     				dossier.setCommune(result);
@@ -251,58 +338,16 @@ public class modifierInfoDuDossierController implements Initializable{
     			
     		}else if(event.getSource() == douarButton) {
     			//string
-    			String result = ChangeStringAlert.desplay("Douar", "Changer le douar");
+    			String result = ChangeStringAlert.desplay("\u0627\u0644\u062f\u0648\u0627\u0631", "\u062a\u063a\u064a\u064a\u0631 \u0627\u0644\u062f\u0648\u0627\u0631");
 
     			if(result != null){
     				dossier.setDouar(result);
     				douarLabel.setText(result);
     			}
     			
-    		}else if(event.getSource() == attestationPocessionImmobilierFileButton) {
-    			//file
-    			File result = ChangeFileAlert.desplay("Changer l'attestation de pocession de l'immobilier");
-    			
-    			if(result != null){
-    				dossier.setAttestationDePocession((Blob) new FileInputStream(result));
-    				attestationPoscessionLocalisationImmobilierLabel.setText(result.getPath());
-    			}
-    			
-    		}else if(event.getSource() == localisationImmobilierButton) {
-    			//string
-    			String result = ChangeStringAlert.desplay("Localisation de l'immobilier", "changer la localisation de l'immobilier");
-
-    			if(result != null){
-    				dossier.setLocalisation(result);
-    				localisationImmobilierLabel.setText(result);
-    			}
-    			
-    		}else if(event.getSource() == demandeCreusementFileButton) {
-    			//file
-    			File result = ChangeFileAlert.desplay("Changer la demande");
-    			
-    			if(result != null){
-    				dossier.setDemandeFile((Blob) new FileInputStream(result));
-    				demandeDeCreusementPathLabel.setText(result.getPath());
-    			}
-    			
-    		}else if(event.getSource() == typeDemandeButton) {
-    			//choice
-    			String items[] =  {"forage", "pompage"};
-    			String result = ChangeChoiceAlert.desplay("changer le type de demande", items, "pompage");
-    			
-    			dossier.setTypeDemande(result);
-    			typeDeDemandeLabel.setText(result);
-    			
-    		}else if(event.getSource() == cinFileButton) {
-    			//file
-    			File result = ChangeFileAlert.desplay("Changer la CIN");
-    			if(result != null){
-    				dossier.setCinFile((Blob) new FileInputStream(result));
-    				carteCinPathLabel.setText(result.getPath());
-    			}
     		}else if(event.getSource() == localisationPointEauButton) {
     			//string
-    			String result = ChangeStringAlert.desplay("Localistaion du point d'eau", "changer la localistaion du point d'eau");
+    			String result = ChangeStringAlert.desplay("\u0625\u062d\u062f\u0627\u062b\u064a\u0627\u062a \u0646\u0642\u0637\u0629 \u0627\u0644\u0645\u0627\u0621", "\u062a\u063a\u064a\u064a\u0631 \u0625\u062d\u062f\u0627\u062b\u064a\u0627\u062a \u0646\u0642\u0637\u0629 \u0627\u0644\u0645\u0627\u0621");
 
     			if(result != null){
     				dossier.setLocalisationPoint(result);
@@ -310,24 +355,15 @@ public class modifierInfoDuDossierController implements Initializable{
     			}
     			
     		}else if(event.getSource() == planEauButton) {
-    			//file
-    			File result = ChangeFileAlert.desplay("Changer le plan d'eau");
-    			if(result != null){
-    				dossier.setPlanEau((Blob) new FileInputStream(result));
-    				planEauPathLabel.setText(result.getPath());
-    			}
-    		}else if(event.getSource() == rabatementButton) {
     			//float
-    			float result = ChangeNumberAlert.desplay("Debit", "changer le debit");
-    			
-    			if(result != 0) {
-    				dossier.setRabattement(result);
-    				rabattementLabel.setText(Float.toString(result));
+    			float result = ChangeNumberAlert.desplay("\u0645\u0633\u062a\u0648\u0649 \u0627\u0644\u0645\u0627\u0621", "\u062a\u063a\u064a\u064a\u0631 \u0645\u0633\u062a\u0648\u0649 \u0627\u0644\u0645\u0627\u0621");
+    			if(result != 0){
+    				dossier.setPlanEau(result);
+    				planEauLabel.setText(Float.toString(result));
     			}
-    			
     		}else if(event.getSource() == dateDepotDossierButton) {
     			//date
-    			LocalDate result = ChangeDateAlert.desplay("Changer la date du depot du dossier", LocalDate.of(2020, 12, 21));
+    			LocalDate result = ChangeDateAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u062a\u0627\u0631\u064a\u062e \u0625\u064a\u062f\u0627\u0639 \u0627\u0644\u0645\u0644\u0641", dossier.getDateDepotDossier());
     			
     			dossier.setDateDepotDossier(result);
     			DateDepotDossierLabel.setText(result.toString());
@@ -335,36 +371,36 @@ public class modifierInfoDuDossierController implements Initializable{
     			
     		}else if(event.getSource() == dateDenvoiAlabhouerEljaidaButton) {
     			//date
-    			LocalDate result = ChangeDateAlert.desplay("Changer la date du depot du dossier", LocalDate.of(2020, 12, 21));
+    			LocalDate result = ChangeDateAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u062a\u0627\u0631\u064a\u062e \u0625\u0631\u0633\u0627\u0644 \u0627\u0644\u0645\u0644\u0641 \u0625\u0644\u0649 \u0645\u0646\u062f\u0648\u0628\u064a\u0629 \u0648\u0643\u0627\u0644\u0629 \u0627\u0644\u062d\u0648\u0636 \u0627\u0644\u0645\u0627\u0626\u064a \u0644\u0627\u0645 \u0627\u0644\u0631\u0628\u064a\u0639 \u0628\u0627\u0644\u062c\u062f\u064a\u062f\u0629", LocalDate.now());
 
     			dossier.setDateEnvoiA_LABHOER(result);
     			dateDenvoiAlabhouerEljaidaLabel.setText(result.toString());
     			
     		}else if(event.getSource() == dateDebutEnquetePublicButton) {
     			//date
-    			LocalDate result = ChangeDateAlert.desplay("Changer la date du depot du dossier", LocalDate.of(2020, 12, 21));
+    			LocalDate result = ChangeDateAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u062a\u0627\u0631\u064a\u062e \u0628\u062f\u0627\u064a\u0629 \u0627\u0644\u0628\u062d\u062b \u0627\u0644\u0639\u0644\u0646\u064a", LocalDate.now());
 
     			dossier.setDateDebutde_EP(result);
     			dateDebutEnquetePublicLabel.setText(result.toString());
     			
     		}else if(event.getSource() == dateFinEnquetePublicButton) {
     			//date
-    			LocalDate result = ChangeDateAlert.desplay("Changer la date du depot du dossier", LocalDate.of(2020, 12, 21));
+    			LocalDate result = ChangeDateAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u062a\u0627\u0631\u064a\u062e \u0646\u0647\u0627\u064a\u0629 \u0627\u0644\u0628\u062d\u062b \u0627\u0644\u0639\u0644\u0646\u064a", LocalDate.now());
 
     			dossier.setDateFin_EP(result);
     			dateFinEnquetePublicLabel.setText(result.toString());
     			
     		}else if(event.getSource() == dateSignaturPVparCEPButton) {
     			//date
-    			LocalDate result = ChangeDateAlert.desplay("Changer la date du depot du dossier", LocalDate.of(2020, 12, 21));
+    			LocalDate result = ChangeDateAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u062a\u0627\u0631\u064a\u062e \u0627\u0645\u0636\u0627\u0621 \u0627\u0644\u0645\u062d\u0636\u0631 \u0645\u0646 \u0637\u0631\u0641 \u0644\u062c\u0646\u0629 \u0627\u0644\u0628\u062d\u062b \u0627\u0644\u0639\u0644\u0646\u064a", LocalDate.now());
 
     			dossier.setDateSignateureDuPv(result);
     			dateSignaturPVparCEPLabel.setText(result.toString());
     			
     		}else if(event.getSource() == AvisDeCEPButton) {
     			//choice
-    			String items[] =  {"pas encor decide", "oui", "non"};
-    			String result = ChangeChoiceAlert.desplay("changer l'Avis de CEP", items, "pas encor decide");
+    			String items[] =  {"\u0644\u0645 \u064a\u0642\u0631\u0631 \u0628\u0639\u062f", "\u0646\u0639\u0645", "\u0644\u0627"};
+    			String result = ChangeChoiceAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u0631\u0623\u064a \u0644\u062c\u0646\u0629 \u0627\u0644\u0628\u062d\u062b \u0627\u0644\u0639\u0644\u0646\u064a", items, dossier.getAvisDe_CEP());
     			
     			dossier.setAvisDe_CEP(result);
 
@@ -372,22 +408,22 @@ public class modifierInfoDuDossierController implements Initializable{
     			
     		}else if(event.getSource() == dateEnvoitPvAbhoerEljadidaButton) {
     			//date
-    			LocalDate result = ChangeDateAlert.desplay("Changer la date du depot du dossier", LocalDate.of(2020, 12, 21));
+    			LocalDate result = ChangeDateAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u062a\u0627\u0631\u064a\u062e \u0625\u0631\u0633\u0627\u0644 \u0627\u0644\u0645\u062d\u0636\u0631 \u0625\u0644\u0649 \u0645\u0646\u062f\u0648\u0628\u064a\u0629 \u0648\u0643\u0627\u0644\u0629 \u0627\u0644\u062d\u0648\u0636 \u0627\u0644\u0645\u0627\u0626\u064a \u0644\u0627\u0645 \u0627\u0644\u0631\u0628\u064a\u0639 \u0628\u0627\u0644\u062c\u062f\u064a\u062f\u0629", LocalDate.now());
 
     			dossier.setDateEnvoiDuPVa_LABHOER(result);
     			dateEnvoitPvAbhoerEljadidaLabel.setText(result.toString());
     			
     		}else if(event.getSource() == AvisAbhoerButton) {
     			//choice
-    			String items[] =  {"pas encor decide", "oui", "non"};
-    			String result = ChangeChoiceAlert.desplay("changer l'Avis d'ABOHER", items, "pas encor decide");
+    			String items[] =  {"\u0644\u0645 \u064a\u0642\u0631\u0631 \u0628\u0639\u062f", "\u0646\u0639\u0645", "\u0644\u0627"};
+    			String result = ChangeChoiceAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u0631\u0623\u064a \u0648\u0643\u0627\u0644\u0629 \u0627\u0644\u062d\u0648\u0636 \u0627\u0644\u0645\u0627\u0626\u064a \u0644\u0623\u0645 \u0627\u0644\u0631\u0628\u064a\u0639", items, dossier.getAvisABHOER());
 
     			dossier.setAvisABHOER(result);
     			AvisAbhoerLabel.setText(result);
     			
     		}else if(event.getSource() == ProfondeurButton) {
     			//float
-    			float result = ChangeNumberAlert.desplay("Pofondeur", "changer le pofondeur");
+    			float result = ChangeNumberAlert.desplay("\u0627\u0644\u0639\u0645\u0642", "\u062a\u063a\u064a\u064a\u0631 \u0627\u0644\u0639\u0645\u0642");
 
     			if(result != 0) {
     				dossier.setProfondeur(result);
@@ -396,7 +432,7 @@ public class modifierInfoDuDossierController implements Initializable{
     			
     		}else if(event.getSource() == debitButton) {
     			//float
-    			float result = ChangeNumberAlert.desplay("Debit", "changer le debit");
+    			float result = ChangeNumberAlert.desplay("\u0627\u0644\u0635\u0628\u064a\u0628", "\u062a\u063a\u064a\u064a\u0631 \u0627\u0644\u0635\u0628\u064a\u0628");
 
     			if(result != 0) {
     				dossier.setDebit(result);
@@ -405,8 +441,8 @@ public class modifierInfoDuDossierController implements Initializable{
     			
     		}else if(event.getSource() == autorisationButton) {
     			//choice
-    			String items[] =  {"pas encor decide", "oui", "non"};
-    			String result = ChangeChoiceAlert.desplay("changer l'autoriation", items, "pas encor decide");
+    			String items[] =  {"\u0644\u0645 \u064a\u0642\u0631\u0631 \u0628\u0639\u062f", "\u0645\u062a\u0627\u062d\u0629", "\u063a\u064a\u0631 \u0645\u062a\u0627\u062d\u0629"};
+    			String result = ChangeChoiceAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u0627\u0644\u0631\u062e\u0635\u0629", items, dossier.getAutorisation());
     			
     			dossier.setAutorisation(result);
     			autorisationLabel.setText(result);
@@ -439,14 +475,15 @@ public class modifierInfoDuDossierController implements Initializable{
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		setMessage(5);
 	}
 	
 	//recieve the message from the last controler
  	 public void setMessage(int id) {
 
 		ConnectionClassDossier myDataBaseFolder = new ConnectionClassDossier();
-		dossier = myDataBaseFolder.getDossierFromDatabase(id);
+		//dossier = myDataBaseFolder.getDossierFromDatabase(id);
+		dossier = myDataBaseFolder.getDossierFromDatabase(3);
+		System.out.println(dossier);
 		initializeTextForLabels();
 		
  	 }
@@ -462,17 +499,19 @@ public class modifierInfoDuDossierController implements Initializable{
     	carteCinPathLabel.setText(dossier.getCin() + "CIN.pdf");
     	DateDepotDossierLabel.setText(dossier.getDateDepotDossier().toString());
     	
+    	nomImmobilierLabel.setText(dossier.getNomImmobilier());
+    	attestationPoscessionImmobilierLabel.setText(dossier.getCin() + "Attesteation_de_pocession.pdf");
+    	planImmobilierFilePathLabel.setText(dossier.getCin() + "Plan_d_immobilier.pdf");
+    	quiadaLabel.setText(dossier.getQuiada());
+    	daairaLabel.setText(dossier.getDaaira());
     	provinceLabel.setText(dossier.getProvince());
     	communeLabel.setText(dossier.getCommune());
     	douarLabel.setText(dossier.getDouar());
-    	attestationPoscessionLocalisationImmobilierLabel.setText(dossier.getCin() + "Attesteation_de_pocession.pdf");
-    	localisationImmobilierLabel.setText(dossier.getLocalisation());
     	
     	LocalisationPointEauLabel.setText(dossier.getLocalisationPoint());
-    	rabattementLabel.setText(Float.toString(dossier.getRabattement()));
     	profondeurLabel.setText(Float.toString(dossier.getProfondeur()));
     	debitLabel.setText(Float.toString(dossier.getDebit()));
-    	planEauPathLabel.setText(dossier.getCin() + "Plan_d_eau.pdf");
+    	planEauLabel.setText(dossier.getCin() + "Plan_d_eau.pdf");
     	
     	dateDenvoiAlabhouerEljaidaLabel.setText(dossier.getDateEnvoiA_LABHOER().toString());
     	dateDebutEnquetePublicLabel.setText(dossier.getDateDebutde_EP().toString());

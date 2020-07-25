@@ -6,6 +6,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import Classes.Demandeur;
+import Classes.ImagesOrPdfChooser;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -15,9 +16,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.FileChooser;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.fxml.Initializable;
 
@@ -25,6 +29,20 @@ public class LesInfoDuDemandeurController implements Initializable{
 	
 	public static final Demandeur demandeur = new Demandeur();
 	private File cinFile = null, demandeFile = null;
+	
+	@FXML
+    private HBox hbox1;
+
+    @FXML
+    private Pane pane1;
+
+    @FXML
+    private HBox titleHbox;
+	@FXML
+	private BorderPane borderPane;
+	
+	@FXML
+	private ScrollPane scrollPane;
 	
 	@FXML
     private TextField nomIput;
@@ -95,18 +113,24 @@ public class LesInfoDuDemandeurController implements Initializable{
     @FXML
     void uploadFile(MouseEvent event) {
     	
-    	FileChooser fc = new FileChooser();
-    	fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("image/pdf/docx", "*.jpg", "*.png", "*.pdf", "*.docx"));
-        
-        File file = fc.showOpenDialog(new Stage());
-        if(file != null) {
-        	if(event.getSource() == cinFileButton) {
+        if(event.getSource() == cinFileButton) {
+        	
+            ImagesOrPdfChooser.desplay("Choisir la CIN", "CIN.pdf");
+            File file = ImagesOrPdfChooser.result;
+        	if(file != null) {
         		cinFile = file;
         		cinFilePath.setText(cinFile.getName());
-        	}else if(event.getSource() == demandeFileButton){
+        	}
+        	
+        }else if(event.getSource() == demandeFileButton){
+        	
+            ImagesOrPdfChooser.desplay("Choisir la demande de creusement", "Demande_de_creusement.pdf");
+            File file = ImagesOrPdfChooser.result;
+        	if(file != null) {
         		demandeFile = file;
         		demandeFilePath.setText(demandeFile.getName());
         	}
+        	
         }
         
     }
@@ -114,6 +138,7 @@ public class LesInfoDuDemandeurController implements Initializable{
     
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		
 		
 		typeDemandeChoice.getItems().addAll("Type de demande","Forage", "Pompage");
 		initialiserInputs();

@@ -5,6 +5,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -26,7 +27,7 @@ public class ChangeChoiceAlert {
 		  input.getItems().add(e);
 		input.setValue(selectedValue);
 		
-		Button okButton = new Button("OK"), annulerButton = new Button("annuler");
+		Button okButton = new Button("\u062a\u0623\u0643\u064a\u062f"), annulerButton = new Button("\u0625\u0644\u063a\u0627\u0621");
 		
 		//Handeling actions
 		okButton.setOnMouseClicked(e -> {
@@ -57,6 +58,7 @@ public class ChangeChoiceAlert {
 		Scene scene = new Scene(root);
 		window.setScene(scene);
 		window.setTitle(title);
+		window.getIcons().add(new Image("/Image/Logo5.png"));
 		window.showAndWait();
 		
 		return result;

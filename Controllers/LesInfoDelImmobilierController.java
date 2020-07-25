@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import Classes.ImagesOrPdfChooser;
 import Classes.Immobilier;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,34 +17,52 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class LesInfoDelImmobilierController implements Initializable {
 
 	public static final Immobilier InfoSurImmobilier = new Immobilier();
-	private File attestationFile;
+	private File attestationFile, planImmobilierFile;
 
-	@FXML
-	private TextField localisation;
 
-	@FXML
-	private TextField douar;
+	 @FXML
+	    private TextField daaira;
 
-	@FXML
-	private TextField commune;
+	    @FXML
+	    private TextField douar;
 
-	@FXML
-	private TextField province;
+	    @FXML
+	    private TextField commune;
 
-	@FXML
-	private Button attistationFileButton;
+	    @FXML
+	    private Button suivant;
 
-	@FXML
-	private Label attestationFilePath;
+	    @FXML
+	    private Button precedent;
 
-	@FXML
-	private Label textError;
+	    @FXML
+	    private Button attistationFileButton;
+
+	    @FXML
+	    private Label attestationFilePath;
+
+	    @FXML
+	    private TextField province;
+
+	    @FXML
+	    private Button planImmobilierFileButton;
+
+	    @FXML
+	    private Label planImmobilierFilePath;
+
+	    @FXML
+	    private TextField quiada;
+
+	    @FXML
+	    private TextField nomImmobilier;
+
+	    @FXML
+	    private Label textError;
 
 	@FXML
 	void precedent(MouseEvent event) {
@@ -65,11 +84,15 @@ public class LesInfoDelImmobilierController implements Initializable {
 	void suivant(MouseEvent event) {
 
 		if (checked()) {
-			InfoSurImmobilier.setLocalisation(localisation.getText());
+			
+			InfoSurImmobilier.setNomImmobilier(nomImmobilier.getText());
+			InfoSurImmobilier.setDaaira(daaira.getText());
+			InfoSurImmobilier.setQuiada(quiada.getText());
 			InfoSurImmobilier.setDouar(douar.getText());
 			InfoSurImmobilier.setCommune(commune.getText());
 			InfoSurImmobilier.setProvince(province.getText());
 			InfoSurImmobilier.setAttestationDePocession(attestationFile);
+			InfoSurImmobilier.setPlanImmobilier(planImmobilierFile);
 
 			try {
 
@@ -92,15 +115,23 @@ public class LesInfoDelImmobilierController implements Initializable {
 
 	@FXML
 	void uploadFile(MouseEvent event) {
-
-		FileChooser fc = new FileChooser();
-		fc.getExtensionFilters()
-				.addAll(new FileChooser.ExtensionFilter("image/pdf/docx", "*.jpg", "*.png", "*.pdf", "*.docx"));
-
-		File file = fc.showOpenDialog(new Stage());
-		if(file != null) {
-			attestationFile = file;
-			attestationFilePath.setText(file.getName());
+		
+		if (event.getSource() == attistationFileButton) {
+			ImagesOrPdfChooser.desplay("Choisir l'attestation de pcession de l'immobilier", "Attestation_pocession_Immobilier.pdf");
+			File file = ImagesOrPdfChooser.result;
+			if(file != null) {
+				attestationFile = file;
+				attestationFilePath.setText(file.getName());
+			}
+		}
+		
+		if (event.getSource() == planImmobilierFileButton) {
+			ImagesOrPdfChooser.desplay("Choisir le plan de l'immobilier", "plan_Immobilier.pdf");
+			File file = ImagesOrPdfChooser.result;
+			if(file != null) {
+				planImmobilierFile = file;
+				planImmobilierFilePath.setText(file.getName());
+			}
 		}
 	}
 
@@ -113,8 +144,19 @@ public class LesInfoDelImmobilierController implements Initializable {
 
 	private boolean checked() {
 		boolean condition = true;
-		if (localisation.getText().isEmpty()) {
-			localisation.setStyle("-fx-border-color: red");
+		
+		if (nomImmobilier.getText().isEmpty()) {
+			nomImmobilier.setStyle("-fx-border-color: red");
+			condition = condition && false;
+		}
+		
+		if (daaira.getText().isEmpty()) {
+			daaira.setStyle("-fx-border-color: red");
+			condition = condition && false;
+		}
+		
+		if (quiada.getText().isEmpty()) {
+			quiada.setStyle("-fx-border-color: red");
 			condition = condition && false;
 		}
 
@@ -137,14 +179,28 @@ public class LesInfoDelImmobilierController implements Initializable {
 			attistationFileButton.setStyle("-fx-border-color: red");
 			condition = condition && false;
 		}
+		
+		if (planImmobilierFile == null) {
+			planImmobilierFileButton.setStyle("-fx-border-color: red");
+			condition = condition && false;
+		}
 
 		return condition;
 	}
 
 	private void initialiserInputs() {
-		// initialiser le champs du localisation
-		if (InfoSurImmobilier.getLocalisation() != null)
-			localisation.setText(InfoSurImmobilier.getLocalisation());
+		
+		// initialiser le champs du daaira
+		if (InfoSurImmobilier.getNomImmobilier() != null)
+			nomImmobilier.setText(InfoSurImmobilier.getNomImmobilier());
+				
+		// initialiser le champs du daaira
+		if (InfoSurImmobilier.getDaaira() != null)
+			daaira.setText(InfoSurImmobilier.getDaaira());
+		
+		// initialiser le champs du daaira
+		if (InfoSurImmobilier.getQuiada() != null)
+			quiada.setText(InfoSurImmobilier.getQuiada());
 
 		// initialiser le champs du douar
 		if (InfoSurImmobilier.getDouar() != null)
@@ -165,6 +221,14 @@ public class LesInfoDelImmobilierController implements Initializable {
 			attestationFilePath.setText( attestationFile.getName());
 			
 		}
+		
+		if (InfoSurImmobilier.getPlanImmobilier() != null) {
+			
+			planImmobilierFile = InfoSurImmobilier.getAttestationDePocession();
+			planImmobilierFilePath.setText( attestationFile.getName());
+			
+		}
+		
 	}
 	
 

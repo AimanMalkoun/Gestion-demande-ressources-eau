@@ -40,22 +40,14 @@ public class InformationsConcernantPointDeauController implements Initializable 
 	private Button chooseFileImageButton;
 	@FXML
 	private Button backMethode;
-	private File file;
+	@FXML
+	private TextField poinEau;
 
 	public static PointDeau poinDeau = new PointDeau();
 
 	@FXML
 	public void chooseFileImageMethode(ActionEvent event) {
-		/*
-		 * la méthode a pour but d'ouvrir une session dans laquelle l'utilisateur peut
-		 * sélectionner un fichier ou une image.
-		 */
-		FileChooser fileChoosed = new FileChooser();
-		fileChoosed.setTitle("Uplouding an image");
-		fileChoosed.getExtensionFilters()
-				.add(new FileChooser.ExtensionFilter("image/pdf/docx", "*.jpg", "*.png", "*.pdf", "*.docx"));
-		file = fileChoosed.showOpenDialog(null);
-		pathPlandeau.setText(file.getAbsolutePath());
+
 	}
 
 	@FXML
@@ -63,15 +55,15 @@ public class InformationsConcernantPointDeauController implements Initializable 
 		/*
 		 * initialisation de l'objet <<poinDeau>> par les champs remplis.
 		 */
-		if (isValideString(locationEau) & isValideFloat(debit) & isValideFloat(profondeur) & isValideFloat(rabattement)
-				& isNotValideFile(file)) {
+		if (isValideString(locationEau) & isValideFloat(debit) & isValideFloat(profondeur) &  
+				isValideFloat(poinEau)	) {
 			poinDeau = new PointDeau(locationEau.getText().toString(), new Float(debit.getText()),
-					new Float(profondeur.getText()), file, new Float(rabattement.getText()));
+					new Float(profondeur.getText()), new Float(poinEau.getText()));
 
 			Parent root = FXMLLoader.load(getClass().getResource("../Fxml/Enregistrer.fxml"));
 			borderPan.getChildren().setAll(root);
 		} else {
-			textError.setText("S.V.P veuillez remplir tous les champs correctement");
+			textError.setText("\u0631\u062c\u0627\u0621 \u0627\u0645\u0644\u0623 \u062c\u0645\u064a\u0639 \u0627\u0644\u062d\u0642\u0648\u0644 \u0628\u0634\u0643\u0644 \u062c\u064a\u062f");
 
 		}
 	}
@@ -85,8 +77,7 @@ public class InformationsConcernantPointDeauController implements Initializable 
 
 	public boolean isValideFloat(TextField text) {
 		/*
-		 * La méthode a pour but de vérifier est ce que le paramètre texte est du type
-		 * Float.
+		 * La méthode a pour but de vérifier est ce que le paramètre texte est du type Float.
 		 */
 		try {
 			float nbr = Float.parseFloat(text.getText());
@@ -128,9 +119,8 @@ public class InformationsConcernantPointDeauController implements Initializable 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		pathPlandeau.setText(null);
+		
 		initialiserInputs();
-		pathPlandeau.setText(file != null ? file.getAbsolutePath() : "");
 	}
 
 	public void initialiserInputs() {
@@ -147,13 +137,10 @@ public class InformationsConcernantPointDeauController implements Initializable 
 		if (poinDeau.getProfondeur() != 0)
 			profondeur.setText("" + poinDeau.getProfondeur());
 
-		// initialiser le chapms du type du rabattement
-		if (poinDeau.getRabattement() != 0)
-			rabattement.setText("" + poinDeau.getRabattement());
 
 		// initialiser le path du fichier d'attestation de pocession d'immobilier
-		if (poinDeau.getPlanEau() != null)
-			file = poinDeau.getPlanEau();
+		if (poinDeau.getPlanEau() != 0)
+			poinEau.setText("" + poinDeau.getPlanEau());
 	}
 
 }

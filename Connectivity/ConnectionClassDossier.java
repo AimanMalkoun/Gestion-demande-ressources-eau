@@ -12,16 +12,16 @@ import Classes.DossierForDownload;
 
 public class ConnectionClassDossier {
 
-	private ConnectionClassMaria conection;
+	private ConnectionClass conection;
 	public ConnectionClassDossier() {
-		conection =  new ConnectionClassMaria();// TODO Auto-generated constructor stub
+		conection =  new ConnectionClass();// TODO Auto-generated constructor stub
 	}
 	
 	//getters and setters
-	public ConnectionClassMaria getConnection() {
+	public ConnectionClass getConnection() {
 		return conection;
 	}
-	public void setConnectTo(ConnectionClassMaria connection) {
+	public void setConnectTo(ConnectionClass connection) {
 		this.conection = connection;
 	}
 	
@@ -32,12 +32,11 @@ public class ConnectionClassDossier {
 		
 		String sqlRequette = "SELECT * "
 						   + "FROM `dossier` "
-						   + "WHERE `IdDossier` = "+ ID ;
+						   + "WHERE `IdDossier` = '"+ ID+"'" ;
 		try {
 			
 			Statement stm = conection.connection.createStatement();
 			ResultSet result = stm.executeQuery(sqlRequette);
-			
 			if(result.next()) {
 				dossier.setIdDossier(ID);
 				
@@ -49,17 +48,19 @@ public class ConnectionClassDossier {
 				dossier.setCinFile(result.getBlob("cinImg"));
 				dossier.setDemandeFile(result.getBlob("demandeCreusement"));
 				
-				dossier.setLocalisation(result.getString("localisationImmobilier"));
+				dossier.setNomImmobilier(result.getString("nomImmobilier"));
+				dossier.setQuiada(result.getString("qiyada"));
+				dossier.setDaaira(result.getString("daaira"));
 				dossier.setDouar(result.getString("Douar"));
 				dossier.setCommune(result.getString("Commune"));
 				dossier.setProvince(result.getString("Province"));
 				dossier.setAttestationDePocession(result.getBlob("attistationPocession"));
+				dossier.setPlanImmobilier(result.getBlob("planImmo"));
 				
 				dossier.setLocalisationPoint(result.getString("localisationPointEau"));
 				dossier.setProfondeur(result.getFloat("Profendeur"));
 				dossier.setDebit(result.getFloat("Debit"));
-				dossier.setRabattement(result.getFloat("Rabatement"));
-				dossier.setPlanEau(result.getBlob("PlanDeau"));
+				dossier.setPlanEau(result.getFloat("PlanDeau"));
 				
 				dossier.setAvisABHOER((result.getString("AvisABHOER")));
 				dossier.setAvisDe_CEP((result.getString("AvisDeCEP")));
@@ -87,31 +88,33 @@ public class ConnectionClassDossier {
 	public int updateDossierToDatabase(DossierForDownload dossier) {
 		
 		String sqlRequete = "UPDATE `dossier` " + 
-							"SET `Nom`= ?," + 
-							"    `Prenom`= ?," + 
-							"    `cin`= ?," + 
-							"    `cinImg`= ?," + 
-							"    `typeDemande`= ?," + 
-							"    `demandeCreusement`= ?," + 
-							"    `localisationImmobilier`= ?," + 
-							"    `attistationPocession`= ?," + 
-							"    `Douar`= ?," + 
-							"    `Commune`= ?," + 
-							"    `Province`= ?," + 
-							"    `localisationPointEau`= ?," + 
-							"    `Debit`= ?," + 
-							"    `Profendeur`= ?," + 
-							"    `PlanDeau`= ?," + 
-							"    `Rabatement`= ?," + 
-							"    `DateDepot`= ?," + 
-							"    `dateEnvoiABHOER`= ?," + 
-							"    `dateDebut_EP`= ?," + 
-							"    `dateFin_EP`= ?," + 
-							"    `dateSignature_PV`= ?," + 
-							"    `AvisDeCEP`= ?," + 
-							"    `DateEnvoiDuPV_ABHOER`= ?," + 
-							"    `AvisABHOER`= ?," + 
-							"    `Autorisation`= ? " + 
+							"SET `Nom`=?," + 
+							"    `Prenom`=3," + 
+							"    `cin`=?," + 
+							"    `cinImg`=?," + 
+							"    `typeDemande`=?," + 
+							"    `demandeCreusement`=?," + 
+							"    `attistationPocession`=?," + 
+							"    `Douar`=?," + 
+							"    `Commune`=?," + 
+							"    `Province`=?," + 
+							"    `localisationPointEau`=?," + 
+							"    `Debit`=?," + 
+							"    `Profendeur`=?," + 
+							"    `PlanDeau`=?," + 
+							"    `daaira`=?," + 
+							"    `DateDepot`=?," + 
+							"    `dateEnvoiABHOER`=?," + 
+							"    `dateDebut_EP`=?," + 
+							"    `dateFin_EP`=?," + 
+							"    `dateSignature_PV`=?," + 
+							"    `AvisDeCEP`=?," + 
+							"    `DateEnvoiDuPV_ABHOER`=?," + 
+							"    `AvisABHOER`=?," + 
+							"    `Autorisation`=?," + 
+							"    `qiyada`=?," + 
+							"    `planImmo`=?," + 
+							"    `nomImmobilier`=?" + 
 							"WHERE `IdDossier`= ?";
 		try {
 			
@@ -123,30 +126,34 @@ public class ConnectionClassDossier {
 			stm.setBlob(4, dossier.getCinFile());
 			stm.setString(5, dossier.getTypeDemande());
 			stm.setBlob(6, dossier.getDemandeFile());
+
+			stm.setBlob(7, dossier.getAttestationDePocession());
+			stm.setString(8, dossier.getDouar());
+			stm.setString(9, dossier.getCommune());
+			stm.setString(10, dossier.getProvince());
+
+			stm.setString(11, dossier.getLocalisationPoint());
+			stm.setFloat(12, dossier.getDebit());
+			stm.setFloat(13, dossier.getProfondeur());
+			stm.setFloat(14, dossier.getPlanEau());
 			
-			stm.setString(7, dossier.getLocalisation());
-			stm.setBlob(8, dossier.getAttestationDePocession());
-			stm.setString(9, dossier.getDouar());
-			stm.setString(10, dossier.getCommune());
-			stm.setString(11, dossier.getProvince());
+			stm.setString(15, dossier.getDaaira());
 			
-			stm.setString(12, dossier.getLocalisationPoint());
-			stm.setFloat(13, dossier.getDebit());
-			stm.setFloat(14, dossier.getProfondeur());
-			stm.setBlob(15, dossier.getPlanEau());
-			stm.setFloat(16, dossier.getRabattement());
-			
-			stm.setDate(17, Date.valueOf(dossier.getDateDepotDossier()));
-			stm.setDate(18, Date.valueOf(dossier.getDateEnvoiA_LABHOER()));
-			stm.setDate(19, Date.valueOf(dossier.getDateDebutde_EP()));
-			stm.setDate(20, Date.valueOf(dossier.getDateFin_EP()));
-			stm.setDate(21, Date.valueOf(dossier.getDateSignateureDuPv()));
-			stm.setString(22, dossier.getAvisDe_CEP());
-			stm.setDate(23, Date.valueOf(dossier.getDateEnvoiDuPVa_LABHOER()));
+			stm.setDate(16, Date.valueOf(dossier.getDateDepotDossier()));
+			stm.setDate(17, Date.valueOf(dossier.getDateEnvoiA_LABHOER()));
+			stm.setDate(18, Date.valueOf(dossier.getDateDebutde_EP()));
+			stm.setDate(19, Date.valueOf(dossier.getDateFin_EP()));
+			stm.setDate(20, Date.valueOf(dossier.getDateSignateureDuPv()));
+			stm.setString(21, dossier.getAvisDe_CEP());
+			stm.setDate(22, Date.valueOf(dossier.getDateEnvoiDuPVa_LABHOER()));
 			stm.setString(24, dossier.getAvisABHOER());
 			stm.setString(25, dossier.getAutorisation());
 			
-			stm.setInt(26, dossier.getIdDossier());
+			stm.setString(26, dossier.getQuiada());
+			stm.setBlob(27, dossier.getPlanImmobilier());
+			stm.setString(28, dossier.getNomImmobilier());
+			
+			stm.setInt(29, dossier.getIdDossier());
 			
 			int result = stm.executeUpdate();
 			return result;
