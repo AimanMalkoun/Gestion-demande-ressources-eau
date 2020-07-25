@@ -6,26 +6,18 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="borderPan" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="556.0" prefWidth="877.0" stylesheets="@../GestionDemandeEau/application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.InformationsConcernantPointDeauController">
-   <top>
-      <Pane prefHeight="109.0" prefWidth="858.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
-         <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="71.0" layoutY="28.0" prefHeight="53.0" prefWidth="623.0" style="-fx-border-color: #;" text="المعلومات الخاصة بنقطة الماء" textFill="WHITE">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
-   </top>
+<BorderPane fx:id="borderPan" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="556.0" prefWidth="877.0" stylesheets="@../GestionDemandeEau/application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.InformationsConcernantPointDeauController">
    <center>
       <Pane layoutX="10.0" prefHeight="447.0" prefWidth="698.0" stylesheets="@../GestionDemandeEau/application.css" BorderPane.alignment="CENTER">
          <children>
@@ -87,7 +79,7 @@
       </Pane>
    </center>
    <right>
-      <VBox id="vboxStyle" alignment="CENTER" prefHeight="447.0" prefWidth="166.0" spacing="20.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
+      <VBox id="vboxStyle" alignment="CENTER" prefHeight="447.0" prefWidth="213.0" spacing="20.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
          <children>
             <Button id="buttonProfile2" alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="186.0" style="-fx-background-color: #4cd4b9;" text="المواطن" textFill="WHITE">
                <cursor>
@@ -136,4 +128,34 @@
          </padding>
       </VBox>
    </right>
+   <top>
+      <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="147.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
+         <children>
+            <GridPane prefHeight="144.0" prefWidth="877.0" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <columnConstraints>
+                  <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="664.0" />
+                  <ColumnConstraints halignment="CENTER" maxWidth="213.0" minWidth="213.0" prefWidth="213.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <ImageView fitHeight="95.0" fitWidth="139.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+                     <image>
+                        <Image url="@../Image/Logo5.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" prefHeight="53.0" prefWidth="453.0" text="المعلومات الخاصة بنقطة الماء" textFill="WHITE">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+               </children>
+            </GridPane>
+         </children>
+      </HBox>
+   </top>
 </BorderPane>
