@@ -16,39 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="485.0" minWidth="800.0" prefHeight="543.0" prefWidth="858.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
-   <left>
-      <VBox prefHeight="556.0" prefWidth="186.0" spacing="20.0" style="-fx-background-color: #423167;" BorderPane.alignment="CENTER">
-         <children>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: #3f2f62;" text="Profile" textFill="WHITE">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: #3f2f62;" text="Quelque option" textFill="WHITE">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button layoutX="10.0" layoutY="35.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: #3f2f62;" text="Parametre" textFill="WHITE">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button layoutX="10.0" layoutY="140.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: #3f2f62;" text="Se deconnecter" textFill="WHITE">
-               <VBox.margin>
-                  <Insets top="150.0" />
-               </VBox.margin>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-         </children>
-         <padding>
-            <Insets top="40.0" />
-         </padding>
-      </VBox>
-   </left>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="485.0" minWidth="800.0" prefHeight="543.0" prefWidth="858.0" stylesheets="@../GestionDemandeEau/application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <Pane prefHeight="109.0" prefWidth="858.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
          <children>
@@ -86,11 +54,6 @@
          <content>
             <Pane prefHeight="1015.0" prefWidth="657.0">
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="130.0" layoutY="37.0" prefHeight="41.0" prefWidth="398.0" style="-fx-border-color: #000000; -fx-border-radius: 10;" text="Titre pour cette section">
-                     <font>
-                        <Font size="26.0" />
-                     </font>
-                  </Label>
                   <GridPane layoutX="58.0" layoutY="104.0" prefHeight="888.0" prefWidth="584.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -509,4 +472,32 @@
          </content>
       </ScrollPane>
    </center>
+   <right>
+      <VBox id="vboxStyle" alignment="CENTER" prefHeight="556.0" prefWidth="186.0" spacing="20.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
+         <children>
+            <Button id="buttonProfile" mnemonicParsing="false" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: #A7BDE7;" text="الصفحة الرئيسية" textFill="#2b4067">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button id="buttonLogin" layoutX="10.0" layoutY="140.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: #A7BDE7;" stylesheets="@../GestionDemandeEau/application.css" text="تسجيل الخروج" textFill="#2b4067">
+               <VBox.margin>
+                  <Insets top="150.0" />
+               </VBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+         </children>
+         <padding>
+            <Insets top="40.0" />
+         </padding>
+      </VBox>
+   </right>
 </BorderPane>

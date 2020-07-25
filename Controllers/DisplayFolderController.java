@@ -7,16 +7,10 @@ import java.util.ResourceBundle;
 import org.jpedal.exception.PdfException;
 
 import Classes.DossierForDownload;
-
-import pdfClasses.ShowPdf;
-import pdfClasses.ConvertBlobToPdf;
-
 import Connectivity.ConnectionClassDossier;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -24,6 +18,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import pdfClasses.ConvertBlobToPdf;
+import pdfClasses.ShowPdf;
 
 
 public class DisplayFolderController implements Initializable {
