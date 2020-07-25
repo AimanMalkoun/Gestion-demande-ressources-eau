@@ -55,6 +55,8 @@ public class DashboardController implements Initializable{
 		Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		primaryStage.setScene(ShowFolderScene);
     }
+    
+    
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {

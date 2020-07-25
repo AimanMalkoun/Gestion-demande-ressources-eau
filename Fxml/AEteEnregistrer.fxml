@@ -27,7 +27,7 @@
    <center>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Text fill="#4cd4b9" layoutX="186.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="لقد تم تسجيل الطلب بنجاح" textAlignment="CENTER" wrappingWidth="339.13671875">
+            <Text fill="#4cd4b9" layoutX="186.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="لقد تمت إضافة المجلد بنجاح" textAlignment="CENTER" wrappingWidth="339.13671875">
                <font>
                   <Font name="Tahoma" size="32.0" />
                </font>
@@ -40,9 +40,9 @@
                <font>
                   <Font size="14.0" />
                </font></Button>
-            <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="333.0" layoutY="189.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="306.0" layoutY="174.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Image/WellDone.png" />
+                  <Image url="@../Image/folderDone.png" />
                </image>
             </ImageView>
          </children>
