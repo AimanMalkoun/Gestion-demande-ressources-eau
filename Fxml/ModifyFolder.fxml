@@ -100,20 +100,26 @@
       </ScrollPane>
    </center>
    <right>
-      <VBox id="vboxStyle" prefHeight="556.0" prefWidth="186.0" spacing="20.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
+      <VBox id="vboxStyle" alignment="CENTER" prefHeight="556.0" prefWidth="186.0" spacing="20.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
          <children>
-            <Button id="buttonProfile" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToHome" prefHeight="25.0" prefWidth="189.0" style="-fx-background-color: #A7BDE7;" text="الصفحة الرئيسية">
+            <Button id="buttonProfile" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToHome" prefHeight="25.0" prefWidth="189.0" style="-fx-background-color: #A7BDE7;" text="الصفحة الرئيسية" textFill="#2b4067">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <font>
+                  <Font size="14.0" />
+               </font>
             </Button>
-            <Button id="buttonLogin" layoutX="10.0" layoutY="140.0" mnemonicParsing="false" onAction="#disconnect" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: #A7BDE7;" text="تسجيل الخروج">
+            <Button id="buttonLogin" layoutX="10.0" layoutY="140.0" mnemonicParsing="false" onAction="#disconnect" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: #A7BDE7;" text="تسجيل الخروج" textFill="#2b4067">
                <VBox.margin>
                   <Insets top="150.0" />
                </VBox.margin>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <font>
+                  <Font size="14.0" />
+               </font>
             </Button>
          </children>
          <padding>
