@@ -1,23 +1,22 @@
 package Classes;
 
+import java.sql.Date;
+
 public class FolderTable {
 
 	private int id;
 	private String cin;
 	private String nomPrenom;
 	private String typeDemande;
+	private Date dateDepot;
 	
-	public FolderTable() {
-		id = 0;
-		cin = "";
-		nomPrenom = "";
-	}
 
-	public FolderTable(int id, String typeDemande, String cin,  String nomPrenom) {
+	public FolderTable(int id, Date dateDepot, String typeDemande, String cin,  String nomPrenom) {
 		this.id = id;
 		this.cin = cin;
 		this.nomPrenom = nomPrenom;
 		this.typeDemande = typeDemande;
+		this.dateDepot = dateDepot;
 	}
 
 	//getters
@@ -48,6 +47,14 @@ public class FolderTable {
 
 	public String getTypeDemande() {
 		return typeDemande;
+	}
+
+	public Date getDateDepot() {
+		return dateDepot;
+	}
+
+	public void setDateDepot(Date dateDepot) {
+		this.dateDepot = dateDepot;
 	}
 
 	public void setTypeDemande(String typeDemande) {

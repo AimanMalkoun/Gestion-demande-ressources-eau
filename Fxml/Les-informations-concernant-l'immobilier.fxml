@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="601.0" prefWidth="877.0" stylesheets="@../GestionDemandeEau/application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LesInfoDelImmobilierController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="1130.0" stylesheets="@../GestionDemandeEau/application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LesInfoDelImmobilierController">
    <center>
       <HBox alignment="CENTER" prefWidth="711.0" BorderPane.alignment="CENTER">
          <children>
@@ -238,7 +238,7 @@
       </VBox>
    </right>
    <top>
-      <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="130.0" prefWidth="877.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="130.0" prefWidth="1130.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
          <children>
             <GridPane prefHeight="144.0" prefWidth="877.0" HBox.hgrow="ALWAYS">
                <HBox.margin>

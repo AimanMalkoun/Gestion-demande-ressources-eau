@@ -28,7 +28,7 @@ public class DashboardController implements Initializable{
 
     @FXML
     void ModifyExistingFolder(MouseEvent event) throws IOException {
-    	Parent searchModifyFolderRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/ModifyFolder.fxml"));
+    	Parent searchModifyFolderRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/ModifyFolder2.fxml"));
 		Scene searchModifyFolderScene = new Scene(searchModifyFolderRoot);
 		Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		primaryStage.setScene(searchModifyFolderScene);
