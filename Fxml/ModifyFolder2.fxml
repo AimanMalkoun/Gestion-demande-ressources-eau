@@ -48,7 +48,7 @@
                               </Button>
                            </children>
                         </HBox>
-                        <TableView fx:id="tableInfo" GridPane.rowIndex="1">
+                        <TableView fx:id="tableInfo" onMouseClicked="#handlTableViewAction" GridPane.rowIndex="1">
                           <columns>
                             <TableColumn fx:id="idColumn" prefWidth="103.0" resizable="false" text="id de Dossier" />
                             <TableColumn fx:id="cinColumn" prefWidth="146.0" resizable="false" text="CIN" />

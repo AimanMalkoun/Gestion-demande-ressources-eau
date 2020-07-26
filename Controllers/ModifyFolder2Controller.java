@@ -24,7 +24,7 @@ public class ModifyFolder2Controller implements Initializable{
 
     @FXML
     private TableView<FolderTable> tableInfo;
-	
+    
 	@FXML
     private TextField cinInputSearch;
 
@@ -54,6 +54,11 @@ public class ModifyFolder2Controller implements Initializable{
     
     @FXML
     void disconnect(ActionEvent event) {
+
+    }
+    
+    @FXML
+    void handlTableViewAction(MouseEvent event) {
 
     }
     
