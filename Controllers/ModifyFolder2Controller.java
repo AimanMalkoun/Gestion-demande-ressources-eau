@@ -29,13 +29,14 @@ import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
 public class ModifyFolder2Controller implements Initializable{
-
+	
 	@FXML
     private BorderPane rootPane;
 	
@@ -102,47 +103,140 @@ public class ModifyFolder2Controller implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
-		initializeMenuItems();
+	}
+	
+
+	public void setMessage(int message) {
+		
+		if(message == 0)  //in case of modify folder
+			initializeMenuItems();
+		else  //in case of show folder
+			nitializeRowsForMouseClick();
 		
 	}
 	
-	
+	private void nitializeRowsForMouseClick() {
+		
+		tableInfo.setRowFactory(tv -> {
+			
+		    TableRow<FolderTable> row = new TableRow<>();
+		    row.setOnMouseClicked(event -> {
+		        if (! row.isEmpty() && event.getButton()==MouseButton.PRIMARY 
+		             && event.getClickCount() == 2) {
+
+		        	FolderTable selectedFolder = row.getItem();
+		            goToShowFolderPage(selectedFolder);
+		        }
+		    });
+		    
+		    return row ;
+		
+		});
+		
+	}
+
+	private void goToShowFolderPage(FolderTable selectedFolder) {
+
+		try {
+
+			FXMLLoader loader= new FXMLLoader();
+			loader.setLocation(getClass().getResource("../Fxml/afficher-un-dossier.fxml"));
+			Parent showFolderRoot = loader.load();
+			
+			modifierInfoDuDossierController nextControler = loader.getController();
+			nextControler.setMessage(selectedFolder.getId());
+			
+			Scene showFolderScene = new Scene(showFolderRoot);
+			Stage primaryStage = (Stage) rootPane.getScene().getWindow();
+			primaryStage.setScene(showFolderScene);
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
+
 	//this method is for initializing a menu to show when you click on right button of the mouse
 	private void initializeMenuItems() {
 
 		tableInfo.setRowFactory(new Callback<TableView<FolderTable>, TableRow<FolderTable>>() { 
 			
-	        @Override  
-	        public TableRow<FolderTable> call(TableView<FolderTable>tableView) {  
-	            	
-	        	final TableRow<FolderTable>row = new TableRow<>();  
-	        	final ContextMenu contextMenu = new ContextMenu();  
-	        	final MenuItem modifyMenuItem = new MenuItem("Modify");  
-	        	final MenuItem removeMenuItem = new MenuItem("Remove");  
+	        	@Override  
+	        	public TableRow<FolderTable> call(TableView<FolderTable>tableView) {  
+	            
+	        		final TableRow<FolderTable>row = new TableRow<>();  
+	        		final ContextMenu contextMenu = new ContextMenu();  
+	        		final MenuItem modifyMenuItem = new MenuItem("Modify");  
+	        		final MenuItem removeMenuItem = new MenuItem("Remove");  
 	        
 	        
-	        	//handle action when you click on remove in the menu
-	        	modifyMenuItem.setOnAction( event -> modifyRow(row, event) );
+	        		//handle action when you click on remove in the menu
+	        		modifyMenuItem.setOnAction( event -> modifyRow(row, event) );
 	        	
-	        	//handle action when you click on remove in the menu
-	        	removeMenuItem.setOnAction( e -> removeRow(row) );  
+	        		//handle action when you click on remove in the menu
+	        		removeMenuItem.setOnAction( e -> removeRow(row) );  
 	                
 	                
-	        contextMenu.getItems().addAll(modifyMenuItem, removeMenuItem);
+	        		contextMenu.getItems().addAll(modifyMenuItem, removeMenuItem);
 	                
-	        // Set context menu on row, but use a binding to make it only show for non-empty rows:  
-	        row.contextMenuProperty().bind(  Bindings.when(row.emptyProperty())
-	          										 .then((ContextMenu)null)
-	           										 .otherwise(contextMenu)  
-	           							   );  
+	        		// Set context menu on row, but use a binding to make it only show for non-empty rows:  
+	        		row.contextMenuProperty().bind(  Bindings.when(row.emptyProperty())
+	        											 	 .then((ContextMenu)null)
+	        											 	 .otherwise(contextMenu)  
+	           							   	  	   );  
 	                
-	        return row ;  
-	            }
+	        		return row ;  
+	        	}
 	            
 	        });
 		
 		
 	}
+	
+	//this method is for removing a folder from dataBase and the table items
+		private void removeRow(TableRow<FolderTable> row){
+			
+			//first let the user confirm the delete order
+			if(DeleteAlert.desplay()) {
+				FolderTable folder = row.getItem();
+			
+				//remove folder from dataBase
+				ConnectionClassDossier connection = new ConnectionClassDossier();
+				int result = connection.removeFolder(folder.getId());
+
+				if(result > 0) {
+					//remove folder from tableView
+					tableInfo.getItems().remove(folder);
+				}
+			}
+				
+		}
+		
+
+		//this method riderects to modifyFolderIni.fxml in order to modify folder in the dataBase
+		private void modifyRow(TableRow<FolderTable> row, ActionEvent event) {
+
+			try {
+
+				FXMLLoader loader= new FXMLLoader();
+				loader.setLocation(getClass().getResource("../Fxml/modifier les informations du dossier.fxml"));
+				Parent modifyFolderRoot = loader.load();
+				
+				modifierInfoDuDossierController nextControler = loader.getController();
+				nextControler.setMessage(row.getItem().getId());
+				
+				Scene modifyFolderScene = new Scene(modifyFolderRoot);
+				Stage primaryStage = (Stage) rootPane.getScene().getWindow();
+				primaryStage.setScene(modifyFolderScene);
+
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
 
 	
 	//this method return the table items as observabaleList of type FolderTable
@@ -202,52 +296,9 @@ public class ModifyFolder2Controller implements Initializable{
     	nomCompletColumn.setText("\u0627\u0644\u0627\u0633\u0645 \u0627\u0644\u0643\u0627\u0645\u0644");
     	nomCompletColumn.setCellValueFactory(new PropertyValueFactory<>("nomPrenom"));
     	
-    	typeDemandeCl.setText("\u0646\u0648\u0639 \u0627\u0644\u0637\u0644\u0628");
-    	typeDemandeCl.setCellValueFactory(new PropertyValueFactory<>("typeDemande"));
+    	//typeDemandeCl.setText("\u0646\u0648\u0639 \u0627\u0644\u0637\u0644\u0628");
+    	//typeDemandeCl.setCellValueFactory(new PropertyValueFactory<>("typeDemande"));
 	} 
-	
-	//this method is for removing a folder from dataBase and the table items
-	private void removeRow(TableRow<FolderTable> row){
-		
-		//first let the user confirm the delete order
-		if(DeleteAlert.desplay()) {
-			FolderTable folder = row.getItem();
-		
-			//remove folder from dataBase
-			ConnectionClassDossier connection = new ConnectionClassDossier();
-			int result = connection.removeFolder(folder.getId());
-
-			if(result > 0) {
-				//remove folder from tableView
-				tableInfo.getItems().remove(folder);
-			}
-		}
-			
-	}
-	
-
-	//this method riderects to modifyFolderIni.fxml in order to modify folder in the dataBase
-	private void modifyRow(TableRow<FolderTable> row, ActionEvent event) {
-
-		try {
-
-			FXMLLoader loader= new FXMLLoader();
-			loader.setLocation(getClass().getResource("../Fxml/modifier les informations du dossier.fxml"));
-			Parent modifyFolderRoot = loader.load();
-			
-			modifierInfoDuDossierController nextControler = loader.getController();
-			nextControler.setMessage(row.getItem().getId());
-			
-			Scene modifyFolderScene = new Scene(modifyFolderRoot);
-			Stage primaryStage = (Stage) rootPane.getScene().getWindow();
-			primaryStage.setScene(modifyFolderScene);
-
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
 	
 }
 
