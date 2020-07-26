@@ -79,8 +79,21 @@ public class InformationsConcernantPointDeauController implements Initializable 
 	@FXML
 	public void backButtonMethode(ActionEvent event) throws IOException {
 
-		Parent root = FXMLLoader.load(getClass().getResource("../Fxml/Les-informations-concernant-l'immobilier.fxml"));
-		borderPan.getChildren().setAll(root);
+		try {
+			
+			FXMLLoader loader= new FXMLLoader();
+			loader.setLocation(getClass().getResource("../Fxml/Les-informations-concernant-l'immobilier.fxml"));
+			Parent demandeurRoot = loader.load();
+			
+			Scene demandeurScene = new Scene(demandeurRoot);
+			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			primaryStage.setScene(demandeurScene);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 	public boolean isValideFloat(TextField text) {

@@ -63,9 +63,22 @@ public class ChangePasswordController {
 
     @FXML
     void disconnect(ActionEvent event) {
-    	
-    	Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-		primaryStage.close();
+
+		try {
+			
+			FXMLLoader loader= new FXMLLoader();
+			loader.setLocation(getClass().getResource("../Fxml/LoginStage.fxml"));
+			Parent LoginRoot = loader.load();
+			
+			Scene LoginScene = new Scene(LoginRoot);
+			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			primaryStage.setScene(LoginScene);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
     }
 
     @FXML
@@ -75,5 +88,6 @@ public class ChangePasswordController {
 		Scene dashboardScene = new Scene(dashboardRoot);
 		Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		primaryStage.setScene(dashboardScene);
+		
     }
 }

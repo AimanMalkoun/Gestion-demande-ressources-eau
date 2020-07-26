@@ -129,7 +129,7 @@ public class ModifyFolder2Controller implements Initializable{
 			
 		    TableRow<FolderTable> row = new TableRow<>();
 		    row.setOnMouseClicked(event -> {
-		        if (! row.isEmpty() && event.getButton()==MouseButton.PRIMARY 
+		        if (! row.isEmpty() && event.getButton() == MouseButton.PRIMARY 
 		             && event.getClickCount() == 2) {
 
 		        	FolderTable selectedFolder = row.getItem();
@@ -151,7 +151,7 @@ public class ModifyFolder2Controller implements Initializable{
 			loader.setLocation(getClass().getResource("../Fxml/afficher-un-dossier.fxml"));
 			Parent showFolderRoot = loader.load();
 			
-			modifierInfoDuDossierController nextControler = loader.getController();
+			DisplayFolderController nextControler = loader.getController();
 			nextControler.setMessage(selectedFolder.getId());
 			
 			Scene showFolderScene = new Scene(showFolderRoot);

@@ -28,11 +28,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.DirectoryChooser;
+import javafx.stage.Stage;
 
 public class AEteEnregistrerController implements Initializable {
 	@FXML
@@ -46,9 +49,24 @@ public class AEteEnregistrerController implements Initializable {
 	String path;
 	@FXML
 	public void handelBackMethode(ActionEvent event) throws IOException {
+		
 		cleanup(); // will clean the previous input except the import files
-		Parent root = FXMLLoader.load(getClass().getResource("../Fxml/Dashboard.fxml"));
-		boderPane.getChildren().setAll(root);
+
+		try {
+			
+			FXMLLoader loader= new FXMLLoader();
+			loader.setLocation(getClass().getResource("../Fxml/Dashboard.fxml"));
+			Parent DashboardRoot = loader.load();
+			
+			Scene DashboardScene = new Scene(DashboardRoot);
+			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			primaryStage.setScene(DashboardScene);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 	private void cleanup() {
