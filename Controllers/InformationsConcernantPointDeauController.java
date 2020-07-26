@@ -17,8 +17,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 
 public class InformationsConcernantPointDeauController implements Initializable {
 	/*
@@ -72,7 +70,7 @@ public class InformationsConcernantPointDeauController implements Initializable 
 			primaryStage.setScene(demandeurScene);
 			
 		} else {
-			textError.setText("\u0631\u062c\u0627\u0621 \u0627\u0645\u0644\u0623 \u062c\u0645\u064a\u0639 \u0627\u0644\u062d\u0642\u0648\u0644 \u0628\u0634\u0643\u0644 \u062c\u064a\u062f");
+			textError.setText("\u0627\u0644\u0645\u0631\u062c\u0648 \u0645\u0644\u0626 \u0643\u0644 \u0627\u0644\u062e\u0627\u0646\u0627\u062a \u0628\u0645\u0627 \u064a\u0646\u0627\u0633\u0628");
 
 		}
 	}
