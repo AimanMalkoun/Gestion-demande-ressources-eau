@@ -30,7 +30,7 @@ public class Main extends Application {
 																											// scene in
 																											// root
 			Scene loginScene = new Scene(loginRoot);
-			primaryStage.setTitle("Gestion des demandes d'autorisation pour l'utilisation des ressources en eau.");
+			primaryStage.setTitle("\u0625\u062f\u0627\u0631\u0629 \u0637\u0644\u0628\u0627\u062a \u0627\u0644\u062a\u0631\u062e\u064a\u0635 \u0644\u0627\u0633\u062a\u062e\u062f\u0627\u0645 \u0627\u0644\u0645\u0648\u0627\u0631\u062f \u0627\u0644\u0645\u0627\u0626\u064a\u0629");
 			primaryStage.setScene(loginScene);
 
 			primaryStage.getIcons().add(new Image("/Image/Logo5.png"));

@@ -69,8 +69,9 @@ public class ModifyFolder2Controller implements Initializable{
     void goToHome(ActionEvent event) throws IOException {
 
     	Parent root = FXMLLoader.load(getClass().getResource("../Fxml/Dashboard.fxml"));
-    	rootPane.getChildren().setAll(root);
-    	
+    	Scene dashBoard = new Scene(root);
+    	Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    	primaryStage.setScene(dashBoard);
     }
 
     @FXML
@@ -91,7 +92,9 @@ public class ModifyFolder2Controller implements Initializable{
     @FXML
     void disconnect(ActionEvent event) throws IOException {
     	Parent root = FXMLLoader.load(getClass().getResource("../Fxml/LoginStage.fxml"));
-    	rootPane.getChildren().setAll(root);
+    	Scene login = new Scene(root);
+    	Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    	primaryStage.setScene(login);
     }
     
     @FXML
