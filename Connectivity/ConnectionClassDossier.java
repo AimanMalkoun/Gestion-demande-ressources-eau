@@ -171,8 +171,29 @@ public class ConnectionClassDossier {
 			return 0;
 		}
 		
-		
 	}
+	
+
+	public int removeFolder(int id) {
+		
+		String sqlQuery = "DELETE FROM `dossier` WHERE `IdDossier` = ?";
+		int result = 0;
+		
+		try {
+			
+			PreparedStatement stm = conection.getConnection().prepareStatement(sqlQuery);
+			stm.setInt(1, id);
+			result = stm.executeUpdate();
+			
+			return result;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
 }
 
 
