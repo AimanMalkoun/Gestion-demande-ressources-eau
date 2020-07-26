@@ -3,6 +3,7 @@ package Controllers;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import Classes.Demandeur;
@@ -207,6 +208,8 @@ public class LesInfoDuDemandeurController implements Initializable{
 		//initialiser le champs du date de depot du dossier
 		 if(demandeur.getNom() != null)
 			 dateDepotDossierInput.setValue(demandeur.getDateDepotDossier());
+		 else
+			 dateDepotDossierInput.setValue(LocalDate.now());
 		 
 		//initialiser le chapms du type de demande
 		 if(demandeur.getTypeDemande() == null)
