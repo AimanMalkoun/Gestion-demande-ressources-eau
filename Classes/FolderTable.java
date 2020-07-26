@@ -5,6 +5,7 @@ public class FolderTable {
 	private int id;
 	private String cin;
 	private String nomPrenom;
+	private String typeDemande;
 	
 	public FolderTable() {
 		id = 0;
@@ -12,10 +13,11 @@ public class FolderTable {
 		nomPrenom = "";
 	}
 
-	public FolderTable(int id, String cin,  String nomPrenom) {
+	public FolderTable(int id, String typeDemande, String cin,  String nomPrenom) {
 		this.id = id;
 		this.cin = cin;
 		this.nomPrenom = nomPrenom;
+		this.typeDemande = typeDemande;
 	}
 
 	//getters
@@ -42,6 +44,14 @@ public class FolderTable {
 
 	public void setNomPrenom(String nomPrenom) {
 		this.nomPrenom = nomPrenom;
+	}
+
+	public String getTypeDemande() {
+		return typeDemande;
+	}
+
+	public void setTypeDemande(String typeDemande) {
+		this.typeDemande = typeDemande;
 	}
 	
 }
