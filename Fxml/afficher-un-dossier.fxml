@@ -100,7 +100,7 @@
                                     <Font size="17.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="264.0" prefHeight="31.0" prefWidth="743.0" text="إحداثيات نقطة الماء                                                                              :" GridPane.columnIndex="1" GridPane.rowIndex="14">
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="264.0" prefHeight="31.0" prefWidth="743.0" text="إحداثيات الثقب المائي                                                                           :" GridPane.columnIndex="1" GridPane.rowIndex="14">
                                  <font>
                                     <Font size="17.0" />
                                  </font>
@@ -450,7 +450,7 @@
                               <Image url="@../Image/Logo5.png" />
                            </image>
                         </ImageView>
-                        <Label alignment="CENTER" prefHeight="53.0" prefWidth="453.0" text="معاينة المجلد" textFill="WHITE" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                        <Label alignment="CENTER" prefHeight="53.0" prefWidth="453.0" text="معاينة الملف" textFill="WHITE" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                            <font>
                               <Font size="30.0" />
                            </font>
