@@ -59,7 +59,7 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="locationEau" alignment="CENTER_RIGHT" layoutX="179.0" layoutY="19.0" prefHeight="30.0" prefWidth="235.0" GridPane.rowIndex="1" />
+                        <TextField fx:id="locationEau" alignment="CENTER_RIGHT" layoutX="179.0" layoutY="19.0" prefHeight="30.0" prefWidth="235.0" promptText="X / Y" GridPane.rowIndex="1" />
                         <TextField fx:id="profondeur" alignment="CENTER_RIGHT" layoutX="179.0" layoutY="68.0" prefHeight="30.0" prefWidth="235.0" GridPane.rowIndex="4" />
                         <Button id="switchButton" fx:id="backButton" alignment="CENTER" mnemonicParsing="false" onAction="#backButtonMethode" prefHeight="30.0" prefWidth="87.0" text="رجوع" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5">
                            <GridPane.margin>
