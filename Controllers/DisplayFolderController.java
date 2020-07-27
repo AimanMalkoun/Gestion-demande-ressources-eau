@@ -135,6 +135,7 @@ public class DisplayFolderController implements Initializable {
     	}else if(event.getSource() == cinFileButton) {
     		
     		String path =ConvertBlobToPdf.getPdfFromBlob(dossier.getCinFile(), "CIN.pdf");
+    		System.out.println(path);
     		ShowPdf.display(path, "CIN.pdf");
     		
     	}else if(event.getSource() == planImmobilierFileButton) {
