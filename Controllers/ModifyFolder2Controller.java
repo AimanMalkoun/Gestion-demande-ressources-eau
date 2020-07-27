@@ -310,8 +310,8 @@ public class ModifyFolder2Controller implements Initializable{
     	nomCompletColumn.setText("\u0627\u0644\u0627\u0633\u0645 \u0627\u0644\u0643\u0627\u0645\u0644");
     	nomCompletColumn.setCellValueFactory(new PropertyValueFactory<>("nomPrenom"));
     	
-    	//typeDemandeCl.setText("\u0646\u0648\u0639 \u0627\u0644\u0637\u0644\u0628");
-    	//typeDemandeCl.setCellValueFactory(new PropertyValueFactory<>("typeDemande"));
+    	typeDemandeCl.setText("\u0646\u0648\u0639 \u0627\u0644\u0637\u0644\u0628");
+    	typeDemandeCl.setCellValueFactory(new PropertyValueFactory<>("typeDemande"));
 	} 
 	
 }

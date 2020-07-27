@@ -52,10 +52,11 @@ public class DashboardController implements Initializable{
     }
     
     @FXML
-    void disconnect(ActionEvent event) {
+    void disconnect(ActionEvent event) throws IOException {
     	
-		Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-		primaryStage.close();
+		Parent root = FXMLLoader.load(getClass().getResource("../Fxml/LoginStage.fxml"));
+    	Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		primaryStage.setScene(new Scene(root));
 		
     }
     

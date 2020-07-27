@@ -18,6 +18,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class LoginStageController  implements Initializable{
@@ -53,6 +54,14 @@ public class LoginStageController  implements Initializable{
 
 	}
 
+    @FXML
+	void forgotPassword(MouseEvent event) throws IOException {
+    	
+    	Parent root = FXMLLoader.load(getClass().getResource("../Fxml/ForgotPassWord.fxml"));
+    	Scene forgotPass = new Scene(root);
+    	Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    	primaryStage.setScene(forgotPass);
+    }
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
