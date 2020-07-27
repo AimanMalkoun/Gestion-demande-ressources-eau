@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="580.0" prefWidth="1130.0" style="-fx-background-color: #2b4067;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.modifierInfoDuDossierController">
+<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="1800.0" prefWidth="1130.0" style="-fx-background-color: #2b4067;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.modifierInfoDuDossierController">
    <content>
       <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="578.0" prefWidth="1121.0" stylesheets="@../GestionDemandeEau/application.css">
          <center>
@@ -100,7 +100,7 @@
                                     <Font size="17.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="264.0" prefHeight="31.0" prefWidth="743.0" text="إحداثيات نقطة الماء                                                                              :" GridPane.columnIndex="1" GridPane.rowIndex="14">
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="264.0" prefHeight="31.0" prefWidth="743.0" text="إحداثيات الثقب المائي                                                                           :" GridPane.columnIndex="1" GridPane.rowIndex="14">
                                  <font>
                                     <Font size="17.0" />
                                  </font>
@@ -734,7 +734,7 @@
                               <Image url="@../Image/Logo5.png" />
                            </image>
                         </ImageView>
-                        <Label alignment="CENTER" prefHeight="53.0" prefWidth="453.0" text="تعديل المجلد" textFill="WHITE" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                        <Label alignment="CENTER" prefHeight="53.0" prefWidth="453.0" text="تعديل الملف" textFill="WHITE" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                            <font>
                               <Font size="30.0" />
                            </font>

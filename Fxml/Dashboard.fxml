@@ -36,7 +36,7 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </ImageView>
-                              <Button id="switchButton" mnemonicParsing="false" onMouseClicked="#ShowFolderInformations" prefHeight="25.0" prefWidth="146.0" style="-fx-background-color: #2b4067;" text="عرض معلومات مجلد" textFill="WHITE">
+                              <Button id="switchButton" mnemonicParsing="false" onMouseClicked="#ShowFolderInformations" prefHeight="25.0" prefWidth="146.0" style="-fx-background-color: #2b4067;" text="عرض معلومات ملف" textFill="WHITE">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -62,7 +62,7 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </ImageView>
-                              <Button id="switchButton" mnemonicParsing="false" onMouseClicked="#ModifyExistingFolder" prefHeight="8.0" prefWidth="139.0" style="-fx-background-color: #2b4067;" text="تعديل مجلد" textFill="WHITE">
+                              <Button id="switchButton" mnemonicParsing="false" onMouseClicked="#ModifyExistingFolder" prefHeight="8.0" prefWidth="139.0" style="-fx-background-color: #2b4067;" text="تعديل ملف" textFill="WHITE">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -88,7 +88,7 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </ImageView>
-                              <Button id="switchButton" mnemonicParsing="false" onMouseClicked="#CreateNewFolder" prefHeight="30.0" prefWidth="143.0" style="-fx-background-color: #2b4067;" text="اضافة مجلد" textFill="WHITE">
+                              <Button id="switchButton" mnemonicParsing="false" onMouseClicked="#CreateNewFolder" prefHeight="30.0" prefWidth="143.0" style="-fx-background-color: #2b4067;" text="اضافة ملف" textFill="WHITE">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
