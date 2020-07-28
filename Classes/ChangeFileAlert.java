@@ -37,7 +37,7 @@ public class ChangeFileAlert {
 			File file = ImagesOrPdfChooser.result;
 				
 				if(file != null) {
-					path.setText(file.getPath());
+					path.setText(file.getName());
 					result = file;
 				}
 				

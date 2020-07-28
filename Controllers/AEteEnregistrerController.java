@@ -153,8 +153,7 @@ public class AEteEnregistrerController implements Initializable {
 
 			/* les elements du paragraphe 2 */
 
-			Paragraph para2 = new Paragraph(30);// " \n ÙŠØ´Ù‡Ø¯ Ø±Ø¦ÙŠØ³ Ø§Ù„Ù…ØµÙ„Ø­Ø© Ø§Ù„Ø§Ù‚Ù„ÙŠÙ…ÙŠØ© Ù„Ù„Ù…Ø§Ø¡
-												// Ø¨Ø£Ø³Ù�ÙŠ Ø§Ù† Ø§Ù„Ø³ÙŠØ¯", normal);
+			Paragraph para2 = new Paragraph(30);
 			para2.add(new Phrase(
 					"\n \u064a\u0634\u0647\u062f \u0631\u0626\u064a\u0633 \u0627\u0644\u0645\u0635\u0644\u062d\u0629 \u0627\u0644\u0627\u0642\u0644\u064a\u0645\u064a\u0629 \u0644\u0644\u0645\u0627\u0621 \u0628\u0623\u0633\u0641\u064a \u0627\u0646 \u0627\u0644\u0633\u064a\u062f ",
 					normal));
@@ -166,7 +165,7 @@ public class AEteEnregistrerController implements Initializable {
 			para2.add(new Phrase(
 					" \u0642\u062f \u0648\u0636\u0639  \u0644\u0630\u0627 \u0647\u0630\u0647 \u0627\u0644\u0645\u0635\u0644\u062d\u0629  \u0628\u062a\u0627\u0631\u064a\u062e ",
 					normal));
-			para2.add(new Phrase(" " + dateDepot + " ", big));
+			para2.add(new Phrase("\n" + dateDepot + " ", big));
 			para2.add(new Phrase(
 					" \u0645\u0644\u0641 \u0637\u0644\u0628 \u0627\u0644\u062a\u0631\u062e\u064a\u0635 \u0644\u0625\u0646\u062c\u0627\u0632 \u062b\u0642\u0628  \u0645\u0627\u0626\u064a \u0645\u0646 \u0623\u062c\u0644 \u0633\u0642\u064a \u0628\u0627\u0644\u0639\u0642\u0627\u0631 \u0627\u0644\u0645\u0633\u0645\u0649: ",
 					normal));

@@ -80,15 +80,15 @@ public class EnregistrerController implements Initializable {
 	public void modifyButtonMethode(ActionEvent event) throws IOException {
 
 		try {
-			
-			FXMLLoader loader= new FXMLLoader();
+
+			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("../Fxml/InformationsDuDemandeur.fxml"));
 			Parent demandeurRoot = loader.load();
-			
+
 			Scene demandeurScene = new Scene(demandeurRoot);
-			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			primaryStage.setScene(demandeurScene);
-			
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -115,19 +115,8 @@ public class EnregistrerController implements Initializable {
 			idDossier = result.getInt(1) + 1;
 		}
 
-		/*
-		 * l'initialisation de l'objet Dossier avec les �l�ments de la page
-		 * pr�c�dente
-		 */
+		/* Determination de path de chaque fichier */
 
-		/*
-		 * Dossier dossier = new Dossier(idDossier,
-		 * LesInfoDuDemandeurController.demandeur,
-		 * LesInfoDelImmobilierController.InfoSurImmobilier,
-		 * InformationsConcernantPointDeauController.poinDeau, dateDepot);
-		 */
-
-		/* D�termination de path de chaque fichier */
 		String pathCIN = LesInfoDuDemandeurController.demandeur.getCinFile().getAbsolutePath();
 		String pathDemandeCreusement = LesInfoDuDemandeurController.demandeur.getDemandeFile().getAbsolutePath();
 		String pathAttistation = LesInfoDelImmobilierController.InfoSurImmobilier.getAttestationDePocession()
@@ -193,15 +182,15 @@ public class EnregistrerController implements Initializable {
 		}
 
 		try {
-			
-			FXMLLoader loader= new FXMLLoader();
+
+			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("../Fxml/AEteEnregistrer.fxml"));
 			Parent AEteEnregistrerRoot = loader.load();
-			
+
 			Scene AEteEnregistrerScene = new Scene(AEteEnregistrerRoot);
-			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			primaryStage.setScene(AEteEnregistrerScene);
-			
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -229,10 +218,11 @@ public class EnregistrerController implements Initializable {
 		douar.setText(LesInfoDelImmobilierController.InfoSurImmobilier.getDouar());
 		commune.setText(LesInfoDelImmobilierController.InfoSurImmobilier.getCommune());
 		province.setText(LesInfoDelImmobilierController.InfoSurImmobilier.getProvince());
-		AttestationPossession.setText(LesInfoDelImmobilierController.InfoSurImmobilier.getAttestationDePocession().getName());
+		AttestationPossession
+				.setText(LesInfoDelImmobilierController.InfoSurImmobilier.getAttestationDePocession().getName());
 		qiyada.setText(LesInfoDelImmobilierController.InfoSurImmobilier.getQuiada());
 		palnImm.setText(LesInfoDelImmobilierController.InfoSurImmobilier.getPlanImmobilier().getName());
-		
+
 		/* Les information concernant le point d'eau */
 
 		locationPoin.setText(InformationsConcernantPointDeauController.poinDeau.getLocalisationPoint());

@@ -37,7 +37,7 @@
                         <RowConstraints maxHeight="414.0" minHeight="0.0" prefHeight="49.0" valignment="CENTER" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="45.0" prefWidth="608.0" style="-fx-background-color: #4cd4b9;" text="المعلومات الخاصة بالمواطن :" textFill="#2b4067" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER">
+                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="45.0" prefWidth="608.0" style="-fx-background-color: #4cd4b9;" text="المعلومات الخاصة بصاحب الطلب  :" textFill="#2b4067" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -75,7 +75,7 @@
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="118.0" maxWidth="1.7976931348623157E308" prefHeight="27.0" prefWidth="400.0" text="تاريخ إيداع الملف                           :" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="118.0" maxWidth="1.7976931348623157E308" prefHeight="27.0" prefWidth="315.0" text="تاريخ إيداع الملف                           :" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -159,27 +159,27 @@
                               <RowConstraints maxHeight="165.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" prefHeight="23.0" prefWidth="228.0" text="الدائرة                                           :" textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                              <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" prefHeight="23.0" prefWidth="228.0" text="الدائرة                                             :" textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="18.0" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="228.0" text="الجماعة                                         :" textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="18.0" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="228.0" text="الجماعة                                           :" textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="67.0" maxWidth="1.7976931348623157E308" prefHeight="27.0" prefWidth="228.0" text="الدوار                                            :" textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="67.0" maxWidth="1.7976931348623157E308" prefHeight="27.0" prefWidth="228.0" text="الدوار                                              :" textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="118.0" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="229.0" text="ﺍﻻﻗﻠﻴﻢ                                           :" textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="118.0" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="229.0" text="ﺍﻻﻗﻠﻴﻢ                                             :" textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="148.0" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="229.0" text="شهادة ملكية العقار                        :" textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="148.0" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="229.0" text="شهادة ملكية العقار                          :" textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" GridPane.valignment="CENTER">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -214,12 +214,12 @@
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="223.0" text="القيادة                                         :" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                              <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="223.0" text="القيادة                                             :" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.valignment="CENTER">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="229.0" text="التصميم العقاري                            :" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="7" GridPane.valignment="CENTER">
+                              <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="229.0" text="التصميم العقاري                              :" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="7" GridPane.valignment="CENTER">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -229,7 +229,7 @@
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="229.0" text="اسم العقار                                     :" textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER">
+                              <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="229.0" text="اسم العقار                                       :" textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -241,7 +241,7 @@
                               </Label>
                            </children>
                         </GridPane>
-                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="45.0" prefWidth="604.0" style="-fx-background-color: #4cd4b9;" text="المعلومات الخاصة بنقطة الماء :" textFill="#2b4067" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="45.0" prefWidth="604.0" style="-fx-background-color: #4cd4b9;" text="المعلومات الخاصة بالثقب المائي :" textFill="#2b4067" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -249,10 +249,10 @@
                               <Insets left="40.0" />
                            </padding>
                         </Label>
-                        <GridPane prefHeight="274.0" prefWidth="588.0" style="-fx-border-color: #2b4067;" GridPane.rowIndex="5">
+                        <GridPane alignment="CENTER" prefHeight="274.0" prefWidth="588.0" style="-fx-border-color: #2b4067;" GridPane.rowIndex="5">
                            <columnConstraints>
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="285.0" minWidth="10.0" prefWidth="250.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="281.0" minWidth="10.0" prefWidth="278.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="329.0" minWidth="10.0" prefWidth="329.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="281.0" minWidth="10.0" prefWidth="237.0" />
                            </columnConstraints>
                            <rowConstraints>
                               <RowConstraints maxHeight="61.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
@@ -329,7 +329,7 @@
    <right>
       <VBox id="vboxStyle" alignment="CENTER" prefHeight="388.0" prefWidth="167.0" spacing="20.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
          <children>
-            <Button id="buttonProfile2" alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="186.0" style="-fx-background-color: #4cd4b9;" text="المواطن" textFill="WHITE">
+            <Button id="buttonProfile2" alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="186.0" style="-fx-background-color: #4cd4b9;" text="صاحب الطلب" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -351,7 +351,7 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button id="buttonSetting2" alignment="CENTER" layoutX="10.0" layoutY="35.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: #4cd4b9;" text="نقطة الماء" textFill="WHITE">
+            <Button id="buttonSetting2" alignment="CENTER" layoutX="10.0" layoutY="35.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: #4cd4b9;" text="الثقب المائي" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -399,7 +399,7 @@
                         <Image url="@../Image/Logo5.png" />
                      </image>
                   </ImageView>
-                  <Label alignment="CENTER" prefHeight="53.0" prefWidth="453.0" text="الفحص الأخير للبيانات " textFill="WHITE">
+                  <Label alignment="CENTER" prefHeight="53.0" prefWidth="453.0" text="عرض البيانات قبل التحميل " textFill="WHITE">
                      <font>
                         <Font size="30.0" />
                      </font>

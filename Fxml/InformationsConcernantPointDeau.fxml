@@ -59,7 +59,7 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="locationEau" alignment="CENTER_RIGHT" layoutX="179.0" layoutY="19.0" prefHeight="30.0" prefWidth="235.0" GridPane.rowIndex="1" />
+                        <TextField fx:id="locationEau" alignment="CENTER_RIGHT" layoutX="179.0" layoutY="19.0" prefHeight="30.0" prefWidth="235.0" promptText="X / Y" GridPane.rowIndex="1" />
                         <TextField fx:id="profondeur" alignment="CENTER_RIGHT" layoutX="179.0" layoutY="68.0" prefHeight="30.0" prefWidth="235.0" GridPane.rowIndex="4" />
                         <Button id="switchButton" fx:id="backButton" alignment="CENTER" mnemonicParsing="false" onAction="#backButtonMethode" prefHeight="30.0" prefWidth="87.0" text="رجوع" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5">
                            <GridPane.margin>
@@ -96,7 +96,7 @@
    <right>
       <VBox id="vboxStyle" alignment="CENTER" prefHeight="409.0" prefWidth="161.0" spacing="20.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
          <children>
-            <Button id="buttonProfile2" alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="186.0" style="-fx-background-color: #4cd4b9;" text="المواطن" textFill="WHITE">
+            <Button id="buttonProfile2" alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="186.0" style="-fx-background-color: #4cd4b9;" text="صاحب الطلب" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -118,7 +118,7 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button id="buttonSetting2" alignment="CENTER" layoutX="10.0" layoutY="35.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="106.0" style="-fx-background-color: #ffffff;" text="نقطة الماء" textFill="#2b4067">
+            <Button id="buttonSetting2" alignment="CENTER" layoutX="10.0" layoutY="35.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="106.0" style="-fx-background-color: #ffffff;" text="الثقب المائي" textFill="#2b4067">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -163,7 +163,7 @@
                         <Image url="@../Image/Logo5.png" />
                      </image>
                   </ImageView>
-                  <Label alignment="CENTER" prefHeight="53.0" prefWidth="453.0" text="المعلومات الخاصة بنقطة الماء" textFill="WHITE">
+                  <Label alignment="CENTER" prefHeight="53.0" prefWidth="453.0" text="المعلومات الخاصة بالثقب المائي" textFill="WHITE">
                      <font>
                         <Font size="30.0" />
                      </font>
