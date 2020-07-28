@@ -97,8 +97,8 @@ public class LesInfoDuDemandeurController implements Initializable{
     			loader.setLocation(getClass().getResource("../Fxml/Les-informations-concernant-l'immobilier.fxml"));
     			Parent demandeurRoot = loader.load();
     			
-				Scene demandeurScene = new Scene(demandeurRoot);
 				Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+				Scene demandeurScene = new Scene(demandeurRoot, primaryStage.getWidth(), primaryStage.getHeight());
 				primaryStage.setScene(demandeurScene);
 				
     		} catch (IOException e) {

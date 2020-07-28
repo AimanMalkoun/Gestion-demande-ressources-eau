@@ -34,15 +34,15 @@ public class LoginStageController  implements Initializable{
 		ConnectionClass conn = new ConnectionClass();
 		Connection connection = conn.getConnection();
 		Statement statement = connection.createStatement();
-		ResultSet query = statement.executeQuery("SELECT * FROM `login` ;");
+		ResultSet query = statement.executeQuery("SELECT * FROM `login`;");
 
 		while (query.next()) {
 			realPassword = query.getString("Password");
 		}
 		if (realPassword.equals(password.getText())) {
-			Parent dashboardRoot = (Parent) FXMLLoader.load(getClass().getResource("../Fxml/Dashboard.fxml"));
-			Scene dashboardScene = new Scene(dashboardRoot);
 			Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			Parent dashboardRoot = (Parent) FXMLLoader.load(getClass().getResource("../Fxml/Dashboard.fxml"));
+			Scene dashboardScene = new Scene(dashboardRoot, primaryStage.getWidth(), primaryStage.getHeight());
 			primaryStage.setScene(dashboardScene);
 		}
 
@@ -57,9 +57,9 @@ public class LoginStageController  implements Initializable{
     @FXML
 	void forgotPassword(MouseEvent event) throws IOException {
     	
-    	Parent root = FXMLLoader.load(getClass().getResource("../Fxml/ForgotPassWord.fxml"));
-    	Scene forgotPass = new Scene(root);
     	Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    	Parent root = FXMLLoader.load(getClass().getResource("../Fxml/ForgotPassWord.fxml"));
+    	Scene forgotPass = new Scene(root, primaryStage.getWidth(), primaryStage.getHeight());
     	primaryStage.setScene(forgotPass);
     }
 	@Override

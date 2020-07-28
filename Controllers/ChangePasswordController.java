@@ -89,9 +89,9 @@ public class ChangePasswordController {
     @FXML
     void goToHome(ActionEvent event) throws IOException {
     	
-    	Parent dashboardRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/Dashboard.fxml"));
-		Scene dashboardScene = new Scene(dashboardRoot);
 		Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+    	Parent dashboardRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/Dashboard.fxml"));
+		Scene dashboardScene = new Scene(dashboardRoot, primaryStage.getWidth(), primaryStage.getHeight());
 		primaryStage.setScene(dashboardScene);
 		
     }

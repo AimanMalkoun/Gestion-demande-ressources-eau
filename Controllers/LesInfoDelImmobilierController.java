@@ -70,8 +70,8 @@ public class LesInfoDelImmobilierController implements Initializable {
 
 			Parent dashboardRoot = (Parent) FXMLLoader
 					.load(getClass().getResource("../Fxml/InformationsDuDemandeur.fxml"));
-			Scene dashboardScene = new Scene(dashboardRoot);
 			Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			Scene dashboardScene = new Scene(dashboardRoot, primaryStage.getWidth(), primaryStage.getHeight());
 			primaryStage.setScene(dashboardScene);
 
 		} catch (IOException e) {
