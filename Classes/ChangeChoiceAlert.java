@@ -29,6 +29,9 @@ public class ChangeChoiceAlert {
 		
 		Button okButton = new Button("\u062a\u0623\u0643\u064a\u062f"), annulerButton = new Button("\u0625\u0644\u063a\u0627\u0621");
 		
+		okButton.setStyle("-fx-background-color: #2b4067; -fx-text-fill: white");
+		annulerButton.setStyle("-fx-background-color: #2b4067; -fx-text-fill: white");
+		
 		//Handeling actions
 		okButton.setOnMouseClicked(e -> {
 				result = input.getValue();
@@ -60,6 +63,7 @@ public class ChangeChoiceAlert {
 		window.setTitle(title);
 		window.getIcons().add(new Image("/Image/Logo5.png"));
 		window.showAndWait();
+		window.centerOnScreen();
 		
 		return result;
 		

@@ -31,6 +31,9 @@ public class ChangeNumberAlert {
 		
 		Button okButton = new Button("\u062a\u0623\u0643\u064a\u062f"), annulerButton = new Button("\u0625\u0644\u063a\u0627\u0621");
 		
+		okButton.setStyle("-fx-background-color: #2b4067; -fx-text-fill: white");
+		annulerButton.setStyle("-fx-background-color: #2b4067; -fx-text-fill: white");
+		
 		//Handling actions
 		okButton.setOnMouseClicked(event -> {
 			
