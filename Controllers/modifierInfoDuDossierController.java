@@ -472,12 +472,18 @@ public class modifierInfoDuDossierController implements Initializable{
     	System.out.println("rows updated = " + rows);
 
     	try {
-    		
-    		Parent ModifyFolderRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/ModifyFolder2.fxml"));
-			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-			Scene ModifyFolderScene = new Scene(ModifyFolderRoot, primaryStage.getWidth(), primaryStage.getHeight());
-			primaryStage.setScene(ModifyFolderScene);
+
+			FXMLLoader loader= new FXMLLoader();
+			loader.setLocation(getClass().getResource("../Fxml/ModifyFolder2.fxml"));
+			Parent showFolderRoot = loader.load();
 			
+			ModifyFolder2Controller nextControler = loader.getController();
+			nextControler.setMessage(0);
+			
+			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			Scene showFolderScene = new Scene(showFolderRoot, primaryStage.getWidth(), primaryStage.getHeight());
+			primaryStage.setScene(showFolderScene);
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
