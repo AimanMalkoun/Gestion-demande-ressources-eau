@@ -10,12 +10,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 public class InformationsConcernantPointDeauController implements Initializable {
 	/*
@@ -60,10 +62,16 @@ public class InformationsConcernantPointDeauController implements Initializable 
 			poinDeau = new PointDeau(locationEau.getText().toString(), new Float(debit.getText()),
 					new Float(profondeur.getText()), new Float(poinEau.getText()));
 
-			Parent root = FXMLLoader.load(getClass().getResource("../Fxml/Enregistrer.fxml"));
-			borderPan.getChildren().setAll(root);
+			FXMLLoader loader= new FXMLLoader();
+			loader.setLocation(getClass().getResource("../Fxml/Enregistrer.fxml"));
+			Parent demandeurRoot = loader.load();
+			
+			Scene demandeurScene = new Scene(demandeurRoot);
+			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			primaryStage.setScene(demandeurScene);
+			
 		} else {
-			textError.setText("\u0631\u062c\u0627\u0621 \u0627\u0645\u0644\u0623 \u062c\u0645\u064a\u0639 \u0627\u0644\u062d\u0642\u0648\u0644 \u0628\u0634\u0643\u0644 \u062c\u064a\u062f");
+			textError.setText("\u0627\u0644\u0645\u0631\u062c\u0648 \u0645\u0644\u0626 \u0643\u0644 \u0627\u0644\u062e\u0627\u0646\u0627\u062a \u0628\u0645\u0627 \u064a\u0646\u0627\u0633\u0628");
 
 		}
 	}
@@ -71,8 +79,21 @@ public class InformationsConcernantPointDeauController implements Initializable 
 	@FXML
 	public void backButtonMethode(ActionEvent event) throws IOException {
 
-		Parent root = FXMLLoader.load(getClass().getResource("../Fxml/Les-informations-concernant-l'immobilier.fxml"));
-		borderPan.getChildren().setAll(root);
+		try {
+			
+			FXMLLoader loader= new FXMLLoader();
+			loader.setLocation(getClass().getResource("../Fxml/Les-informations-concernant-l'immobilier.fxml"));
+			Parent demandeurRoot = loader.load();
+			
+			Scene demandeurScene = new Scene(demandeurRoot);
+			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			primaryStage.setScene(demandeurScene);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 	public boolean isValideFloat(TextField text) {

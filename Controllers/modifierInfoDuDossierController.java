@@ -6,8 +6,14 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Blob;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+
+import javax.sql.rowset.serial.SerialBlob;
+import javax.sql.rowset.serial.SerialException;
+
+import org.apache.commons.io.IOUtils;
 
 import Classes.ChangeChoiceAlert;
 import Classes.ChangeDateAlert;
@@ -246,7 +252,7 @@ public class modifierInfoDuDossierController implements Initializable{
     			
     		}else if(event.getSource() == typeDemandeButton) {
     			//choice
-    			String items[] =  {"\u062d\u0641\u0631 \u0628\u0626\u0631", "\u0636\u062e \u0627\u0644\u0645\u0627\u0621"};
+    			String items[] =  {"\u0637\u0644\u0628 \u062d\u0641\u0631 \u062b\u0642\u0628 \u0645\u0627\u0626\u064a", "\u0637\u0644\u0628 \u062c\u0644\u0628 \u0627\u0644\u0645\u0627\u0621"};
     			String result = ChangeChoiceAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u0646\u0648\u0639 \u0627\u0644\u0637\u0644\u0628", items, dossier.getTypeDemande());
     			
     			dossier.setTypeDemande(result);
@@ -259,7 +265,7 @@ public class modifierInfoDuDossierController implements Initializable{
     			
     			File result = ChangeFileAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u0635\u0648\u0631\u0629 \u0628\u0637\u0627\u0642\u0629 \u0627\u0644\u062a\u0639\u0631\u064a\u0641 \u0627\u0644\u0648\u0637\u0646\u064a\u0629", dossier.getCin() + "CIN.pdf");
     			if(result != null){
-    				dossier.setCinFile((Blob) new FileInputStream(result));
+    				dossier.setCinFile(fileToBlob(result));
     				carteCinPathLabel.setText(result.getPath());
     			}
     			
@@ -269,7 +275,7 @@ public class modifierInfoDuDossierController implements Initializable{
     			System.out.println(result);
     			
     			if(result != null){
-    				dossier.setDemandeFile((Blob) new FileInputStream(result));
+    				dossier.setDemandeFile(fileToBlob(result));
     				demandeDeCreusementPathLabel.setText(result.getPath());
     			}
     			
@@ -287,7 +293,7 @@ public class modifierInfoDuDossierController implements Initializable{
     			File result = ChangeFileAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u0634\u0647\u0627\u062f\u0629 \u0645\u0644\u0643\u064a\u0629 \u0627\u0644\u0639\u0642\u0627\u0631", dossier.getCin() + "attestation_Pocession_Immobilier.pdf");
     			
     			if(result != null){
-    				dossier.setAttestationDePocession((Blob) new FileInputStream(result));
+    				dossier.setAttestationDePocession(fileToBlob(result));
     				attestationPoscessionImmobilierLabel.setText(result.getPath());
     			}
     			
@@ -296,7 +302,7 @@ public class modifierInfoDuDossierController implements Initializable{
     			File result = ChangeFileAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u062a\u0635\u0645\u064a\u0645 \u0627\u0644\u0639\u0642\u0627\u0631", dossier.getCin() + "plan_Immobilier.pdf");
     			
     			if(result != null){
-    				dossier.setPlanImmobilier((Blob) new FileInputStream(result));
+    				dossier.setPlanImmobilier(fileToBlob(result));
     				planImmobilierFilePathLabel.setText(result.getPath());
     			}
     			
@@ -473,17 +479,50 @@ public class modifierInfoDuDossierController implements Initializable{
     	
     }
 
+    @FXML
+    void goHomePage(MouseEvent event) {
+    	
+    	try {
+    		
+    		Parent ModifyFolderRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/Dashboard.fxml"));
+			Scene ModifyFolderScene = new Scene(ModifyFolderRoot);
+			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			primaryStage.setScene(ModifyFolderScene);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    }
+
+    @FXML
+    void logOut(MouseEvent event) {
+
+    	try {
+    		
+    		Parent ModifyFolderRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/LoginStage.fxml"));
+			Scene ModifyFolderScene = new Scene(ModifyFolderRoot);
+			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			primaryStage.setScene(ModifyFolderScene);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    }
+    
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		
 	}
 	
 	//recieve the message from the last controler
  	 public void setMessage(int id) {
 
 		ConnectionClassDossier myDataBaseFolder = new ConnectionClassDossier();
-		//dossier = myDataBaseFolder.getDossierFromDatabase(id);
-		dossier = myDataBaseFolder.getDossierFromDatabase(3);
-		System.out.println(dossier);
+		dossier = myDataBaseFolder.getDossierFromDatabase(id);
 		initializeTextForLabels();
 		
  	 }
@@ -511,7 +550,7 @@ public class modifierInfoDuDossierController implements Initializable{
     	LocalisationPointEauLabel.setText(dossier.getLocalisationPoint());
     	profondeurLabel.setText(Float.toString(dossier.getProfondeur()));
     	debitLabel.setText(Float.toString(dossier.getDebit()));
-    	planEauLabel.setText(dossier.getCin() + "Plan_d_eau.pdf");
+    	planEauLabel.setText(Float.toString(dossier.getPlanEau()));
     	
     	dateDenvoiAlabhouerEljaidaLabel.setText(dossier.getDateEnvoiA_LABHOER().toString());
     	dateDebutEnquetePublicLabel.setText(dossier.getDateDebutde_EP().toString());
@@ -523,6 +562,35 @@ public class modifierInfoDuDossierController implements Initializable{
     	autorisationLabel.setText(dossier.getAutorisation());
     	
     }
+    
+    
+    //this method takes a file as argument and return it as blob
+    private Blob fileToBlob(File file) {
+    	
+    	Blob blob = null;
+		try {
+			
+			byte[] content = IOUtils.toByteArray(new FileInputStream(file));
+	    	blob = new SerialBlob(content);
+	    	
+		} catch (IOException e) {
+
+			e.printStackTrace();
+			
+		} catch (SerialException e) {
+
+			e.printStackTrace();
+			
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		
+		}
+    	
+    	return blob;
+    	
+    }
+    
 
 }
 

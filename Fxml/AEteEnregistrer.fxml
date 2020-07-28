@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -7,51 +8,77 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="boderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="556.0" prefWidth="877.0" stylesheets="@../GestionDemandeEau/application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AEteEnregistrerController">
-   <top>
-      <Pane prefHeight="109.0" prefWidth="858.0" style="-fx-background-color: #2b4067;" stylesheets="@../GestionDemandeEau/application.css" BorderPane.alignment="CENTER">
-         <children>
-            <Label alignment="CENTER" layoutX="247.0" layoutY="28.0" prefHeight="53.0" prefWidth="288.0" text=" تحميل ﻭﺻﻞ الإﻳﺪﺍﻉ" textFill="WHITE">
-               <font>
-                  <Font size="36.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
-   </top>
+<BorderPane fx:id="boderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="1130.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AEteEnregistrerController">
    <center>
-      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
          <children>
-            <Text fill="#4cd4b9" layoutX="186.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="لقد تم تسجيل الطلب بنجاح" textAlignment="CENTER" wrappingWidth="339.13671875">
-               <font>
-                  <Font name="Tahoma" size="32.0" />
-               </font>
-            </Text>
-            <Button id="switchButton" fx:id="downloadReceipt" layoutX="88.0" layoutY="321.0" mnemonicParsing="false" onAction="#downloadReceiptMethode" prefHeight="45.0" prefWidth="165.0" text=" تحميل ﻭﺻﻞ الإﻳﺪﺍﻉ" textFill="WHITE">
-               <font>
-                  <Font size="14.0" />
-               </font></Button>
-            <Button id="switchButton" fx:id="back" layoutX="469.0" layoutY="321.0" mnemonicParsing="false" onAction="#handelBackMethode" prefHeight="45.0" prefWidth="165.0" text=" الصفحة الرئيسية" textFill="WHITE">
-               <font>
-                  <Font size="14.0" />
-               </font></Button>
-            <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="333.0" layoutY="189.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Image/WellDone.png" />
-               </image>
-            </ImageView>
+            <GridPane prefHeight="344.0" prefWidth="707.0">
+               <columnConstraints>
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="95.0" minHeight="10.0" prefHeight="95.0" valignment="CENTER" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="146.0" minHeight="10.0" prefHeight="129.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="98.0" minHeight="10.0" prefHeight="57.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="98.0" minHeight="10.0" prefHeight="57.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Text fill="#4cd4b9" strokeType="OUTSIDE" strokeWidth="0.0" text="لقد تمت إضافة الملف بنجاح" textAlignment="CENTER" wrappingWidth="339.13671875">
+                     <font>
+                        <Font name="Tahoma" size="32.0" />
+                     </font>
+                  </Text>
+                  <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="112.0" prefWidth="707.0" spacing="200.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2">
+                     <children>
+                        <Button id="switchButton" fx:id="downloadReceipt" mnemonicParsing="false" onAction="#downloadReceiptMethode" prefHeight="45.0" prefWidth="165.0" text=" تحميل ﻭﺻﻞ الإﻳﺪﺍﻉ" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button id="switchButton" fx:id="back" mnemonicParsing="false" onAction="#handelBackMethode" prefHeight="45.0" prefWidth="165.0" text=" الصفحة الرئيسية" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+                     <image>
+                        <Image url="@../Image/folderDone.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="textError" alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="238.0" textFill="RED" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </GridPane>
          </children>
-      </Pane>
+         <padding>
+            <Insets top="60.0" />
+         </padding>
+      </StackPane>
    </center>
    <right>
-      <VBox id="vboxStyle" alignment="CENTER" prefHeight="447.0" prefWidth="166.0" spacing="20.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
+      <VBox id="#vboxStyle" alignment="CENTER" prefHeight="426.0" prefWidth="170.0" spacing="20.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
          <children>
-            <Button id="buttonProfile2" alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" prefWidth="106.0" style="-fx-background-color: #4cd4b9;" text="المواطن" textFill="WHITE">
+            <Button id="buttonProfile2" alignment="CENTER" mnemonicParsing="false" prefHeight="5.0" prefWidth="106.0" style="-fx-background-color: #4cd4b9;" text="صاحب الطلب" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -62,7 +89,7 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button id="buttonOptio2" alignment="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: #4cd4b9;" text="العقار" textFill="WHITE">
+            <Button id="buttonOptio2" alignment="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="105.0" style="-fx-background-color: #4cd4b9;" text="العقار" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -73,7 +100,7 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button id="buttonSetting2" alignment="CENTER" layoutX="10.0" layoutY="35.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="106.0" style="-fx-background-color: #4cd4b9;" text="نقطة الماء" textFill="#fcfcfc">
+            <Button id="buttonSetting2" alignment="CENTER" layoutX="10.0" layoutY="35.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="106.0" style="-fx-background-color: #4cd4b9;" text="الثقب المائي" textFill="#fcfcfc">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -84,7 +111,7 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="106.0" style="-fx-background-color: #4cd4b9;" text="التسجيل" textFill="WHITE">
+            <Button id="buttonLogin2" alignment="CENTER" mnemonicParsing="false" prefHeight="33.0" prefWidth="106.0" style="-fx-background-color: #4cd4b9;" text="التسجيل" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
@@ -98,4 +125,38 @@
          </padding>
       </VBox>
    </right>
+   <top>
+      <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="130.0" prefWidth="877.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
+         <children>
+            <GridPane prefHeight="144.0" prefWidth="877.0" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <columnConstraints>
+                  <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="707.0" />
+                  <ColumnConstraints halignment="CENTER" maxWidth="213.0" minWidth="165.0" prefWidth="170.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <ImageView fitHeight="95.0" fitWidth="139.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+                     <image>
+                        <Image url="@../Image/Logo5.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" prefHeight="53.0" prefWidth="453.0" text=" تحميل ﻭﺻﻞ الإﻳﺪﺍﻉ" textFill="WHITE">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+               </children>
+            </GridPane>
+         </children>
+      </HBox>
+   </top>
+   <stylesheets>
+      <URL value="@../GestionDemandeEau/application.css" />
+      <URL value="@../GestionDemandeEau/application.css" />
+   </stylesheets>
 </BorderPane>

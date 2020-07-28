@@ -5,6 +5,8 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -14,635 +16,734 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="582.0" prefWidth="1121.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.modifierInfoDuDossierController">
-   <center>
-      <ScrollPane fitToWidth="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <content>
-            <StackPane minWidth="920.0">
-               <children>
-                  <GridPane alignment="CENTER" maxWidth="810.0" prefHeight="1430.0" StackPane.alignment="CENTER">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="376.0" minWidth="10.0" prefWidth="306.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="588.0" minWidth="10.0" prefWidth="512.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
+<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="1800.0" prefWidth="1130.0" style="-fx-background-color: #2b4067;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.modifierInfoDuDossierController">
+   <content>
+      <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="578.0" prefWidth="1121.0" stylesheets="@../GestionDemandeEau/application.css">
+         <center>
+            <ScrollPane fitToWidth="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <content>
+                  <StackPane minWidth="920.0">
                      <children>
-                        <Label alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="605.0" text="الاسم العائلي" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER">
-                           <font>
-                              <Font size="21.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="602.0" text="الاسم الشخصي" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                           <font>
-                              <Font size="22.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="48.0" prefHeight="31.0" prefWidth="635.0" text="رقم بطاقة التعريف الوطنية" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                           <font>
-                              <Font size="21.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="84.0" prefHeight="31.0" prefWidth="622.0" text="نوع الطلب" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                           <font>
-                              <Font size="21.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="120.0" prefHeight="31.0" prefWidth="681.0" text="اسم العقار" GridPane.columnIndex="1" GridPane.rowIndex="6">
-                           <font>
-                              <Font size="21.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="156.0" prefHeight="31.0" prefWidth="619.0" text="دوار" GridPane.columnIndex="1" GridPane.rowIndex="11">
-                           <font>
-                              <Font size="21.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="192.0" prefHeight="31.0" prefWidth="643.0" text="جماعة" GridPane.columnIndex="1" GridPane.rowIndex="12">
-                           <font>
-                              <Font size="21.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="228.0" prefHeight="31.0" prefWidth="599.0" text="إقليم" GridPane.columnIndex="1" GridPane.rowIndex="13">
-                           <font>
-                              <Font size="21.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="264.0" prefHeight="31.0" prefWidth="743.0" text="إحداثيات نقطة الماء" GridPane.columnIndex="1" GridPane.rowIndex="14">
-                           <font>
-                              <Font size="21.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="300.0" prefHeight="31.0" prefWidth="656.0" text="الصبيب" GridPane.columnIndex="1" GridPane.rowIndex="15">
-                           <font>
-                              <Font size="21.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="336.0" prefHeight="31.0" prefWidth="653.0" text="مستوى  الماء" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="17">
-                           <font>
-                              <Font size="21.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="408.0" prefHeight="31.0" prefWidth="597.0" text="العمق" GridPane.columnIndex="1" GridPane.rowIndex="16">
-                           <font>
-                              <Font size="21.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="12.0" prefHeight="31.0" prefWidth="628.0" text="تاريخ نهاية البحث العلني" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="21" GridPane.valignment="CENTER">
-                           <font>
-                              <Font size="21.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="48.0" prefHeight="31.0" prefWidth="624.0" text="تاريخ امضاء المحضر من طرف لجنة البحث العلني" GridPane.columnIndex="1" GridPane.rowIndex="22">
-                           <font>
-                              <Font size="21.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="156.0" prefHeight="31.0" prefWidth="625.0" text="الرخصة" GridPane.columnIndex="1" GridPane.rowIndex="26">
-                           <font>
-                              <Font size="21.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="192.0" prefHeight="31.0" prefWidth="601.0" text="رأي وكالة الحوض المائي لام الربيع" GridPane.columnIndex="1" GridPane.rowIndex="25">
-                           <font>
-                              <Font size="21.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="228.0" prefHeight="31.0" prefWidth="638.0" text="تاريخ إرسال المحضر إلى مندوبية وكالة الحوض المائي لام الربيع بالجديدة" GridPane.columnIndex="1" GridPane.rowIndex="24">
-                           <font>
-                              <Font size="21.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="264.0" prefHeight="31.0" prefWidth="656.0" text="رأي لجنة البحث العلني" GridPane.columnIndex="1" GridPane.rowIndex="23">
-                           <font>
-                              <Font size="21.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="300.0" prefHeight="31.0" prefWidth="682.0" text="تاريخ بداية البحث العلني" GridPane.columnIndex="1" GridPane.rowIndex="20">
-                           <font>
-                              <Font size="21.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="336.0" prefHeight="31.0" prefWidth="591.0" text="تاريخ إرسال الملف إلى مندوبية وكالة الحوض المائي لام الربيع بالجديدة" GridPane.columnIndex="1" GridPane.rowIndex="19">
-                           <font>
-                              <Font size="21.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="408.0" prefHeight="31.0" prefWidth="587.0" text="تارييخ إيداع الملف" GridPane.columnIndex="1" GridPane.rowIndex="18">
-                           <font>
-                              <Font size="21.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="143.0" prefHeight="31.0" prefWidth="633.0" text="شهادة ملكية العقار" GridPane.columnIndex="1" GridPane.rowIndex="8">
-                           <font>
-                              <Font size="21.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="74.0" prefHeight="31.0" prefWidth="586.0" text="صورة رقم بطاقة التعريف الوطنية" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                           <font>
-                              <Font size="21.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="151.0" prefHeight="31.0" prefWidth="652.0" text="ملف الطلب" GridPane.columnIndex="1" GridPane.rowIndex="5">
-                           <font>
-                              <Font size="21.0" />
-                           </font>
-                        </Label>
-                        <Button alignment="CENTER" mnemonicParsing="false" onMouseClicked="#enregistrer" prefHeight="37.0" prefWidth="87.0" text="حفظ" GridPane.rowIndex="27">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Button>
-                        <HBox alignment="CENTER_LEFT" prefHeight="36.0" prefWidth="314.0" spacing="10.0">
+                        <GridPane alignment="CENTER" maxWidth="810.0" prefHeight="1430.0" StackPane.alignment="CENTER">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="376.0" minWidth="10.0" prefWidth="306.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="588.0" minWidth="10.0" prefWidth="512.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
                            <children>
-                              <Button fx:id="nomButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Button>
-                              <Label fx:id="nomLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="227.0">
+                              <Label alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="605.0" text="الاسم العائلي                                                                                              :" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="270.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="1">
-                           <children>
-                              <Button fx:id="prenomButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Button>
-                              <Label fx:id="prenomLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="228.0">
+                              <Label alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="602.0" text="الاسم الشخصي                                                                                           :" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="270.0" layoutY="45.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="13">
-                           <children>
-                              <Button fx:id="provinceButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Button>
-                              <Label fx:id="provinceLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="224.0">
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="48.0" prefHeight="31.0" prefWidth="635.0" text="رقم بطاقة التعريف الوطنية                                                                         :" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="12">
-                           <children>
-                              <Button fx:id="communeButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Button>
-                              <Label fx:id="communeLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="225.0">
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="84.0" prefHeight="31.0" prefWidth="622.0" text="نوع الطلب                                                                                                  :" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="11">
-                           <children>
-                              <Button fx:id="douarButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Button>
-                              <Label fx:id="douarLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="226.0">
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="120.0" prefHeight="31.0" prefWidth="681.0" text="اسم العقار                                                                                                  :" GridPane.columnIndex="1" GridPane.rowIndex="6">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="8">
-                           <children>
-                              <Button fx:id="attestationPocessionImmobilierFileButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="156.0" prefHeight="31.0" prefWidth="619.0" text="الدوار                                                                                                   :" GridPane.columnIndex="1" GridPane.rowIndex="11">
                                  <font>
-                                    <Font size="16.0" />
+                                    <Font size="17.0" />
                                  </font>
-                              </Button>
-                              <Label fx:id="attestationPoscessionImmobilierLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="225.0">
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="192.0" prefHeight="31.0" prefWidth="643.0" text="الجماعة                                                                                                :" GridPane.columnIndex="1" GridPane.rowIndex="12">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="228.0" prefHeight="31.0" prefWidth="599.0" text="الإقليم                                                                                                  :" GridPane.columnIndex="1" GridPane.rowIndex="13">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="264.0" prefHeight="31.0" prefWidth="743.0" text="إحداثيات الثقب المائي                                                                           :" GridPane.columnIndex="1" GridPane.rowIndex="14">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="300.0" prefHeight="31.0" prefWidth="656.0" text="الصبيب                                                                                               :" GridPane.columnIndex="1" GridPane.rowIndex="15">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="336.0" prefHeight="31.0" prefWidth="653.0" text="مستوى  الماء                                                                                       :" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="17">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="408.0" prefHeight="31.0" prefWidth="597.0" text="العمق                                                                                                  :" GridPane.columnIndex="1" GridPane.rowIndex="16">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="12.0" prefHeight="31.0" prefWidth="628.0" text="تاريخ نهاية البحث العلني                                                                       :" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="21" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="48.0" prefHeight="31.0" prefWidth="624.0" text="تاريخ امضاء المحضر من طرف لجنة البحث العلني                                   :" GridPane.columnIndex="1" GridPane.rowIndex="22">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="156.0" prefHeight="31.0" prefWidth="625.0" text="الرخصة                                                                                                :" GridPane.columnIndex="1" GridPane.rowIndex="26">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="192.0" prefHeight="31.0" prefWidth="601.0" text="رأي وكالة الحوض المائي لام الربيع                                                         :" GridPane.columnIndex="1" GridPane.rowIndex="25">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="228.0" prefHeight="31.0" prefWidth="534.0" text="تاريخ إرسال المحضر إلى مندوبية وكالة الحوض المائي لام الربيع بالجديدة :" GridPane.columnIndex="1" GridPane.rowIndex="24">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="264.0" prefHeight="31.0" prefWidth="656.0" text="رأي لجنة البحث العلني                                                                          :" GridPane.columnIndex="1" GridPane.rowIndex="23">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="300.0" prefHeight="31.0" prefWidth="682.0" text="تاريخ بداية البحث العلني                                                                       :" GridPane.columnIndex="1" GridPane.rowIndex="20">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="336.0" prefHeight="31.0" prefWidth="591.0" text="تاريخ إرسال الملف إلى مندوبية وكالة الحوض المائي لام الربيع بالجديدة   :" GridPane.columnIndex="1" GridPane.rowIndex="19">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="408.0" prefHeight="31.0" prefWidth="587.0" text="تارييخ إيداع الملف                                                                                :" GridPane.columnIndex="1" GridPane.rowIndex="18">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="143.0" prefHeight="31.0" prefWidth="633.0" text="شهادة ملكية العقار                                                                               :" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="74.0" prefHeight="31.0" prefWidth="586.0" text="صورة بطاقة التعريف الوطنية                                                                      :" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="6">
-                           <children>
-                              <Button fx:id="nomImmobilierButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Button>
-                              <Label fx:id="nomImmobilierLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="227.0">
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="151.0" prefHeight="31.0" prefWidth="652.0" text="ملف الطلب                                                                                                :" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="5">
-                           <children>
-                              <Button fx:id="demandeCreusementFileButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
+                              <Button id="switchButton" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#enregistrer" prefHeight="31.0" prefWidth="87.0" text="حفظ" textFill="#fcfcfc" GridPane.rowIndex="27">
                                  <font>
-                                    <Font size="16.0" />
+                                    <Font size="14.0" />
                                  </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
                               </Button>
-                              <Label fx:id="demandeDeCreusementPathLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="227.0">
+                              <HBox alignment="CENTER_LEFT" prefHeight="36.0" prefWidth="314.0" spacing="10.0">
+                                 <children>
+                                    <Button id="switchButton" fx:id="nomButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <Label fx:id="nomLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="227.0" style="-fx-text-fill: #0b328b;" textFill="#0b328b">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="270.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="1">
+                                 <children>
+                                    <Button id="switchButton" fx:id="prenomButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <Label fx:id="prenomLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="228.0" style="-fx-text-fill: #0b328b;" textFill="#0b328b">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="270.0" layoutY="45.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="13">
+                                 <children>
+                                    <Button id="switchButton" fx:id="provinceButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <Label fx:id="provinceLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="224.0" style="-fx-text-fill: #0b328b;" textFill="#0b328b">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="12">
+                                 <children>
+                                    <Button id="switchButton" fx:id="communeButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <Label fx:id="communeLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="225.0" style="-fx-text-fill: #0b328b;" textFill="#0b328b">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="11">
+                                 <children>
+                                    <Button id="switchButton" fx:id="douarButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <Label fx:id="douarLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="226.0" style="-fx-text-fill: #0b328b;" textFill="#0b328b">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="8">
+                                 <children>
+                                    <Button id="switchButton" fx:id="attestationPocessionImmobilierFileButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <Label fx:id="attestationPoscessionImmobilierLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="225.0" style="-fx-text-fill: #0b328b;" textFill="#0b328b">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="6">
+                                 <children>
+                                    <Button id="switchButton" fx:id="nomImmobilierButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <Label fx:id="nomImmobilierLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="227.0" style="-fx-text-fill: #0b328b;" textFill="#0b328b">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="5">
+                                 <children>
+                                    <Button id="switchButton" fx:id="demandeCreusementFileButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <Label fx:id="demandeDeCreusementPathLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="227.0" style="-fx-text-fill: #0b328b;" textFill="#0b328b">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="4">
+                                 <children>
+                                    <Button id="switchButton" fx:id="typeDemandeButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <Label fx:id="typeDeDemandeLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="228.0" style="-fx-text-fill: #0b328b;" textFill="#0b328b">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="3">
+                                 <children>
+                                    <Button id="switchButton" fx:id="cinFileButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <Label fx:id="carteCinPathLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="227.0" style="-fx-text-fill: #0b328b;" textFill="#0b328b">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="2">
+                                 <children>
+                                    <Button id="switchButton" fx:id="codCinButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <Label fx:id="codCinLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="226.0" style="-fx-text-fill: #0b328b;" textFill="#0b328b">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="270.0" layoutY="354.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="14">
+                                 <children>
+                                    <Button id="switchButton" fx:id="localisationPointEauButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <Label fx:id="LocalisationPointEauLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="226.0" style="-fx-text-fill: #0b328b;" textFill="#0b328b">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="17">
+                                 <children>
+                                    <Button id="switchButton" fx:id="planEauButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <Label fx:id="planEauLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="225.0" style="-fx-text-fill: #0b328b;" textFill="#0b328b">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="18">
+                                 <children>
+                                    <Button id="switchButton" fx:id="dateDepotDossierButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <Label fx:id="DateDepotDossierLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="228.0" style="-fx-text-fill: #0b328b;" textFill="#0b328b">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" style="-fx-text-fill: #0b328b;" GridPane.rowIndex="19">
+                                 <children>
+                                    <Button id="switchButton" fx:id="dateDenvoiAlabhouerEljaidaButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <Label fx:id="dateDenvoiAlabhouerEljaidaLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="226.0" textFill="#0b328b">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="20">
+                                 <children>
+                                    <Button id="switchButton" fx:id="dateDebutEnquetePublicButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <Label fx:id="dateDebutEnquetePublicLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="226.0" style="-fx-text-fill: #0b328b;" textFill="#0b328b">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="21">
+                                 <children>
+                                    <Button id="switchButton" fx:id="dateFinEnquetePublicButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <Label fx:id="dateFinEnquetePublicLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="223.0" style="-fx-text-fill: #0b328b;" textFill="#0b328b">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="22">
+                                 <children>
+                                    <Button id="switchButton" fx:id="dateSignaturPVparCEPButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <Label fx:id="dateSignaturPVparCEPLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="226.0" style="-fx-text-fill: #0b328b;" textFill="#0b328b">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="23">
+                                 <children>
+                                    <Button id="switchButton" fx:id="AvisDeCEPButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <Label fx:id="AvisDeCEPLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="227.0" style="-fx-text-fill: #0b328b;" textFill="#0b328b">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="24">
+                                 <children>
+                                    <Button id="switchButton" fx:id="dateEnvoitPvAbhoerEljadidaButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <Label fx:id="dateEnvoitPvAbhoerEljadidaLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="223.0" style="-fx-text-fill: #0b328b;" textFill="#0b328b">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="25">
+                                 <children>
+                                    <Button id="switchButton" fx:id="AvisAbhoerButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <Label fx:id="AvisAbhoerLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="225.0" style="-fx-text-fill: #0b328b;" textFill="#0b328b">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="16">
+                                 <children>
+                                    <Button id="switchButton" fx:id="ProfondeurButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <Label fx:id="profondeurLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="225.0" style="-fx-text-fill: #0b328b;" textFill="#0b328b">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="15">
+                                 <children>
+                                    <Button id="switchButton" fx:id="debitButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <Label fx:id="debitLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="227.0" style="-fx-text-fill: #0b328b;" textFill="#0b328b">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="270.0" layoutY="796.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="26">
+                                 <children>
+                                    <Button id="switchButton" fx:id="autorisationButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" prefHeight="29.0" prefWidth="54.0" text="تعديل" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <Label fx:id="autorisationLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="227.0" style="-fx-text-fill: #0b328b;" textFill="#0b328b">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <Label alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="517.0" text="الدائرة                                                                                                  :" GridPane.columnIndex="1" GridPane.rowIndex="10">
                                  <font>
-                                    <Font size="16.0" />
+                                    <Font size="17.0" />
                                  </font>
                               </Label>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="4">
-                           <children>
-                              <Button fx:id="typeDemandeButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="10">
+                                 <children>
+                                    <Button id="switchButton" fx:id="daairaButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <Label fx:id="daairaLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="225.0" style="-fx-text-fill: #0b328b;" textFill="#0b328b">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <Label alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="587.0" text="القيادة                                                                                                 :" GridPane.columnIndex="1" GridPane.rowIndex="9">
                                  <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Button>
-                              <Label fx:id="typeDeDemandeLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="228.0">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="3">
-                           <children>
-                              <Button fx:id="cinFileButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Button>
-                              <Label fx:id="carteCinPathLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="227.0">
-                                 <font>
-                                    <Font size="16.0" />
+                                    <Font size="17.0" />
                                  </font>
                               </Label>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="2">
-                           <children>
-                              <Button fx:id="codCinButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="9">
+                                 <children>
+                                    <Button id="switchButton" fx:id="quiadaButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <Label fx:id="quiadaLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="224.0" style="-fx-text-fill: #0b328b;" textFill="#0b328b">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <Button id="switchButton" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#annuler" prefHeight="29.0" prefWidth="87.0" text="إلغاء" textFill="#fcfcfc" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="27" GridPane.valignment="CENTER">
                                  <font>
-                                    <Font size="16.0" />
+                                    <Font size="14.0" />
                                  </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
                               </Button>
-                              <Label fx:id="codCinLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="226.0">
+                              <Label alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="585.0" text="تصميم العقار                                                                                       :" GridPane.columnIndex="1" GridPane.rowIndex="7">
                                  <font>
-                                    <Font size="16.0" />
+                                    <Font size="17.0" />
                                  </font>
                               </Label>
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="7">
+                                 <children>
+                                    <Button id="switchButton" fx:id="planImmobilierFileButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <Label fx:id="planImmobilierFilePathLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="226.0" style="-fx-text-fill: #0b328b;" textFill="#0b328b">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
                            </children>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="270.0" layoutY="354.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="14">
-                           <children>
-                              <Button fx:id="localisationPointEauButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Button>
-                              <Label fx:id="LocalisationPointEauLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="226.0">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="17">
-                           <children>
-                              <Button fx:id="planEauButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Button>
-                              <Label fx:id="planEauPathLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="225.0">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="18">
-                           <children>
-                              <Button fx:id="dateDepotDossierButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Button>
-                              <Label fx:id="DateDepotDossierLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="228.0">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="19">
-                           <children>
-                              <Button fx:id="dateDenvoiAlabhouerEljaidaButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Button>
-                              <Label fx:id="dateDenvoiAlabhouerEljaidaLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="226.0">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="20">
-                           <children>
-                              <Button fx:id="dateDebutEnquetePublicButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Button>
-                              <Label fx:id="dateDebutEnquetePublicLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="226.0">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="21">
-                           <children>
-                              <Button fx:id="dateFinEnquetePublicButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Button>
-                              <Label fx:id="dateFinEnquetePublicLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="223.0">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="22">
-                           <children>
-                              <Button fx:id="dateSignaturPVparCEPButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Button>
-                              <Label fx:id="dateSignaturPVparCEPLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="226.0">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="23">
-                           <children>
-                              <Button fx:id="AvisDeCEPButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Button>
-                              <Label fx:id="AvisDeCEPLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="227.0">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="24">
-                           <children>
-                              <Button fx:id="dateEnvoitPvAbhoerEljadidaButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Button>
-                              <Label fx:id="dateEnvoitPvAbhoerEljadidaLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="223.0">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="25">
-                           <children>
-                              <Button fx:id="AvisAbhoerButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Button>
-                              <Label fx:id="AvisAbhoerLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="225.0">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="16">
-                           <children>
-                              <Button fx:id="ProfondeurButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Button>
-                              <Label fx:id="profondeurLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="225.0">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="15">
-                           <children>
-                              <Button fx:id="debitButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Button>
-                              <Label fx:id="debitLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="227.0">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="270.0" layoutY="796.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="26">
-                           <children>
-                              <Button fx:id="autorisationButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Button>
-                              <Label fx:id="autorisationLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="227.0">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <Label alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="601.0" text="الدائرة" GridPane.columnIndex="1" GridPane.rowIndex="10">
-                           <font>
-                              <Font size="21.0" />
-                           </font>
-                        </Label>
-                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="10">
-                           <children>
-                              <Button fx:id="daairaButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Button>
-                              <Label fx:id="daairaLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="225.0">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <Label alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="587.0" text="القيادة" GridPane.columnIndex="1" GridPane.rowIndex="9">
-                           <font>
-                              <Font size="21.0" />
-                           </font>
-                        </Label>
-                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="9">
-                           <children>
-                              <Button fx:id="quiadaButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Button>
-                              <Label fx:id="quiadaLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="224.0">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <Button alignment="CENTER" mnemonicParsing="false" onMouseClicked="#annuler" prefHeight="37.0" prefWidth="87.0" text="إلغاء" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="27" GridPane.valignment="CENTER">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Button>
-                        <Label alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="585.0" text="تصميم العقار" GridPane.columnIndex="1" GridPane.rowIndex="7">
-                           <font>
-                              <Font size="21.0" />
-                           </font>
-                        </Label>
-                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="7">
-                           <children>
-                              <Button fx:id="planImmobilierFileButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Button>
-                              <Label fx:id="planImmobilierFilePathLabel" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="226.0">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
+                           <StackPane.margin>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="40.0" />
+                           </StackPane.margin>
+                           <padding>
+                              <Insets bottom="10.0" top="10.0" />
+                           </padding>
+                        </GridPane>
                      </children>
-                     <StackPane.margin>
-                        <Insets bottom="20.0" left="20.0" right="20.0" top="40.0" />
-                     </StackPane.margin>
                      <padding>
-                        <Insets bottom="10.0" top="10.0" />
+                        <Insets bottom="20.0" left="10.0" right="10.0" top="30.0" />
                      </padding>
-                  </GridPane>
+                  </StackPane>
+               </content>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+            </ScrollPane>
+         </center>
+         <right>
+            <VBox id="vboxStyle" alignment="CENTER" spacing="20.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
+               <children>
+                  <Button id="buttonProfile" mnemonicParsing="false" onMouseClicked="#goHomePage" prefHeight="35.0" prefWidth="126.0" style="-fx-background-color: #A7BDE7;" text="الصفحة الرئيسية" textFill="#2b4067">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button id="buttonLogin" mnemonicParsing="false" onMouseClicked="#logOut" prefHeight="35.0" prefWidth="126.0" style="-fx-background-color: #A7BDE7;" text="تسجيل الخروج" textFill="#2b4067">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="150.0" />
+                     </VBox.margin>
+                  </Button>
                </children>
                <padding>
-                  <Insets bottom="20.0" left="10.0" right="10.0" top="30.0" />
+                  <Insets top="40.0" />
                </padding>
-            </StackPane>
-         </content>
-         <BorderPane.margin>
-            <Insets />
-         </BorderPane.margin>
-      </ScrollPane>
-   </center>
-   <right>
-      <VBox prefHeight="556.0" prefWidth="186.0" spacing="20.0" style="-fx-background-color: #423167;" BorderPane.alignment="CENTER">
-         <children>
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="186.0" style="-fx-background-color: #3f2f62;" text="صاحب الطلب" textFill="WHITE">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <font>
-                  <Font size="21.0" />
-               </font>
-            </Button>
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="186.0" style="-fx-background-color: #3f2f62;" text="العقار" textFill="WHITE">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <font>
-                  <Font size="21.0" />
-               </font>
-            </Button>
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="186.0" style="-fx-background-color: #3f2f62;" text="نقطة الماء" textFill="WHITE">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <font>
-                  <Font size="21.0" />
-               </font>
-            </Button>
-         </children>
-         <padding>
-            <Insets top="40.0" />
-         </padding>
-      </VBox>
-   </right>
-   <top>
-      <HBox fx:id="titleHbox" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="147.0" prefWidth="876.0" style="-fx-background-color: #423167;" BorderPane.alignment="CENTER">
-         <children>
-            <Label alignment="CENTER" prefHeight="53.0" prefWidth="453.0" text="Quelque chose" textFill="WHITE" HBox.hgrow="ALWAYS">
-               <font>
-                  <Font size="36.0" />
-               </font>
-               <HBox.margin>
-                  <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
-               </HBox.margin>
-            </Label>
-         </children>
-      </HBox>
-   </top>
-</BorderPane>
+            </VBox>
+         </right>
+         <top>
+            <HBox fx:id="titleHbox" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="131.0" prefWidth="1128.0" spacing="30.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
+               <children>
+                  <GridPane alignment="CENTER" HBox.hgrow="ALWAYS">
+                     <columnConstraints>
+                        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="934.0" />
+                        <ColumnConstraints halignment="CENTER" maxWidth="192.0" minWidth="192.0" prefWidth="192.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <ImageView fitHeight="88.0" fitWidth="284.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                           <image>
+                              <Image url="@../Image/Logo5.png" />
+                           </image>
+                        </ImageView>
+                        <Label alignment="CENTER" prefHeight="53.0" prefWidth="453.0" text="تعديل الملف" textFill="WHITE" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </GridPane>
+               </children>
+            </HBox>
+         </top>
+      </BorderPane>
+   </content>
+</ScrollPane>

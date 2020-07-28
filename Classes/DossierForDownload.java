@@ -350,20 +350,17 @@ public class DossierForDownload {
 
 	@Override
 	public String toString() {
-		String message = "DossierForDownload [\nIdDossier=" + IdDossier + ", nom=" + nom + ", prenom=" + prenom + ", cin=" + cin
-				+ ", dateDepotDossier=" + dateDepotDossier + ", typeDemande=" + typeDemande + ", cinFile=" + cinFile
-				+ ", demandeFile=" + demandeFile + ", nomImmobilier=" + nomImmobilier + ", daaira=" + daaira
-				+ ", quiada=" + quiada + ", douar=" + douar + ", commune=" + commune + ", province=" + province
-				+ ", attestationDePocession=" + attestationDePocession + ", planImmobilier=" + planImmobilier
-				+ ", localisationPoint=" + localisationPoint + ", debit=" + debit + ", profondeur=" + profondeur
-				+ ", planEau=" + planEau  + ", dateDepot=" + dateDepot
-				+ ", dateEnvoiA_LABHOER=" + dateEnvoiA_LABHOER + ", dateDebutde_EP=" + dateDebutde_EP + ", dateFin_EP="
-				+ dateFin_EP + ", dateSignateureDuPv=" + dateSignateureDuPv + ", dateEnvoiDuPVa_LABHOER="
-				+ dateEnvoiDuPVa_LABHOER + ", avisDe_CEP=" + avisDe_CEP + ", avisABHOER=" + avisABHOER
-				+ ", autorisation=" + autorisation + "]\n";
-		
-		message.replace(",", "\n");
-		return message;
+		return    "DossierForDownload [\nIdDossier=" + IdDossier + "\n nom=" + nom + "\n prenom=" + prenom + "\n cin=" + cin
+				+ "\n dateDepotDossier=" + dateDepotDossier + "\n typeDemande=" + typeDemande + "\n cinFile=" + cinFile
+				+ "\n demandeFile=" + demandeFile + "\n nomImmobilier=" + nomImmobilier + "\n daaira=" + daaira
+				+ "\n quiada=" + quiada + "\n douar=" + douar + "\n commune=" + commune + "\n province=" + province
+				+ "\n attestationDePocession=" + attestationDePocession + "\n planImmobilier=" + planImmobilier
+				+ "\n localisationPoint=" + localisationPoint + "\n debit=" + debit + "\n profondeur=" + profondeur
+				+ "\n planEau=" + planEau  + "\n dateDepot=" + dateDepot
+				+ "\n dateEnvoiA_LABHOER=" + dateEnvoiA_LABHOER + "\n dateDebutde_EP=" + dateDebutde_EP + "\n dateFin_EP="
+				+ dateFin_EP + "\n dateSignateureDuPv=" + dateSignateureDuPv + "\n dateEnvoiDuPVa_LABHOER="
+				+ dateEnvoiDuPVa_LABHOER + "\n avisDe_CEP=" + avisDe_CEP + "\n avisABHOER=" + avisABHOER
+				+ "\n autorisation=" + autorisation + "]\n";
 	}
 
 	

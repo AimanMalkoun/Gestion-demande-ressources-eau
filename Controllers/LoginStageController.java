@@ -1,23 +1,27 @@
 package Controllers;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ResourceBundle;
 
 import Connectivity.ConnectionClass;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class LoginStageController {
+public class LoginStageController  implements Initializable{
 
 	private String realPassword;
 	@FXML
@@ -48,6 +52,19 @@ public class LoginStageController {
 		
 		}
 
+	}
+
+    @FXML
+	void forgotPassword(MouseEvent event) throws IOException {
+    	
+    	Parent root = FXMLLoader.load(getClass().getResource("../Fxml/ForgotPassWord.fxml"));
+    	Scene forgotPass = new Scene(root);
+    	Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    	primaryStage.setScene(forgotPass);
+    }
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		
 	}
 
 }
