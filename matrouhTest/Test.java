@@ -9,17 +9,13 @@ import javafx.fxml.FXMLLoader;
 
 public class Test extends Application{
 		
-		public static Stage window;
-		
 		@Override
 		public void start(Stage primaryStage) {
-			
-			window = primaryStage;
 			
 			//Les informations du demandeur
 			try {
 				
-				Parent root = FXMLLoader.load(Test.class.getClassLoader().getResource("Fxml/modifier les informations du dossier.fxml"));
+				Parent root = FXMLLoader.load(Test.class.getClassLoader().getResource("Fxml/ModifyFolder2.fxml"));
 				Scene scene = new Scene(root);
 				primaryStage.setTitle("Gestion des demandes d'autorisation pour l'utilisation des ressources en eau.");
 				primaryStage.setScene(scene);

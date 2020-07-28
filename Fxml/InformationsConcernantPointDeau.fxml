@@ -6,88 +6,95 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="borderPan" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="556.0" prefWidth="877.0" stylesheets="@../GestionDemandeEau/application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.InformationsConcernantPointDeauController">
-   <top>
-      <Pane prefHeight="109.0" prefWidth="858.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
-         <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="71.0" layoutY="28.0" prefHeight="53.0" prefWidth="623.0" style="-fx-border-color: #;" text="المعلومات الخاصة بنقطة الماء" textFill="WHITE">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
-   </top>
+<BorderPane fx:id="borderPan" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="1130.0" stylesheets="@../GestionDemandeEau/application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.InformationsConcernantPointDeauController">
    <center>
-      <Pane layoutX="10.0" prefHeight="447.0" prefWidth="698.0" stylesheets="@../GestionDemandeEau/application.css" BorderPane.alignment="CENTER">
+      <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
          <children>
-            <GridPane layoutX="95.0" layoutY="54.0" prefHeight="306.0" prefWidth="512.0">
+            <GridPane alignment="CENTER" prefHeight="380.0" prefWidth="664.0" StackPane.alignment="CENTER">
                <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="235.0" minWidth="10.0" prefWidth="226.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="247.0" minWidth="10.0" prefWidth="224.0" />
+                  <ColumnConstraints fillWidth="false" halignment="CENTER" minWidth="10.0" />
                </columnConstraints>
                <rowConstraints>
-                  <RowConstraints />
-                  <RowConstraints maxHeight="61.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="78.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="83.0" minHeight="10.0" prefHeight="63.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="165.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="165.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="165.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
+                  <RowConstraints fillHeight="false" maxHeight="374.0" minHeight="10.0" prefHeight="353.0" valignment="CENTER" />
+                  <RowConstraints fillHeight="false" maxHeight="120.0" minHeight="10.0" prefHeight="56.0" valignment="CENTER" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Label contentDisplay="RIGHT" prefHeight="30.0" prefWidth="239.0" text=" الاحداثيات ( X / Y )               :    " textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <GridPane prefHeight="281.0" prefWidth="512.0" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="235.0" minWidth="10.0" prefWidth="226.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="247.0" minWidth="10.0" prefWidth="224.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints />
+                        <RowConstraints maxHeight="61.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="78.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="83.0" minHeight="10.0" prefHeight="63.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="165.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="165.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label contentDisplay="RIGHT" prefHeight="30.0" prefWidth="239.0" text=" الاحداثيات ( X / Y )               :    " textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="18.0" prefHeight="31.0" prefWidth="237.0" text="العمق ( m )                         :    " textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="67.0" prefHeight="31.0" prefWidth="242.0" text="الصبيب      ( l / s )               :    " textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="locationEau" alignment="CENTER_RIGHT" layoutX="179.0" layoutY="19.0" prefHeight="30.0" prefWidth="235.0" GridPane.rowIndex="1" />
+                        <TextField fx:id="profondeur" alignment="CENTER_RIGHT" layoutX="179.0" layoutY="68.0" prefHeight="30.0" prefWidth="235.0" GridPane.rowIndex="4" />
+                        <Button id="switchButton" fx:id="backButton" alignment="CENTER" mnemonicParsing="false" onAction="#backButtonMethode" prefHeight="30.0" prefWidth="87.0" text="رجوع" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                           <GridPane.margin>
+                              <Insets left="160.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Button>
+                        <Label contentDisplay="RIGHT" layoutX="10.0" layoutY="148.0" prefHeight="31.0" prefWidth="236.0" text="مستوى الماء ( m )                :    " textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Button id="switchButton" fx:id="goButton" alignment="CENTER" contentDisplay="RIGHT" layoutX="405.0" layoutY="247.0" mnemonicParsing="false" onAction="#goMethode" prefHeight="30.0" prefWidth="89.0" text="التالي " textFill="WHITE" GridPane.rowIndex="5">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Button>
+                        <TextField fx:id="debit" alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="235.0" GridPane.rowIndex="3" />
+                        <TextField fx:id="poinEau" alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="235.0" GridPane.rowIndex="2" />
+                     </children>
+                  </GridPane>
+                  <Label fx:id="textError" alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="367.0" textFill="RED" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <font>
                         <Font size="18.0" />
-                     </font></Label>
-                  <Label layoutX="10.0" layoutY="18.0" prefHeight="31.0" prefWidth="237.0" text="العمق ( m )                         :    " textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                     <font>
-                        <Font size="18.0" />
-                     </font></Label>
-                  <Label layoutX="10.0" layoutY="67.0" prefHeight="31.0" prefWidth="242.0" text="الصبيب      ( l / s )               :    " textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                     <font>
-                        <Font size="18.0" />
-                     </font></Label>
-                  <TextField fx:id="locationEau" alignment="CENTER_RIGHT" layoutX="179.0" layoutY="19.0" prefHeight="30.0" prefWidth="235.0" GridPane.rowIndex="1" />
-                  <TextField fx:id="profondeur" alignment="CENTER_RIGHT" layoutX="179.0" layoutY="68.0" prefHeight="30.0" prefWidth="235.0" GridPane.rowIndex="4" />
-                  <Button id="switchButton" fx:id="backButton" alignment="CENTER" mnemonicParsing="false" onAction="#backButtonMethode" prefHeight="30.0" prefWidth="87.0" text="رجوع" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="6">
-                     <GridPane.margin>
-                        <Insets left="160.0" />
-                     </GridPane.margin>
-                     <font>
-                        <Font size="15.0" />
                      </font>
-                  </Button>
-                  <Label contentDisplay="RIGHT" layoutX="10.0" layoutY="148.0" prefHeight="31.0" prefWidth="236.0" text="مستوى الماء ( m )                :    " textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                     <font>
-                        <Font size="18.0" />
-                     </font></Label>
-                  <Button id="switchButton" fx:id="goButton" alignment="CENTER" contentDisplay="RIGHT" layoutX="405.0" layoutY="247.0" mnemonicParsing="false" onAction="#goMethode" prefHeight="30.0" prefWidth="89.0" text="التالي " textFill="WHITE" GridPane.rowIndex="6">
-                     <font>
-                        <Font size="15.0" />
-                     </font></Button>
-                  <TextField fx:id="debit" alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="235.0" GridPane.rowIndex="3" />
-                  <TextField fx:id="poinEau" alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="235.0" GridPane.rowIndex="2" />
+                  </Label>
                </children>
             </GridPane>
-            <Label fx:id="textError" alignment="CENTER" contentDisplay="CENTER" layoutX="176.0" layoutY="366.0" prefHeight="35.0" prefWidth="350.0" textFill="RED">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
          </children>
-      </Pane>
+      </StackPane>
    </center>
    <right>
-      <VBox id="vboxStyle" alignment="CENTER" prefHeight="447.0" prefWidth="166.0" spacing="20.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
+      <VBox id="vboxStyle" alignment="CENTER" prefHeight="409.0" prefWidth="161.0" spacing="20.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
          <children>
             <Button id="buttonProfile2" alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="186.0" style="-fx-background-color: #4cd4b9;" text="المواطن" textFill="WHITE">
                <cursor>
@@ -136,4 +143,34 @@
          </padding>
       </VBox>
    </right>
+   <top>
+      <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="147.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
+         <children>
+            <GridPane prefHeight="144.0" prefWidth="877.0" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <columnConstraints>
+                  <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="664.0" />
+                  <ColumnConstraints halignment="CENTER" maxWidth="213.0" minWidth="213.0" prefWidth="213.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <ImageView fitHeight="95.0" fitWidth="139.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+                     <image>
+                        <Image url="@../Image/Logo5.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" prefHeight="53.0" prefWidth="453.0" text="المعلومات الخاصة بنقطة الماء" textFill="WHITE">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+               </children>
+            </GridPane>
+         </children>
+      </HBox>
+   </top>
 </BorderPane>

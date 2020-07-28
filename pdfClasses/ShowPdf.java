@@ -7,8 +7,6 @@ import java.io.File;
 
 import org.jpedal.PdfDecoder;
 
-import com.itextpdf.text.pdf.PdfException;
-
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -153,7 +151,7 @@ public class ShowPdf {
 	            }
 	        }
 	        
-	      //Image image = SwingFXUtils.toFXImage(img, null); // this line of code doesn't worck for mes, if it works with you please tell me
+	      //Image image = SwingFXUtils.toFXImage(img, null); // this line of code doesn't work for me, if it works with you please tell me
 	        
 	        return image;
 

@@ -2,7 +2,6 @@ package Controllers;
 
 import java.awt.Desktop;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
@@ -29,9 +28,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.DirectoryChooser;
+import javafx.stage.Stage;
 
 public class AEteEnregistrerController implements Initializable {
 	@FXML
@@ -40,13 +44,29 @@ public class AEteEnregistrerController implements Initializable {
 	private Button back;
 	@FXML
 	private Button downloadReceipt;
-
-	// Event Listener on Button[#back].onAction
+	@FXML
+	private Label textError;
+	String path;
 	@FXML
 	public void handelBackMethode(ActionEvent event) throws IOException {
+		
 		cleanup(); // will clean the previous input except the import files
-		Parent root = FXMLLoader.load(getClass().getResource("../Fxml/Dashboard.fxml"));
-		boderPane.getChildren().setAll(root);
+
+		try {
+			
+			FXMLLoader loader= new FXMLLoader();
+			loader.setLocation(getClass().getResource("../Fxml/Dashboard.fxml"));
+			Parent DashboardRoot = loader.load();
+			
+			Scene DashboardScene = new Scene(DashboardRoot);
+			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			primaryStage.setScene(DashboardScene);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 	private void cleanup() {
@@ -77,11 +97,17 @@ public class AEteEnregistrerController implements Initializable {
 	}
 
 	@FXML
-	public void downloadReceiptMethode(ActionEvent event) throws SQLException {
+	public void downloadReceiptMethode(ActionEvent event) throws SQLException, DocumentException, IOException {
 		String nomPrenom = null, cin = null, nomImmobiler = null, commune = null, prevince = null, daaira = null, qiyada = null;
 		Date dateDepot = null;
-
-		/* se connecter avec la base de donnÃ©es */
+		
+		
+		DirectoryChooser dirChooser = new DirectoryChooser();
+		File file = dirChooser.showDialog(null);
+		if(file != null) {
+			path = file.getAbsolutePath();
+			
+		/* se connecter avec la base de donnees */
 
 		ConnectionClass conn = new ConnectionClass();
 		Connection connection = conn.getConnection();
@@ -100,10 +126,7 @@ public class AEteEnregistrerController implements Initializable {
 			qiyada = " " + result.getString("qiyada") + " ";
 		}
 		Document document = new Document();
-		try {
-
-			PdfWriter.getInstance(document, new FileOutputStream(
-					"C:\\Users\\" + System.getProperty("user.name") + "\\Desktop\\Demandes\\" + cin + ".pdf"));
+			PdfWriter.getInstance(document, new FileOutputStream(path+ "\\"+ cin + ".pdf"));
 			Font small = FontFactory.getFont("C:/Windows/Fonts/arial.ttf", BaseFont.IDENTITY_H, 14);
 			Font normal = FontFactory.getFont("C:/Windows/Fonts/arial.ttf", BaseFont.IDENTITY_H, 18);
 			Font big0 = FontFactory.getFont("C:/Windows/Fonts/arial.ttf", BaseFont.IDENTITY_H, 22);
@@ -117,8 +140,7 @@ public class AEteEnregistrerController implements Initializable {
 			Paragraph para1 = new Paragraph(30);
 			para1.add(new Phrase(
 					"\n \u0627\u0644\u0645\u0645\u0644\u0643\u0629 \u0627\u0644\u0645\u063a\u0631\u0628\u064a\u0629 \n",
-					big0));// ÙˆØ²Ø§Ø±Ø© Ø§Ù„ØªØ¬Ù‡ÙŠØ² ÙˆØ§Ù„Ù†Ù‚Ù„ ÙˆØ§Ù„Ù„ÙˆØ¬ÙŠØ³ØªÙŠÙƒ ÙˆØ§Ù„Ù…Ø§Ø¡ ",
-			// normal));
+					big0));
 			para1.add(new Phrase(
 					"\u0648\u0632\u0627\u0631\u0629 \u0627\u0644\u062a\u062c\u0647\u064a\u0632 \u0648\u0627\u0644\u0646\u0642\u0644 \u0648\u0627\u0644\u0644\u0648\u062c\u064a\u0633\u062a\u064a\u0643 \u0648\u0627\u0644\u0645\u0627\u0621",
 					big0));
@@ -190,16 +212,12 @@ public class AEteEnregistrerController implements Initializable {
 			document.add(table);
 			document.close();
 
-			Desktop.getDesktop().open(new File(
-					"C:\\Users\\" + System.getProperty("user.name") + "\\Desktop\\Demandes\\" + cin + ".pdf"));
-
-		} catch (FileNotFoundException | DocumentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Desktop.getDesktop().open(new File(path+ "\\" +cin + ".pdf"));
 		}
+		else {
+			textError.setText("\u064a\u0631\u062c\u0649 \u0627\u062e\u062a\u064a\u0627\u0631 \u0645\u062c\u0644\u062f \u0644\u062a\u0646\u0632\u064a\u0644 \u0627\u0644\u0631\u0627\u0628\u0637");
+		}
+
 
 	}
 

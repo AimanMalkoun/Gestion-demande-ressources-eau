@@ -7,16 +7,10 @@ import java.util.ResourceBundle;
 import org.jpedal.exception.PdfException;
 
 import Classes.DossierForDownload;
-
-import pdfClasses.ShowPdf;
-import pdfClasses.ConvertBlobToPdf;
-
 import Connectivity.ConnectionClassDossier;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -24,101 +18,109 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import pdfClasses.ConvertBlobToPdf;
+import pdfClasses.ShowPdf;
 
 
 public class DisplayFolderController implements Initializable {
 
 	DossierForDownload dossier;
 
-	@FXML
-    private Label nomLabel;
+	 @FXML
+	    private Label nomLabel;
 
-    @FXML
-    private Label prenomLabel;
+	    @FXML
+	    private Label prenomLabel;
 
-    @FXML
-    private Label provinceLabel;
+	    @FXML
+	    private Label codCinLabel;
 
-    @FXML
-    private Label communeLabel;
+	    @FXML
+	    private Button cinFileButton;
 
-    @FXML
-    private Label douarLabel;
+	    @FXML
+	    private Label cinFileLabel;
 
-    @FXML
-    private Label attistationFileLabel;
+	    @FXML
+	    private Label typeDeDemandeLabel;
 
-    @FXML
-    private Button attestationFileButton;
+	    @FXML
+	    private Button demandeFileButton;
 
-    @FXML
-    private Label localisationImmobilierLabel;
+	    @FXML
+	    private Label demandeNameLabel;
 
-    @FXML
-    private Label demandeFileLabel;
+	    @FXML
+	    private Label nomImmobilierLabel;
 
-    @FXML
-    private Button demandeFileButton;
+	    @FXML
+	    private Button planImmobilierFileButton;
 
-    @FXML
-    private Label typeDemandeLabel;
+	    @FXML
+	    private Label planImmobilierFileNameLabel;
 
-    @FXML
-    private Label cinFileLabel;
+	    @FXML
+	    private Button attestationFileButton;
 
-    @FXML
-    private Button cinFileButton;
+	    @FXML
+	    private Label attestationPoscessionImmobilierLabel;
 
-    @FXML
-    private Label cinLabel;
+	    @FXML
+	    private Label quiadaLabel;
 
-    @FXML
-    private Label localisationPointEauLabel;
+	    @FXML
+	    private Label daairaLabel;
 
-    @FXML
-    private Label planEauFileLabel;
+	    @FXML
+	    private Label douarLabel;
 
-    @FXML
-    private Button planEauFileButton;
+	    @FXML
+	    private Label communeLabel;
 
-    @FXML
-    private Label rabatementLabel;
+	    @FXML
+	    private Label provinceLabel;
 
-    @FXML
-    private Label dateDepotDossierLabel;
+	    @FXML
+	    private Label LocalisationPointEauLabel;
 
-    @FXML
-    private Label dateEnvoiAboherLabel;
+	    @FXML
+	    private Label debitLabel;
 
-    @FXML
-    private Label dateDebutEPLabel;
+	    @FXML
+	    private Label profondeurLabel;
 
-    @FXML
-    private Label dateFinEPLabel;
+	    @FXML
+	    private Label planEauLabel;
 
-    @FXML
-    private Label dateSignaturePVParEPLabel;
+	    @FXML
+	    private Label DateDepotDossierLabel;
 
-    @FXML
-    private Label avisCEPLabelLabel;
+	    @FXML
+	    private Label dateDenvoiAlabhouerEljaidaLabel;
 
-    @FXML
-    private Label datenvoiPVaAboherLabel;
+	    @FXML
+	    private Label dateDebutEnquetePublicLabel;
 
-    @FXML
-    private Label avisAboherLabel;
+	    @FXML
+	    private Label dateFinEnquetePublicLabel;
 
-    @FXML
-    private Label profondeurLabel;
+	    @FXML
+	    private Label dateSignaturPVparCEPLabel;
 
-    @FXML
-    private Label debitLabel;
+	    @FXML
+	    private Label AvisDeCEPLabel;
 
-    @FXML
-    private Label autorisationLabel;
+	    @FXML
+	    private Label dateEnvoitPvAbhoerEljadidaLabel;
+
+	    @FXML
+	    private Label AvisAbhoerLabel;
+
+	    @FXML
+	    private Label autorisationLabel;
     
     @FXML
-    private void displeyFile(MouseEvent event) throws PdfException {
+    private void displayFile(MouseEvent event) throws PdfException {
 
     	if(event.getSource() == attestationFileButton) {
     		
@@ -135,18 +137,18 @@ public class DisplayFolderController implements Initializable {
     		String path =ConvertBlobToPdf.getPdfFromBlob(dossier.getCinFile(), "CIN.pdf");
     		ShowPdf.display(path, "CIN.pdf");
     		
-    	}else if(event.getSource() == planEauFileButton) {
+    	}else if(event.getSource() == planImmobilierFileButton) {
     		
-    		String path =ConvertBlobToPdf.getPdfFromBlob(dossier.getPlanEau(), "planEauFile.pdf");
+    		String path =ConvertBlobToPdf.getPdfFromBlob(dossier.getPlanImmobilier(), "planEauFile.pdf");
     		ShowPdf.display(path, "planEauFile.pdf");
     		
     	}
     	
     }
-    
+	
     @FXML
-    private void annuler(MouseEvent event) {
-
+    void goHomePage(MouseEvent event) {
+    	
     	try {
     		
     		Parent ModifyFolderRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/Dashboard.fxml"));
@@ -160,10 +162,27 @@ public class DisplayFolderController implements Initializable {
 		}
     	
     }
-	
+
+    @FXML
+    void logOut(MouseEvent event) {
+
+    	try {
+    		
+    		Parent ModifyFolderRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/LoginStage.fxml"));
+			Scene ModifyFolderScene = new Scene(ModifyFolderRoot);
+			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			primaryStage.setScene(ModifyFolderScene);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    }
+    
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		//setMessage(1);
+		setMessage(1);
 	}
 
 	
@@ -183,40 +202,42 @@ public class DisplayFolderController implements Initializable {
     	 **/
     	nomLabel.setText(dossier.getNom());
     	prenomLabel.setText(dossier.getPrenom());
-    	cinLabel.setText(dossier.getCin());
-    	typeDemandeLabel.setText(dossier.getTypeDemande());
-    	demandeFileLabel.setText(dossier.getCin() + "demande_de_creusement.pdf");
+    	codCinLabel.setText(dossier.getCin());
+    	typeDeDemandeLabel.setText(dossier.getTypeDemande());
+    	demandeNameLabel.setText(dossier.getCin() + "demande.pdf");
     	cinFileLabel.setText(dossier.getCin() + "CIN.pdf");
-    	dateDepotDossierLabel.setText(dossier.getDateDepotDossier().toString());
+    	DateDepotDossierLabel.setText(dossier.getDateDepotDossier().toString());
     	
     	/**
     	 * this zone for immobilier informations
     	 **/
+    	nomImmobilierLabel.setText(dossier.getNomImmobilier());
+    	daairaLabel.setText(dossier.getDaaira());
+    	quiadaLabel.setText(dossier.getQuiada());
     	provinceLabel.setText(dossier.getProvince());
     	communeLabel.setText(dossier.getCommune());
     	douarLabel.setText(dossier.getDouar());
-    	attistationFileLabel.setText(dossier.getCin() + "attestation_de_pocession.pdf");
-    	localisationImmobilierLabel.setText(dossier.getLocalisation());
+    	attestationPoscessionImmobilierLabel.setText(dossier.getCin() + "attestation_de_pocession.pdf");
+    	planImmobilierFileNameLabel.setText(dossier.getCin() + "plan_de_l_immobilier.pdf");
     	
     	/**
     	 * this zone for point d'eau informations
     	 **/
-    	localisationPointEauLabel.setText(dossier.getLocalisationPoint());
-    	rabatementLabel.setText(Float.toString(dossier.getRabattement()));
+    	LocalisationPointEauLabel.setText(dossier.getLocalisationPoint());
     	profondeurLabel.setText(Float.toString(dossier.getProfondeur()));
     	debitLabel.setText(Float.toString(dossier.getDebit()));
-    	planEauFileLabel.setText(dossier.getCin() + "plan_d_eau.pdf");
+    	planEauLabel.setText(Float.toString(dossier.getPlanEau()));
     	
     	/**
     	 * this zone for suivi de dossier informations
     	 **/
-    	dateEnvoiAboherLabel.setText(dossier.getDateEnvoiA_LABHOER().toString());
-    	dateDebutEPLabel.setText(dossier.getDateDebutde_EP().toString());
-    	dateFinEPLabel.setText(dossier.getDateFin_EP().toString());
-    	dateSignaturePVParEPLabel.setText(dossier.getDateSignateureDuPv().toString());
-    	avisCEPLabelLabel.setText(dossier.getAvisDe_CEP());
-    	dateEnvoiAboherLabel.setText(dossier.getDateEnvoiDuPVa_LABHOER().toString());
-    	avisAboherLabel.setText(dossier.getAvisABHOER());
+    	dateDenvoiAlabhouerEljaidaLabel.setText(dossier.getDateEnvoiA_LABHOER().toString());
+    	dateDebutEnquetePublicLabel.setText(dossier.getDateDebutde_EP().toString());
+    	dateFinEnquetePublicLabel.setText(dossier.getDateFin_EP().toString());
+    	dateSignaturPVparCEPLabel.setText(dossier.getDateSignateureDuPv().toString());
+    	AvisDeCEPLabel.setText(dossier.getAvisDe_CEP());
+    	dateEnvoitPvAbhoerEljadidaLabel.setText(dossier.getDateEnvoiDuPVa_LABHOER().toString());
+    	AvisAbhoerLabel.setText(dossier.getAvisABHOER());
     	autorisationLabel.setText(dossier.getAutorisation());
     	
     }

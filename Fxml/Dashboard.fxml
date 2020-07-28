@@ -7,111 +7,165 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="556.0" prefWidth="858.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.DashboardController">
-   <left>
-      <VBox prefHeight="556.0" prefWidth="186.0" spacing="20.0" style="-fx-background-color: #423167;" BorderPane.alignment="CENTER">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="1130.0" stylesheets="@../GestionDemandeEau/application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.DashboardController">
+   <center>
+      <StackPane BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: #3f2f62;" text="Profile" textFill="WHITE">
+            <VBox alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="158.0" prefWidth="865.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="200.0" spacing="40.0">
+                           <HBox.margin>
+                              <Insets left="70.0" right="70.0" />
+                           </HBox.margin>
+                           <children>
+                              <ImageView fitHeight="150.0" fitWidth="150.0" onMouseClicked="#ShowFolderInformations" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/ViewFolder.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                              <Button id="switchButton" mnemonicParsing="false" onMouseClicked="#ShowFolderInformations" prefHeight="25.0" prefWidth="146.0" style="-fx-background-color: #2b4067;" text="عرض معلومات مجلد" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="255.0" prefWidth="170.0" spacing="40.0">
+                           <HBox.margin>
+                              <Insets left="70.0" right="70.0" />
+                           </HBox.margin>
+                           <children>
+                              <ImageView fitHeight="150.0" fitWidth="152.0" onMouseClicked="#ModifyExistingFolder" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/modifyFolder.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                              <Button id="switchButton" mnemonicParsing="false" onMouseClicked="#ModifyExistingFolder" prefHeight="8.0" prefWidth="139.0" style="-fx-background-color: #2b4067;" text="تعديل مجلد" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="200.0" spacing="40.0">
+                           <HBox.margin>
+                              <Insets left="70.0" right="70.0" />
+                           </HBox.margin>
+                           <children>
+                              <ImageView fitHeight="150.0" fitWidth="150.0" onMouseClicked="#CreateNewFolder" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Image/addFolderIcon.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                              <Button id="switchButton" mnemonicParsing="false" onMouseClicked="#CreateNewFolder" prefHeight="30.0" prefWidth="143.0" style="-fx-background-color: #2b4067;" text="اضافة مجلد" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="100.0" top="100.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </StackPane>
+   </center>
+   <right>
+      <VBox id="vboxStyle" alignment="CENTER" prefHeight="409.0" prefWidth="170.0" spacing="20.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
+         <children>
+            <Button id="buttonProfile" layoutX="10.0" layoutY="35.0" mnemonicParsing="false" onAction="#ChangePassword" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: #A7BDE7;" text="تغيير كلمة السر" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
-               </cursor></Button>
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: #3f2f62;" text="Quelque option" textFill="WHITE">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Button>
-            <Button layoutX="10.0" layoutY="35.0" mnemonicParsing="false" onAction="#ChangePassword" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: #3f2f62;" text="تغيير كلمة السر" textFill="WHITE">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Button>
-            <Button layoutX="10.0" layoutY="140.0" mnemonicParsing="false" onAction="#disconnect" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: #3f2f62;" text="تسجيل الخروج" textFill="WHITE">
+               </cursor>
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <Button id="buttonLogin" layoutX="10.0" layoutY="140.0" mnemonicParsing="false" onAction="#disconnect" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: #A7BDE7;" text="تسجيل الخروج" textFill="WHITE">
                <VBox.margin>
                   <Insets top="150.0" />
                </VBox.margin>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <font>
+                  <Font size="14.0" />
+               </font>
             </Button>
          </children>
          <padding>
             <Insets top="40.0" />
          </padding>
       </VBox>
-   </left>
+   </right>
    <top>
-      <Pane prefHeight="109.0" prefWidth="858.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="128.0" prefWidth="877.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="74.0" layoutY="28.0" prefHeight="53.0" prefWidth="288.0" text="Quelque chose" textFill="WHITE">
-               <font>
-                  <Font size="36.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
-   </top>
-   <center>
-      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <HBox alignment="CENTER" layoutY="137.0" prefHeight="158.0" prefWidth="673.0" spacing="40.0">
+            <GridPane prefHeight="144.0" prefWidth="877.0" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <columnConstraints>
+                  <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="707.0" />
+                  <ColumnConstraints halignment="CENTER" maxWidth="213.0" minWidth="147.0" prefWidth="170.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+               </rowConstraints>
                <children>
-                  <ImageView fitHeight="121.0" fitWidth="158.0" onMouseClicked="#CreateNewFolder" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="95.0" fitWidth="139.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
                      <image>
-                        <Image url="@../Image/create.png" />
+                        <Image url="@../Image/Logo5.png" />
                      </image>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
                   </ImageView>
-                  <ImageView fitHeight="121.0" fitWidth="158.0" onMouseClicked="#ModifyExistingFolder" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Image/modify.png" />
-                     </image>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </ImageView>
-                  <ImageView fitHeight="121.0" fitWidth="158.0" onMouseClicked="#ShowFolderInformations" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Image/folder.png" />
-                     </image>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </ImageView>
+                  <Label alignment="CENTER" prefHeight="53.0" prefWidth="453.0" text="الصفحة الرئيسية" textFill="WHITE">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
                </children>
-               <padding>
-                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-               </padding>
-            </HBox>
-            <Label layoutX="60.0" layoutY="296.0" prefHeight="35.0" prefWidth="161.0" text="انشاء مجلد جديد" underline="true">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Label>
-            <Label layoutX="274.0" layoutY="296.0" prefHeight="35.0" prefWidth="126.0" text="تعديل مجلد" underline="true">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Label>
-            <Label layoutX="425.0" layoutY="296.0" prefHeight="35.0" prefWidth="228.0" text="عرض معلومات مجلد" underline="true">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Label>
+            </GridPane>
          </children>
-      </Pane>
-   </center>
+      </HBox>
+   </top>
 </BorderPane>

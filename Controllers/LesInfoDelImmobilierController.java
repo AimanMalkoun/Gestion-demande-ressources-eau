@@ -108,7 +108,7 @@ public class LesInfoDelImmobilierController implements Initializable {
 			}
 
 		} else {
-			textError.setText("veuillez remplir tous les champs correctement");
+			textError.setText("\u0627\u0644\u0645\u0631\u062c\u0648 \u0645\u0644\u0626 \u0643\u0644 \u0627\u0644\u062e\u0627\u0646\u0627\u062a \u0628\u0645\u0627 \u064a\u0646\u0627\u0633\u0628");
 		}
 
 	}
@@ -117,7 +117,7 @@ public class LesInfoDelImmobilierController implements Initializable {
 	void uploadFile(MouseEvent event) {
 		
 		if (event.getSource() == attistationFileButton) {
-			ImagesOrPdfChooser.desplay("Choisir l'attestation de pcession de l'immobilier", "Attestation_pocession_Immobilier.pdf");
+			ImagesOrPdfChooser.desplay("\u0625\u062e\u062a\u064a\u0627\u0631 \u0634\u0647\u0627\u062f\u0629 \u0645\u0644\u0643\u064a\u0629 \u0627\u0644\u0639\u0642\u0627\u0631", "Attestation_pocession_Immobilier.pdf");
 			File file = ImagesOrPdfChooser.result;
 			if(file != null) {
 				attestationFile = file;
@@ -126,7 +126,7 @@ public class LesInfoDelImmobilierController implements Initializable {
 		}
 		
 		if (event.getSource() == planImmobilierFileButton) {
-			ImagesOrPdfChooser.desplay("Choisir le plan de l'immobilier", "plan_Immobilier.pdf");
+			ImagesOrPdfChooser.desplay("\u0625\u062e\u062a\u064a\u0627\u0631 \u062a\u0635\u0645\u064a\u0645 \u0627\u0644\u0639\u0642\u0627\u0631", "plan_Immobilier.pdf");
 			File file = ImagesOrPdfChooser.result;
 			if(file != null) {
 				planImmobilierFile = file;
