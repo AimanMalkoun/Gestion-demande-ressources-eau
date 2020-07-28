@@ -205,7 +205,7 @@ public class modifierInfoDuDossierController implements Initializable{
     	
     	try {
     		
-    		Parent ModifyFolderRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/ModifyFolder.fxml"));
+    		Parent ModifyFolderRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/ModifyFolder2.fxml"));
 			Scene ModifyFolderScene = new Scene(ModifyFolderRoot);
 			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 			primaryStage.setScene(ModifyFolderScene);
@@ -467,7 +467,7 @@ public class modifierInfoDuDossierController implements Initializable{
 
     	try {
     		
-    		Parent ModifyFolderRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/ModifyFolder.fxml"));
+    		Parent ModifyFolderRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/ModifyFolder2.fxml"));
 			Scene ModifyFolderScene = new Scene(ModifyFolderRoot);
 			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 			primaryStage.setScene(ModifyFolderScene);
