@@ -7,8 +7,11 @@ import java.io.File;
 
 import org.jpedal.PdfDecoder;
 
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.PixelWriter;
@@ -30,8 +33,8 @@ public class ShowPdf {
 		pdf.openPdfFile(pdfPath);
 		
 		// creationg the window to desplay the pdf file as images
-		Stage primaryStage = new Stage();
-		primaryStage.setOnCloseRequest(e -> {
+		Stage window = new Stage();
+		window.setOnCloseRequest(e -> {
 			pdf.closePdfFile();
 			new File(pdfPath).delete();
 		});
@@ -46,9 +49,8 @@ public class ShowPdf {
 		
 		//crating imag view
 		ImageView image = new ImageView();
-		image.setFitWidth(400);
-		image.setFitHeight(550);
-		image.fitWidthProperty().bind(primaryStage.widthProperty());
+		image.fitWidthProperty().bind(window.widthProperty().subtract(20));
+		image.fitHeightProperty().bind(window.widthProperty().subtract(20).multiply(1.5).subtract(40));
 		
 		
 		//creating hbox
@@ -59,27 +61,31 @@ public class ShowPdf {
 		//creating vbox
 		VBox vbox = new VBox(10);
 		vbox.getChildren().addAll(image, hbox);
+		vbox.setAlignment(Pos.CENTER);
+		vbox.setMaxHeight(Double.MAX_VALUE);
+		vbox.setMaxWidth(Double.MAX_VALUE);
 		
 		try {
 			
-			BorderPane root = new BorderPane();
-			root.getChildren().add(vbox);
+			ScrollPane root = new ScrollPane();
+			root.setContent(vbox);
 			
 			Scene scene = new Scene(root,400,600);
-			primaryStage.setScene(scene);
-			primaryStage.setTitle(title);
-			primaryStage.getIcons().add(new Image("/Image/Logo5.png"));
-			primaryStage.show();
+			window.setScene(scene);
+			window.setTitle(title);
+			window.getIcons().add(new Image("/Image/Logo5.png"));
+			window.show();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		
 		//Handling buttons actions
-		next.setOnAction(e -> showPage(pageCounte + 1, pdf, image, primaryStage, next, back));
-	    back.setOnAction(e -> showPage(pageCounte - 1, pdf, image, primaryStage, next, back));
+		next.setOnAction(e -> showPage(pageCounte + 1, pdf, image, window, next, back));
+	    back.setOnAction(e -> showPage(pageCounte - 1, pdf, image, window, next, back));
 		
 	    //calling for the method to show the first page
-		showPage(1, pdf, image, primaryStage, next, back);
+		showPage(1, pdf, image, window, next, back);
+		pdf.closePdfFile();
 	}
 	
 	

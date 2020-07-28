@@ -6,8 +6,14 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Blob;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+
+import javax.sql.rowset.serial.SerialBlob;
+import javax.sql.rowset.serial.SerialException;
+
+import org.apache.commons.io.IOUtils;
 
 import Classes.ChangeChoiceAlert;
 import Classes.ChangeDateAlert;
@@ -259,7 +265,7 @@ public class modifierInfoDuDossierController implements Initializable{
     			
     			File result = ChangeFileAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u0635\u0648\u0631\u0629 \u0628\u0637\u0627\u0642\u0629 \u0627\u0644\u062a\u0639\u0631\u064a\u0641 \u0627\u0644\u0648\u0637\u0646\u064a\u0629", dossier.getCin() + "CIN.pdf");
     			if(result != null){
-    				dossier.setCinFile((Blob) new FileInputStream(result));
+    				dossier.setCinFile(fileToBlob(result));
     				carteCinPathLabel.setText(result.getPath());
     			}
     			
@@ -269,7 +275,7 @@ public class modifierInfoDuDossierController implements Initializable{
     			System.out.println(result);
     			
     			if(result != null){
-    				dossier.setDemandeFile((Blob) new FileInputStream(result));
+    				dossier.setDemandeFile(fileToBlob(result));
     				demandeDeCreusementPathLabel.setText(result.getPath());
     			}
     			
@@ -287,7 +293,7 @@ public class modifierInfoDuDossierController implements Initializable{
     			File result = ChangeFileAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u0634\u0647\u0627\u062f\u0629 \u0645\u0644\u0643\u064a\u0629 \u0627\u0644\u0639\u0642\u0627\u0631", dossier.getCin() + "attestation_Pocession_Immobilier.pdf");
     			
     			if(result != null){
-    				dossier.setAttestationDePocession((Blob) new FileInputStream(result));
+    				dossier.setAttestationDePocession(fileToBlob(result));
     				attestationPoscessionImmobilierLabel.setText(result.getPath());
     			}
     			
@@ -296,7 +302,7 @@ public class modifierInfoDuDossierController implements Initializable{
     			File result = ChangeFileAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u062a\u0635\u0645\u064a\u0645 \u0627\u0644\u0639\u0642\u0627\u0631", dossier.getCin() + "plan_Immobilier.pdf");
     			
     			if(result != null){
-    				dossier.setPlanImmobilier((Blob) new FileInputStream(result));
+    				dossier.setPlanImmobilier(fileToBlob(result));
     				planImmobilierFilePathLabel.setText(result.getPath());
     			}
     			
@@ -517,7 +523,6 @@ public class modifierInfoDuDossierController implements Initializable{
 
 		ConnectionClassDossier myDataBaseFolder = new ConnectionClassDossier();
 		dossier = myDataBaseFolder.getDossierFromDatabase(id);
-		System.out.println(dossier);
 		initializeTextForLabels();
 		
  	 }
@@ -557,6 +562,35 @@ public class modifierInfoDuDossierController implements Initializable{
     	autorisationLabel.setText(dossier.getAutorisation());
     	
     }
+    
+    
+    //this method takes a file as argument and return it as blob
+    private Blob fileToBlob(File file) {
+    	
+    	Blob blob = null;
+		try {
+			
+			byte[] content = IOUtils.toByteArray(new FileInputStream(file));
+	    	blob = new SerialBlob(content);
+	    	
+		} catch (IOException e) {
+
+			e.printStackTrace();
+			
+		} catch (SerialException e) {
+
+			e.printStackTrace();
+			
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		
+		}
+    	
+    	return blob;
+    	
+    }
+    
 
 }
 

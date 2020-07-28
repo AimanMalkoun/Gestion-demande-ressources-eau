@@ -77,16 +77,15 @@ public class ModifyFolder2Controller implements Initializable{
     @FXML
     void searchForFile(MouseEvent event) {
     	
+    	if(!cinInputSearch.getText().isEmpty()) {
+    		dataTable();
+        	tableInfo.setItems(getFolderInfo(cinInputSearch.getText()));
+    	}
     	
     }
     @FXML
     void searchFile(ActionEvent event) {
 
-    	
-    	if(!cinInputSearch.getText().isEmpty()) {
-    		dataTable();
-        	tableInfo.setItems(getFolderInfo(cinInputSearch.getText()));
-    	}
     }
     
     @FXML
