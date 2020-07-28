@@ -26,7 +26,7 @@ public class DeleteAlert {
 		yesButton.setPrefSize(60, 30);
 		noButton.setPrefSize(60, 30);
 
-		Label messageLabel = new Label("\u0647\u0644 \u062a\u0631\u064a\u062f \u062d\u0630\u0641 \u0647\u0630\u0627 \u0627\u0644\u0645\u062c\u0644\u062f!");
+		Label messageLabel = new Label("\u0647\u0644 \u062a\u0631\u064a\u062f \u062d\u0630\u0641 \u0647\u0630\u0627 \u0627\u0644\u0645\u0644\u0641!");
 		
 		//choose file
 		yesButton.setOnMouseClicked(e -> {
@@ -53,6 +53,7 @@ public class DeleteAlert {
 		window.setTitle("\u062a\u0623\u0643\u064a\u062f \u062d\u0630\u0641 \u0627\u0644\u0645\u062c\u0644\u062f");
 		window.getIcons().add(new Image("/Image/Logo5.png"));
 		window.showAndWait();
+		window.centerOnScreen();
 		
 		return result;
 	}

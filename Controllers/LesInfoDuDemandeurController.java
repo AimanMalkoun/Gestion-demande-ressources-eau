@@ -77,6 +77,24 @@ public class LesInfoDuDemandeurController implements Initializable{
     
     @FXML
     private Label textError;
+    
+    @FXML
+    void annuler(MouseEvent event) {
+    	
+    	Parent dashboardRoot;
+		try {
+			
+			dashboardRoot = (Parent) FXMLLoader.load(getClass().getResource("../Fxml/Dashboard.fxml"));
+			Scene dashboardScene = new Scene(dashboardRoot);
+			Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			primaryStage.setScene(dashboardScene);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+    }
 
     @FXML
     void suivant(MouseEvent event) {

@@ -118,6 +118,29 @@ public class DisplayFolderController implements Initializable {
 
 	    @FXML
 	    private Label autorisationLabel;
+	    
+	    @FXML
+	    void annuler(MouseEvent event) {
+	    	
+	    	try {
+
+				FXMLLoader loader= new FXMLLoader();
+				loader.setLocation(getClass().getResource("../Fxml/ModifyFolder2.fxml"));
+				Parent showFolderRoot = loader.load();
+				
+				ModifyFolder2Controller nextControler = loader.getController();
+				nextControler.setMessage(1);
+				
+				Scene showFolderScene = new Scene(showFolderRoot);
+				Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+				primaryStage.setScene(showFolderScene);
+
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	    	
+	    }
     
     @FXML
     private void displayFile(MouseEvent event) throws PdfException {
@@ -125,23 +148,23 @@ public class DisplayFolderController implements Initializable {
     	if(event.getSource() == attestationFileButton) {
     		
     		String path =ConvertBlobToPdf.getPdfFromBlob(dossier.getAttestationDePocession(), "attestationFile.pdf");
-    		ShowPdf.display(path, "attestationFile.pdf");
+    		ShowPdf.display2(path, "attestationFile.pdf");
     		
     	}else if(event.getSource() == demandeFileButton) {
     		
     		String path =ConvertBlobToPdf.getPdfFromBlob(dossier.getDemandeFile(), "demandeFile.pdf");
-    		ShowPdf.display(path, "demandeFile.pdf");
+    		ShowPdf.display2(path, "demandeFile.pdf");
     		
     	}else if(event.getSource() == cinFileButton) {
     		
     		String path =ConvertBlobToPdf.getPdfFromBlob(dossier.getCinFile(), "CIN.pdf");
     		System.out.println(path);
-    		ShowPdf.display(path, "CIN.pdf");
+    		ShowPdf.display2(path, "CIN.pdf");
     		
     	}else if(event.getSource() == planImmobilierFileButton) {
     		
     		String path =ConvertBlobToPdf.getPdfFromBlob(dossier.getPlanImmobilier(), "planEauFile.pdf");
-    		ShowPdf.display(path, "planEauFile.pdf");
+    		ShowPdf.display2(path, "planEauFile.pdf");
     		
     	}
     	

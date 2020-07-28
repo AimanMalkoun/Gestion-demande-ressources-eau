@@ -15,7 +15,7 @@ public class Test extends Application{
 			//Les informations du demandeur
 			try {
 				
-				Parent root = FXMLLoader.load(Test.class.getClassLoader().getResource("Fxml/ModifyFolder2.fxml"));
+				Parent root = FXMLLoader.load(Test.class.getClassLoader().getResource("Fxml/afficher-un-dossier.fxml"));
 				Scene scene = new Scene(root);
 				primaryStage.setTitle("Gestion des demandes d'autorisation pour l'utilisation des ressources en eau.");
 				primaryStage.setScene(scene);

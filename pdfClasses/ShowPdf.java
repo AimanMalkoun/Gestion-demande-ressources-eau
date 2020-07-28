@@ -4,11 +4,18 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
+import java.util.List;
 
 import org.jpedal.PdfDecoder;
 
+import Controllers.DisplayFolderController;
+import Controllers.ShowPdf2;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -166,6 +173,32 @@ public class ShowPdf {
 	    }
 
 	    return null;
+	}
+	
+	
+	public static void display2(String pdfPath, String title) {
+		
+		try {
+
+			FXMLLoader loader= new FXMLLoader();
+			loader.setLocation(ShowPdf.class.getResource("../Fxml/showPdf2.fxml"));
+			Parent showFolderRoot = loader.load();
+
+			Stage primaryStage = new Stage();
+			primaryStage.setTitle(title);
+			
+			ShowPdf2 nextControler = loader.getController();
+			nextControler.setMessage(pdfPath, primaryStage);
+			
+
+			Scene showFolderScene = new Scene(showFolderRoot);
+			primaryStage.setScene(showFolderScene);
+			primaryStage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 	
 }

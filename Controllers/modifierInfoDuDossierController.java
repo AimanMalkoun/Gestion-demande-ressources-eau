@@ -204,12 +204,18 @@ public class modifierInfoDuDossierController implements Initializable{
     void annuler(MouseEvent event) {
     	
     	try {
-    		
-    		Parent ModifyFolderRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/ModifyFolder.fxml"));
-			Scene ModifyFolderScene = new Scene(ModifyFolderRoot);
-			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-			primaryStage.setScene(ModifyFolderScene);
+
+			FXMLLoader loader= new FXMLLoader();
+			loader.setLocation(getClass().getResource("../Fxml/ModifyFolder2.fxml"));
+			Parent showFolderRoot = loader.load();
 			
+			ModifyFolder2Controller nextControler = loader.getController();
+			nextControler.setMessage(0);
+			
+			Scene showFolderScene = new Scene(showFolderRoot);
+			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			primaryStage.setScene(showFolderScene);
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -467,7 +473,7 @@ public class modifierInfoDuDossierController implements Initializable{
 
     	try {
     		
-    		Parent ModifyFolderRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/ModifyFolder.fxml"));
+    		Parent ModifyFolderRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/ModifyFolder2.fxml"));
 			Scene ModifyFolderScene = new Scene(ModifyFolderRoot);
 			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 			primaryStage.setScene(ModifyFolderScene);
