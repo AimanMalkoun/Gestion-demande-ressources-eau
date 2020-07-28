@@ -24,7 +24,9 @@ public class DeleteAlert {
 
 		Button yesButton = new Button("\u0646\u0639\u0645"), noButton = new Button("\u0644\u0627");
 		yesButton.setPrefSize(60, 30);
+		yesButton.setStyle("-fx-background-color: #2b4067; -fx-text-fill: white");
 		noButton.setPrefSize(60, 30);
+		noButton.setStyle("-fx-background-color: #2b4067; -fx-text-fill: white");
 
 		Label messageLabel = new Label("\u0647\u0644 \u062a\u0631\u064a\u062f \u062d\u0630\u0641 \u0647\u0630\u0627 \u0627\u0644\u0645\u0644\u0641!");
 		

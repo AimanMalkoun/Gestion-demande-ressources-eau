@@ -22,15 +22,17 @@ public class ExitApplication {
 		window.setResizable(false);
 		window.initModality(Modality.APPLICATION_MODAL);
 
-		Button yesButton = new Button("\u0646\u0639\u0645"), noButton = new Button("\u0644\u0627");
-		yesButton.setPrefWidth(40);
-		noButton.setPrefWidth(40);
+		Button yesButton = new Button("\u0646\u0639\u0645");
+		Button noButton = new Button("\u0644\u0627");
+		
+		yesButton.setStyle("-fx-background-color: #2b4067; -fx-text-fill: white;");
+		yesButton.setPadding(new Insets(5));
+		noButton.setStyle("-fx-background-color: #2b4067; -fx-text-fill: white;");
+		noButton.setPadding(new Insets(5, 12, 5, 12));
 		
 		Label message1 = new Label();
-		
-
 		message1.setAlignment(Pos.CENTER);
-
+		message1.setStyle("-fx-text-fill: #2b4067; -fx-font-size: 14px");
 		yesButton.setOnMouseClicked(e -> {
 			answer = true;
 			window.close();
@@ -57,6 +59,7 @@ public class ExitApplication {
 		window.getIcons().add(new Image("/Image/Logo5.png"));
 		window.showAndWait();
 		window.centerOnScreen();
+		
 		return answer;
 	}
 
