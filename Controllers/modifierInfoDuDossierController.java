@@ -212,8 +212,8 @@ public class modifierInfoDuDossierController implements Initializable{
 			ModifyFolder2Controller nextControler = loader.getController();
 			nextControler.setMessage(0);
 			
-			Scene showFolderScene = new Scene(showFolderRoot);
 			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			Scene showFolderScene = new Scene(showFolderRoot, primaryStage.getWidth(), primaryStage.getHeight());
 			primaryStage.setScene(showFolderScene);
 
 		} catch (IOException e) {
@@ -476,6 +476,7 @@ public class modifierInfoDuDossierController implements Initializable{
     		Parent ModifyFolderRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/ModifyFolder2.fxml"));
 			Scene ModifyFolderScene = new Scene(ModifyFolderRoot);
 			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			Scene ModifyFolderScene = new Scene(ModifyFolderRoot, primaryStage.getWidth(), primaryStage.getHeight());
 			primaryStage.setScene(ModifyFolderScene);
 			
 		} catch (IOException e) {
@@ -491,8 +492,8 @@ public class modifierInfoDuDossierController implements Initializable{
     	try {
     		
     		Parent ModifyFolderRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/Dashboard.fxml"));
-			Scene ModifyFolderScene = new Scene(ModifyFolderRoot);
 			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			Scene ModifyFolderScene = new Scene(ModifyFolderRoot, primaryStage.getWidth(), primaryStage.getHeight());
 			primaryStage.setScene(ModifyFolderScene);
 			
 		} catch (IOException e) {
@@ -508,8 +509,8 @@ public class modifierInfoDuDossierController implements Initializable{
     	try {
     		
     		Parent ModifyFolderRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/LoginStage.fxml"));
-			Scene ModifyFolderScene = new Scene(ModifyFolderRoot);
 			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			Scene ModifyFolderScene = new Scene(ModifyFolderRoot, primaryStage.getWidth(), primaryStage.getHeight());
 			primaryStage.setScene(ModifyFolderScene);
 			
 		} catch (IOException e) {

@@ -40,7 +40,7 @@ public class ForgotPassWordController {
 		
 		Parent root = FXMLLoader.load(getClass().getResource("../Fxml/LoginStage.fxml"));
 		Stage primaryStage  = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		primaryStage.setScene(new Scene(root));
+		primaryStage.setScene(new Scene(root, primaryStage.getWidth(), primaryStage.getHeight()));
 	}
 	
 	// Event Listener on Button.onAction
@@ -62,7 +62,7 @@ public class ForgotPassWordController {
 					
 					Parent root = FXMLLoader.load(getClass().getResource("../Fxml/LoginStage.fxml"));
 					Stage primaryStage  = (Stage) ((Node) event.getSource()).getScene().getWindow();
-					primaryStage.setScene(new Scene(root));
+					primaryStage.setScene(new Scene(root, primaryStage.getWidth(), primaryStage.getHeight()));
 				}
 				else
 					errorChange.setText("\u064a\u062c\u0628 \u0623\u0646 \u062a\u0643\u0648\u0646 \u0643\u0644\u0645\u0629 \u0627\u0644\u0645\u0631\u0648\u0631 \u0628\u064a\u0646 \u0035\u002d\u0031\u0035 \u062d\u0631\u0641\u064b\u0627");

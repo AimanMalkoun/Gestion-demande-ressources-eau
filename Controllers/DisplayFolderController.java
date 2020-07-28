@@ -175,9 +175,9 @@ public class DisplayFolderController implements Initializable {
     	
     	try {
     		
-    		Parent ModifyFolderRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/Dashboard.fxml"));
-			Scene ModifyFolderScene = new Scene(ModifyFolderRoot);
 			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+    		Parent ModifyFolderRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/Dashboard.fxml"));
+			Scene ModifyFolderScene = new Scene(ModifyFolderRoot, primaryStage.getWidth(), primaryStage.getHeight());
 			primaryStage.setScene(ModifyFolderScene);
 			
 		} catch (IOException e) {
@@ -192,9 +192,9 @@ public class DisplayFolderController implements Initializable {
 
     	try {
     		
-    		Parent ModifyFolderRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/LoginStage.fxml"));
-			Scene ModifyFolderScene = new Scene(ModifyFolderRoot);
 			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+    		Parent ModifyFolderRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/LoginStage.fxml"));
+			Scene ModifyFolderScene = new Scene(ModifyFolderRoot, primaryStage.getWidth(), primaryStage.getHeight());
 			primaryStage.setScene(ModifyFolderScene);
 			
 		} catch (IOException e) {

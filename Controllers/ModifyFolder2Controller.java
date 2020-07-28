@@ -69,8 +69,8 @@ public class ModifyFolder2Controller implements Initializable{
     void goToHome(ActionEvent event) throws IOException {
 
     	Parent root = FXMLLoader.load(getClass().getResource("../Fxml/Dashboard.fxml"));
-    	Scene dashBoard = new Scene(root);
     	Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    	Scene dashBoard = new Scene(root, primaryStage.getWidth(), primaryStage.getHeight());
     	primaryStage.setScene(dashBoard);
     }
 
@@ -90,8 +90,8 @@ public class ModifyFolder2Controller implements Initializable{
     @FXML
     void disconnect(ActionEvent event) throws IOException {
     	Parent root = FXMLLoader.load(getClass().getResource("../Fxml/LoginStage.fxml"));
-    	Scene login = new Scene(root);
     	Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    	Scene login = new Scene(root, primaryStage.getWidth(), primaryStage.getHeight());
     	primaryStage.setScene(login);
     }
     
@@ -156,8 +156,8 @@ public class ModifyFolder2Controller implements Initializable{
 			DisplayFolderController nextControler = loader.getController();
 			nextControler.setMessage(selectedFolder.getId());
 			
-			Scene showFolderScene = new Scene(showFolderRoot);
 			Stage primaryStage = (Stage) rootPane.getScene().getWindow();
+			Scene showFolderScene = new Scene(showFolderRoot, primaryStage.getWidth(), primaryStage.getHeight());
 			primaryStage.setScene(showFolderScene);
 
 		} catch (IOException e) {
@@ -237,8 +237,8 @@ public class ModifyFolder2Controller implements Initializable{
 				modifierInfoDuDossierController nextControler = loader.getController();
 				nextControler.setMessage(row.getItem().getId());
 				
-				Scene modifyFolderScene = new Scene(modifyFolderRoot);
 				Stage primaryStage = (Stage) rootPane.getScene().getWindow();
+				Scene modifyFolderScene = new Scene(modifyFolderRoot, primaryStage.getWidth(), primaryStage.getHeight());
 				primaryStage.setScene(modifyFolderScene);
 
 			} catch (IOException e) {

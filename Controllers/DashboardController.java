@@ -21,9 +21,9 @@ public class DashboardController implements Initializable{
     @FXML
     void CreateNewFolder(MouseEvent event) throws IOException {
     	
-    	Parent deamandeurInfoRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/InformationsDuDemandeur.fxml"));
-		Scene deamandeurInfoScene = new Scene(deamandeurInfoRoot);
 		Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+    	Parent deamandeurInfoRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/InformationsDuDemandeur.fxml"));
+		Scene deamandeurInfoScene = new Scene(deamandeurInfoRoot, primaryStage.getWidth(), primaryStage.getHeight());
 		primaryStage.setScene(deamandeurInfoScene);
 		
     }
@@ -40,8 +40,8 @@ public class DashboardController implements Initializable{
 			ModifyFolder2Controller nextControler = loader.getController();
 			nextControler.setMessage(0);
 			
-			Scene showFolderScene = new Scene(showFolderRoot);
 			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			Scene showFolderScene = new Scene(showFolderRoot, primaryStage.getWidth(), primaryStage.getHeight());
 			primaryStage.setScene(showFolderScene);
 
 		} catch (IOException e) {
@@ -63,9 +63,9 @@ public class DashboardController implements Initializable{
     @FXML
     void ChangePassword(ActionEvent event) throws IOException {
     	
-    	Parent ChangePasswordRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/ChangePassword.fxml"));
-		Scene ChangePasswordScene = new Scene(ChangePasswordRoot);
 		Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+    	Parent ChangePasswordRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/ChangePassword.fxml"));
+		Scene ChangePasswordScene = new Scene(ChangePasswordRoot, primaryStage.getWidth(), primaryStage.getHeight());
 		primaryStage.setScene(ChangePasswordScene);
 		
     }
@@ -82,8 +82,8 @@ public class DashboardController implements Initializable{
 			ModifyFolder2Controller nextControler = loader.getController();
 			nextControler.setMessage(1);
 			
-			Scene showFolderScene = new Scene(showFolderRoot);
 			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			Scene showFolderScene = new Scene(showFolderRoot, primaryStage.getWidth(), primaryStage.getHeight());
 			primaryStage.setScene(showFolderScene);
 
 		} catch (IOException e) {
