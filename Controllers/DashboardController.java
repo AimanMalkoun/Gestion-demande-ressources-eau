@@ -56,7 +56,7 @@ public class DashboardController implements Initializable{
     	
 		Parent root = FXMLLoader.load(getClass().getResource("../Fxml/LoginStage.fxml"));
     	Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-		primaryStage.setScene(new Scene(root));
+		primaryStage.setScene(new Scene(root, primaryStage.getWidth(), primaryStage.getHeight()));
 		
     }
     

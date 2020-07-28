@@ -131,8 +131,8 @@ public class DisplayFolderController implements Initializable {
 				ModifyFolder2Controller nextControler = loader.getController();
 				nextControler.setMessage(1);
 				
-				Scene showFolderScene = new Scene(showFolderRoot);
 				Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+				Scene showFolderScene = new Scene(showFolderRoot, primaryStage.getWidth(), primaryStage.getHeight());
 				primaryStage.setScene(showFolderScene);
 
 			} catch (IOException e) {

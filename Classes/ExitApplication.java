@@ -22,17 +22,14 @@ public class ExitApplication {
 		window.setResizable(false);
 		window.initModality(Modality.APPLICATION_MODAL);
 
-		Button yesButton = new Button("\u0646\u0639\u0645");
-		Button noButton = new Button("\u0644\u0627");
+		Button yesButton = new Button("\u0646\u0639\u0645"), noButton = new Button("\u0644\u0627");
 		
 		yesButton.setStyle("-fx-background-color: #2b4067; -fx-text-fill: white;");
-		yesButton.setPadding(new Insets(5));
+		yesButton.setPrefWidth(40);
 		noButton.setStyle("-fx-background-color: #2b4067; -fx-text-fill: white;");
-		noButton.setPadding(new Insets(5, 12, 5, 12));
+		noButton.setPrefWidth(40);;
 		
-		Label message1 = new Label();
-		message1.setAlignment(Pos.CENTER);
-		message1.setStyle("-fx-text-fill: #2b4067; -fx-font-size: 14px");
+
 		yesButton.setOnMouseClicked(e -> {
 			answer = true;
 			window.close();
@@ -41,11 +38,16 @@ public class ExitApplication {
 			answer = false;
 			window.close();
 		});
-		message1.setText(
-				"\u0647\u0644 \u062d\u0642\u0627 \u062a\u0631\u064a\u062f \u0627\u0644\u062e\u0631\u0648\u062c \u061f");
-
+		
+		
+		Label message1 = new Label();
+		message1.setText("\u0647\u0644 \u062d\u0642\u0627 \u062a\u0631\u064a\u062f \u0627\u0644\u062e\u0631\u0648\u062c \u061f");
+		message1.setAlignment(Pos.CENTER);
+		message1.setStyle("-fx-text-fill: #2b4067; -fx-font-size: 14px");
+		
+		
 		HBox hbox = new HBox(50);
-		hbox.getChildren().addAll(yesButton, noButton);
+		hbox.getChildren().addAll(noButton, yesButton);
 		hbox.setAlignment(Pos.CENTER);
 		
 		VBox root = new VBox(15);

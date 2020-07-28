@@ -58,8 +58,8 @@ public class AEteEnregistrerController implements Initializable {
 			loader.setLocation(getClass().getResource("../Fxml/Dashboard.fxml"));
 			Parent DashboardRoot = loader.load();
 			
-			Scene DashboardScene = new Scene(DashboardRoot);
 			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			Scene DashboardScene = new Scene(DashboardRoot, primaryStage.getWidth(), primaryStage.getHeight());
 			primaryStage.setScene(DashboardScene);
 			
 		} catch (IOException e) {

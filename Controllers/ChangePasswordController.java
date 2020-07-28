@@ -14,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -39,31 +40,34 @@ public class ChangePasswordController {
     	
     	ConnectionClassMaria conection =  new ConnectionClassMaria(); 
     	try {
-    	Statement statement = conection.connection.createStatement();
-    	ResultSet query = statement.executeQuery("SELECT * FROM `login` ;");
+    		Statement statement = conection.connection.createStatement();
+    		ResultSet query = statement.executeQuery("SELECT * FROM `login` ;");
     	
     	
-    	while(query.next())
-		{
-			realPassword = query.getString("Password");
-		}
-    	if(realPassword.equals(previousPassword.getText()) && newPassword.getText().equals(confirmedPassword.getText()))
-    	{    		
+    		while(query.next()){
+    			
+    			realPassword = query.getString("Password");
+    		}
+    	
+    		if(realPassword.equals(previousPassword.getText()) && newPassword.getText().equals(confirmedPassword.getText())){
+    			
     			statement.executeUpdate("update Login set Password = '" + newPassword.getText() + "' where password = '" + previousPassword.getText() + "';");
     			messagePassword.setText("\u062a\u0645 \u062a\u062d\u062f\u064a\u062b \u0643\u0644\u0645\u0629 \u0627\u0644\u0633\u0631 \u0628\u0646\u062c\u0627\u062d");
-		}
+    		}
 
-    	else
-    	{
-    		Alert a = new Alert(Alert.AlertType.WARNING);
-    		a.setHeaderText(null);
-    		a.setTitle("\u0645\u0634\u0643\u0644\u0629 \u0641\u064a \u0643\u0644\u0645\u0629 \u0627\u0644\u0645\u0631\u0648\u0631");
-    		a.setContentText("\u0645\u0646 \u0641\u0636\u0644\u0643 \u0627\u0639\u062f \u0627\u0644\u0645\u062d\u0627\u0648\u0644\u0629 \u0645\u0631\u0629 \u0623\u062e\u0631\u0649\u002e \u0643\u0644\u0645\u0629 \u0627\u0644\u0645\u0631\u0648\u0631 \u0627\u0644\u062a\u064a \u062a\u0645 \u0625\u062f\u062e\u0627\u0644\u0647\u0627 \u062e\u0627\u0637\u0626\u0629 \u0623\u0648 \u0623\u0646 \u062a\u0623\u0643\u064a\u062f \u0643\u0644\u0645\u0629 \u0627\u0644\u0645\u0631\u0648\u0631 \u063a\u064a\u0631 \u0635\u062d\u064a\u062d");
-    		a.showAndWait();
-    	}
-    	catch (Exception e)
-    	{
+    		else{
+    			
+    			Alert a = new Alert(Alert.AlertType.WARNING);
+    			a.setHeaderText(null);
+    			a.setTitle("\u0645\u0634\u0643\u0644\u0629 \u0641\u064a \u0643\u0644\u0645\u0629 \u0627\u0644\u0645\u0631\u0648\u0631");
+    			a.setContentText("\u0645\u0646 \u0641\u0636\u0644\u0643 \u0627\u0639\u062f \u0627\u0644\u0645\u062d\u0627\u0648\u0644\u0629 \u0645\u0631\u0629 \u0623\u062e\u0631\u0649\u002e \u0643\u0644\u0645\u0629 \u0627\u0644\u0645\u0631\u0648\u0631 \u0627\u0644\u062a\u064a \u062a\u0645 \u0625\u062f\u062e\u0627\u0644\u0647\u0627 \u062e\u0627\u0637\u0626\u0629 \u0623\u0648 \u0623\u0646 \u062a\u0623\u0643\u064a\u062f \u0643\u0644\u0645\u0629 \u0627\u0644\u0645\u0631\u0648\u0631 \u063a\u064a\u0631 \u0635\u062d\u064a\u062d");
+    			a.showAndWait();
+    		}
+    		
+    	}catch (Exception e){
+    		
     		e.printStackTrace();
+    		
     	}
 
     }
@@ -77,8 +81,8 @@ public class ChangePasswordController {
 			loader.setLocation(getClass().getResource("../Fxml/LoginStage.fxml"));
 			Parent LoginRoot = loader.load();
 			
-			Scene LoginScene = new Scene(LoginRoot);
 			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			Scene LoginScene = new Scene(LoginRoot, primaryStage.getWidth(), primaryStage.getHeight());
 			primaryStage.setScene(LoginScene);
 			
 		} catch (IOException e) {

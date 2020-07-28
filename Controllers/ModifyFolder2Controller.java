@@ -89,10 +89,12 @@ public class ModifyFolder2Controller implements Initializable{
     
     @FXML
     void disconnect(ActionEvent event) throws IOException {
+    	
     	Parent root = FXMLLoader.load(getClass().getResource("../Fxml/LoginStage.fxml"));
     	Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     	Scene login = new Scene(root, primaryStage.getWidth(), primaryStage.getHeight());
     	primaryStage.setScene(login);
+    	
     }
     
     @FXML
