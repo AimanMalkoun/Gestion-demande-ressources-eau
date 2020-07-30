@@ -264,7 +264,7 @@ public class ModifyFolder2Controller implements Initializable{
 			while(result.next())
 			{
 				
-				folders.add( new FolderTable(result.getInt("IdDossier"), result.getDate("DateDepot"), result.getString("typeDemande"), result.getString("cin"),  result.getString("nom") + " " + result.getString("prenom")) );
+				folders.add( new FolderTable(result.getInt("IdDossier"), result.getString("DateDepot"), result.getString("typeDemande"), result.getString("cin"),  result.getString("nom") + " " + result.getString("prenom")) );
 				
 			}
 		} catch (SQLException e) {
@@ -287,7 +287,7 @@ public class ModifyFolder2Controller implements Initializable{
 			while(result.next())
 			{
 				
-				folders.add( new FolderTable(result.getInt("IdDossier"),result.getDate("DateDepot") ,result.getString("typeDemande"), result.getString("cin"),  result.getString("nom") + " " + result.getString("prenom")) );
+				folders.add( new FolderTable(result.getInt("IdDossier"),result.getString("DateDepot") ,result.getString("typeDemande"), result.getString("cin"),  result.getString("nom") + " " + result.getString("prenom")) );
 				
 			}
 		} catch (SQLException e) {

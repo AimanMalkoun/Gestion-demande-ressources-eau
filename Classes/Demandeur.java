@@ -1,14 +1,13 @@
 package Classes;
 
 import java.io.File;
-import java.time.LocalDate;
 
 public class Demandeur {
 
 	private String nom;
 	private String prenom;
 	private String cin;
-	private LocalDate dateDepotDossier;
+	private String dateDepotDossier;
 	private String typeDemande;
 	private File cinFile;
 	private File demandeFile;
@@ -61,12 +60,12 @@ public class Demandeur {
 	}
 
 
-	public LocalDate getDateDepotDossier() {
+	public String getDateDepotDossier() {
 		return dateDepotDossier;
 	}
 
 
-	public void setDateDepotDossier(LocalDate dateDepotDossier) {
+	public void setDateDepotDossier(String dateDepotDossier) {
 		this.dateDepotDossier = dateDepotDossier;
 	}
 

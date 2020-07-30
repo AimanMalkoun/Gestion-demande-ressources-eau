@@ -206,7 +206,7 @@ public class DisplayFolderController implements Initializable {
     
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		setMessage(1);
+		
 	}
 
 	
@@ -230,7 +230,7 @@ public class DisplayFolderController implements Initializable {
     	typeDeDemandeLabel.setText(dossier.getTypeDemande());
     	demandeNameLabel.setText(dossier.getCin() + "demande.pdf");
     	cinFileLabel.setText(dossier.getCin() + "CIN.pdf");
-    	DateDepotDossierLabel.setText(dossier.getDateDepotDossier().toString());
+    	DateDepotDossierLabel.setText(dossier.getDateDepotDossier());
     	
     	/**
     	 * this zone for immobilier informations
@@ -255,12 +255,12 @@ public class DisplayFolderController implements Initializable {
     	/**
     	 * this zone for suivi de dossier informations
     	 **/
-    	dateDenvoiAlabhouerEljaidaLabel.setText(dossier.getDateEnvoiA_LABHOER().toString());
-    	dateDebutEnquetePublicLabel.setText(dossier.getDateDebutde_EP().toString());
-    	dateFinEnquetePublicLabel.setText(dossier.getDateFin_EP().toString());
-    	dateSignaturPVparCEPLabel.setText(dossier.getDateSignateureDuPv().toString());
+    	dateDenvoiAlabhouerEljaidaLabel.setText(dossier.getDateEnvoiA_LABHOER());
+    	dateDebutEnquetePublicLabel.setText(dossier.getDateDebutde_EP());
+    	dateFinEnquetePublicLabel.setText(dossier.getDateFin_EP());
+    	dateSignaturPVparCEPLabel.setText(dossier.getDateSignateureDuPv());
     	AvisDeCEPLabel.setText(dossier.getAvisDe_CEP());
-    	dateEnvoitPvAbhoerEljadidaLabel.setText(dossier.getDateEnvoiDuPVa_LABHOER().toString());
+    	dateEnvoitPvAbhoerEljadidaLabel.setText(dossier.getDateEnvoiDuPVa_LABHOER());
     	AvisAbhoerLabel.setText(dossier.getAvisABHOER());
     	autorisationLabel.setText(dossier.getAutorisation());
     	

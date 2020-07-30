@@ -27,6 +27,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class EnregistrerController implements Initializable {
+	
 	@FXML
 	private Label firstName;
 	@FXML
@@ -148,10 +149,10 @@ public class EnregistrerController implements Initializable {
 			stat.setString(2, LesInfoDuDemandeurController.demandeur.getNom());
 			stat.setString(3, LesInfoDuDemandeurController.demandeur.getPrenom());
 			stat.setString(4, LesInfoDuDemandeurController.demandeur.getCin());
-			stat.setBlob(5, cinFile);
+			stat.setBytes(5, cinFile.readAllBytes());
 			stat.setString(6, LesInfoDuDemandeurController.demandeur.getTypeDemande());
-			stat.setBlob(7, demandeCreusement);
-			stat.setBlob(8, attistation);
+			stat.setBytes(7, demandeCreusement.readAllBytes());
+			stat.setBytes(8, attistation.readAllBytes());
 			stat.setString(9, LesInfoDelImmobilierController.InfoSurImmobilier.getDouar());
 			stat.setString(10, LesInfoDelImmobilierController.InfoSurImmobilier.getCommune());
 			stat.setString(11, LesInfoDelImmobilierController.InfoSurImmobilier.getProvince());
@@ -161,17 +162,17 @@ public class EnregistrerController implements Initializable {
 			stat.setFloat(15, InformationsConcernantPointDeauController.poinDeau.getPlanEau());
 			stat.setString(16, LesInfoDelImmobilierController.InfoSurImmobilier.getDaaira());
 
-			stat.setDate(17, Date.valueOf(LesInfoDuDemandeurController.demandeur.getDateDepotDossier()));
-			stat.setDate(18, Date.valueOf(LesInfoDuDemandeurController.demandeur.getDateDepotDossier()));
-			stat.setDate(19, Date.valueOf(LesInfoDuDemandeurController.demandeur.getDateDepotDossier()));
-			stat.setDate(20, Date.valueOf(LesInfoDuDemandeurController.demandeur.getDateDepotDossier()));
-			stat.setDate(21, Date.valueOf(LesInfoDuDemandeurController.demandeur.getDateDepotDossier()));
+			stat.setString(17, LesInfoDuDemandeurController.demandeur.getDateDepotDossier());
+			stat.setString(18, LesInfoDuDemandeurController.demandeur.getDateDepotDossier());
+			stat.setString(19, LesInfoDuDemandeurController.demandeur.getDateDepotDossier());
+			stat.setString(20, LesInfoDuDemandeurController.demandeur.getDateDepotDossier());
+			stat.setString(21, LesInfoDuDemandeurController.demandeur.getDateDepotDossier());
 			stat.setString(22, "");
-			stat.setDate(23, Date.valueOf(LesInfoDuDemandeurController.demandeur.getDateDepotDossier()));
+			stat.setString(23, LesInfoDuDemandeurController.demandeur.getDateDepotDossier());
 			stat.setString(24, "");
 			stat.setString(25, "");
 			stat.setString(26, LesInfoDelImmobilierController.InfoSurImmobilier.getQuiada());
-			stat.setBlob(27, planImmFile);
+			stat.setBytes(27, planImmFile.readAllBytes());
 			stat.setString(28, LesInfoDelImmobilierController.InfoSurImmobilier.getNomImmobilier());
 			stat.execute();
 
@@ -179,8 +180,8 @@ public class EnregistrerController implements Initializable {
 
 			// e.printStackTrace();
 			System.out.println(e.getMessage());
+			e.printStackTrace();
 		}
-
 		try {
 
 			FXMLLoader loader = new FXMLLoader();
@@ -194,7 +195,7 @@ public class EnregistrerController implements Initializable {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		};
 
 	}
 

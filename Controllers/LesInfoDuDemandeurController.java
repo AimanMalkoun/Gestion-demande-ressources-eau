@@ -3,6 +3,7 @@ package Controllers;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
@@ -105,7 +106,7 @@ public class LesInfoDuDemandeurController implements Initializable{
     		demandeur.setNom(nomIput.getText());
     		demandeur.setPrenom(prenomInput.getText());
     		demandeur.setCin(cinInput.getText());
-    		demandeur.setDateDepotDossier(dateDepotDossierInput.getValue());
+    		demandeur.setDateDepotDossier(dateDepotDossierInput.getValue().toString());
     		demandeur.setTypeDemande(typeDemandeChoice.getValue());
     		demandeur.setCinFile(cinFile);
     		demandeur.setDemandeFile(demandeFile);
@@ -226,7 +227,7 @@ public class LesInfoDuDemandeurController implements Initializable{
 		 
 		//initialiser le champs du date de depot du dossier
 		 if(demandeur.getNom() != null)
-			 dateDepotDossierInput.setValue(demandeur.getDateDepotDossier());
+			 dateDepotDossierInput.setValue(Date.valueOf(demandeur.getDateDepotDossier()).toLocalDate());
 		 else
 			 dateDepotDossierInput.setValue(LocalDate.now());
 		 

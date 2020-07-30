@@ -1,7 +1,6 @@
 package Classes;
 
 import java.sql.Blob;
-import java.time.LocalDate;
 
 public class DossierForDownload {
 	
@@ -14,7 +13,7 @@ public class DossierForDownload {
 	private String nom;
 	private String prenom;
 	private String cin;
-	private LocalDate dateDepotDossier;
+	private String dateDepotDossier;
 	private String typeDemande;
 	private Blob cinFile;
 	private Blob demandeFile;
@@ -36,12 +35,12 @@ public class DossierForDownload {
 	private float planEau;
 	
 	//suivi du dossier attributs
-	private LocalDate dateDepot;
-	private LocalDate dateEnvoiA_LABHOER;
-	private LocalDate dateDebutde_EP;
-	private LocalDate dateFin_EP;
-	private LocalDate dateSignateureDuPv;
-	private LocalDate dateEnvoiDuPVa_LABHOER;
+	private String dateDepot;
+	private String dateEnvoiA_LABHOER;
+	private String dateDebutde_EP;
+	private String dateFin_EP;
+	private String dateSignateureDuPv;
+	private String dateEnvoiDuPVa_LABHOER;
 	
 	private String avisDe_CEP;
 	private String avisABHOER;
@@ -78,7 +77,7 @@ public class DossierForDownload {
 	}
 
 
-	public LocalDate getDateDepotDossier() {
+	public String getDateDepotDossier() {
 		return dateDepotDossier;
 	}
 
@@ -137,32 +136,32 @@ public class DossierForDownload {
 	}
 
 
-	public LocalDate getDateDepot() {
+	public String getDateDepot() {
 		return dateDepot;
 	}
 
 
-	public LocalDate getDateEnvoiA_LABHOER() {
+	public String getDateEnvoiA_LABHOER() {
 		return dateEnvoiA_LABHOER;
 	}
 
 
-	public LocalDate getDateDebutde_EP() {
+	public String getDateDebutde_EP() {
 		return dateDebutde_EP;
 	}
 
 
-	public LocalDate getDateFin_EP() {
+	public String getDateFin_EP() {
 		return dateFin_EP;
 	}
 
 
-	public LocalDate getDateSignateureDuPv() {
+	public String getDateSignateureDuPv() {
 		return dateSignateureDuPv;
 	}
 
 
-	public LocalDate getDateEnvoiDuPVa_LABHOER() {
+	public String getDateEnvoiDuPVa_LABHOER() {
 		return dateEnvoiDuPVa_LABHOER;
 	}
 
@@ -243,7 +242,7 @@ public class DossierForDownload {
 	}
 
 
-	public void setDateDepotDossier(LocalDate dateDepotDossier) {
+	public void setDateDepotDossier(String dateDepotDossier) {
 		this.dateDepotDossier = dateDepotDossier;
 	}
 
@@ -303,32 +302,32 @@ public class DossierForDownload {
 	}
 
 
-	public void setDateDepot(LocalDate dateDepot) {
+	public void setDateDepot(String dateDepot) {
 		this.dateDepot = dateDepot;
 	}
 
 
-	public void setDateEnvoiA_LABHOER(LocalDate dateEnvoiA_LABHOER) {
+	public void setDateEnvoiA_LABHOER(String dateEnvoiA_LABHOER) {
 		this.dateEnvoiA_LABHOER = dateEnvoiA_LABHOER;
 	}
 
 
-	public void setDateDebutde_EP(LocalDate dateDebutde_EP) {
+	public void setDateDebutde_EP(String dateDebutde_EP) {
 		this.dateDebutde_EP = dateDebutde_EP;
 	}
 
 
-	public void setDateFin_EP(LocalDate dateFin_EP) {
+	public void setDateFin_EP(String dateFin_EP) {
 		this.dateFin_EP = dateFin_EP;
 	}
 
 
-	public void setDateSignateureDuPv(LocalDate dateSignateureDuPv) {
+	public void setDateSignateureDuPv(String dateSignateureDuPv) {
 		this.dateSignateureDuPv = dateSignateureDuPv;
 	}
 
 
-	public void setDateEnvoiDuPVa_LABHOER(LocalDate dateEnvoiDuPVa_LABHOER) {
+	public void setDateEnvoiDuPVa_LABHOER(String dateEnvoiDuPVa_LABHOER) {
 		this.dateEnvoiDuPVa_LABHOER = dateEnvoiDuPVa_LABHOER;
 	}
 

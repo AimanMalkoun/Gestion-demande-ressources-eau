@@ -1,6 +1,5 @@
 package Classes;
 
-import java.sql.Date;
 
 public class FolderTable {
 
@@ -8,10 +7,10 @@ public class FolderTable {
 	private String cin;
 	private String nomPrenom;
 	private String typeDemande;
-	private Date dateDepot;
+	private String dateDepot;
 	
 
-	public FolderTable(int id, Date dateDepot, String typeDemande, String cin,  String nomPrenom) {
+	public FolderTable(int id, String dateDepot, String typeDemande, String cin,  String nomPrenom) {
 		this.id = id;
 		this.cin = cin;
 		this.nomPrenom = nomPrenom;
@@ -49,11 +48,11 @@ public class FolderTable {
 		return typeDemande;
 	}
 
-	public Date getDateDepot() {
+	public String getDateDepot() {
 		return dateDepot;
 	}
 
-	public void setDateDepot(Date dateDepot) {
+	public void setDateDepot(String dateDepot) {
 		this.dateDepot = dateDepot;
 	}
 
