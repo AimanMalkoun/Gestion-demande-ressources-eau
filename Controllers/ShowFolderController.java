@@ -81,8 +81,8 @@ public class ShowFolderController{
 					DisplayFolderController nextControler = loader.getController();
 					nextControler.setMessage(query.getInt("IdDossier"));
 					
-					Scene showFolderInfoScene = new Scene(showFolderInfo);
 					Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+					Scene showFolderInfoScene = new Scene(showFolderInfo, primaryStage.getWidth(), primaryStage.getHeight());
 					primaryStage.setScene(showFolderInfoScene);
 				}
 				
@@ -102,16 +102,17 @@ public class ShowFolderController{
     @FXML
     void changePassword(ActionEvent event) throws IOException {
     	Parent ChangePasswordRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/ChangePassword.fxml"));
-		Scene ChangePasswordScene = new Scene(ChangePasswordRoot);
 		Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		Scene ChangePasswordScene = new Scene(ChangePasswordRoot, primaryStage.getWidth(), primaryStage.getHeight());
 		primaryStage.setScene(ChangePasswordScene);
     }
     
     @FXML
     void goToHome(ActionEvent event) throws IOException {
     	Parent dashboardRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/Dashboard.fxml"));
-		Scene dashboardScene = new Scene(dashboardRoot);
+    	
 		Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		Scene dashboardScene = new Scene(dashboardRoot, primaryStage.getWidth(), primaryStage.getHeight());
 		primaryStage.setScene(dashboardScene);
     }
     

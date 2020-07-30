@@ -78,7 +78,6 @@ public class ModifyFolder2Controller implements Initializable{
     void searchForFile(MouseEvent event) {
     	
     	if(!cinInputSearch.getText().isEmpty()) {
-    		dataTable();
         	tableInfo.setItems(getFolderInfo(cinInputSearch.getText()));
     	}
     	
@@ -90,10 +89,12 @@ public class ModifyFolder2Controller implements Initializable{
     
     @FXML
     void disconnect(ActionEvent event) throws IOException {
+    	
     	Parent root = FXMLLoader.load(getClass().getResource("../Fxml/LoginStage.fxml"));
     	Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     	Scene login = new Scene(root, primaryStage.getWidth(), primaryStage.getHeight());
     	primaryStage.setScene(login);
+    	
     }
     
     @FXML
@@ -104,7 +105,6 @@ public class ModifyFolder2Controller implements Initializable{
     @FXML
     void showAllFiles(MouseEvent event) {
     	
-    	dataTable();
     	tableInfo.setItems(getFolderInfo());
     	
     }
@@ -112,7 +112,9 @@ public class ModifyFolder2Controller implements Initializable{
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
+
+    	setTableColumns();
+    	
 	}
 	
 
@@ -178,8 +180,8 @@ public class ModifyFolder2Controller implements Initializable{
 	            	
 	        	final TableRow<FolderTable>row = new TableRow<>();  
 	        	final ContextMenu contextMenu = new ContextMenu();  
-	        	final MenuItem modifyMenuItem = new MenuItem("\u062a\u0639\u062f\u064a\u0644 \u0627\u0644\u0645\u062c\u0644\u062f");  
-	        	final MenuItem removeMenuItem = new MenuItem("\u062d\u0630\u0641 \u0627\u0644\u0645\u062c\u0644\u062f");  
+	        	final MenuItem modifyMenuItem = new MenuItem("\u062a\u0639\u062f\u064a\u0644 \u0627\u0644\u0645\u0644\u0641");  
+	        	final MenuItem removeMenuItem = new MenuItem("\u062d\u0630\u0641 \u0627\u0644\u0645\u0644\u0641");  
 	        
 	        
 	        		//handle action when you click on remove in the menu
@@ -296,8 +298,8 @@ public class ModifyFolder2Controller implements Initializable{
 		
 	}
 	
-	private void dataTable() {
-    	idColumn.setText("\u0631\u0642\u0645 \u0627\u0644\u0645\u062c\u0644\u062f");
+	private void setTableColumns() {
+    	idColumn.setText("\u0631\u0642\u0645 \u0627\u0644\u0645\u0644\u0641");
     	idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
     	
     	dateDepot.setText("\u062a\u0627\u0631\u064a\u062e \u0625\u064a\u062f\u0627\u0639 \u0627\u0644\u0645\u0644\u0641");

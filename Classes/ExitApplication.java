@@ -22,11 +22,13 @@ public class ExitApplication {
 		window.setResizable(false);
 		window.initModality(Modality.APPLICATION_MODAL);
 
-		Button yesButton = new Button("\u0646\u0639\u0645");
-		Button noButton = new Button("\u0644\u0627");
-		Label message1 = new Label();
-
-		message1.setAlignment(Pos.CENTER);
+		Button yesButton = new Button("\u0646\u0639\u0645"), noButton = new Button("\u0644\u0627");
+		
+		yesButton.setStyle("-fx-background-color: #2b4067; -fx-text-fill: white;");
+		yesButton.setPrefWidth(40);
+		noButton.setStyle("-fx-background-color: #2b4067; -fx-text-fill: white;");
+		noButton.setPrefWidth(40);;
+		
 
 		yesButton.setOnMouseClicked(e -> {
 			answer = true;
@@ -36,24 +38,30 @@ public class ExitApplication {
 			answer = false;
 			window.close();
 		});
-		message1.setText(
-				"\u0647\u0644 \u062d\u0642\u0627 \u062a\u0631\u064a\u062f \u0627\u0644\u062e\u0631\u0648\u062c \u061f");
-
+		
+		
+		Label message1 = new Label();
+		message1.setText("\u0647\u0644 \u062d\u0642\u0627 \u062a\u0631\u064a\u062f \u0627\u0644\u062e\u0631\u0648\u062c \u061f");
+		message1.setAlignment(Pos.CENTER);
+		message1.setStyle("-fx-text-fill: #2b4067; -fx-font-size: 14px");
+		
+		
 		HBox hbox = new HBox(50);
 		hbox.getChildren().addAll(noButton, yesButton);
 		hbox.setAlignment(Pos.CENTER);
 		
-		VBox root = new VBox(30);
+		VBox root = new VBox(15);
 		root.getChildren().addAll(message1, hbox);
 
 		root.setAlignment(Pos.CENTER);
 		root.setPadding(new Insets(25, 25, 25, 25));
-		Scene scene = new Scene(root, 200, 200);
+		Scene scene = new Scene(root);
 		window.setScene(scene);
 		window.setTitle("\u0627\u0644\u062e\u0631\u0648\u062c \u0645\u0646 \u0627\u0644\u062a\u0637\u0628\u064a\u0642");
 		window.getIcons().add(new Image("/Image/Logo5.png"));
 		window.showAndWait();
 		window.centerOnScreen();
+		
 		return answer;
 	}
 
