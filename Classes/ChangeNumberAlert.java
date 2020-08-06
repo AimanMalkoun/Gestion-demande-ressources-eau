@@ -43,7 +43,7 @@ public class ChangeNumberAlert {
 					window.close();
 				}catch(Exception exception) {
 					input.setStyle("-fx-border-color: red;");
-					textError.setText("svp inserez un valide nombre");
+					textError.setText("\u0627\u0644\u0645\u0631\u062c\u0648 \u0625\u062f\u062e\u0627\u0627\u0644 \u0623\u0631\u0642\u0627\u0645");
 				}
 			}else {
 				input.setStyle("-fx-border-color: red;");

@@ -27,8 +27,8 @@ public class ChangeFileAlert {
 		Button input = new Button("\u0627\u062e\u062a\u064a\u0627\u0631 \u0645\u0644\u0641");
 		input.setPrefSize(150, 30);
 
-		Label path = new Label("");
-		path.setStyle("-fx-font-color: red");
+		Label fileName = new Label("");
+		fileName.setStyle("-fx-font-color: red");
 		
 		//choose file
 		input.setOnMouseClicked(e -> {
@@ -37,7 +37,7 @@ public class ChangeFileAlert {
 			File file = ImagesOrPdfChooser.result;
 				
 				if(file != null) {
-					path.setText(file.getName());
+					fileName.setText(file.getName());
 					result = file;
 				}
 				
@@ -68,7 +68,7 @@ public class ChangeFileAlert {
 		layout.setAlignment(Pos.CENTER);
 		
 		VBox root = new VBox(10);
-		root.getChildren().addAll(input, path, layout);
+		root.getChildren().addAll(input, fileName, layout);
 		root.setAlignment(Pos.CENTER);
 		root.setPadding(new Insets(25, 25, 15, 25));
 		
