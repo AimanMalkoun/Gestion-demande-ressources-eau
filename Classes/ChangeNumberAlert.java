@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -55,6 +56,25 @@ public class ChangeNumberAlert {
 		annulerButton.setOnMouseClicked(e -> {
 			result = 0;
 			window.close();
+		});
+		
+		input.setOnKeyPressed(event ->{
+			
+			if(event.getCode().equals(KeyCode.ENTER)) {
+				if(!input.getText().isEmpty()) {
+					try {
+						result = Float.parseFloat(input.getText());
+						window.close();
+					}catch(Exception exception) {
+						input.setStyle("-fx-border-color: red;");
+						textError.setText("\u0627\u0644\u0645\u0631\u062c\u0648 \u0625\u062f\u062e\u0627\u0627\u0644 \u0623\u0631\u0642\u0627\u0645");
+					}
+				}else {
+					input.setStyle("-fx-border-color: red;");
+					textError.setText("\u0627\u0644\u0645\u0631\u062c\u0648 \u0645\u0644\u0626 \u0627\u0644\u062e\u0627\u0646\u0629 \u0628\u0645\u0627 \u064a\u0646\u0627\u0633\u0628\u0647\u0627");
+				}
+			}
+			
 		});
 		
 		window.setOnCloseRequest(e -> {

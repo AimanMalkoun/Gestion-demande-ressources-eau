@@ -46,12 +46,12 @@ public class ChangeDateAlert {
 		});
 
 		annulerButton.setOnMouseClicked(e -> {
-			result = selectedValue;
+			result = null;
 			window.close();
 		});
 
 		window.setOnCloseRequest(e -> {
-			result = selectedValue;
+			result = null;
 		});
 
 		// Creating scene

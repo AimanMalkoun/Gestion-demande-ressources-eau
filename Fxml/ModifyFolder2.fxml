@@ -19,7 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="rootPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="473.0" minWidth="800.0" prefHeight="580.0" prefWidth="1130.0" stylesheets="@../GestionDemandeEau/application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ModifyFolder2Controller">
+<BorderPane fx:id="rootPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="473.0" minWidth="800.0" prefHeight="580.0" prefWidth="1130.0" stylesheets="@../GestionDemandeEau/application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ModifyFolder2Controller">
    <center>
       <ScrollPane fitToWidth="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <content>
@@ -36,7 +36,7 @@
                      <children>
                         <HBox alignment="CENTER" fillHeight="false" prefHeight="58.0" prefWidth="772.0" spacing="175.0">
                            <children>
-                              <TextField fx:id="cinInputSearch" alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="162.0" promptText="رقم بطاقة التعريف الوطنية" />
+                              <TextField fx:id="cinInputSearch" alignment="CENTER_RIGHT" onKeyPressed="#handlEnterAction" prefHeight="35.0" prefWidth="162.0" promptText="رقم بطاقة التعريف الوطنية" />
                               <Button id="switchButton" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#searchForFile" prefHeight="35.0" prefWidth="135.0" style="-fx-background-color: #2b4067;" text="ابحث عن ملف" textFill="WHITE">
                                  <font>
                                     <Font size="14.0" />
@@ -45,7 +45,7 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </Button>
-                              <Button id="switchButton" alignment="CENTER" mnemonicParsing="false" onAction="#showFolderUsingCin" onMouseClicked="#showAllFiles" prefHeight="35.0" prefWidth="135.0" style="-fx-background-color: #2b4067;" text="إظهار كافة الملفات" textFill="WHITE">
+                              <Button id="switchButton" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#showAllFiles" prefHeight="35.0" prefWidth="135.0" style="-fx-background-color: #2b4067;" text="إظهار كافة الملفات" textFill="WHITE">
                                  <font>
                                     <Font size="14.0" />
                                  </font>

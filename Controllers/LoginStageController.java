@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 
 import Connectivity.ConnectionClass;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -18,6 +19,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -29,8 +32,36 @@ public class LoginStageController  implements Initializable{
 	@FXML
 	private Label msgError;
 
+	 @FXML
+	 void handleEnterAcion(KeyEvent event) throws SQLException, IOException {
+		 if(event.getCode().equals(KeyCode.ENTER))
+			 loginIn(event);
+			 
+	 }
+	
 	@FXML
 	void login(ActionEvent event) throws SQLException, IOException {
+		
+		loginIn(event);
+		
+	}
+
+    @FXML
+	void forgotPassword(MouseEvent event) throws IOException {
+    	
+    	Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    	Parent root = FXMLLoader.load(getClass().getResource("../Fxml/ForgotPassWord.fxml"));
+    	Scene forgotPass = new Scene(root, primaryStage.getWidth(), primaryStage.getHeight());
+    	primaryStage.setScene(forgotPass);
+    }
+    
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		
+	}
+	
+	public void loginIn(Event event) throws SQLException, IOException {
+		
 		ConnectionClass conn = new ConnectionClass();
 		Connection connection = conn.getConnection();
 		Statement statement = connection.createStatement();
@@ -51,20 +82,6 @@ public class LoginStageController  implements Initializable{
 			msgError.setText("\u0643\u0644\u0645\u0629 \u0627\u0644\u0645\u0631\u0648\u0631 \u0644\u064a\u0633\u062a \u0635\u062d\u064a\u062d\u0629");
 		
 		}
-
-	}
-
-    @FXML
-	void forgotPassword(MouseEvent event) throws IOException {
-    	
-    	Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    	Parent root = FXMLLoader.load(getClass().getResource("../Fxml/ForgotPassWord.fxml"));
-    	Scene forgotPass = new Scene(root, primaryStage.getWidth(), primaryStage.getHeight());
-    	primaryStage.setScene(forgotPass);
-    }
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		
 	}
 
 }

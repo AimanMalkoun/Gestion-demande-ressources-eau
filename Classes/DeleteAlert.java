@@ -52,7 +52,7 @@ public class DeleteAlert {
 		
 		Scene scene = new Scene(root);
 		window.setScene(scene);
-		window.setTitle("\u062a\u0623\u0643\u064a\u062f \u062d\u0630\u0641 \u0627\u0644\u0645\u062c\u0644\u062f");
+		window.setTitle("\u062a\u0623\u0643\u064a\u062f \u062d\u0630\u0641 \u0627\u0644\u0645\u0644\u0641");
 		window.getIcons().add(new Image("/Image/Logo5.png"));
 		window.showAndWait();
 		window.centerOnScreen();
