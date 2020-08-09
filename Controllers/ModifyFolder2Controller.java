@@ -23,6 +23,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
@@ -66,6 +67,9 @@ public class ModifyFolder2Controller implements Initializable{
     @FXML
     void goToHome(ActionEvent event) throws IOException {
 
+		if (th.isAlive())
+			th.stop();
+		
     	Parent root = FXMLLoader.load(getClass().getResource("../Fxml/Dashboard.fxml"));
     	Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     	Scene dashBoard = new Scene(root, primaryStage.getWidth(), primaryStage.getHeight());
@@ -98,7 +102,10 @@ public class ModifyFolder2Controller implements Initializable{
     
     @FXML
     void disconnect(ActionEvent event) throws IOException {
-    	
+
+		if (th.isAlive())
+			th.stop();
+		
     	Parent root = FXMLLoader.load(getClass().getResource("../Fxml/LoginStage.fxml"));
     	Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     	Scene login = new Scene(root, primaryStage.getWidth(), primaryStage.getHeight());
@@ -240,6 +247,9 @@ public class ModifyFolder2Controller implements Initializable{
 		//this method riderects to modifyFolderIni.fxml in order to modify folder in the dataBase
 		private void modifyRow(TableRow<FolderTable> row, ActionEvent event) {
 
+			if (th.isAlive())
+				th.stop();
+			
 			tableInfo.getItems().clear();
 			
 			try {
@@ -283,12 +293,12 @@ public class ModifyFolder2Controller implements Initializable{
 		    							while(result.next())
 		    							{
 						
-		    								String sql = "SELECT `nom`, `prenom` , `cin`, `typeDemande`, `DateDepot` FROM `dossier` WHERE `IdDossier`= " + result.getInt("IdDossier");
+		    								String sql = "SELECT `nom`, `prenom` , `cin`, `typeDemande`, `idDossierYear` FROM `dossier` WHERE `IdDossier`= " + result.getInt("IdDossier");
 						
 		    								Statement statement2 = conection.getConnection().createStatement();
 		    								ResultSet result2 = statement2.executeQuery(sql);
-		    								tableInfo.getItems().add( new FolderTable(result.getInt("IdDossier"), result2.getString("DateDepot"), result2.getString("typeDemande"), result2.getString("cin"),  result2.getString("nom") + " " + result2.getString("prenom")) );
-						
+		    								tableInfo.getItems().add( new FolderTable(result.getInt("idDossier"), result2.getString("idDossierYear"), result2.getString("typeDemande"), result2.getString("cin"),  result2.getString("nom") + " " + result2.getString("prenom")) );
+		    								
 		    							}
 		    							System.out.println("test");
 		    						} catch (SQLException e) {
@@ -305,7 +315,7 @@ public class ModifyFolder2Controller implements Initializable{
 		th.start();
 	}
 	
-	private void getFolderInfo(String cin){
+	private void getFolderInfo(String idDossierYear){
 		
 		tableInfo.getItems().clear();
 		
@@ -317,7 +327,7 @@ public class ModifyFolder2Controller implements Initializable{
 			result = statement.executeQuery("SELECT `IdDossier`,`nom`, `prenom` , `cin`, `typeDemande`, `idDossierYear` FROM `dossier` WHERE idDossierYear = '" + idDossierYear + "'");
 			while(result.next())
 			{
-				tableInfo.getItems().add( new FolderTable(result.getInt("IdDossier"),result.getString("DateDepot") ,result.getString("typeDemande"), result.getString("cin"),  result.getString("nom") + " " + result.getString("prenom")) );
+				tableInfo.getItems().add( new FolderTable(result.getInt("IdDossier"),result.getString("idDossierYear") ,result.getString("typeDemande"), result.getString("cin"),  result.getString("nom") + " " + result.getString("prenom")) );
 				
 			}
 		} catch (SQLException e) {

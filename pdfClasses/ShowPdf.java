@@ -13,7 +13,7 @@ public class ShowPdf {
 	
 	static int pageCounte = 0;
 	
-	public static void display2(String pdfPath, String title) {
+	public static void display(String pdfPath, String title) {
 		
 		try {
 
