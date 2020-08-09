@@ -22,7 +22,6 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.ContextMenu;
@@ -53,9 +52,6 @@ public class ModifyFolder2Controller implements Initializable{
     
 	@FXML
     private TextField cinInputSearch;
-
-    @FXML
-    private TableColumn<FolderTable, Integer> idColumn;
 
     @FXML
     private TableColumn<FolderTable, String> cinColumn;
@@ -318,7 +314,7 @@ public class ModifyFolder2Controller implements Initializable{
 		try {
 			Statement statement = conection.getConnection().createStatement();
 	    	ResultSet result;
-			result = statement.executeQuery("SELECT `IdDossier`,`nom`, `prenom` , `cin`, `typeDemande`, `DateDepot` FROM `dossier` WHERE cin = '" + cin + "'");
+			result = statement.executeQuery("SELECT `IdDossier`,`nom`, `prenom` , `cin`, `typeDemande`, `idDossierYear` FROM `dossier` WHERE idDossierYear = '" + idDossierYear + "'");
 			while(result.next())
 			{
 				tableInfo.getItems().add( new FolderTable(result.getInt("IdDossier"),result.getString("DateDepot") ,result.getString("typeDemande"), result.getString("cin"),  result.getString("nom") + " " + result.getString("prenom")) );
@@ -332,10 +328,8 @@ public class ModifyFolder2Controller implements Initializable{
 	}
 	
 	private void setTableColumns() {
-    	idColumn.setText("\u0631\u0642\u0645 \u0627\u0644\u0645\u0644\u0641");
-    	idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-    	
-    	dateDepot.setText("\u062a\u0627\u0631\u064a\u062e \u0625\u064a\u062f\u0627\u0639 \u0627\u0644\u0645\u0644\u0641");
+
+    	dateDepot.setText("\u0631\u0642\u0645 \u0627\u0644\u0645\u0644\u0641");
     	dateDepot.setCellValueFactory(new PropertyValueFactory<>("dateDepot"));
 
     	cinColumn.setText("\u0631\u0642\u0645 \u0628\u0637\u0627\u0642\u0629 \u0627\u0644\u062a\u0639\u0631\u064a\u0641 \u0627\u0644\u0648\u0637\u0646\u064a\u0629");
