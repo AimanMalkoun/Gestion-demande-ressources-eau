@@ -226,7 +226,7 @@ public class LesInfoDuDemandeurController implements Initializable{
 			 cinInput.setText(demandeur.getCin());
 		 
 		//initialiser le champs du date de depot du dossier
-		 if(demandeur.getNom() != null)
+		 if(demandeur.getDateDepotDossier() != null)
 			 dateDepotDossierInput.setValue(Date.valueOf(demandeur.getDateDepotDossier()).toLocalDate());
 		 else
 			 dateDepotDossierInput.setValue(LocalDate.now());

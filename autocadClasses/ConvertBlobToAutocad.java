@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.SQLException;
 
+
 import pdfClasses.ConvertBlobToPdf;
 
 public class ConvertBlobToAutocad {
@@ -18,7 +19,6 @@ public class ConvertBlobToAutocad {
 		try {
 			
 			path = ConvertBlobToPdf.class.getClassLoader().getResource("tempFiles").getPath() + "/" +filename;
-			
 			File tempFile = new File(path);
 			FileOutputStream output = new FileOutputStream(tempFile);
 			

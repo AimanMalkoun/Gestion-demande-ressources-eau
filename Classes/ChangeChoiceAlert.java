@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -42,7 +43,15 @@ public class ChangeChoiceAlert {
 			result = null;
 			window.close();
 		});
-				
+		
+		input.setOnKeyPressed(event -> {
+
+			if(event.getCode().equals(KeyCode.ENTER)) {
+				result = input.getValue();
+				window.close();
+			}
+		});
+		
 		window.setOnCloseRequest(e -> {
 			result = null;
 		});
