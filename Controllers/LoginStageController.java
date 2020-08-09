@@ -28,7 +28,7 @@ public class LoginStageController  implements Initializable{
 	private PasswordField password;
 	@FXML
 	private Label msgError;
-
+	
 	@FXML
 	void login(ActionEvent event) throws SQLException, IOException {
 		ConnectionClass conn = new ConnectionClass();
@@ -53,7 +53,7 @@ public class LoginStageController  implements Initializable{
 		}
 
 	}
-
+	
     @FXML
 	void forgotPassword(MouseEvent event) throws IOException {
     	
