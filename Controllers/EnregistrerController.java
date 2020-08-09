@@ -6,11 +6,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Calendar;
 import java.util.ResourceBundle;
 
 import Connectivity.ConnectionClass;
@@ -75,6 +75,7 @@ public class EnregistrerController implements Initializable {
 	@FXML
 	BorderPane borderPane;
 	public static int idDossier = 20200000;
+	public static String idDossierYear;
 
 	// Event Listener on Button[#modifyButton].onAction
 	@FXML
@@ -113,7 +114,10 @@ public class EnregistrerController implements Initializable {
 		String sqlId = "SELECT MAX(IdDossier)  FROM dossier";
 		ResultSet result = statId.executeQuery(sqlId);
 		if (result.next()) {
+			int year = Calendar.getInstance().get(Calendar.YEAR);
 			idDossier = result.getInt(1) + 1;
+			idDossierYear =  idDossier + "/" + year ; 
+			
 		}
 
 		/* Determination de path de chaque fichier */
@@ -138,11 +142,11 @@ public class EnregistrerController implements Initializable {
 				+ " `demandeCreusement`, `attistationPocession`, `Douar`, `Commune`, `Province`, `localisationPointEau`"
 				+ ", `Debit`, `Profendeur`, `PlanDeau`, `daaira`, `DateDepot`, `dateEnvoiABHOER`, "
 				+ "`dateDebut_EP`, `dateFin_EP`, `dateSignature_PV`, `AvisDeCEP`, `DateEnvoiDuPV_ABHOER`, "
-				+ "`AvisABHOER`, `Autorisation`, `qiyada`, `planImmo`, `nomImmobilier`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, "
-				+ "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				+ "`AvisABHOER`, `Autorisation`, `qiyada`, `planImmo`, `nomImmobilier`, `idDossierYear`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, "
+				+ "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
 
-			/* l'insertion des el�ments dans la base de donn�es */
+			/* l'insertion des el�ments dans la base de donnees */
 
 			PreparedStatement stat = connection.prepareStatement(sql);
 			stat.setInt(1, idDossier);
@@ -174,6 +178,7 @@ public class EnregistrerController implements Initializable {
 			stat.setString(26, LesInfoDelImmobilierController.InfoSurImmobilier.getQuiada());
 			stat.setBytes(27, planImmFile.readAllBytes());
 			stat.setString(28, LesInfoDelImmobilierController.InfoSurImmobilier.getNomImmobilier());
+			stat.setString(29, idDossierYear);
 			stat.execute();
 
 		} catch (SQLException e) {
