@@ -2,6 +2,7 @@ package Controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -14,7 +15,10 @@ import Connectivity.ConnectionClassDossier;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -22,12 +26,15 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ContextMenu;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -35,6 +42,8 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 
 public class ModifyFolder2Controller implements Initializable{
+	
+	Thread th = new Thread();
 	
 	@FXML
     private BorderPane rootPane;
@@ -56,13 +65,11 @@ public class ModifyFolder2Controller implements Initializable{
     private TableColumn<FolderTable, String> dateDepot;
 
     @FXML
-    void showFolderUsingCin(ActionEvent event) {
-
-    }
-    
-    @FXML
     void goToHome(ActionEvent event) throws IOException {
 
+		if (th.isAlive())
+			th.stop();
+		
     	Parent root = FXMLLoader.load(getClass().getResource("../Fxml/Dashboard.fxml"));
     	Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     	Scene dashBoard = new Scene(root, primaryStage.getWidth(), primaryStage.getHeight());
@@ -72,19 +79,33 @@ public class ModifyFolder2Controller implements Initializable{
     @FXML
     void searchForFile(MouseEvent event) {
     	
-    	if(!cinInputSearch.getText().isEmpty()) {
-        	tableInfo.setItems(getFolderInfo(cinInputSearch.getText()));
-    	}
+    	search();
     	
     }
-    @FXML
-    void searchFile(ActionEvent event) {
 
+    @FXML
+    void handlEnterAction(KeyEvent event) {
+
+    	if(event.getCode().equals(KeyCode.ENTER))
+    		search();
+    	
     }
+    
+    
+    private void search() {
+
+    	if(!cinInputSearch.getText().isEmpty()) {
+        	getFolderInfo(cinInputSearch.getText());
+    	}
+    }
+    
     
     @FXML
     void disconnect(ActionEvent event) throws IOException {
-    	
+
+		if (th.isAlive())
+			th.stop();
+		
     	Parent root = FXMLLoader.load(getClass().getResource("../Fxml/LoginStage.fxml"));
     	Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     	Scene login = new Scene(root, primaryStage.getWidth(), primaryStage.getHeight());
@@ -100,7 +121,7 @@ public class ModifyFolder2Controller implements Initializable{
     @FXML
     void showAllFiles(MouseEvent event) {
     	
-    	tableInfo.setItems(getFolderInfo());
+    	getFolderInfo();
     	
     }
 	
@@ -109,6 +130,7 @@ public class ModifyFolder2Controller implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
     	setTableColumns();
+    	tableInfo.setPlaceholder(new Label(""));
     	
 	}
 	
@@ -158,7 +180,7 @@ public class ModifyFolder2Controller implements Initializable{
 			primaryStage.setScene(showFolderScene);
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 		
@@ -225,6 +247,11 @@ public class ModifyFolder2Controller implements Initializable{
 		//this method riderects to modifyFolderIni.fxml in order to modify folder in the dataBase
 		private void modifyRow(TableRow<FolderTable> row, ActionEvent event) {
 
+			if (th.isAlive())
+				th.stop();
+			
+			tableInfo.getItems().clear();
+			
 			try {
 
 				FXMLLoader loader= new FXMLLoader();
@@ -239,7 +266,7 @@ public class ModifyFolder2Controller implements Initializable{
 				primaryStage.setScene(modifyFolderScene);
 
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 			
@@ -247,31 +274,50 @@ public class ModifyFolder2Controller implements Initializable{
 
 	
 	//this method return the table items as observabaleList of type FolderTable
-	private ObservableList<FolderTable> getFolderInfo(){
-		ObservableList<FolderTable> folders = FXCollections.observableArrayList();
 		
-		ConnectionClass conection =  new ConnectionClass(); 
-    	
-		try {
-			Statement statement = conection.getConnection().createStatement();
-	    	ResultSet result;
-			result = statement.executeQuery("SELECT `IdDossier`,`nom`, `prenom` , `cin`, `typeDemande`, `idDossierYear` FROM `dossier` ORDER BY IdDossier DESC");
-			while(result.next())
-			{
+	private void getFolderInfo(){
+		
+		if (th.isAlive())
+			th.stop();
+		
+		tableInfo.getItems().clear();
+		th = new Thread(new Task<Object>() {
+		    					@Override protected Object call() throws Exception {
 				
-				folders.add( new FolderTable(result.getInt("idDossier"), result.getString("idDossierYear"), result.getString("typeDemande"), result.getString("cin"),  result.getString("nom") + " " + result.getString("prenom")) );
-				
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		return folders;
-		
+		    						ConnectionClass conection =  new ConnectionClass(); 
+		    	
+		    						try {
+		    							Statement statement = conection.getConnection().createStatement();
+		    							ResultSet result;
+		    							result = statement.executeQuery("SELECT `IdDossier` FROM `dossier` ORDER BY IdDossier DESC");
+		    							while(result.next())
+		    							{
+						
+		    								String sql = "SELECT `nom`, `prenom` , `cin`, `typeDemande`, `idDossierYear` FROM `dossier` WHERE `IdDossier`= " + result.getInt("IdDossier");
+						
+		    								Statement statement2 = conection.getConnection().createStatement();
+		    								ResultSet result2 = statement2.executeQuery(sql);
+		    								tableInfo.getItems().add( new FolderTable(result.getInt("idDossier"), result2.getString("idDossierYear"), result2.getString("typeDemande"), result2.getString("cin"),  result2.getString("nom") + " " + result2.getString("prenom")) );
+		    								
+		    							}
+		    							System.out.println("test");
+		    						} catch (SQLException e) {
+		    							e.printStackTrace();
+		    						}
+		    						
+		    						return null;
+		    					}
+					}
+				);
+
+		th.setDaemon(true);
+
+		th.start();
 	}
 	
-	private ObservableList<FolderTable> getFolderInfo(String idDossierYear){
-		ObservableList<FolderTable> folders = FXCollections.observableArrayList();
+	private void getFolderInfo(String idDossierYear){
+		
+		tableInfo.getItems().clear();
 		
 		ConnectionClass conection =  new ConnectionClass(); 
     	
@@ -281,15 +327,13 @@ public class ModifyFolder2Controller implements Initializable{
 			result = statement.executeQuery("SELECT `IdDossier`,`nom`, `prenom` , `cin`, `typeDemande`, `idDossierYear` FROM `dossier` WHERE idDossierYear = '" + idDossierYear + "'");
 			while(result.next())
 			{
-				
-				folders.add( new FolderTable(result.getInt("idDossier"), result.getString("idDossierYear") ,result.getString("typeDemande"), result.getString("cin"),  result.getString("nom") + " " + result.getString("prenom")) );
+				tableInfo.getItems().add( new FolderTable(result.getInt("IdDossier"),result.getString("idDossierYear") ,result.getString("typeDemande"), result.getString("cin"),  result.getString("nom") + " " + result.getString("prenom")) );
 				
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
-		return folders;
 		
 	}
 	
@@ -306,6 +350,7 @@ public class ModifyFolder2Controller implements Initializable{
     	
     	typeDemandeCl.setText("\u0646\u0648\u0639 \u0627\u0644\u0637\u0644\u0628");
     	typeDemandeCl.setCellValueFactory(new PropertyValueFactory<>("typeDemande"));
+    	
 	} 
 	
 }

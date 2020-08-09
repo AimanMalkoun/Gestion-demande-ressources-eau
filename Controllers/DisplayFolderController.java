@@ -159,27 +159,31 @@ public class DisplayFolderController implements Initializable {
 	    }
     
     @FXML
-    private void displayFile(MouseEvent event) throws PdfException {
+    private void displayFile(MouseEvent event) throws PdfException, IOException {
 
     	if(event.getSource() == attestationFileButton) {
     		
-    		String path =ConvertBlobToPdf.getPdfFromBlob(dossier.getAttestationDePocession(), "attestationFile.pdf");
-    		ShowPdf.display2(path, "attestationFile.pdf");
+    		String path = ConvertBlobToPdf.getPdfFromBlob(dossier.getAttestationDePocession(), "attestationFile.pdf");
+			Desktop.getDesktop().open(new File(path));
+    		//ShowPdf.display(path, "attestationFile.pdf");
     		
     	}else if(event.getSource() == demandeFileButton) {
     		
     		String path =ConvertBlobToPdf.getPdfFromBlob(dossier.getDemandeFile(), "demandeFile.pdf");
-    		ShowPdf.display2(path, "demandeFile.pdf");
+			Desktop.getDesktop().open(new File(path));
+    		//ShowPdf.display(path, "demandeFile.pdf");
     		
     	}else if(event.getSource() == cinFileButton) {
     		
     		String path =ConvertBlobToPdf.getPdfFromBlob(dossier.getCinFile(), "CIN.pdf");
-    		ShowPdf.display2(path, "CIN.pdf");
+			Desktop.getDesktop().open(new File(path));
+    		//ShowPdf.display(path, "CIN.pdf");
     		
     	}else if(event.getSource() == planImmobilierFileButton) {
     		
     		String path =ConvertBlobToPdf.getPdfFromBlob(dossier.getPlanImmobilier(), "planEauFile.pdf");
-    		ShowPdf.display2(path, "planEauFile.pdf");
+			Desktop.getDesktop().open(new File(path));
+    		//ShowPdf.display(path, "planEauFile.pdf");
     		
     	}
     	
@@ -285,17 +289,17 @@ public class DisplayFolderController implements Initializable {
 			 */
 			Paragraph para4 = new Paragraph(30);
 			para4.add(new Phrase("\u062a\u0627\u0631\u064a\u062e \u0625\u0631\u0633\u0627\u0644 \u0627\u0644\u0645\u0644\u0641 \u0625\u0644\u0649 \u0645\u0646\u062f\u0648\u0628\u064a\u0629 \u0648\u0643\u0627\u0644\u0629 \u0627\u0644\u062d\u0648\u0636 \u0627\u0644\u0645\u0627\u0626\u064a \u0644\u0627\u0645 \u0627\u0644\u0631\u0628\u064a\u0639 \u0628\u0627\u0644\u062c\u062f\u064a\u062f\u0629 : ", normal));
-			para4.add(new Phrase(dateDenvoiAlabhouerEljaidaLabel.getText() + "\n", big0));
+			para4.add(new Phrase((dateDenvoiAlabhouerEljaidaLabel.getText().equals("") ? "XXXX-XX-XX" : dateDenvoiAlabhouerEljaidaLabel.getText()) + "\n", big0));
 			para4.add(new Phrase("\u062a\u0627\u0631\u064a\u062e \u0628\u062f\u0627\u064a\u0629 \u0627\u0644\u0628\u062d\u062b \u0627\u0644\u0639\u0644\u0646\u064a : ", normal));
-			para4.add(new Phrase(dateDebutEnquetePublicLabel.getText() + "\n", big0));
+			para4.add(new Phrase((dateDebutEnquetePublicLabel.getText().equals("") ? "XXXX-XX-XX" : dateDebutEnquetePublicLabel.getText()) + "\n", big0));
 			para4.add(new Phrase("\u062a\u0627\u0631\u064a\u062e \u0646\u0647\u0627\u064a\u0629 \u0627\u0644\u0628\u062d\u062b \u0627\u0644\u0639\u0644\u0646\u064a : ", normal));
-			para4.add(new Phrase(dateFinEnquetePublicLabel.getText() + "\n", big0));
+			para4.add(new Phrase((dateFinEnquetePublicLabel.getText().equals("") ? "XXXX-XX-XX" : dateFinEnquetePublicLabel.getText()) + "\n", big0));
 			para4.add(new Phrase("\u062a\u0627\u0631\u064a\u062e \u0627\u0645\u0636\u0627\u0621 \u0627\u0644\u0645\u062d\u0636\u0631 \u0645\u0646 \u0637\u0631\u0641 \u0644\u062c\u0646\u0629 \u0627\u0644\u0628\u062d\u062b \u0627\u0644\u0639\u0644\u0646\u064a : ", normal));
-			para4.add(new Phrase(dateSignaturPVparCEPLabel.getText() + "\n", big0));
+			para4.add(new Phrase((dateSignaturPVparCEPLabel.getText().equals("") ? "XXXX-XX-XX" : dateSignaturPVparCEPLabel.getText()) + "\n", big0));
 			para4.add(new Phrase("\u0631\u0623\u064a \u0644\u062c\u0646\u0629 \u0627\u0644\u0628\u062d\u062b \u0627\u0644\u0639\u0644\u0646\u064a : ", normal));
 			para4.add(new Phrase(AvisDeCEPLabel.getText() + "\n", big0));
 			para4.add(new Phrase("\u062a\u0627\u0631\u064a\u062e \u0625\u0631\u0633\u0627\u0644 \u0627\u0644\u0645\u062d\u0636\u0631 \u0625\u0644\u0649 \u0645\u0646\u062f\u0648\u0628\u064a\u0629 \u0648\u0643\u0627\u0644\u0629 \u0627\u0644\u062d\u0648\u0636 \u0627\u0644\u0645\u0627\u0626\u064a \u0644\u0627\u0645 \u0627\u0644\u0631\u0628\u064a\u0639 \u0628\u0627\u0644\u062c\u062f\u064a\u062f\u0629 : ", normal));
-			para4.add(new Phrase(dateEnvoitPvAbhoerEljadidaLabel.getText() + "\n", big0));
+			para4.add(new Phrase((dateEnvoitPvAbhoerEljadidaLabel.getText().equals("") ? "XXXX-XX-XX" : dateEnvoitPvAbhoerEljadidaLabel.getText()) + "\n", big0));
 			para4.add(new Phrase("\u0631\u0623\u064a \u0648\u0643\u0627\u0644\u0629 \u0627\u0644\u062d\u0648\u0636 \u0627\u0644\u0645\u0627\u0626\u064a \u0644\u0627\u0645 \u0627\u0644\u0631\u0628\u064a\u0639 : ", normal));
 			para4.add(new Phrase(AvisAbhoerLabel.getText() + "\n", big0));
 			para4.add(new Phrase("\u0627\u0644\u0631\u062e\u0635\u0629 : ", normal));
@@ -412,12 +416,12 @@ public class DisplayFolderController implements Initializable {
     	/**
     	 * this zone for suivi de dossier informations
     	 **/
-    	dateDenvoiAlabhouerEljaidaLabel.setText(dossier.getDateEnvoiA_LABHOER());
-    	dateDebutEnquetePublicLabel.setText(dossier.getDateDebutde_EP());
-    	dateFinEnquetePublicLabel.setText(dossier.getDateFin_EP());
-    	dateSignaturPVparCEPLabel.setText(dossier.getDateSignateureDuPv());
+    	dateDenvoiAlabhouerEljaidaLabel.setText(dossier.getDateEnvoiA_LABHOER().equals("") ? "XXXX-XX-XX" : dossier.getDateEnvoiA_LABHOER());
+    	dateDebutEnquetePublicLabel.setText(dossier.getDateDebutde_EP().equals("") ? "XXXX-XX-XX" : dossier.getDateDebutde_EP());
+    	dateFinEnquetePublicLabel.setText(dossier.getDateFin_EP().equals("") ? "XXXX-XX-XX" : dossier.getDateFin_EP());
+    	dateSignaturPVparCEPLabel.setText(dossier.getDateSignateureDuPv().equals("") ? "XXXX-XX-XX" : dossier.getDateSignateureDuPv());
     	AvisDeCEPLabel.setText(dossier.getAvisDe_CEP());
-    	dateEnvoitPvAbhoerEljadidaLabel.setText(dossier.getDateEnvoiDuPVa_LABHOER());
+    	dateEnvoitPvAbhoerEljadidaLabel.setText(dossier.getDateEnvoiDuPVa_LABHOER().equals("") ? "XXXX-XX-XX" : dossier.getDateEnvoiDuPVa_LABHOER());
     	AvisAbhoerLabel.setText(dossier.getAvisABHOER());
     	autorisationLabel.setText(dossier.getAutorisation());
     	

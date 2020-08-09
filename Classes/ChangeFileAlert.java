@@ -2,6 +2,8 @@ package Classes;
 
 import java.io.File;
 
+import org.apache.commons.io.FilenameUtils;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -37,6 +39,7 @@ public class ChangeFileAlert {
 			File file = ImagesOrPdfChooser.result;
 				
 				if(file != null) {
+					System.out.println(FilenameUtils.getExtension(file.getName()));
 					fileName.setText(file.getName());
 					result = file;
 				}

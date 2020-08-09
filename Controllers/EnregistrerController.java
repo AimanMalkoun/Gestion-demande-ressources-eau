@@ -167,14 +167,14 @@ public class EnregistrerController implements Initializable {
 			stat.setString(16, LesInfoDelImmobilierController.InfoSurImmobilier.getDaaira());
 
 			stat.setString(17, LesInfoDuDemandeurController.demandeur.getDateDepotDossier());
-			stat.setString(18, LesInfoDuDemandeurController.demandeur.getDateDepotDossier());
-			stat.setString(19, LesInfoDuDemandeurController.demandeur.getDateDepotDossier());
-			stat.setString(20, LesInfoDuDemandeurController.demandeur.getDateDepotDossier());
-			stat.setString(21, LesInfoDuDemandeurController.demandeur.getDateDepotDossier());
-			stat.setString(22, "");
-			stat.setString(23, LesInfoDuDemandeurController.demandeur.getDateDepotDossier());
-			stat.setString(24, "");
-			stat.setString(25, "");
+			stat.setString(18, "");
+			stat.setString(19, "");
+			stat.setString(20, "");
+			stat.setString(21, "");
+			stat.setString(22, "\u0644\u0627 \u0634\u064a\u0621");
+			stat.setString(23, "");
+			stat.setString(24, "\u0644\u0627 \u0634\u064a\u0621");
+			stat.setString(25, "\u0644\u0627 \u0634\u064a\u0621");
 			stat.setString(26, LesInfoDelImmobilierController.InfoSurImmobilier.getQuiada());
 			stat.setBytes(27, planImmFile.readAllBytes());
 			stat.setString(28, LesInfoDelImmobilierController.InfoSurImmobilier.getNomImmobilier());
