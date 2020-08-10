@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 
 import alerts.DeleteConfirmationAlert;
+import alerts.WarningAlert;
 import Classes.FolderTable;
 import Connectivity.ConnectionClass;
 import Connectivity.ConnectionClassDossier;
@@ -90,7 +91,11 @@ public class ModifyFolder2Controller implements Initializable{
     private void search() {
 
     	if(!cinInputSearch.getText().isEmpty()) {
-        	getFolderInfo(cinInputSearch.getText());
+        	boolean answer = getFolderInfo(cinInputSearch.getText());
+        	if(!answer) {
+        		WarningAlert.desplay("\u062a\u0646\u0628\u064a\u0647", "\u0644\u0627 \u064a\u0648\u062c\u062f \u0647\u0630\u0627 \u0627\u0644\u0631\u0642\u0645");
+        		cinInputSearch.setText("");
+        	}
     	}
     }
     
@@ -310,7 +315,7 @@ public class ModifyFolder2Controller implements Initializable{
 		th.start();
 	}
 	
-	private void getFolderInfo(String idDossierYear){
+	private boolean getFolderInfo(String idDossierYear){
 		
 		tableInfo.getItems().clear();
 		
@@ -323,12 +328,12 @@ public class ModifyFolder2Controller implements Initializable{
 			while(result.next())
 			{
 				tableInfo.getItems().add( new FolderTable(result.getInt("IdDossier"),result.getString("idDossierYear") ,result.getString("typeDemande"), result.getString("cin"),  result.getString("nom") + " " + result.getString("prenom")) );
-				
+				return true;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+		return false;
 		
 	}
 	

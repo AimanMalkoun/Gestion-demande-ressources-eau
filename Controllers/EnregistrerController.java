@@ -212,9 +212,9 @@ public class EnregistrerController implements Initializable {
 	private void deleteTempFiles() {
 		
 		File directory = new File(EnregistrerController.class.getClassLoader().getResource("tempFiles").getPath());
-    	
-    	for (File file : directory.listFiles())
-    		if(!file.delete())System.out.println("file :" + file.getName() + " not deleted");;
+    	if(directory.listFiles().length > 0)
+	    	for (File file : directory.listFiles())
+	    		if(!file.delete())System.out.println("file :" + file.getName() + " not deleted");
 		
 	}
 
