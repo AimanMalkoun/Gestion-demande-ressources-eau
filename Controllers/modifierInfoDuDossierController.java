@@ -16,13 +16,13 @@ import javax.sql.rowset.serial.SerialException;
 
 import org.apache.commons.io.IOUtils;
 
-import Classes.ChangeChoiceAlert;
-import Classes.ChangeDateAlert;
-import Classes.ChangeFileAlert;
-import Classes.ChangeNumberAlert;
-import Classes.ChangeStringAlert;
 import Classes.DossierForDownload;
 import Connectivity.ConnectionClassDossier;
+import alerts.ChangeChoiceAlert;
+import alerts.ChangeDateAlert;
+import alerts.ChangeFileAlert;
+import alerts.ChangeNumberAlert;
+import alerts.ChangeStringAlert;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -509,8 +509,10 @@ public class modifierInfoDuDossierController implements Initializable{
     			String items[] =  {"\u0644\u0627 \u0634\u064a\u0621", "\u0645\u062a\u0627\u062d\u0629", "\u063a\u064a\u0631 \u0645\u062a\u0627\u062d\u0629"};
     			String result = ChangeChoiceAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u0627\u0644\u0631\u062e\u0635\u0629", items, dossier.getAutorisation());
     			
-    			dossier.setAutorisation(result);
-    			autorisationLabel.setText(result);
+    			if(result != null) {
+    				dossier.setAutorisation(result);
+    				autorisationLabel.setText(result);
+    			}
     			
     		}
     		

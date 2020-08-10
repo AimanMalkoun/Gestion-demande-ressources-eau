@@ -10,35 +10,41 @@ import java.sql.SQLException;
 
 public class ConvertBlobToPdf{
 
-	public static String getPdfFromBlob(Blob blobFile, String filename) {
+	public static File getPdfFromBlob(Blob blobFile, String filename) {
 		
+		File savedFile = null;
 		String path = null;
+		
 		try {
 			
 			path = ConvertBlobToPdf.class.getClassLoader().getResource("tempFiles").getPath() + "/" +filename;
 			
-			File tempFile = new File(path);
-			FileOutputStream output = new FileOutputStream(tempFile);
+			savedFile = new File(path);
+			if(!savedFile.exists()) {
+				FileOutputStream output = new FileOutputStream(savedFile);
 			
-			InputStream input =  blobFile.getBinaryStream();
-			byte[] buffer = new byte[1024];
+				InputStream input =  blobFile.getBinaryStream();
+				byte[] buffer = new byte[1024];
 			
-			while(input.read(buffer) > 0) {
-				output.write(buffer);
+				while(input.read(buffer) > 0) {
+					output.write(buffer);
+				}
+				output.close();
 			}
-			output.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+
+			//e.printStackTrace();
+			System.out.print(e.getMessage());
+			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 		
-		return path;
+		return savedFile;
 	}
 
 }

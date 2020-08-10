@@ -23,6 +23,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 import Classes.DossierForDownload;
 import Connectivity.ConnectionClassDossier;
+import alerts.DeleteFailedAlert;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -138,52 +139,112 @@ public class DisplayFolderController implements Initializable {
 	    @FXML
 	    void annuler(MouseEvent event) {
 	    	
-	    	try {
+	    	if(filesHaveBeenDeleted()) {
+	    	
+	    		try {
 
-				FXMLLoader loader= new FXMLLoader();
-				loader.setLocation(getClass().getResource("../Fxml/ModifyFolder2.fxml"));
-				Parent showFolderRoot = loader.load();
+	    			FXMLLoader loader= new FXMLLoader();
+	    			loader.setLocation(getClass().getResource("../Fxml/ModifyFolder2.fxml"));
+	    			Parent showFolderRoot = loader.load();
 				
-				ModifyFolder2Controller nextControler = loader.getController();
-				nextControler.setMessage(1);
+	    			ModifyFolder2Controller nextControler = loader.getController();
+	    			nextControler.setMessage(1);
 				
-				Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-				Scene showFolderScene = new Scene(showFolderRoot, primaryStage.getWidth(), primaryStage.getHeight());
-				primaryStage.setScene(showFolderScene);
+	    			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+	    			Scene showFolderScene = new Scene(showFolderRoot, primaryStage.getWidth(), primaryStage.getHeight());
+	    			primaryStage.setScene(showFolderScene);
 
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+	    		} catch (IOException e) {
+
+	    			e.printStackTrace();
+				
+	    		}
+	    	}else {
+	    		DeleteFailedAlert.desplay();
+	    	}
 	    	
 	    }
-    
-    @FXML
+
+
+	    @FXML
+	    void goHomePage(MouseEvent event) {
+	    	
+	    	if(filesHaveBeenDeleted()) {
+	    	
+	    		try {
+	    		
+	    			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+	    			Parent ModifyFolderRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/Dashboard.fxml"));
+	    			Scene ModifyFolderScene = new Scene(ModifyFolderRoot, primaryStage.getWidth(), primaryStage.getHeight());
+	    			primaryStage.setScene(ModifyFolderScene);
+				
+	    		} catch (IOException e) {
+
+	    			e.printStackTrace();
+			
+	    		}
+	    	}else {
+	    		DeleteFailedAlert.desplay();
+	    	}
+	    	
+	    }
+
+	    @FXML
+	    void logOut(MouseEvent event) {
+
+	    	if(filesHaveBeenDeleted()) {
+	    	
+	    		try {
+	    		
+	    			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+	    			Parent ModifyFolderRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/LoginStage.fxml"));
+	    			Scene ModifyFolderScene = new Scene(ModifyFolderRoot, primaryStage.getWidth(), primaryStage.getHeight());
+	    			primaryStage.setScene(ModifyFolderScene);
+				
+	    		} catch (IOException e) {
+
+	    			e.printStackTrace();
+				
+	    		}
+	    	}else {
+	    		DeleteFailedAlert.desplay();
+	    	}
+	    	
+	    }
+	    
+    private boolean filesHaveBeenDeleted() {
+
+    	File directory = new File(DisplayFolderController.class.getClassLoader().getResource("tempFiles").getPath());
+    	
+    	for (File file : directory.listFiles()) {
+    		if(!file.delete())
+    			return false;
+    	}
+		return true;
+	}
+
+	@FXML
     private void displayFile(MouseEvent event) throws PdfException, IOException {
 
     	if(event.getSource() == attestationFileButton) {
     		
-    		String path = ConvertBlobToPdf.getPdfFromBlob(dossier.getAttestationDePocession(), "attestationFile.pdf");
-			Desktop.getDesktop().open(new File(path));
-    		//ShowPdf.display(path, "attestationFile.pdf");
-    		
+    		File file = ConvertBlobToPdf.getPdfFromBlob(dossier.getAttestationDePocession(), "attestationFile.pdf");	
+    		Desktop.getDesktop().open(file);
+ 
     	}else if(event.getSource() == demandeFileButton) {
     		
-    		String path =ConvertBlobToPdf.getPdfFromBlob(dossier.getDemandeFile(), "demandeFile.pdf");
-			Desktop.getDesktop().open(new File(path));
-    		//ShowPdf.display(path, "demandeFile.pdf");
+    		File file =ConvertBlobToPdf.getPdfFromBlob(dossier.getDemandeFile(), "demandeFile.pdf");
+			Desktop.getDesktop().open(file);
     		
     	}else if(event.getSource() == cinFileButton) {
     		
-    		String path =ConvertBlobToPdf.getPdfFromBlob(dossier.getCinFile(), "CIN.pdf");
-			Desktop.getDesktop().open(new File(path));
-    		//ShowPdf.display(path, "CIN.pdf");
+    		File file = ConvertBlobToPdf.getPdfFromBlob(dossier.getCinFile(), "CIN.pdf");
+			Desktop.getDesktop().open(file);
     		
     	}else if(event.getSource() == planImmobilierFileButton) {
     		
-    		String path =ConvertBlobToPdf.getPdfFromBlob(dossier.getPlanImmobilier(), "planEauFile.pdf");
-			Desktop.getDesktop().open(new File(path));
-    		//ShowPdf.display(path, "planEauFile.pdf");
+    		File file =ConvertBlobToPdf.getPdfFromBlob(dossier.getPlanImmobilier(), "planEauFile.pdf");
+			Desktop.getDesktop().open(file);
     		
     	}
     	
@@ -330,41 +391,6 @@ public class DisplayFolderController implements Initializable {
 			Desktop.getDesktop().open(new File(path+ "\\" + codCinLabel.getText() + ".pdf"));
 		}
 
-
-    @FXML
-    void goHomePage(MouseEvent event) {
-    	
-    	try {
-    		
-			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-    		Parent ModifyFolderRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/Dashboard.fxml"));
-			Scene ModifyFolderScene = new Scene(ModifyFolderRoot, primaryStage.getWidth(), primaryStage.getHeight());
-			primaryStage.setScene(ModifyFolderScene);
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    	
-    }
-
-    @FXML
-    void logOut(MouseEvent event) {
-
-    	try {
-    		
-			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-    		Parent ModifyFolderRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/LoginStage.fxml"));
-			Scene ModifyFolderScene = new Scene(ModifyFolderRoot, primaryStage.getWidth(), primaryStage.getHeight());
-			primaryStage.setScene(ModifyFolderScene);
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    	
-    }
-    
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		

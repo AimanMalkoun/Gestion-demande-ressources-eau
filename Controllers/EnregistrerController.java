@@ -124,8 +124,7 @@ public class EnregistrerController implements Initializable {
 
 		String pathCIN = LesInfoDuDemandeurController.demandeur.getCinFile().getAbsolutePath();
 		String pathDemandeCreusement = LesInfoDuDemandeurController.demandeur.getDemandeFile().getAbsolutePath();
-		String pathAttistation = LesInfoDelImmobilierController.InfoSurImmobilier.getAttestationDePocession()
-				.getAbsolutePath();
+		String pathAttistation = LesInfoDelImmobilierController.InfoSurImmobilier.getAttestationDePocession().getAbsolutePath();
 		String pathPlanImm = LesInfoDelImmobilierController.InfoSurImmobilier.getPlanImmobilier().getAbsolutePath();
 
 		/*
@@ -181,14 +180,20 @@ public class EnregistrerController implements Initializable {
 			stat.setString(29, idDossierYear);
 			stat.execute();
 
+			//close the file input stream
+			cinFile.close();
+			demandeCreusement.close();
+			attistation.close();
+			planImmFile.close();
+			
 		} catch (SQLException e) {
-
-			// e.printStackTrace();
-			System.out.println(e.getMessage());
+			
 			e.printStackTrace();
 		}
 		try {
 
+			deleteTempFiles();
+			
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("../Fxml/AEteEnregistrer.fxml"));
 			Parent AEteEnregistrerRoot = loader.load();
@@ -198,10 +203,19 @@ public class EnregistrerController implements Initializable {
 			primaryStage.setScene(AEteEnregistrerScene);
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		};
 
+	}
+
+	private void deleteTempFiles() {
+		
+		File directory = new File(EnregistrerController.class.getClassLoader().getResource("tempFiles").getPath());
+    	
+    	for (File file : directory.listFiles())
+    		if(!file.delete())System.out.println("file :" + file.getName() + " not deleted");;
+		
 	}
 
 	@Override

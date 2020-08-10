@@ -8,10 +8,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 
-import Classes.DeleteAlert;
 import Classes.FolderTable;
 import Connectivity.ConnectionClass;
 import Connectivity.ConnectionClassDossier;
+import alerts.DeleteConfirmationAlert;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -228,7 +228,7 @@ public class ModifyFolder2Controller implements Initializable{
 		private void removeRow(TableRow<FolderTable> row){
 			
 			//first let the user confirm the delete order
-			if(DeleteAlert.desplay()) {
+			if(DeleteConfirmationAlert.desplay()) {
 				FolderTable folder = row.getItem();
 			
 				//remove folder from dataBase
