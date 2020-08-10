@@ -82,21 +82,49 @@ public class LesInfoDuDemandeurController implements Initializable{
     @FXML
     void annuler(MouseEvent event) {
     	
-    	Parent dashboardRoot;
+    	cleanup();
+    	
 		try {
 			
-			dashboardRoot = (Parent) FXMLLoader.load(getClass().getResource("../Fxml/Dashboard.fxml"));
+			Parent dashboardRoot = (Parent) FXMLLoader.load(getClass().getResource("../Fxml/Dashboard.fxml"));
 			
 			Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			Scene dashboardScene = new Scene(dashboardRoot, primaryStage.getWidth(), primaryStage.getHeight());
 			primaryStage.setScene(dashboardScene);
 			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 		
     }
+
+	private void cleanup() {
+		LesInfoDuDemandeurController.demandeur.setNom(null);
+		LesInfoDuDemandeurController.demandeur.setPrenom(null);
+		LesInfoDuDemandeurController.demandeur.setCin(null);
+		LesInfoDuDemandeurController.demandeur.setTypeDemande(null);
+		LesInfoDuDemandeurController.demandeur.setCinFile(null);
+		LesInfoDuDemandeurController.demandeur.setDemandeFile(null);
+		LesInfoDuDemandeurController.demandeur.setDateDepotDossier(null);
+		
+		LesInfoDelImmobilierController.InfoSurImmobilier.setNomImmobilier(null);
+		LesInfoDelImmobilierController.InfoSurImmobilier.setDaaira(null);
+		LesInfoDelImmobilierController.InfoSurImmobilier.setQuiada(null);
+		LesInfoDelImmobilierController.InfoSurImmobilier.setAttestationDePocession(null);
+		LesInfoDelImmobilierController.InfoSurImmobilier.setDouar(null);
+		LesInfoDelImmobilierController.InfoSurImmobilier.setCommune(null);
+		LesInfoDelImmobilierController.InfoSurImmobilier.setProvince(null);
+		LesInfoDelImmobilierController.InfoSurImmobilier.setPlanImmobilier(null);;
+		
+		
+		InformationsConcernantPointDeauController.poinDeau.setLocalisationPoint(null);
+		InformationsConcernantPointDeauController.poinDeau.setDebit(0);
+		InformationsConcernantPointDeauController.poinDeau.setProfondeur(0);
+		InformationsConcernantPointDeauController.poinDeau.setPlanEau(0);
+		
+
+	}
 
     @FXML
     void suivant(MouseEvent event) {
@@ -227,13 +255,13 @@ public class LesInfoDuDemandeurController implements Initializable{
 			 cinInput.setText(demandeur.getCin());
 		 
 		//initialiser le champs du date de depot du dossier
-		 if(demandeur.getDateDepotDossier() != null)
+		 if(demandeur.getDateDepotDossier() != null && demandeur.getDateDepotDossier() != "")
 			 dateDepotDossierInput.setValue(Date.valueOf(demandeur.getDateDepotDossier()).toLocalDate());
 		 else
 			 dateDepotDossierInput.setValue(LocalDate.now());
 		 
 		//initialiser le chapms du type de demande
-		 if(demandeur.getTypeDemande() == null)
+		 if(demandeur.getTypeDemande() == null || demandeur.getTypeDemande() == "")
 			 typeDemandeChoice.setValue("\u0646\u0648\u0639 \u0627\u0644\u0637\u0644\u0628");
 		 else
 			 typeDemandeChoice.setValue(demandeur.getTypeDemande());

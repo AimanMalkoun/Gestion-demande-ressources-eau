@@ -46,7 +46,9 @@ public class CreatePdfWithImages{
 				document.add(img);
 				
 		    }
-			
+			document.close();
+			pdfWriter.close();
+			output.close();
 			
 		} catch (FileNotFoundException | DocumentException e) {
 

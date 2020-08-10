@@ -119,22 +119,14 @@ public class EnregistrerController implements Initializable {
 			idDossierYear =  idDossier + "/" + year ; 
 			
 		}
-
-		/* Determination de path de chaque fichier */
-
-		String pathCIN = LesInfoDuDemandeurController.demandeur.getCinFile().getAbsolutePath();
-		String pathDemandeCreusement = LesInfoDuDemandeurController.demandeur.getDemandeFile().getAbsolutePath();
-		String pathAttistation = LesInfoDelImmobilierController.InfoSurImmobilier.getAttestationDePocession().getAbsolutePath();
-		String pathPlanImm = LesInfoDelImmobilierController.InfoSurImmobilier.getPlanImmobilier().getAbsolutePath();
-
 		/*
 		 * Creation de l'objet InputStream afin de le stocker dans la base de donn�es
 		 */
 
-		InputStream cinFile = new FileInputStream(new File(pathCIN));
-		InputStream demandeCreusement = new FileInputStream(new File(pathDemandeCreusement));
-		InputStream attistation = new FileInputStream(new File(pathAttistation));
-		InputStream planImmFile = new FileInputStream(new File(pathPlanImm));
+		InputStream cinFile = new FileInputStream(LesInfoDuDemandeurController.demandeur.getCinFile());
+		InputStream demandeCreusement = new FileInputStream(LesInfoDuDemandeurController.demandeur.getDemandeFile());
+		InputStream attistation = new FileInputStream(LesInfoDelImmobilierController.InfoSurImmobilier.getAttestationDePocession());
+		InputStream planImmFile = new FileInputStream(LesInfoDelImmobilierController.InfoSurImmobilier.getPlanImmobilier());
 		/* la requite sql de l'insertion */
 
 		String sql = "INSERT INTO `dossier`(`IdDossier`, `Nom`, `Prenom`, `cin`, `cinImg`, `typeDemande`,"
@@ -192,8 +184,6 @@ public class EnregistrerController implements Initializable {
 		}
 		try {
 
-			deleteTempFiles();
-			
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("../Fxml/AEteEnregistrer.fxml"));
 			Parent AEteEnregistrerRoot = loader.load();
@@ -207,15 +197,6 @@ public class EnregistrerController implements Initializable {
 			e.printStackTrace();
 		};
 
-	}
-
-	private void deleteTempFiles() {
-		
-		File directory = new File(EnregistrerController.class.getClassLoader().getResource("tempFiles").getPath());
-    	
-    	for (File file : directory.listFiles())
-    		if(!file.delete())System.out.println("file :" + file.getName() + " not deleted");;
-		
 	}
 
 	@Override

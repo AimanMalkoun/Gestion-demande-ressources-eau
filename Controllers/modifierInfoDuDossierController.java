@@ -539,7 +539,7 @@ public class modifierInfoDuDossierController implements Initializable{
 			primaryStage.setScene(showFolderScene);
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
     	

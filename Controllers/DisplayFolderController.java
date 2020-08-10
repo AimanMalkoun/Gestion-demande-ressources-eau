@@ -41,9 +41,9 @@ import pdfClasses.ShowPdf;
 
 public class DisplayFolderController implements Initializable {
 
-	DossierForDownload dossier;
+		DossierForDownload dossier;
 
-	 @FXML
+	 	@FXML
 	    private Label nomLabel;
 
 	    @FXML

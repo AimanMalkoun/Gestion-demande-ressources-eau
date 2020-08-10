@@ -1,6 +1,7 @@
 package Controllers;
 
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -97,7 +98,12 @@ public class DashboardController implements Initializable{
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-			
+		
+		//delete temporary files
+		File directory = new File(EnregistrerController.class.getClassLoader().getResource("tempFiles").getPath());
+    	if(directory.listFiles().length > 0)
+    		for (File file : directory.listFiles())
+    			if(!file.delete())System.out.println("file :" + file.getName() + " not deleted");;
 		
 	}
 }

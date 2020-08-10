@@ -63,32 +63,32 @@ public class AEteEnregistrerController implements Initializable {
 			primaryStage.setScene(DashboardScene);
 			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 
 	}
 
 	private void cleanup() {
-		LesInfoDuDemandeurController.demandeur.setNom("");
-		LesInfoDuDemandeurController.demandeur.setPrenom("");
-		LesInfoDuDemandeurController.demandeur.setCin("");
-		LesInfoDuDemandeurController.demandeur.setTypeDemande("");
+		LesInfoDuDemandeurController.demandeur.setNom(null);
+		LesInfoDuDemandeurController.demandeur.setPrenom(null);
+		LesInfoDuDemandeurController.demandeur.setCin(null);
+		LesInfoDuDemandeurController.demandeur.setTypeDemande(null);
 		LesInfoDuDemandeurController.demandeur.setCinFile(null);
 		LesInfoDuDemandeurController.demandeur.setDemandeFile(null);
 		LesInfoDuDemandeurController.demandeur.setDateDepotDossier(null);
 		
-		LesInfoDelImmobilierController.InfoSurImmobilier.setNomImmobilier("");
-		LesInfoDelImmobilierController.InfoSurImmobilier.setDaaira("");
-		LesInfoDelImmobilierController.InfoSurImmobilier.setQuiada("");
+		LesInfoDelImmobilierController.InfoSurImmobilier.setNomImmobilier(null);
+		LesInfoDelImmobilierController.InfoSurImmobilier.setDaaira(null);
+		LesInfoDelImmobilierController.InfoSurImmobilier.setQuiada(null);
 		LesInfoDelImmobilierController.InfoSurImmobilier.setAttestationDePocession(null);
-		LesInfoDelImmobilierController.InfoSurImmobilier.setDouar("");
-		LesInfoDelImmobilierController.InfoSurImmobilier.setCommune("");
-		LesInfoDelImmobilierController.InfoSurImmobilier.setProvince("");
+		LesInfoDelImmobilierController.InfoSurImmobilier.setDouar(null);
+		LesInfoDelImmobilierController.InfoSurImmobilier.setCommune(null);
+		LesInfoDelImmobilierController.InfoSurImmobilier.setProvince(null);
 		LesInfoDelImmobilierController.InfoSurImmobilier.setPlanImmobilier(null);;
 		
 		
-		InformationsConcernantPointDeauController.poinDeau.setLocalisationPoint("");
+		InformationsConcernantPointDeauController.poinDeau.setLocalisationPoint(null);
 		InformationsConcernantPointDeauController.poinDeau.setDebit(0);
 		InformationsConcernantPointDeauController.poinDeau.setProfondeur(0);
 		InformationsConcernantPointDeauController.poinDeau.setPlanEau(0);
@@ -236,7 +236,8 @@ public class AEteEnregistrerController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
+
+		
 
 	}
 }
