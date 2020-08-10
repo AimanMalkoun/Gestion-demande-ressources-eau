@@ -38,12 +38,11 @@ public class ChangePasswordController {
     @FXML
     void changePasswordConfirmation(ActionEvent event){
     	
-    	ConnectionClassMaria conection =  new ConnectionClassMaria(); 
+		ConnectionClass conn = new ConnectionClass();
+		Connection connection = conn.getConnection();
     	try {
-    		Statement statement = conection.connection.createStatement();
+    		Statement statement = connection.createStatement();
     		ResultSet query = statement.executeQuery("SELECT * FROM `login` ;");
-    	
-    	
     		while(query.next()){
     			
     			realPassword = query.getString("Password");

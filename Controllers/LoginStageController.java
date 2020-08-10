@@ -78,7 +78,9 @@ public class LoginStageController  implements Initializable{
 
 	}
 	@FXML
-	public void handleEnterAcion() {
-		
-	}
+	 void handleEnterAcion(KeyEvent event) throws SQLException, IOException {
+		 if(event.getCode().equals(KeyCode.ENTER))
+			 loginIn(event);
+			 
+	 }
 }
