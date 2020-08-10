@@ -33,8 +33,6 @@ public class ChangePasswordController {
     @FXML
     private TextField confirmedPassword;
     
-    @FXML
-    private Label messagePassword;
 
     @FXML
     void changePasswordConfirmation(ActionEvent event){
@@ -52,7 +50,7 @@ public class ChangePasswordController {
     		if(realPassword.equals(previousPassword.getText()) && newPassword.getText().equals(confirmedPassword.getText())){
     			
     			statement.executeUpdate("update Login set Password = '" + newPassword.getText() + "' where password = '" + previousPassword.getText() + "';");
-    			messagePassword.setText("\u062a\u0645 \u062a\u062d\u062f\u064a\u062b \u0643\u0644\u0645\u0629 \u0627\u0644\u0633\u0631 \u0628\u0646\u062c\u0627\u062d");
+    			WarningAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u0643\u0644\u0645\u0629 \u0627\u0644\u0645\u0631\u0648\u0631","\u062a\u0645 \u062a\u062d\u062f\u064a\u062b \u0643\u0644\u0645\u0629 \u0627\u0644\u0633\u0631 \u0628\u0646\u062c\u0627\u062d");
     			
     			previousPassword.clear();
     			newPassword.clear();

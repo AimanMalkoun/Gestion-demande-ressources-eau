@@ -260,11 +260,11 @@ public class DisplayFolderController implements Initializable {
 
 		}
 		Document document = new Document();
-			PdfWriter.getInstance(document, new FileOutputStream(path+ "\\"+ codCinLabel.getText() + ".pdf"));
-			Font small = FontFactory.getFont("C:/Windows/Fonts/arial.ttf", BaseFont.IDENTITY_H, 12);
-			Font normal = FontFactory.getFont("C:/Windows/Fonts/arial.ttf", BaseFont.IDENTITY_H, 15);
-			Font big0 = FontFactory.getFont("C:/Windows/Fonts/arial.ttf", BaseFont.IDENTITY_H, 18);
-			Font big = FontFactory.getFont("C:/Windows/Fonts/arial.ttf", BaseFont.IDENTITY_H, 22);
+			PdfWriter.getInstance(document, new FileOutputStream(path+ "\\"+ codCinLabel.getText() + "_fichier.pdf"));
+			Font small = FontFactory.getFont("Fonts/arial.ttf", BaseFont.IDENTITY_H, 12);
+			Font normal = FontFactory.getFont("Fonts/arial.ttf", BaseFont.IDENTITY_H, 15);
+			Font big0 = FontFactory.getFont("Fonts/arial.ttf", BaseFont.IDENTITY_H, 18);
+			Font big = FontFactory.getFont("Fonts/arial.ttf", BaseFont.IDENTITY_H, 22);
 			big.setColor(19, 164, 90);
 			big0.setColor(11, 50, 139);
 			document.open();
@@ -388,7 +388,7 @@ public class DisplayFolderController implements Initializable {
 			document.add(table);
 			document.close();
 
-			Desktop.getDesktop().open(new File(path+ "\\" + codCinLabel.getText() + ".pdf"));
+			Desktop.getDesktop().open(new File(path+ "\\"+ codCinLabel.getText() + "_fichier.pdf"));
 		}
 
 	@Override
