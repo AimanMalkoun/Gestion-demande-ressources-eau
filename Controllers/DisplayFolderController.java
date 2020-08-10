@@ -23,7 +23,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 import Classes.DossierForDownload;
 import Connectivity.ConnectionClassDossier;
-import alerts.DeleteFailedAlert;
+import alerts.WarningAlert;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -160,7 +160,7 @@ public class DisplayFolderController implements Initializable {
 				
 	    		}
 	    	}else {
-	    		DeleteFailedAlert.desplay();
+	    		WarningAlert.desplay("", "\u0628\u0639\u0636 \u0645\u0644\u0641\u0627\u062a \u0627\u0644\u0070\u0064\u0066 \u0645\u0641\u062a\u0648\u062d\u0629 \u0628\u0628\u0631\u0646\u0627\u0645\u062c \u0622\u062e\u0631\u002c \u0627\u0644\u0645\u0631\u062c\u0648 \u0625\u063a\u0644\u0627\u0642\u0647\u0627 \u0623\u0648\u0644\u0627");
 	    	}
 	    	
 	    }
@@ -184,7 +184,7 @@ public class DisplayFolderController implements Initializable {
 			
 	    		}
 	    	}else {
-	    		DeleteFailedAlert.desplay();
+	    		WarningAlert.desplay("", "\u0628\u0639\u0636 \u0645\u0644\u0641\u0627\u062a \u0627\u0644\u0070\u0064\u0066 \u0645\u0641\u062a\u0648\u062d\u0629 \u0628\u0628\u0631\u0646\u0627\u0645\u062c \u0622\u062e\u0631\u002c \u0627\u0644\u0645\u0631\u062c\u0648 \u0625\u063a\u0644\u0627\u0642\u0647\u0627 \u0623\u0648\u0644\u0627");
 	    	}
 	    	
 	    }
@@ -207,7 +207,7 @@ public class DisplayFolderController implements Initializable {
 				
 	    		}
 	    	}else {
-	    		DeleteFailedAlert.desplay();
+	    		WarningAlert.desplay("", "\u0628\u0639\u0636 \u0645\u0644\u0641\u0627\u062a \u0627\u0644\u0070\u0064\u0066 \u0645\u0641\u062a\u0648\u062d\u0629 \u0628\u0628\u0631\u0646\u0627\u0645\u062c \u0622\u062e\u0631\u002c \u0627\u0644\u0645\u0631\u062c\u0648 \u0625\u063a\u0644\u0627\u0642\u0647\u0627 \u0623\u0648\u0644\u0627");
 	    	}
 	    	
 	    }
