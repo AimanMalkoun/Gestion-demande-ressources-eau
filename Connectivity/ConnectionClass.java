@@ -12,6 +12,7 @@ public Connection connection;
 		String password = "";
 
 		try {
+			Class.forName("org.sqlite.JDBC");
 			 connection = DriverManager.getConnection("jdbc:sqlite:src/SQLiteDB/gestiondeamndeeau.sqlite");
 		
 		} catch (Exception e) {
