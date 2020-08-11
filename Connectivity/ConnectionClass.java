@@ -5,11 +5,10 @@ import java.sql.DriverManager;
 
 
 public class ConnectionClass {
-public Connection connection;
+	
+	public Connection connection;
+	
 	public Connection getConnection() {
-		String dbName = "gestiondeamndeeau";
-		String userName = "root";
-		String password = "";
 
 		try {
 			Class.forName("org.sqlite.JDBC");

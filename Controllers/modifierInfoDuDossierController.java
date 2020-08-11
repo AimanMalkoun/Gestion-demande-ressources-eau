@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Blob;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -15,13 +16,13 @@ import javax.sql.rowset.serial.SerialException;
 
 import org.apache.commons.io.IOUtils;
 
-import Classes.ChangeChoiceAlert;
-import Classes.ChangeDateAlert;
-import Classes.ChangeFileAlert;
-import Classes.ChangeNumberAlert;
-import Classes.ChangeStringAlert;
 import Classes.DossierForDownload;
 import Connectivity.ConnectionClassDossier;
+import alerts.ChangeChoiceAlert;
+import alerts.ChangeDateAlert;
+import alerts.ChangeFileAlert;
+import alerts.ChangeNumberAlert;
+import alerts.ChangeStringAlert;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -36,6 +37,9 @@ import javafx.stage.Stage;
 public class modifierInfoDuDossierController implements Initializable{
 
 	private DossierForDownload dossier = new DossierForDownload(); 
+	
+	@FXML
+    private Label autorisationTitleLabel;
 	
 	@FXML
     private Button nomButton;
@@ -278,7 +282,6 @@ public class modifierInfoDuDossierController implements Initializable{
     		}else if(event.getSource() == demandeCreusementFileButton) {
     			//file
     			File result = ChangeFileAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u0645\u0644\u0641 \u0627\u0644\u0637\u0644\u0628", dossier.getCin() + "demandeFile.pdf");
-    			System.out.println(result);
     			
     			if(result != null){
     				dossier.setDemandeFile(fileToBlob(result));
@@ -375,63 +378,113 @@ public class modifierInfoDuDossierController implements Initializable{
     			}
     		}else if(event.getSource() == dateDepotDossierButton) {
     			//date
-    			LocalDate result = ChangeDateAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u062a\u0627\u0631\u064a\u062e \u0625\u064a\u062f\u0627\u0639 \u0627\u0644\u0645\u0644\u0641", dossier.getDateDepotDossier());
+    			LocalDate result = ChangeDateAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u062a\u0627\u0631\u064a\u062e \u0625\u064a\u062f\u0627\u0639 \u0627\u0644\u0645\u0644\u0641", Date.valueOf(dossier.getDateDepotDossier()).toLocalDate());
     			
-    			dossier.setDateDepotDossier(result);
-    			DateDepotDossierLabel.setText(result.toString());
+    			if(result != null) {
+    				dossier.setDateDepotDossier(result.toString());
+    				DateDepotDossierLabel.setText(result.toString());
+    			}
     			
     			
     		}else if(event.getSource() == dateDenvoiAlabhouerEljaidaButton) {
     			//date
     			LocalDate result = ChangeDateAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u062a\u0627\u0631\u064a\u062e \u0625\u0631\u0633\u0627\u0644 \u0627\u0644\u0645\u0644\u0641 \u0625\u0644\u0649 \u0645\u0646\u062f\u0648\u0628\u064a\u0629 \u0648\u0643\u0627\u0644\u0629 \u0627\u0644\u062d\u0648\u0636 \u0627\u0644\u0645\u0627\u0626\u064a \u0644\u0627\u0645 \u0627\u0644\u0631\u0628\u064a\u0639 \u0628\u0627\u0644\u062c\u062f\u064a\u062f\u0629", LocalDate.now());
 
-    			dossier.setDateEnvoiA_LABHOER(result);
-    			dateDenvoiAlabhouerEljaidaLabel.setText(result.toString());
+    			if(result != null) {
+    				dossier.setDateEnvoiA_LABHOER(result.toString());
+    				dateDenvoiAlabhouerEljaidaLabel.setText(result.toString());
+    				
+    				//set the next button to be enabled 
+    				if(!dossier.getDateEnvoiA_LABHOER().equals(dossier.getDateDepot()))
+    					dateDebutEnquetePublicButton.setDisable(false);
+    			}
     			
     		}else if(event.getSource() == dateDebutEnquetePublicButton) {
     			//date
     			LocalDate result = ChangeDateAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u062a\u0627\u0631\u064a\u062e \u0628\u062f\u0627\u064a\u0629 \u0627\u0644\u0628\u062d\u062b \u0627\u0644\u0639\u0644\u0646\u064a", LocalDate.now());
 
-    			dossier.setDateDebutde_EP(result);
-    			dateDebutEnquetePublicLabel.setText(result.toString());
+    			if(result != null) {
+    				dossier.setDateDebutde_EP(result.toString());
+    				dateDebutEnquetePublicLabel.setText(result.toString());
+
+    				//set the next button to be enabled
+    				if(!dossier.getDateDebutde_EP().equals(dossier.getDateDepot())) 
+    					dateFinEnquetePublicButton.setDisable(false);
+    			}
     			
     		}else if(event.getSource() == dateFinEnquetePublicButton) {
     			//date
     			LocalDate result = ChangeDateAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u062a\u0627\u0631\u064a\u062e \u0646\u0647\u0627\u064a\u0629 \u0627\u0644\u0628\u062d\u062b \u0627\u0644\u0639\u0644\u0646\u064a", LocalDate.now());
+    			
+    			if(result != null) {
+    				dossier.setDateFin_EP(result.toString());
+    				dateFinEnquetePublicLabel.setText(result.toString());
 
-    			dossier.setDateFin_EP(result);
-    			dateFinEnquetePublicLabel.setText(result.toString());
+    				//set the next button to be enabled
+    				if(!dossier.getDateFin_EP().equals(dossier.getDateDepot())) 
+    					dateSignaturPVparCEPButton.setDisable(false);
+    			}
     			
     		}else if(event.getSource() == dateSignaturPVparCEPButton) {
     			//date
     			LocalDate result = ChangeDateAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u062a\u0627\u0631\u064a\u062e \u0627\u0645\u0636\u0627\u0621 \u0627\u0644\u0645\u062d\u0636\u0631 \u0645\u0646 \u0637\u0631\u0641 \u0644\u062c\u0646\u0629 \u0627\u0644\u0628\u062d\u062b \u0627\u0644\u0639\u0644\u0646\u064a", LocalDate.now());
+    			
+    			if(result != null) {
+    				dossier.setDateSignateureDuPv(result.toString());
+    				dateSignaturPVparCEPLabel.setText(result.toString());
 
-    			dossier.setDateSignateureDuPv(result);
-    			dateSignaturPVparCEPLabel.setText(result.toString());
+    				//set the next button to be enabled
+    				if(!dossier.getDateSignateureDuPv().equals(dossier.getDateDepot()))
+    					AvisDeCEPButton.setDisable(false);
+    			}
     			
     		}else if(event.getSource() == AvisDeCEPButton) {
     			//choice
-    			String items[] =  {"\u0644\u0645 \u064a\u0642\u0631\u0631 \u0628\u0639\u062f", "\u0646\u0639\u0645", "\u0644\u0627"};
+    			String items[] =  {"\u0644\u0627 \u0634\u064a\u0621", "\u0628\u0627\u0644\u0645\u0648\u0627\u0641\u0642\u0629", "\u0628\u0627\u0644\u0631\u0641\u0636"};
     			String result = ChangeChoiceAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u0631\u0623\u064a \u0644\u062c\u0646\u0629 \u0627\u0644\u0628\u062d\u062b \u0627\u0644\u0639\u0644\u0646\u064a", items, dossier.getAvisDe_CEP());
-    			
-    			dossier.setAvisDe_CEP(result);
 
-    			AvisDeCEPLabel.setText(result);
+    			if(result != null) {
+    				dossier.setAvisDe_CEP(result);
+    				AvisDeCEPLabel.setText(result);
+
+    				//set the next button to be enabled
+    				if(dossier.getAvisDe_CEP().equals("\u0628\u0627\u0644\u0645\u0648\u0627\u0641\u0642\u0629"))
+    					dateEnvoitPvAbhoerEljadidaButton.setDisable(false);
+    			}
     			
     		}else if(event.getSource() == dateEnvoitPvAbhoerEljadidaButton) {
     			//date
     			LocalDate result = ChangeDateAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u062a\u0627\u0631\u064a\u062e \u0625\u0631\u0633\u0627\u0644 \u0627\u0644\u0645\u062d\u0636\u0631 \u0625\u0644\u0649 \u0645\u0646\u062f\u0648\u0628\u064a\u0629 \u0648\u0643\u0627\u0644\u0629 \u0627\u0644\u062d\u0648\u0636 \u0627\u0644\u0645\u0627\u0626\u064a \u0644\u0627\u0645 \u0627\u0644\u0631\u0628\u064a\u0639 \u0628\u0627\u0644\u062c\u062f\u064a\u062f\u0629", LocalDate.now());
+    			
+    			if(result != null) {
+    				dossier.setDateEnvoiDuPVa_LABHOER(result.toString());
+    				dateEnvoitPvAbhoerEljadidaLabel.setText(result.toString());
 
-    			dossier.setDateEnvoiDuPVa_LABHOER(result);
-    			dateEnvoitPvAbhoerEljadidaLabel.setText(result.toString());
+    				//set the next button to be enabled
+    				if(!dossier.getDateEnvoiDuPVa_LABHOER().equals(dossier.getDateDepot()))
+    					AvisAbhoerButton.setDisable(false);
+    			}
     			
     		}else if(event.getSource() == AvisAbhoerButton) {
     			//choice
-    			String items[] =  {"\u0644\u0645 \u064a\u0642\u0631\u0631 \u0628\u0639\u062f", "\u0646\u0639\u0645", "\u0644\u0627"};
+    			String items[] =  {"\u0644\u0627 \u0634\u064a\u0621", "\u0628\u0627\u0644\u0645\u0648\u0627\u0641\u0642\u0629", "\u0628\u0627\u0644\u0631\u0641\u0636"};
     			String result = ChangeChoiceAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u0631\u0623\u064a \u0648\u0643\u0627\u0644\u0629 \u0627\u0644\u062d\u0648\u0636 \u0627\u0644\u0645\u0627\u0626\u064a \u0644\u0623\u0645 \u0627\u0644\u0631\u0628\u064a\u0639", items, dossier.getAvisABHOER());
+    			
+    			if(result != null) {
+    				dossier.setAvisABHOER(result);
+    				AvisAbhoerLabel.setText(result);
+    				
+    				//set the next line visible 
+    				if(dossier.getAvisDe_CEP().equals("\u0628\u0627\u0644\u0645\u0648\u0627\u0641\u0642\u0629") && dossier.getAvisABHOER().equals("\u0628\u0627\u0644\u0645\u0648\u0627\u0641\u0642\u0629")) {
 
-    			dossier.setAvisABHOER(result);
-    			AvisAbhoerLabel.setText(result);
+    		    		autorisationTitleLabel.setVisible(true);
+    		    		autorisationLabel.setVisible(true);
+    		    		autorisationButton.setVisible(true);
+    		    		autorisationLabel.setText(dossier.getAutorisation());
+    		    		
+    		    	}
+    				
+    			}
     			
     		}else if(event.getSource() == ProfondeurButton) {
     			//float
@@ -453,11 +506,13 @@ public class modifierInfoDuDossierController implements Initializable{
     			
     		}else if(event.getSource() == autorisationButton) {
     			//choice
-    			String items[] =  {"\u0644\u0645 \u064a\u0642\u0631\u0631 \u0628\u0639\u062f", "\u0645\u062a\u0627\u062d\u0629", "\u063a\u064a\u0631 \u0645\u062a\u0627\u062d\u0629"};
+    			String items[] =  {"\u0644\u0627 \u0634\u064a\u0621", "\u0645\u062a\u0627\u062d\u0629", "\u063a\u064a\u0631 \u0645\u062a\u0627\u062d\u0629"};
     			String result = ChangeChoiceAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u0627\u0644\u0631\u062e\u0635\u0629", items, dossier.getAutorisation());
     			
-    			dossier.setAutorisation(result);
-    			autorisationLabel.setText(result);
+    			if(result != null) {
+    				dossier.setAutorisation(result);
+    				autorisationLabel.setText(result);
+    			}
     			
     		}
     		
@@ -466,7 +521,6 @@ public class modifierInfoDuDossierController implements Initializable{
     @FXML
     void enregistrer(MouseEvent event) {
     	ConnectionClassDossier myDataBaseFolder = new ConnectionClassDossier();
-    	System.out.println(dossier);
     	int rows = myDataBaseFolder.updateDossierToDatabase(dossier);
     	
     	System.out.println("rows updated = " + rows);
@@ -485,7 +539,7 @@ public class modifierInfoDuDossierController implements Initializable{
 			primaryStage.setScene(showFolderScene);
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
     	
@@ -502,7 +556,7 @@ public class modifierInfoDuDossierController implements Initializable{
 			primaryStage.setScene(ModifyFolderScene);
 			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
     	
@@ -519,7 +573,7 @@ public class modifierInfoDuDossierController implements Initializable{
 			primaryStage.setScene(ModifyFolderScene);
 			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
     	
@@ -527,6 +581,10 @@ public class modifierInfoDuDossierController implements Initializable{
     
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		
+		autorisationTitleLabel.setVisible(false);
+		autorisationLabel.setVisible(false);
+		autorisationButton.setVisible(false);
 		
 	}
 	
@@ -536,6 +594,30 @@ public class modifierInfoDuDossierController implements Initializable{
 		ConnectionClassDossier myDataBaseFolder = new ConnectionClassDossier();
 		dossier = myDataBaseFolder.getDossierFromDatabase(id);
 		initializeTextForLabels();
+		
+		if(!dossier.getDateEnvoiA_LABHOER().equals("")) {
+			dateDebutEnquetePublicButton.setDisable(false);
+		}
+
+		if(!dossier.getDateDebutde_EP().equals("")) {
+			dateFinEnquetePublicButton.setDisable(false);
+		}
+
+		if(!dossier.getDateFin_EP().equals("")) {
+			dateSignaturPVparCEPButton.setDisable(false);
+		}
+
+		if(!dossier.getDateSignateureDuPv().equals("")) {
+			AvisDeCEPButton.setDisable(false);
+		}
+
+		if(dossier.getAvisDe_CEP().equals("\u0645\u062a\u0627\u062d\u0629")) {
+			dateEnvoitPvAbhoerEljadidaButton.setDisable(false);
+		}
+
+		if(!dossier.getDateEnvoiDuPVa_LABHOER().equals("")) {
+			AvisAbhoerButton.setDisable(false);
+		}
 		
  	 }
 	
@@ -548,7 +630,7 @@ public class modifierInfoDuDossierController implements Initializable{
     	typeDeDemandeLabel.setText(dossier.getTypeDemande());
     	demandeDeCreusementPathLabel.setText(dossier.getCin() + "Demande_de_creusement.pdf");
     	carteCinPathLabel.setText(dossier.getCin() + "CIN.pdf");
-    	DateDepotDossierLabel.setText(dossier.getDateDepotDossier().toString());
+    	DateDepotDossierLabel.setText(dossier.getDateDepotDossier());
     	
     	nomImmobilierLabel.setText(dossier.getNomImmobilier());
     	attestationPoscessionImmobilierLabel.setText(dossier.getCin() + "Attesteation_de_pocession.pdf");
@@ -564,14 +646,22 @@ public class modifierInfoDuDossierController implements Initializable{
     	debitLabel.setText(Float.toString(dossier.getDebit()));
     	planEauLabel.setText(Float.toString(dossier.getPlanEau()));
     	
-    	dateDenvoiAlabhouerEljaidaLabel.setText(dossier.getDateEnvoiA_LABHOER().toString());
-    	dateDebutEnquetePublicLabel.setText(dossier.getDateDebutde_EP().toString());
-    	dateFinEnquetePublicLabel.setText(dossier.getDateFin_EP().toString());
-    	dateSignaturPVparCEPLabel.setText(dossier.getDateSignateureDuPv().toString());
+    	dateDenvoiAlabhouerEljaidaLabel.setText(dossier.getDateEnvoiA_LABHOER().contentEquals("") ? "XXXX-XX-XX" : dossier.getDateEnvoiA_LABHOER());  //if datedepot = date envoi we dont display anything, same for others below
+    	dateDebutEnquetePublicLabel.setText(dossier.getDateDebutde_EP().contentEquals("") ? "XXXX-XX-XX" : dossier.getDateDebutde_EP());
+    	dateFinEnquetePublicLabel.setText(dossier.getDateFin_EP().contentEquals("") ? "XXXX-XX-XX" : dossier.getDateFin_EP());
+    	dateSignaturPVparCEPLabel.setText(dossier.getDateSignateureDuPv().contentEquals("") ? "XXXX-XX-XX" : dossier.getDateSignateureDuPv());
     	AvisDeCEPLabel.setText(dossier.getAvisDe_CEP());
-    	dateEnvoitPvAbhoerEljadidaLabel.setText(dossier.getDateEnvoiDuPVa_LABHOER().toString());
+    	dateEnvoitPvAbhoerEljadidaLabel.setText(dossier.getDateEnvoiDuPVa_LABHOER().contentEquals("") ? "XXXX-XX-XX" : dossier.getDateEnvoiDuPVa_LABHOER());
     	AvisAbhoerLabel.setText(dossier.getAvisABHOER());
-    	autorisationLabel.setText(dossier.getAutorisation());
+    	
+    	if(dossier.getAvisDe_CEP().equals("\u0628\u0627\u0644\u0645\u0648\u0627\u0641\u0642\u0629") && dossier.getAvisABHOER().equals("\u0628\u0627\u0644\u0645\u0648\u0627\u0641\u0642\u0629")) {
+
+    		autorisationTitleLabel.setVisible(true);
+    		autorisationLabel.setVisible(true);
+    		autorisationButton.setVisible(true);
+    		autorisationLabel.setText(dossier.getAutorisation());
+    		
+    	}
     	
     }
     

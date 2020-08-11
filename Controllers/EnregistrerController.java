@@ -6,11 +6,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Calendar;
 import java.util.ResourceBundle;
 
 import Connectivity.ConnectionClass;
@@ -27,6 +27,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class EnregistrerController implements Initializable {
+	
 	@FXML
 	private Label firstName;
 	@FXML
@@ -74,6 +75,7 @@ public class EnregistrerController implements Initializable {
 	@FXML
 	BorderPane borderPane;
 	public static int idDossier = 20200000;
+	public static String idDossierYear;
 
 	// Event Listener on Button[#modifyButton].onAction
 	@FXML
@@ -112,46 +114,40 @@ public class EnregistrerController implements Initializable {
 		String sqlId = "SELECT MAX(IdDossier)  FROM dossier";
 		ResultSet result = statId.executeQuery(sqlId);
 		if (result.next()) {
+			int year = Calendar.getInstance().get(Calendar.YEAR);
 			idDossier = result.getInt(1) + 1;
+			idDossierYear =  idDossier + "/" + year ; 
+			
 		}
-
-		/* Determination de path de chaque fichier */
-
-		String pathCIN = LesInfoDuDemandeurController.demandeur.getCinFile().getAbsolutePath();
-		String pathDemandeCreusement = LesInfoDuDemandeurController.demandeur.getDemandeFile().getAbsolutePath();
-		String pathAttistation = LesInfoDelImmobilierController.InfoSurImmobilier.getAttestationDePocession()
-				.getAbsolutePath();
-		String pathPlanImm = LesInfoDelImmobilierController.InfoSurImmobilier.getPlanImmobilier().getAbsolutePath();
-
 		/*
 		 * Creation de l'objet InputStream afin de le stocker dans la base de donn�es
 		 */
 
-		InputStream cinFile = new FileInputStream(new File(pathCIN));
-		InputStream demandeCreusement = new FileInputStream(new File(pathDemandeCreusement));
-		InputStream attistation = new FileInputStream(new File(pathAttistation));
-		InputStream planImmFile = new FileInputStream(new File(pathPlanImm));
+		InputStream cinFile = new FileInputStream(LesInfoDuDemandeurController.demandeur.getCinFile());
+		InputStream demandeCreusement = new FileInputStream(LesInfoDuDemandeurController.demandeur.getDemandeFile());
+		InputStream attistation = new FileInputStream(LesInfoDelImmobilierController.InfoSurImmobilier.getAttestationDePocession());
+		InputStream planImmFile = new FileInputStream(LesInfoDelImmobilierController.InfoSurImmobilier.getPlanImmobilier());
 		/* la requite sql de l'insertion */
 
 		String sql = "INSERT INTO `dossier`(`IdDossier`, `Nom`, `Prenom`, `cin`, `cinImg`, `typeDemande`,"
 				+ " `demandeCreusement`, `attistationPocession`, `Douar`, `Commune`, `Province`, `localisationPointEau`"
 				+ ", `Debit`, `Profendeur`, `PlanDeau`, `daaira`, `DateDepot`, `dateEnvoiABHOER`, "
 				+ "`dateDebut_EP`, `dateFin_EP`, `dateSignature_PV`, `AvisDeCEP`, `DateEnvoiDuPV_ABHOER`, "
-				+ "`AvisABHOER`, `Autorisation`, `qiyada`, `planImmo`, `nomImmobilier`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, "
-				+ "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				+ "`AvisABHOER`, `Autorisation`, `qiyada`, `planImmo`, `nomImmobilier`, `idDossierYear`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, "
+				+ "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
 
-			/* l'insertion des el�ments dans la base de donn�es */
+			/* l'insertion des el�ments dans la base de donnees */
 
 			PreparedStatement stat = connection.prepareStatement(sql);
 			stat.setInt(1, idDossier);
 			stat.setString(2, LesInfoDuDemandeurController.demandeur.getNom());
 			stat.setString(3, LesInfoDuDemandeurController.demandeur.getPrenom());
 			stat.setString(4, LesInfoDuDemandeurController.demandeur.getCin());
-			stat.setBlob(5, cinFile);
+			stat.setBytes(5, cinFile.readAllBytes());
 			stat.setString(6, LesInfoDuDemandeurController.demandeur.getTypeDemande());
-			stat.setBlob(7, demandeCreusement);
-			stat.setBlob(8, attistation);
+			stat.setBytes(7, demandeCreusement.readAllBytes());
+			stat.setBytes(8, attistation.readAllBytes());
 			stat.setString(9, LesInfoDelImmobilierController.InfoSurImmobilier.getDouar());
 			stat.setString(10, LesInfoDelImmobilierController.InfoSurImmobilier.getCommune());
 			stat.setString(11, LesInfoDelImmobilierController.InfoSurImmobilier.getProvince());
@@ -161,26 +157,31 @@ public class EnregistrerController implements Initializable {
 			stat.setFloat(15, InformationsConcernantPointDeauController.poinDeau.getPlanEau());
 			stat.setString(16, LesInfoDelImmobilierController.InfoSurImmobilier.getDaaira());
 
-			stat.setDate(17, Date.valueOf(LesInfoDuDemandeurController.demandeur.getDateDepotDossier()));
-			stat.setDate(18, Date.valueOf(LesInfoDuDemandeurController.demandeur.getDateDepotDossier()));
-			stat.setDate(19, Date.valueOf(LesInfoDuDemandeurController.demandeur.getDateDepotDossier()));
-			stat.setDate(20, Date.valueOf(LesInfoDuDemandeurController.demandeur.getDateDepotDossier()));
-			stat.setDate(21, Date.valueOf(LesInfoDuDemandeurController.demandeur.getDateDepotDossier()));
-			stat.setString(22, "");
-			stat.setDate(23, Date.valueOf(LesInfoDuDemandeurController.demandeur.getDateDepotDossier()));
-			stat.setString(24, "");
-			stat.setString(25, "");
+			stat.setString(17, LesInfoDuDemandeurController.demandeur.getDateDepotDossier());
+			stat.setString(18, "");
+			stat.setString(19, "");
+			stat.setString(20, "");
+			stat.setString(21, "");
+			stat.setString(22, "\u0644\u0627 \u0634\u064a\u0621");
+			stat.setString(23, "");
+			stat.setString(24, "\u0644\u0627 \u0634\u064a\u0621");
+			stat.setString(25, "\u0644\u0627 \u0634\u064a\u0621");
 			stat.setString(26, LesInfoDelImmobilierController.InfoSurImmobilier.getQuiada());
-			stat.setBlob(27, planImmFile);
+			stat.setBytes(27, planImmFile.readAllBytes());
 			stat.setString(28, LesInfoDelImmobilierController.InfoSurImmobilier.getNomImmobilier());
+			stat.setString(29, idDossierYear);
 			stat.execute();
 
+			//close the file input stream
+			cinFile.close();
+			demandeCreusement.close();
+			attistation.close();
+			planImmFile.close();
+			
 		} catch (SQLException e) {
-
-			// e.printStackTrace();
-			System.out.println(e.getMessage());
+			
+			e.printStackTrace();
 		}
-
 		try {
 
 			FXMLLoader loader = new FXMLLoader();
@@ -192,9 +193,9 @@ public class EnregistrerController implements Initializable {
 			primaryStage.setScene(AEteEnregistrerScene);
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
-		}
+		};
 
 	}
 

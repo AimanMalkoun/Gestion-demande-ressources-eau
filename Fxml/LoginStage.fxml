@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="1130.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LoginStageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1130.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LoginStageController">
    <children>
       <StackPane prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
          <effect>
@@ -55,7 +55,7 @@
                         </Label>
                         <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="450.0" style="-fx-background-color: transparent;">
                            <children>
-                              <PasswordField fx:id="password" alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="246.0" promptText="كلمة المرور " style="-fx-border-color: #2b4067; -fx-border-width: 2px;" HBox.hgrow="ALWAYS">
+                              <PasswordField fx:id="password" alignment="CENTER_RIGHT" onKeyPressed="#handleEnterAcion" prefHeight="40.0" prefWidth="246.0" promptText="كلمة المرور " style="-fx-border-color: #2b4067; -fx-border-width: 2px;" HBox.hgrow="ALWAYS">
                                  <HBox.margin>
                                     <Insets right="10.0" />
                                  </HBox.margin>
