@@ -289,11 +289,10 @@ public class ModifyFolder2Controller implements Initializable{
 		
 		tableInfo.getItems().clear();
 		th = new Thread(new Task<Object>() {
-		    					@Override protected Object call() throws Exception {
+		    					@Override protected Object call() throws Exception, SQLException {
 				
 		    						ConnectionClass conection =  new ConnectionClass(); 
 		    	
-		    						try {
 		    							Statement statement = conection.getConnection().createStatement();
 		    							ResultSet result;
 		    							result = statement.executeQuery("SELECT `IdDossier` FROM `dossier` ORDER BY IdDossier DESC");
@@ -307,11 +306,9 @@ public class ModifyFolder2Controller implements Initializable{
 		    								tableInfo.getItems().add( new FolderTable(result.getInt("idDossier"), result2.getString("idDossierYear"), result2.getString("typeDemande"), result2.getString("cin"),  result2.getString("nom") + " " + result2.getString("prenom")) );
 		    								
 		    							}
-		    							System.out.println("test");
-		    						} catch (SQLException e) {
-		    							e.printStackTrace();
-		    						}
-		    						
+
+		    						conection.getConnection().close();
+		    						th.stop();
 		    						return null;
 		    					}
 					}
@@ -329,6 +326,7 @@ public class ModifyFolder2Controller implements Initializable{
 		ConnectionClass conection =  new ConnectionClass(); 
     	
 		try {
+			
 			Statement statement = conection.getConnection().createStatement();
 	    	ResultSet result;
 			result = statement.executeQuery("SELECT `IdDossier`,`nom`, `prenom` , `cin`, `typeDemande`, `idDossierYear` FROM `dossier` WHERE idDossierYear = '" + idDossierYear + "'");
@@ -337,9 +335,13 @@ public class ModifyFolder2Controller implements Initializable{
 				tableInfo.getItems().add( new FolderTable(result.getInt("IdDossier"),result.getString("idDossierYear") ,result.getString("typeDemande"), result.getString("cin"),  result.getString("nom") + " " + result.getString("prenom")) );
 				return true;
 			}
+			
+			conection.getConnection().close();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
 		return false;
 		
 	}
