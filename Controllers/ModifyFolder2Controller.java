@@ -234,6 +234,9 @@ public class ModifyFolder2Controller implements Initializable{
 	//this method is for removing a folder from dataBase and the table items
 		private void removeRow(TableRow<FolderTable> row){
 			
+			if (th.isAlive())
+				th.stop();
+			
 			//first let the user confirm the delete order
 			if(DeleteConfirmationAlert.desplay()) {
 				FolderTable folder = row.getItem();
@@ -307,7 +310,8 @@ public class ModifyFolder2Controller implements Initializable{
 		    								
 		    							}
 
-		    						conection.getConnection().close();
+		    							statement.close();
+		    							conection.getConnection().close();
 		    						th.stop();
 		    						return null;
 		    					}

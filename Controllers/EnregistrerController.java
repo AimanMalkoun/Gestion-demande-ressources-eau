@@ -1,6 +1,5 @@
 package Controllers;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -110,7 +109,6 @@ public class EnregistrerController implements Initializable {
 		Statement statId = connection.createStatement();
 
 		/* S�lectionner le plus grand idDossier */
-
 		String sqlId = "SELECT MAX(IdDossier)  FROM dossier";
 		ResultSet result = statId.executeQuery(sqlId);
 		if (result.next()) {
@@ -195,8 +193,8 @@ public class EnregistrerController implements Initializable {
 		} catch (IOException e) {
 
 			e.printStackTrace();
-		};
-
+		}
+	
 	}
 
 	@Override

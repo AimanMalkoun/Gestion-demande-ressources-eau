@@ -186,11 +186,14 @@ public class ConnectionClassDossier {
 			stm.setInt(1, id);
 			result = stm.executeUpdate();
 			
+			stm.close();
+			conection.getConnection().close();
 			return result;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		
 		return result;
 	}
