@@ -171,6 +171,9 @@ public class EnregistrerController implements Initializable {
 			stat.setString(28, LesInfoDelImmobilierController.InfoSurImmobilier.getNomImmobilier());
 			stat.setString(29, idDossierYear);
 			stat.execute();
+			
+			stat.close();
+			connection.close();
 
 			//close the file input stream
 			cinFile.close();
