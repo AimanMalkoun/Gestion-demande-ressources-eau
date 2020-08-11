@@ -2,6 +2,7 @@ package Connectivity;
 
 
 
+import java.sql.Blob;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,7 +16,7 @@ public class ConnectionClassDossier {
 
 	private ConnectionClass conection;
 	public ConnectionClassDossier() {
-		conection =  new ConnectionClass();
+		conection =  new ConnectionClass();// TODO Auto-generated constructor stub
 	}
 	
 	//getters and setters
@@ -177,7 +178,7 @@ public class ConnectionClassDossier {
 
 	public int removeFolder(int id) {
 		
-		String sqlQuery = "DELETE FROM `dossier` WHERE `IdDossier` = ?; VACUUM;";
+		String sqlQuery = "DELETE FROM `dossier` WHERE `IdDossier` = ?";
 		int result = 0;
 		
 		try {

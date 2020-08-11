@@ -21,7 +21,7 @@ import javafx.stage.Stage;
 
 
 
-public class CreatePdfWithImages{
+public class CreatePdfWithImages extends Application{
 	
 	public static File createPdf(List<File> imagesList, String fileName) {
 		//get destination path
@@ -31,9 +31,8 @@ public class CreatePdfWithImages{
 		Document document = new Document();
 		
 		try {
-
-			FileOutputStream output = new FileOutputStream(destPath);
-			PdfWriter pdfWriter = PdfWriter.getInstance(document, output);
+			
+			PdfWriter.getInstance(document, new FileOutputStream(destPath));
 			document.open();
 			
 			for (File image : imagesList) {
@@ -47,21 +46,33 @@ public class CreatePdfWithImages{
 				
 		    }
 			document.close();
-			pdfWriter.close();
-			output.close();
 			
 		} catch (FileNotFoundException | DocumentException e) {
-
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (MalformedURLException e) {
-
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
+		
 		return new File(destPath);
+		
+	}
+	
+	public static void main(String[] args) {
+		launch(args);
+	}
+
+	@Override
+	public void start(Stage arg0) throws Exception {
+		FileChooser fileChooser = new FileChooser();
+		fileChooser.getExtensionFilters().add(new ExtensionFilter("image", "*.JPG", "*.PNG"));
+		List<File> files = fileChooser.showOpenMultipleDialog(new Stage());
+		createPdf(files, "test.pdf");
 		
 	}
 }

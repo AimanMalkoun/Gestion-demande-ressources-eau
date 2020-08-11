@@ -119,14 +119,23 @@ public class EnregistrerController implements Initializable {
 			idDossierYear =  idDossier + "/" + year ; 
 			
 		}
+
+		/* Determination de path de chaque fichier */
+
+		String pathCIN = LesInfoDuDemandeurController.demandeur.getCinFile().getAbsolutePath();
+		String pathDemandeCreusement = LesInfoDuDemandeurController.demandeur.getDemandeFile().getAbsolutePath();
+		String pathAttistation = LesInfoDelImmobilierController.InfoSurImmobilier.getAttestationDePocession()
+				.getAbsolutePath();
+		String pathPlanImm = LesInfoDelImmobilierController.InfoSurImmobilier.getPlanImmobilier().getAbsolutePath();
+
 		/*
 		 * Creation de l'objet InputStream afin de le stocker dans la base de donn�es
 		 */
 
-		InputStream cinFile = new FileInputStream(LesInfoDuDemandeurController.demandeur.getCinFile());
-		InputStream demandeCreusement = new FileInputStream(LesInfoDuDemandeurController.demandeur.getDemandeFile());
-		InputStream attistation = new FileInputStream(LesInfoDelImmobilierController.InfoSurImmobilier.getAttestationDePocession());
-		InputStream planImmFile = new FileInputStream(LesInfoDelImmobilierController.InfoSurImmobilier.getPlanImmobilier());
+		InputStream cinFile = new FileInputStream(new File(pathCIN));
+		InputStream demandeCreusement = new FileInputStream(new File(pathDemandeCreusement));
+		InputStream attistation = new FileInputStream(new File(pathAttistation));
+		InputStream planImmFile = new FileInputStream(new File(pathPlanImm));
 		/* la requite sql de l'insertion */
 
 		String sql = "INSERT INTO `dossier`(`IdDossier`, `Nom`, `Prenom`, `cin`, `cinImg`, `typeDemande`,"
@@ -158,28 +167,24 @@ public class EnregistrerController implements Initializable {
 			stat.setString(16, LesInfoDelImmobilierController.InfoSurImmobilier.getDaaira());
 
 			stat.setString(17, LesInfoDuDemandeurController.demandeur.getDateDepotDossier());
-			stat.setString(18, "");
-			stat.setString(19, "");
-			stat.setString(20, "");
-			stat.setString(21, "");
-			stat.setString(22, "\u0644\u0627 \u0634\u064a\u0621");
-			stat.setString(23, "");
-			stat.setString(24, "\u0644\u0627 \u0634\u064a\u0621");
-			stat.setString(25, "\u0644\u0627 \u0634\u064a\u0621");
+			stat.setString(18, LesInfoDuDemandeurController.demandeur.getDateDepotDossier());
+			stat.setString(19, LesInfoDuDemandeurController.demandeur.getDateDepotDossier());
+			stat.setString(20, LesInfoDuDemandeurController.demandeur.getDateDepotDossier());
+			stat.setString(21, LesInfoDuDemandeurController.demandeur.getDateDepotDossier());
+			stat.setString(22, "");
+			stat.setString(23, LesInfoDuDemandeurController.demandeur.getDateDepotDossier());
+			stat.setString(24, "");
+			stat.setString(25, "");
 			stat.setString(26, LesInfoDelImmobilierController.InfoSurImmobilier.getQuiada());
 			stat.setBytes(27, planImmFile.readAllBytes());
 			stat.setString(28, LesInfoDelImmobilierController.InfoSurImmobilier.getNomImmobilier());
 			stat.setString(29, idDossierYear);
 			stat.execute();
 
-			//close the file input stream
-			cinFile.close();
-			demandeCreusement.close();
-			attistation.close();
-			planImmFile.close();
-			
 		} catch (SQLException e) {
-			
+
+			// e.printStackTrace();
+			System.out.println(e.getMessage());
 			e.printStackTrace();
 		}
 		try {
@@ -193,7 +198,7 @@ public class EnregistrerController implements Initializable {
 			primaryStage.setScene(AEteEnregistrerScene);
 
 		} catch (IOException e) {
-
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		};
 

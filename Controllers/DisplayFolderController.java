@@ -23,7 +23,6 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 import Classes.DossierForDownload;
 import Connectivity.ConnectionClassDossier;
-import alerts.WarningAlert;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -41,9 +40,9 @@ import pdfClasses.ShowPdf;
 
 public class DisplayFolderController implements Initializable {
 
-		DossierForDownload dossier;
+	DossierForDownload dossier;
 
-	 	@FXML
+	 @FXML
 	    private Label nomLabel;
 
 	    @FXML
@@ -139,112 +138,48 @@ public class DisplayFolderController implements Initializable {
 	    @FXML
 	    void annuler(MouseEvent event) {
 	    	
-	    	if(filesHaveBeenDeleted()) {
-	    	
-	    		try {
+	    	try {
 
-	    			FXMLLoader loader= new FXMLLoader();
-	    			loader.setLocation(getClass().getResource("../Fxml/ModifyFolder2.fxml"));
-	    			Parent showFolderRoot = loader.load();
+				FXMLLoader loader= new FXMLLoader();
+				loader.setLocation(getClass().getResource("../Fxml/ModifyFolder2.fxml"));
+				Parent showFolderRoot = loader.load();
 				
-	    			ModifyFolder2Controller nextControler = loader.getController();
-	    			nextControler.setMessage(1);
+				ModifyFolder2Controller nextControler = loader.getController();
+				nextControler.setMessage(1);
 				
-	    			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-	    			Scene showFolderScene = new Scene(showFolderRoot, primaryStage.getWidth(), primaryStage.getHeight());
-	    			primaryStage.setScene(showFolderScene);
+				Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+				Scene showFolderScene = new Scene(showFolderRoot, primaryStage.getWidth(), primaryStage.getHeight());
+				primaryStage.setScene(showFolderScene);
 
-	    		} catch (IOException e) {
-
-	    			e.printStackTrace();
-				
-	    		}
-	    	}else {
-	    		WarningAlert.desplay("", "\u0628\u0639\u0636 \u0645\u0644\u0641\u0627\u062a \u0627\u0644\u0070\u0064\u0066 \u0645\u0641\u062a\u0648\u062d\u0629 \u0628\u0628\u0631\u0646\u0627\u0645\u062c \u0622\u062e\u0631\u002c \u0627\u0644\u0645\u0631\u062c\u0648 \u0625\u063a\u0644\u0627\u0642\u0647\u0627 \u0623\u0648\u0644\u0627");
-	    	}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	    	
 	    }
-
-
-	    @FXML
-	    void goHomePage(MouseEvent event) {
-	    	
-	    	if(filesHaveBeenDeleted()) {
-	    	
-	    		try {
-	    		
-	    			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-	    			Parent ModifyFolderRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/Dashboard.fxml"));
-	    			Scene ModifyFolderScene = new Scene(ModifyFolderRoot, primaryStage.getWidth(), primaryStage.getHeight());
-	    			primaryStage.setScene(ModifyFolderScene);
-				
-	    		} catch (IOException e) {
-
-	    			e.printStackTrace();
-			
-	    		}
-	    	}else {
-	    		WarningAlert.desplay("", "\u0628\u0639\u0636 \u0645\u0644\u0641\u0627\u062a \u0627\u0644\u0070\u0064\u0066 \u0645\u0641\u062a\u0648\u062d\u0629 \u0628\u0628\u0631\u0646\u0627\u0645\u062c \u0622\u062e\u0631\u002c \u0627\u0644\u0645\u0631\u062c\u0648 \u0625\u063a\u0644\u0627\u0642\u0647\u0627 \u0623\u0648\u0644\u0627");
-	    	}
-	    	
-	    }
-
-	    @FXML
-	    void logOut(MouseEvent event) {
-
-	    	if(filesHaveBeenDeleted()) {
-	    	
-	    		try {
-	    		
-	    			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-	    			Parent ModifyFolderRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/LoginStage.fxml"));
-	    			Scene ModifyFolderScene = new Scene(ModifyFolderRoot, primaryStage.getWidth(), primaryStage.getHeight());
-	    			primaryStage.setScene(ModifyFolderScene);
-				
-	    		} catch (IOException e) {
-
-	    			e.printStackTrace();
-				
-	    		}
-	    	}else {
-	    		WarningAlert.desplay("", "\u0628\u0639\u0636 \u0645\u0644\u0641\u0627\u062a \u0627\u0644\u0070\u0064\u0066 \u0645\u0641\u062a\u0648\u062d\u0629 \u0628\u0628\u0631\u0646\u0627\u0645\u062c \u0622\u062e\u0631\u002c \u0627\u0644\u0645\u0631\u062c\u0648 \u0625\u063a\u0644\u0627\u0642\u0647\u0627 \u0623\u0648\u0644\u0627");
-	    	}
-	    	
-	    }
-	    
-    private boolean filesHaveBeenDeleted() {
-
-    	File directory = new File(DisplayFolderController.class.getClassLoader().getResource("tempFiles").getPath());
-    	
-    	for (File file : directory.listFiles()) {
-    		if(!file.delete())
-    			return false;
-    	}
-		return true;
-	}
-
-	@FXML
-    private void displayFile(MouseEvent event) throws PdfException, IOException {
+    
+    @FXML
+    private void displayFile(MouseEvent event) throws PdfException {
 
     	if(event.getSource() == attestationFileButton) {
     		
-    		File file = ConvertBlobToPdf.getPdfFromBlob(dossier.getAttestationDePocession(), "attestationFile.pdf");	
-    		Desktop.getDesktop().open(file);
- 
+    		String path =ConvertBlobToPdf.getPdfFromBlob(dossier.getAttestationDePocession(), "attestationFile.pdf");
+    		ShowPdf.display2(path, "attestationFile.pdf");
+    		
     	}else if(event.getSource() == demandeFileButton) {
     		
-    		File file =ConvertBlobToPdf.getPdfFromBlob(dossier.getDemandeFile(), "demandeFile.pdf");
-			Desktop.getDesktop().open(file);
+    		String path =ConvertBlobToPdf.getPdfFromBlob(dossier.getDemandeFile(), "demandeFile.pdf");
+    		ShowPdf.display2(path, "demandeFile.pdf");
     		
     	}else if(event.getSource() == cinFileButton) {
     		
-    		File file = ConvertBlobToPdf.getPdfFromBlob(dossier.getCinFile(), "CIN.pdf");
-			Desktop.getDesktop().open(file);
+    		String path =ConvertBlobToPdf.getPdfFromBlob(dossier.getCinFile(), "CIN.pdf");
+    		ShowPdf.display2(path, "CIN.pdf");
     		
     	}else if(event.getSource() == planImmobilierFileButton) {
     		
-    		File file =ConvertBlobToPdf.getPdfFromBlob(dossier.getPlanImmobilier(), "planEauFile.pdf");
-			Desktop.getDesktop().open(file);
+    		String path =ConvertBlobToPdf.getPdfFromBlob(dossier.getPlanImmobilier(), "planEauFile.pdf");
+    		ShowPdf.display2(path, "planEauFile.pdf");
     		
     	}
     	
@@ -260,11 +195,11 @@ public class DisplayFolderController implements Initializable {
 
 		}
 		Document document = new Document();
-			PdfWriter.getInstance(document, new FileOutputStream(path+ "\\"+ codCinLabel.getText() + "_fichier.pdf"));
-			Font small = FontFactory.getFont("Fonts/arial.ttf", BaseFont.IDENTITY_H, 12);
-			Font normal = FontFactory.getFont("Fonts/arial.ttf", BaseFont.IDENTITY_H, 15);
-			Font big0 = FontFactory.getFont("Fonts/arial.ttf", BaseFont.IDENTITY_H, 18);
-			Font big = FontFactory.getFont("Fonts/arial.ttf", BaseFont.IDENTITY_H, 22);
+			PdfWriter.getInstance(document, new FileOutputStream(path+ "\\"+ codCinLabel.getText() + ".pdf"));
+			Font small = FontFactory.getFont("C:/Windows/Fonts/arial.ttf", BaseFont.IDENTITY_H, 12);
+			Font normal = FontFactory.getFont("C:/Windows/Fonts/arial.ttf", BaseFont.IDENTITY_H, 15);
+			Font big0 = FontFactory.getFont("C:/Windows/Fonts/arial.ttf", BaseFont.IDENTITY_H, 18);
+			Font big = FontFactory.getFont("C:/Windows/Fonts/arial.ttf", BaseFont.IDENTITY_H, 22);
 			big.setColor(19, 164, 90);
 			big0.setColor(11, 50, 139);
 			document.open();
@@ -350,17 +285,17 @@ public class DisplayFolderController implements Initializable {
 			 */
 			Paragraph para4 = new Paragraph(30);
 			para4.add(new Phrase("\u062a\u0627\u0631\u064a\u062e \u0625\u0631\u0633\u0627\u0644 \u0627\u0644\u0645\u0644\u0641 \u0625\u0644\u0649 \u0645\u0646\u062f\u0648\u0628\u064a\u0629 \u0648\u0643\u0627\u0644\u0629 \u0627\u0644\u062d\u0648\u0636 \u0627\u0644\u0645\u0627\u0626\u064a \u0644\u0627\u0645 \u0627\u0644\u0631\u0628\u064a\u0639 \u0628\u0627\u0644\u062c\u062f\u064a\u062f\u0629 : ", normal));
-			para4.add(new Phrase((dateDenvoiAlabhouerEljaidaLabel.getText().equals("") ? "XXXX-XX-XX" : dateDenvoiAlabhouerEljaidaLabel.getText()) + "\n", big0));
+			para4.add(new Phrase(dateDenvoiAlabhouerEljaidaLabel.getText() + "\n", big0));
 			para4.add(new Phrase("\u062a\u0627\u0631\u064a\u062e \u0628\u062f\u0627\u064a\u0629 \u0627\u0644\u0628\u062d\u062b \u0627\u0644\u0639\u0644\u0646\u064a : ", normal));
-			para4.add(new Phrase((dateDebutEnquetePublicLabel.getText().equals("") ? "XXXX-XX-XX" : dateDebutEnquetePublicLabel.getText()) + "\n", big0));
+			para4.add(new Phrase(dateDebutEnquetePublicLabel.getText() + "\n", big0));
 			para4.add(new Phrase("\u062a\u0627\u0631\u064a\u062e \u0646\u0647\u0627\u064a\u0629 \u0627\u0644\u0628\u062d\u062b \u0627\u0644\u0639\u0644\u0646\u064a : ", normal));
-			para4.add(new Phrase((dateFinEnquetePublicLabel.getText().equals("") ? "XXXX-XX-XX" : dateFinEnquetePublicLabel.getText()) + "\n", big0));
+			para4.add(new Phrase(dateFinEnquetePublicLabel.getText() + "\n", big0));
 			para4.add(new Phrase("\u062a\u0627\u0631\u064a\u062e \u0627\u0645\u0636\u0627\u0621 \u0627\u0644\u0645\u062d\u0636\u0631 \u0645\u0646 \u0637\u0631\u0641 \u0644\u062c\u0646\u0629 \u0627\u0644\u0628\u062d\u062b \u0627\u0644\u0639\u0644\u0646\u064a : ", normal));
-			para4.add(new Phrase((dateSignaturPVparCEPLabel.getText().equals("") ? "XXXX-XX-XX" : dateSignaturPVparCEPLabel.getText()) + "\n", big0));
+			para4.add(new Phrase(dateSignaturPVparCEPLabel.getText() + "\n", big0));
 			para4.add(new Phrase("\u0631\u0623\u064a \u0644\u062c\u0646\u0629 \u0627\u0644\u0628\u062d\u062b \u0627\u0644\u0639\u0644\u0646\u064a : ", normal));
 			para4.add(new Phrase(AvisDeCEPLabel.getText() + "\n", big0));
 			para4.add(new Phrase("\u062a\u0627\u0631\u064a\u062e \u0625\u0631\u0633\u0627\u0644 \u0627\u0644\u0645\u062d\u0636\u0631 \u0625\u0644\u0649 \u0645\u0646\u062f\u0648\u0628\u064a\u0629 \u0648\u0643\u0627\u0644\u0629 \u0627\u0644\u062d\u0648\u0636 \u0627\u0644\u0645\u0627\u0626\u064a \u0644\u0627\u0645 \u0627\u0644\u0631\u0628\u064a\u0639 \u0628\u0627\u0644\u062c\u062f\u064a\u062f\u0629 : ", normal));
-			para4.add(new Phrase((dateEnvoitPvAbhoerEljadidaLabel.getText().equals("") ? "XXXX-XX-XX" : dateEnvoitPvAbhoerEljadidaLabel.getText()) + "\n", big0));
+			para4.add(new Phrase(dateEnvoitPvAbhoerEljadidaLabel.getText() + "\n", big0));
 			para4.add(new Phrase("\u0631\u0623\u064a \u0648\u0643\u0627\u0644\u0629 \u0627\u0644\u062d\u0648\u0636 \u0627\u0644\u0645\u0627\u0626\u064a \u0644\u0627\u0645 \u0627\u0644\u0631\u0628\u064a\u0639 : ", normal));
 			para4.add(new Phrase(AvisAbhoerLabel.getText() + "\n", big0));
 			para4.add(new Phrase("\u0627\u0644\u0631\u062e\u0635\u0629 : ", normal));
@@ -388,9 +323,44 @@ public class DisplayFolderController implements Initializable {
 			document.add(table);
 			document.close();
 
-			Desktop.getDesktop().open(new File(path+ "\\"+ codCinLabel.getText() + "_fichier.pdf"));
+			Desktop.getDesktop().open(new File(path+ "\\" + codCinLabel.getText() + ".pdf"));
 		}
 
+
+    @FXML
+    void goHomePage(MouseEvent event) {
+    	
+    	try {
+    		
+			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+    		Parent ModifyFolderRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/Dashboard.fxml"));
+			Scene ModifyFolderScene = new Scene(ModifyFolderRoot, primaryStage.getWidth(), primaryStage.getHeight());
+			primaryStage.setScene(ModifyFolderScene);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    }
+
+    @FXML
+    void logOut(MouseEvent event) {
+
+    	try {
+    		
+			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+    		Parent ModifyFolderRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/LoginStage.fxml"));
+			Scene ModifyFolderScene = new Scene(ModifyFolderRoot, primaryStage.getWidth(), primaryStage.getHeight());
+			primaryStage.setScene(ModifyFolderScene);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    }
+    
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
@@ -442,12 +412,12 @@ public class DisplayFolderController implements Initializable {
     	/**
     	 * this zone for suivi de dossier informations
     	 **/
-    	dateDenvoiAlabhouerEljaidaLabel.setText(dossier.getDateEnvoiA_LABHOER().equals("") ? "XXXX-XX-XX" : dossier.getDateEnvoiA_LABHOER());
-    	dateDebutEnquetePublicLabel.setText(dossier.getDateDebutde_EP().equals("") ? "XXXX-XX-XX" : dossier.getDateDebutde_EP());
-    	dateFinEnquetePublicLabel.setText(dossier.getDateFin_EP().equals("") ? "XXXX-XX-XX" : dossier.getDateFin_EP());
-    	dateSignaturPVparCEPLabel.setText(dossier.getDateSignateureDuPv().equals("") ? "XXXX-XX-XX" : dossier.getDateSignateureDuPv());
+    	dateDenvoiAlabhouerEljaidaLabel.setText(dossier.getDateEnvoiA_LABHOER());
+    	dateDebutEnquetePublicLabel.setText(dossier.getDateDebutde_EP());
+    	dateFinEnquetePublicLabel.setText(dossier.getDateFin_EP());
+    	dateSignaturPVparCEPLabel.setText(dossier.getDateSignateureDuPv());
     	AvisDeCEPLabel.setText(dossier.getAvisDe_CEP());
-    	dateEnvoitPvAbhoerEljadidaLabel.setText(dossier.getDateEnvoiDuPVa_LABHOER().equals("") ? "XXXX-XX-XX" : dossier.getDateEnvoiDuPVa_LABHOER());
+    	dateEnvoitPvAbhoerEljadidaLabel.setText(dossier.getDateEnvoiDuPVa_LABHOER());
     	AvisAbhoerLabel.setText(dossier.getAvisABHOER());
     	autorisationLabel.setText(dossier.getAutorisation());
     	

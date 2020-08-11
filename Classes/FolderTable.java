@@ -7,15 +7,16 @@ public class FolderTable {
 	private String cin;
 	private String nomPrenom;
 	private String typeDemande;
-	private String dateDepot;
+	private String idDossierYear;
+
 	
 
-	public FolderTable(int id, String dateDepot, String typeDemande, String cin,  String nomPrenom) {
+	public FolderTable(int id, String idDossierYear, String typeDemande, String cin,  String nomPrenom) {
 		this.id = id;
 		this.cin = cin;
 		this.nomPrenom = nomPrenom;
 		this.typeDemande = typeDemande;
-		this.dateDepot = dateDepot;
+		this.idDossierYear = idDossierYear;
 	}
 
 	//getters
@@ -49,11 +50,11 @@ public class FolderTable {
 	}
 
 	public String getDateDepot() {
-		return dateDepot;
+		return idDossierYear;
 	}
 
 	public void setDateDepot(String dateDepot) {
-		this.dateDepot = dateDepot;
+		this.idDossierYear = dateDepot;
 	}
 
 	public void setTypeDemande(String typeDemande) {

@@ -1,9 +1,9 @@
 eclipse.preferences.version=1
+encoding//Classes/ChangeChoiceAlert.java=UTF-8
+encoding//Classes/ChangeDateAlert.java=UTF-8
+encoding//Classes/ChangeFileAlert.java=UTF-8
+encoding//Classes/ChangeNumberAlert.java=UTF-8
+encoding//Classes/ChangeStringAlert.java=UTF-8
 encoding//Classes/ImagesOrPdfChooser.java=UTF-8
 encoding//Controllers/AEteEnregistrerController.java=UTF-8
 encoding//Controllers/modifierInfoDuDossierController.java=UTF-8
-encoding//alerts/ChangeChoiceAlert.java=UTF-8
-encoding//alerts/ChangeDateAlert.java=UTF-8
-encoding//alerts/ChangeFileAlert.java=UTF-8
-encoding//alerts/ChangeNumberAlert.java=UTF-8
-encoding//alerts/ChangeStringAlert.java=UTF-8

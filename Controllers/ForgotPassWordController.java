@@ -32,7 +32,7 @@ public class ForgotPassWordController {
 	private PasswordField confermPassword;
 	@FXML
 	private Label errorChange;
-	private final String backUpKey = "Eau_Safi_2020";
+	private final String backUpKey = "6VTdBKw01sCubEmFcakxhUHF8sZQEf";
 	
 	
 	@FXML

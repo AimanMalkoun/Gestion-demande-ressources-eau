@@ -10,11 +10,12 @@ import java.util.ResourceBundle;
 import org.jpedal.PdfDecoder;
 import org.jpedal.exception.PdfException;
 
-import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.PixelWriter;
+import javafx.scene.image.WritableImage;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -38,11 +39,26 @@ public class ShowPdf2 implements Initializable{
 		else {
 		
 			for (int pageNember = 1; pageNember <= nbImages; pageNember++) {
-				
-				BufferedImage img = pdf.getPageAsImage(pageNember);
-			    Image image = SwingFXUtils.toFXImage(img, null); 
+				BufferedImage img;
+			    img = pdf.getPageAsImage(pageNember);
+
+			    //Use deprecated method since there's no real alternative 
+			    //(for JavaFX 2.2+ can use SwingFXUtils instead).
+			    WritableImage image = null;
+			    if (img != null) {
+			    	image = new WritableImage(img.getWidth(), img.getHeight());
+			        PixelWriter pw = image.getPixelWriter();
+			            
+			        for (int x = 0; x < img.getWidth(); x++) {
+			        	for (int y = 0; y < img.getHeight(); y++) {
+			        		pw.setArgb(x, y, img.getRGB(x, y));
+			            }
+			        }
+			    }
+			        
+			      //Image image = SwingFXUtils.toFXImage(img, null); // this line of code doesn't work for me, if it works with you please tell me
+			        
 			    images.add(image);
-			    
 			}
 			
 			return images;

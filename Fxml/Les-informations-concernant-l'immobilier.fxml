@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1130.0" stylesheets="@../GestionDemandeEau/application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LesInfoDelImmobilierController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="1130.0" stylesheets="@../GestionDemandeEau/application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LesInfoDelImmobilierController">
    <center>
       <HBox alignment="CENTER" prefWidth="711.0" BorderPane.alignment="CENTER">
          <children>
@@ -70,6 +70,9 @@
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
+                                    <TextField fx:id="nomImmobilier" alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="247.0" />
+                                    <TextField fx:id="douar" alignment="CENTER_RIGHT" layoutX="179.0" layoutY="19.0" prefHeight="30.0" prefWidth="247.0" GridPane.rowIndex="3" />
+                                    <TextField fx:id="commune" alignment="CENTER_RIGHT" layoutX="179.0" layoutY="68.0" prefHeight="30.0" prefWidth="247.0" GridPane.rowIndex="4" />
                                     <Button id="switchButton" fx:id="suivant" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#suivant" prefHeight="30.0" prefWidth="89.0" style="-fx-background-color: #2b4067;" text="التالي" textFill="WHITE" GridPane.rowIndex="8">
                                        <GridPane.margin>
                                           <Insets />
@@ -120,6 +123,7 @@
                                           <Insets top="10.0" />
                                        </padding>
                                     </VBox>
+                                    <TextField fx:id="province" alignment="CENTER_RIGHT" layoutX="245.0" layoutY="107.0" prefHeight="30.0" prefWidth="247.0" GridPane.rowIndex="5" />
                                     <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="2.0" GridPane.rowIndex="7">
                                        <children>
                                           <Button fx:id="planImmobilierFileButton" mnemonicParsing="false" onMouseClicked="#uploadFile" prefHeight="35.0" prefWidth="247.0" style="-fx-background-color: #2b4067;" text="اختيار ملف" textFill="WHITE">
@@ -153,17 +157,13 @@
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
+                                    <TextField fx:id="quiada" alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="247.0" GridPane.rowIndex="2" />
+                                    <TextField fx:id="daaira" alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="247.0" GridPane.rowIndex="1" />
                                     <Label alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="246.0" text="اسم العقار                        :" GridPane.columnIndex="1">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="nomImmobilier" alignment="CENTER_RIGHT" prefHeight="30.0" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" />
-                                    <TextField fx:id="daaira" alignment="CENTER_RIGHT" prefHeight="30.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                                    <TextField fx:id="quiada" alignment="CENTER_RIGHT" prefHeight="30.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-                                    <TextField fx:id="douar" alignment="CENTER_RIGHT" prefHeight="30.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
-                                    <TextField fx:id="commune" alignment="CENTER_RIGHT" prefHeight="30.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
-                                    <TextField fx:id="province" alignment="CENTER_RIGHT" prefHeight="30.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
                                  </children>
                               </GridPane>
                            </children>

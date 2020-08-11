@@ -7,9 +7,11 @@ public class ConnectionClassMaria {
 	public Connection connection;
 
 	public ConnectionClassMaria(){
+		String dbName = "gestiondeamndeeau";
+		String userName = "root";
+		String password = "";
 
 		try {
-			Class.forName("org.sqlite.JDBC");
 			connection = (Connection) DriverManager.getConnection("jdbc:sqlite:src/SQLiteDB/gestiondeamndeeau.sqlite");
 		} catch (Exception e) {
 
