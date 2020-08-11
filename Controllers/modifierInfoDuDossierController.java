@@ -556,7 +556,7 @@ public class modifierInfoDuDossierController implements Initializable{
 			primaryStage.setScene(ModifyFolderScene);
 			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
     	
@@ -573,7 +573,7 @@ public class modifierInfoDuDossierController implements Initializable{
 			primaryStage.setScene(ModifyFolderScene);
 			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
     	

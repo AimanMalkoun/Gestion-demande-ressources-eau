@@ -15,7 +15,7 @@ public class ConnectionClassDossier {
 
 	private ConnectionClass conection;
 	public ConnectionClassDossier() {
-		conection =  new ConnectionClass();// TODO Auto-generated constructor stub
+		conection =  new ConnectionClass();
 	}
 	
 	//getters and setters
@@ -177,7 +177,7 @@ public class ConnectionClassDossier {
 
 	public int removeFolder(int id) {
 		
-		String sqlQuery = "DELETE FROM `dossier` WHERE `IdDossier` = ?";
+		String sqlQuery = "DELETE FROM `dossier` WHERE `IdDossier` = ?; VACUUM;";
 		int result = 0;
 		
 		try {
