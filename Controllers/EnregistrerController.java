@@ -103,20 +103,18 @@ public class EnregistrerController implements Initializable {
 
 		/* se connecter avec la base de donn�es */
 
-		ConnectionClass conn = new ConnectionClass();
-		Connection connection = conn.getConnection();
-
-		Statement statId = connection.createStatement();
+		Connection connection = new ConnectionClass().getConnection();
 
 		/* S�lectionner le plus grand idDossier */
 		String sqlId = "SELECT MAX(IdDossier)  FROM dossier";
-		ResultSet result = statId.executeQuery(sqlId);
+		ResultSet result = connection.createStatement().executeQuery(sqlId);
 		if (result.next()) {
 			int year = Calendar.getInstance().get(Calendar.YEAR);
 			idDossier = result.getInt(1) + 1;
 			idDossierYear =  idDossier + "/" + year ; 
 			
 		}
+		result.close();
 		/*
 		 * Creation de l'objet InputStream afin de le stocker dans la base de donn�es
 		 */

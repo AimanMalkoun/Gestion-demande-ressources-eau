@@ -238,21 +238,22 @@ public class ModifyFolder2Controller implements Initializable{
 	//this method is for removing a folder from dataBase and the table items
 		private void removeRow(TableRow<FolderTable> row){
 			
-			if (th.isAlive()) 
-				task.cancel();
+			if (!th.isAlive()) {
 			
-			//first let the user confirm the delete order
-			if(DeleteConfirmationAlert.desplay()) {
-				FolderTable folder = row.getItem();
+				//first let the user confirm the delete order
+				if(DeleteConfirmationAlert.desplay()) {
+					FolderTable folder = row.getItem();
 			
-				//remove folder from dataBase
-				ConnectionClassDossier connection = new ConnectionClassDossier();
-				int result = connection.removeFolder(folder.getId());
+					//remove folder from dataBase
+					ConnectionClassDossier connection = new ConnectionClassDossier();
+					int result = connection.removeFolder(folder.getId());
 
-				if(result > 0) {
-					//remove folder from tableView
-					if(tableInfo.getItems().remove(folder))
-						System.out.println("row removed from table");
+					if(result > 0) {
+						//remove folder from tableView
+						System.out.println(folder.getId());
+						if(tableInfo.getItems().remove(folder))
+							System.out.println("row removed from table");
+					}
 				}
 			}
 				
@@ -262,27 +263,26 @@ public class ModifyFolder2Controller implements Initializable{
 		//this method riderects to modifyFolderIni.fxml in order to modify folder in the dataBase
 		private void modifyRow(TableRow<FolderTable> row, ActionEvent event) {
 
-			if (th.isAlive())
-				task.cancel();
+			if (!th.isAlive()){
 			
-			try {
+				try {
 
-				FXMLLoader loader= new FXMLLoader();
-				loader.setLocation(getClass().getResource("../Fxml/modifier les informations du dossier.fxml"));
-				Parent modifyFolderRoot = loader.load();
+					FXMLLoader loader= new FXMLLoader();
+					loader.setLocation(getClass().getResource("../Fxml/modifier les informations du dossier.fxml"));
+					Parent modifyFolderRoot = loader.load();
 				
-				modifierInfoDuDossierController nextControler = loader.getController();
-				nextControler.setMessage(row.getItem().getId());
+					modifierInfoDuDossierController nextControler = loader.getController();
+					nextControler.setMessage(row.getItem().getId());
 				
-				Stage primaryStage = (Stage) rootPane.getScene().getWindow();
-				Scene modifyFolderScene = new Scene(modifyFolderRoot, primaryStage.getWidth(), primaryStage.getHeight());
-				primaryStage.setScene(modifyFolderScene);
+					Stage primaryStage = (Stage) rootPane.getScene().getWindow();
+					Scene modifyFolderScene = new Scene(modifyFolderRoot, primaryStage.getWidth(), primaryStage.getHeight());
+					primaryStage.setScene(modifyFolderScene);
 
-			} catch (IOException e) {
+				} catch (IOException e) {
 				
-				e.printStackTrace();
+					e.printStackTrace();
+				}
 			}
-			
 		}
 
 	
@@ -298,7 +298,7 @@ public class ModifyFolder2Controller implements Initializable{
 		task = new Task<Void>() {
 		    					@Override 
 		    					protected Void call() throws Exception, SQLException {
-
+		    						
 		    						ConnectionClass conection =  new ConnectionClass(); 
 		    				    	
 		    						Statement statement = conection.getConnection().createStatement(), statement2 = conection.getConnection().createStatement();
