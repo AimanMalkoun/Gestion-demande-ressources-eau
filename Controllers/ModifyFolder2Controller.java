@@ -41,6 +41,7 @@ import javafx.util.Callback;
 public class ModifyFolder2Controller implements Initializable{
 	
 	Thread th = new Thread();
+	Task<Void> task;
 	
 	@FXML
     private BorderPane rootPane;
@@ -64,8 +65,8 @@ public class ModifyFolder2Controller implements Initializable{
     @FXML
     void goToHome(ActionEvent event) throws IOException {
 
-		if (th.isAlive())
-			th.stop();
+		if (th.isAlive()) 
+			task.cancel();
 		
     	Parent root = FXMLLoader.load(getClass().getResource("../Fxml/Dashboard.fxml"));
     	Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -104,8 +105,8 @@ public class ModifyFolder2Controller implements Initializable{
     @FXML
     void disconnect(ActionEvent event) throws IOException {
 
-		if (th.isAlive())
-			th.stop();
+		if (th.isAlive()) 
+			task.cancel();
 		
     	Parent root = FXMLLoader.load(getClass().getResource("../Fxml/LoginStage.fxml"));
     	Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -173,6 +174,9 @@ public class ModifyFolder2Controller implements Initializable{
 
 	private void goToShowFolderPage(FolderTable selectedFolder) {
 
+		if (th.isAlive()) 
+			task.cancel();
+		
 		try {
 
 			FXMLLoader loader= new FXMLLoader();
@@ -234,8 +238,8 @@ public class ModifyFolder2Controller implements Initializable{
 	//this method is for removing a folder from dataBase and the table items
 		private void removeRow(TableRow<FolderTable> row){
 			
-			if (th.isAlive())
-				th.stop();
+			if (th.isAlive()) 
+				task.cancel();
 			
 			//first let the user confirm the delete order
 			if(DeleteConfirmationAlert.desplay()) {
@@ -247,7 +251,8 @@ public class ModifyFolder2Controller implements Initializable{
 
 				if(result > 0) {
 					//remove folder from tableView
-					tableInfo.getItems().remove(folder);
+					if(tableInfo.getItems().remove(folder))
+						System.out.println("row removed from table");
 				}
 			}
 				
@@ -258,9 +263,7 @@ public class ModifyFolder2Controller implements Initializable{
 		private void modifyRow(TableRow<FolderTable> row, ActionEvent event) {
 
 			if (th.isAlive())
-				th.stop();
-			
-			tableInfo.getItems().clear();
+				task.cancel();
 			
 			try {
 
@@ -288,38 +291,47 @@ public class ModifyFolder2Controller implements Initializable{
 	private void getFolderInfo(){
 		
 		if (th.isAlive())
-			th.stop();
+			task.cancel();
+			
 		
 		tableInfo.getItems().clear();
-		th = new Thread(new Task<Object>() {
-		    					@Override protected Object call() throws Exception, SQLException {
-				
-		    						ConnectionClass conection =  new ConnectionClass(); 
-		    	
-		    							Statement statement = conection.getConnection().createStatement();
-		    							ResultSet result;
-		    							result = statement.executeQuery("SELECT `IdDossier` FROM `dossier` ORDER BY IdDossier DESC");
-		    							while(result.next())
-		    							{
-						
-		    								String sql = "SELECT `nom`, `prenom` , `cin`, `typeDemande`, `idDossierYear` FROM `dossier` WHERE `IdDossier`= " + result.getInt("IdDossier");
-						
-		    								Statement statement2 = conection.getConnection().createStatement();
-		    								ResultSet result2 = statement2.executeQuery(sql);
-		    								tableInfo.getItems().add( new FolderTable(result.getInt("idDossier"), result2.getString("idDossierYear"), result2.getString("typeDemande"), result2.getString("cin"),  result2.getString("nom") + " " + result2.getString("prenom")) );
-		    								
-		    							}
+		task = new Task<Void>() {
+		    					@Override 
+		    					protected Void call() throws Exception, SQLException {
 
-		    							statement.close();
-		    							conection.getConnection().close();
-		    						th.stop();
+		    						ConnectionClass conection =  new ConnectionClass(); 
+		    				    	
+		    						Statement statement = conection.getConnection().createStatement(), statement2 = conection.getConnection().createStatement();
+		    						ResultSet result;
+		    						result = statement.executeQuery("SELECT `IdDossier` FROM `dossier` ORDER BY IdDossier DESC");
+		    						while(result.next())
+		    						{
+
+		    							if(this.isCancelled()) {
+		    								statement2.close();
+		    								result.close();
+		    								statement.close();
+		    								conection.getConnection().close();
+		    								System.out.println("canceled!");
+		    								break;
+		    							}
+		    							String sql = "SELECT `nom`, `prenom` , `cin`, `typeDemande`, `idDossierYear` FROM `dossier` WHERE `IdDossier`= " + result.getInt("IdDossier");
+		    							
+		    							ResultSet result2 = statement2.executeQuery(sql);
+		    							tableInfo.getItems().add( new FolderTable(result.getInt("idDossier"), result2.getString("idDossierYear"), result2.getString("typeDemande"), result2.getString("cin"),  result2.getString("nom") + " " + result2.getString("prenom")) );
+
+			    						statement2.close();
+			    						result2.close();
+		    						}
+    								result.close();
+    								statement.close();
+    								conection.getConnection().close();
+		    						
 		    						return null;
 		    					}
-					}
-				);
-
+					};
+		th = new Thread(task);
 		th.setDaemon(true);
-
 		th.start();
 	}
 	

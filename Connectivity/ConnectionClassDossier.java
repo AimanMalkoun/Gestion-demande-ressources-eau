@@ -78,7 +78,7 @@ public class ConnectionClassDossier {
 			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+
 			System.out.println(e.getMessage());
 			e.printStackTrace();
 		}
@@ -119,7 +119,7 @@ public class ConnectionClassDossier {
 							"    `nomImmobilier`=?" + 
 							"WHERE `IdDossier`= ?";
 		try {
-			
+
 			PreparedStatement stm = conection.getConnection().prepareStatement(sqlRequete);
 			
 			stm.setString(1, dossier.getNom());
@@ -161,11 +161,11 @@ public class ConnectionClassDossier {
 			return result;
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 			return 0;
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+
 			System.out.println("here the problem");
 			System.out.println(e.getMessage());
 			e.printStackTrace();
@@ -177,7 +177,7 @@ public class ConnectionClassDossier {
 
 	public int removeFolder(int id) {
 		
-		String sqlQuery = "DELETE FROM `dossier` WHERE `IdDossier` = ?; VACUUM;";
+		String sqlQuery = "DELETE FROM `dossier` WHERE `IdDossier` = ?;";
 		int result = 0;
 		
 		try {
@@ -185,12 +185,14 @@ public class ConnectionClassDossier {
 			PreparedStatement stm = conection.getConnection().prepareStatement(sqlQuery);
 			stm.setInt(1, id);
 			result = stm.executeUpdate();
+			if(result > 0)
+				System.out.println("row has been deleted");
 			
 			stm.close();
 			conection.getConnection().close();
 			return result;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 		
