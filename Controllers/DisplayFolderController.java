@@ -23,6 +23,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 import Classes.DossierForDownload;
 import Connectivity.ConnectionClassDossier;
+import alerts.WarningAlert;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -40,9 +41,9 @@ import pdfClasses.ShowPdf;
 
 public class DisplayFolderController implements Initializable {
 
-	DossierForDownload dossier;
+		DossierForDownload dossier;
 
-	 @FXML
+	 	@FXML
 	    private Label nomLabel;
 
 	    @FXML
@@ -138,52 +139,112 @@ public class DisplayFolderController implements Initializable {
 	    @FXML
 	    void annuler(MouseEvent event) {
 	    	
-	    	try {
+	    	if(filesHaveBeenDeleted()) {
+	    	
+	    		try {
 
-				FXMLLoader loader= new FXMLLoader();
-				loader.setLocation(getClass().getResource("../Fxml/ModifyFolder2.fxml"));
-				Parent showFolderRoot = loader.load();
+	    			FXMLLoader loader= new FXMLLoader();
+	    			loader.setLocation(getClass().getResource("../Fxml/ModifyFolder2.fxml"));
+	    			Parent showFolderRoot = loader.load();
 				
-				ModifyFolder2Controller nextControler = loader.getController();
-				nextControler.setMessage(1);
+	    			ModifyFolder2Controller nextControler = loader.getController();
+	    			nextControler.setMessage(1);
 				
-				Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-				Scene showFolderScene = new Scene(showFolderRoot, primaryStage.getWidth(), primaryStage.getHeight());
-				primaryStage.setScene(showFolderScene);
+	    			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+	    			Scene showFolderScene = new Scene(showFolderRoot, primaryStage.getWidth(), primaryStage.getHeight());
+	    			primaryStage.setScene(showFolderScene);
 
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+	    		} catch (IOException e) {
+
+	    			e.printStackTrace();
+				
+	    		}
+	    	}else {
+	    		WarningAlert.desplay("", "\u0628\u0639\u0636 \u0645\u0644\u0641\u0627\u062a \u0627\u0644\u0070\u0064\u0066 \u0645\u0641\u062a\u0648\u062d\u0629 \u0628\u0628\u0631\u0646\u0627\u0645\u062c \u0622\u062e\u0631\u002c \u0627\u0644\u0645\u0631\u062c\u0648 \u0625\u063a\u0644\u0627\u0642\u0647\u0627 \u0623\u0648\u0644\u0627");
+	    	}
 	    	
 	    }
-    
-    @FXML
+
+
+	    @FXML
+	    void goHomePage(MouseEvent event) {
+	    	
+	    	if(filesHaveBeenDeleted()) {
+	    	
+	    		try {
+	    		
+	    			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+	    			Parent ModifyFolderRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/Dashboard.fxml"));
+	    			Scene ModifyFolderScene = new Scene(ModifyFolderRoot, primaryStage.getWidth(), primaryStage.getHeight());
+	    			primaryStage.setScene(ModifyFolderScene);
+				
+	    		} catch (IOException e) {
+
+	    			e.printStackTrace();
+			
+	    		}
+	    	}else {
+	    		WarningAlert.desplay("", "\u0628\u0639\u0636 \u0645\u0644\u0641\u0627\u062a \u0627\u0644\u0070\u0064\u0066 \u0645\u0641\u062a\u0648\u062d\u0629 \u0628\u0628\u0631\u0646\u0627\u0645\u062c \u0622\u062e\u0631\u002c \u0627\u0644\u0645\u0631\u062c\u0648 \u0625\u063a\u0644\u0627\u0642\u0647\u0627 \u0623\u0648\u0644\u0627");
+	    	}
+	    	
+	    }
+
+	    @FXML
+	    void logOut(MouseEvent event) {
+
+	    	if(filesHaveBeenDeleted()) {
+	    	
+	    		try {
+	    		
+	    			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+	    			Parent ModifyFolderRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/LoginStage.fxml"));
+	    			Scene ModifyFolderScene = new Scene(ModifyFolderRoot, primaryStage.getWidth(), primaryStage.getHeight());
+	    			primaryStage.setScene(ModifyFolderScene);
+				
+	    		} catch (IOException e) {
+
+	    			e.printStackTrace();
+				
+	    		}
+	    	}else {
+	    		WarningAlert.desplay("", "\u0628\u0639\u0636 \u0645\u0644\u0641\u0627\u062a \u0627\u0644\u0070\u0064\u0066 \u0645\u0641\u062a\u0648\u062d\u0629 \u0628\u0628\u0631\u0646\u0627\u0645\u062c \u0622\u062e\u0631\u002c \u0627\u0644\u0645\u0631\u062c\u0648 \u0625\u063a\u0644\u0627\u0642\u0647\u0627 \u0623\u0648\u0644\u0627");
+	    	}
+	    	
+	    }
+	    
+    private boolean filesHaveBeenDeleted() {
+
+    	File directory = new File(DisplayFolderController.class.getClassLoader().getResource("tempFiles").getPath());
+    	
+    	for (File file : directory.listFiles()) {
+    		if(!file.delete())
+    			return false;
+    	}
+		return true;
+	}
+
+	@FXML
     private void displayFile(MouseEvent event) throws PdfException, IOException {
 
     	if(event.getSource() == attestationFileButton) {
     		
-    		String path = ConvertBlobToPdf.getPdfFromBlob(dossier.getAttestationDePocession(), "attestationFile.pdf");
-			Desktop.getDesktop().open(new File(path));
-    		//ShowPdf.display(path, "attestationFile.pdf");
-    		
+    		File file = ConvertBlobToPdf.getPdfFromBlob(dossier.getAttestationDePocession(), "attestationFile.pdf");	
+    		Desktop.getDesktop().open(file);
+ 
     	}else if(event.getSource() == demandeFileButton) {
     		
-    		String path =ConvertBlobToPdf.getPdfFromBlob(dossier.getDemandeFile(), "demandeFile.pdf");
-			Desktop.getDesktop().open(new File(path));
-    		//ShowPdf.display(path, "demandeFile.pdf");
+    		File file =ConvertBlobToPdf.getPdfFromBlob(dossier.getDemandeFile(), "demandeFile.pdf");
+			Desktop.getDesktop().open(file);
     		
     	}else if(event.getSource() == cinFileButton) {
     		
-    		String path =ConvertBlobToPdf.getPdfFromBlob(dossier.getCinFile(), "CIN.pdf");
-			Desktop.getDesktop().open(new File(path));
-    		//ShowPdf.display(path, "CIN.pdf");
+    		File file = ConvertBlobToPdf.getPdfFromBlob(dossier.getCinFile(), "CIN.pdf");
+			Desktop.getDesktop().open(file);
     		
     	}else if(event.getSource() == planImmobilierFileButton) {
     		
-    		String path =ConvertBlobToPdf.getPdfFromBlob(dossier.getPlanImmobilier(), "planEauFile.pdf");
-			Desktop.getDesktop().open(new File(path));
-    		//ShowPdf.display(path, "planEauFile.pdf");
+    		File file =ConvertBlobToPdf.getPdfFromBlob(dossier.getPlanImmobilier(), "planEauFile.pdf");
+			Desktop.getDesktop().open(file);
     		
     	}
     	
@@ -199,11 +260,11 @@ public class DisplayFolderController implements Initializable {
 
 		}
 		Document document = new Document();
-			PdfWriter.getInstance(document, new FileOutputStream(path+ "\\"+ codCinLabel.getText() + ".pdf"));
-			Font small = FontFactory.getFont("C:/Windows/Fonts/arial.ttf", BaseFont.IDENTITY_H, 12);
-			Font normal = FontFactory.getFont("C:/Windows/Fonts/arial.ttf", BaseFont.IDENTITY_H, 15);
-			Font big0 = FontFactory.getFont("C:/Windows/Fonts/arial.ttf", BaseFont.IDENTITY_H, 18);
-			Font big = FontFactory.getFont("C:/Windows/Fonts/arial.ttf", BaseFont.IDENTITY_H, 22);
+			PdfWriter.getInstance(document, new FileOutputStream(path+ "\\"+ codCinLabel.getText() + "_fichier.pdf"));
+			Font small = FontFactory.getFont("Fonts/arial.ttf", BaseFont.IDENTITY_H, 12);
+			Font normal = FontFactory.getFont("Fonts/arial.ttf", BaseFont.IDENTITY_H, 15);
+			Font big0 = FontFactory.getFont("Fonts/arial.ttf", BaseFont.IDENTITY_H, 18);
+			Font big = FontFactory.getFont("Fonts/arial.ttf", BaseFont.IDENTITY_H, 22);
 			big.setColor(19, 164, 90);
 			big0.setColor(11, 50, 139);
 			document.open();
@@ -327,44 +388,9 @@ public class DisplayFolderController implements Initializable {
 			document.add(table);
 			document.close();
 
-			Desktop.getDesktop().open(new File(path+ "\\" + codCinLabel.getText() + ".pdf"));
+			Desktop.getDesktop().open(new File(path+ "\\"+ codCinLabel.getText() + "_fichier.pdf"));
 		}
 
-
-    @FXML
-    void goHomePage(MouseEvent event) {
-    	
-    	try {
-    		
-			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-    		Parent ModifyFolderRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/Dashboard.fxml"));
-			Scene ModifyFolderScene = new Scene(ModifyFolderRoot, primaryStage.getWidth(), primaryStage.getHeight());
-			primaryStage.setScene(ModifyFolderScene);
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    	
-    }
-
-    @FXML
-    void logOut(MouseEvent event) {
-
-    	try {
-    		
-			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-    		Parent ModifyFolderRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/LoginStage.fxml"));
-			Scene ModifyFolderScene = new Scene(ModifyFolderRoot, primaryStage.getWidth(), primaryStage.getHeight());
-			primaryStage.setScene(ModifyFolderScene);
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    	
-    }
-    
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		

@@ -1,4 +1,4 @@
-package Classes;
+package alerts;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -11,7 +11,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class DeleteAlert {
+public class DeleteConfirmationAlert {
 	
 
 	private static boolean result = false;

@@ -31,13 +31,6 @@ public class LoginStageController  implements Initializable{
 	private PasswordField password;
 	@FXML
 	private Label msgError;
-
-	 @FXML
-	 void handleEnterAcion(KeyEvent event) throws SQLException, IOException {
-		 if(event.getCode().equals(KeyCode.ENTER))
-			 loginIn(event);
-			 
-	 }
 	
 	@FXML
 	void login(ActionEvent event) throws SQLException, IOException {
@@ -82,6 +75,12 @@ public class LoginStageController  implements Initializable{
 			msgError.setText("\u0643\u0644\u0645\u0629 \u0627\u0644\u0645\u0631\u0648\u0631 \u0644\u064a\u0633\u062a \u0635\u062d\u064a\u062d\u0629");
 		
 		}
-	}
 
+	}
+	@FXML
+	 void handleEnterAcion(KeyEvent event) throws SQLException, IOException {
+		 if(event.getCode().equals(KeyCode.ENTER))
+			 loginIn(event);
+			 
+	 }
 }

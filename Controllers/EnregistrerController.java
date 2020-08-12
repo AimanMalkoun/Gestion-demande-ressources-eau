@@ -104,38 +104,27 @@ public class EnregistrerController implements Initializable {
 
 		/* se connecter avec la base de donn�es */
 
-		ConnectionClass conn = new ConnectionClass();
-		Connection connection = conn.getConnection();
-
-		Statement statId = connection.createStatement();
+		Connection connection = new ConnectionClass().getConnection();
 
 		/* S�lectionner le plus grand idDossier */
 
 		String sqlId = "SELECT MAX(IdDossier)  FROM dossier";
-		ResultSet result = statId.executeQuery(sqlId);
+		ResultSet result = connection.createStatement().executeQuery(sqlId);
 		if (result.next()) {
 			int year = Calendar.getInstance().get(Calendar.YEAR);
 			idDossier = result.getInt(1) + 1;
 			idDossierYear =  idDossier + "/" + year ; 
 			
 		}
-
-		/* Determination de path de chaque fichier */
-
-		String pathCIN = LesInfoDuDemandeurController.demandeur.getCinFile().getAbsolutePath();
-		String pathDemandeCreusement = LesInfoDuDemandeurController.demandeur.getDemandeFile().getAbsolutePath();
-		String pathAttistation = LesInfoDelImmobilierController.InfoSurImmobilier.getAttestationDePocession()
-				.getAbsolutePath();
-		String pathPlanImm = LesInfoDelImmobilierController.InfoSurImmobilier.getPlanImmobilier().getAbsolutePath();
-
+		result.close();
 		/*
 		 * Creation de l'objet InputStream afin de le stocker dans la base de donn�es
 		 */
 
-		InputStream cinFile = new FileInputStream(new File(pathCIN));
-		InputStream demandeCreusement = new FileInputStream(new File(pathDemandeCreusement));
-		InputStream attistation = new FileInputStream(new File(pathAttistation));
-		InputStream planImmFile = new FileInputStream(new File(pathPlanImm));
+		InputStream cinFile = new FileInputStream(LesInfoDuDemandeurController.demandeur.getCinFile());
+		InputStream demandeCreusement = new FileInputStream(LesInfoDuDemandeurController.demandeur.getDemandeFile());
+		InputStream attistation = new FileInputStream(LesInfoDelImmobilierController.InfoSurImmobilier.getAttestationDePocession());
+		InputStream planImmFile = new FileInputStream(LesInfoDelImmobilierController.InfoSurImmobilier.getPlanImmobilier());
 		/* la requite sql de l'insertion */
 
 		String sql = "INSERT INTO `dossier`(`IdDossier`, `Nom`, `Prenom`, `cin`, `cinImg`, `typeDemande`,"
@@ -180,11 +169,18 @@ public class EnregistrerController implements Initializable {
 			stat.setString(28, LesInfoDelImmobilierController.InfoSurImmobilier.getNomImmobilier());
 			stat.setString(29, idDossierYear);
 			stat.execute();
+			
+			stat.close();
+			connection.close();
 
+			//close the file input stream
+			cinFile.close();
+			demandeCreusement.close();
+			attistation.close();
+			planImmFile.close();
+			
 		} catch (SQLException e) {
-
-			// e.printStackTrace();
-			System.out.println(e.getMessage());
+			
 			e.printStackTrace();
 		}
 		try {
@@ -198,7 +194,7 @@ public class EnregistrerController implements Initializable {
 			primaryStage.setScene(AEteEnregistrerScene);
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		};
 

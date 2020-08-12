@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="560.0" prefWidth="1130.0" style="-fx-background-color: #2b4067;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.modifierInfoDuDossierController">
+<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="1130.0" style="-fx-background-color: #2b4067;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.modifierInfoDuDossierController">
    <content>
       <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="578.0" prefWidth="1121.0" stylesheets="@../GestionDemandeEau/application.css">
          <center>
@@ -530,7 +530,7 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="25">
                                  <children>
-                                    <Button id="switchButton" fx:id="AvisAbhoerButton" disable="true" mnemonicParsing="false" onMouseClicked="#changeAttribut" text="تعديل" textFill="WHITE">
+                                    <Button id="switchButton" fx:id="AvisAbhoerButton" disable="true" mnemonicParsing="false" onMouseClicked="#changeAttribut" prefHeight="30.0" prefWidth="55.0" text="تعديل" textFill="WHITE">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
@@ -581,7 +581,7 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" layoutX="270.0" layoutY="796.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="26">
                                  <children>
-                                    <Button id="switchButton" fx:id="autorisationButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" prefHeight="30.0" prefWidth="46.0" text="تعديل" textFill="WHITE">
+                                    <Button id="switchButton" fx:id="autorisationButton" mnemonicParsing="false" onMouseClicked="#changeAttribut" prefHeight="30.0" prefWidth="56.0" text="تعديل" textFill="WHITE">
                                        <font>
                                           <Font size="14.0" />
                                        </font>

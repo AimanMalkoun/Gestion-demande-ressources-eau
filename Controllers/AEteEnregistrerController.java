@@ -63,32 +63,32 @@ public class AEteEnregistrerController implements Initializable {
 			primaryStage.setScene(DashboardScene);
 			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 
 	}
 
 	private void cleanup() {
-		LesInfoDuDemandeurController.demandeur.setNom("");
-		LesInfoDuDemandeurController.demandeur.setPrenom("");
-		LesInfoDuDemandeurController.demandeur.setCin("");
-		LesInfoDuDemandeurController.demandeur.setTypeDemande("");
+		LesInfoDuDemandeurController.demandeur.setNom(null);
+		LesInfoDuDemandeurController.demandeur.setPrenom(null);
+		LesInfoDuDemandeurController.demandeur.setCin(null);
+		LesInfoDuDemandeurController.demandeur.setTypeDemande(null);
 		LesInfoDuDemandeurController.demandeur.setCinFile(null);
 		LesInfoDuDemandeurController.demandeur.setDemandeFile(null);
 		LesInfoDuDemandeurController.demandeur.setDateDepotDossier(null);
 		
-		LesInfoDelImmobilierController.InfoSurImmobilier.setNomImmobilier("");
-		LesInfoDelImmobilierController.InfoSurImmobilier.setDaaira("");
-		LesInfoDelImmobilierController.InfoSurImmobilier.setQuiada("");
+		LesInfoDelImmobilierController.InfoSurImmobilier.setNomImmobilier(null);
+		LesInfoDelImmobilierController.InfoSurImmobilier.setDaaira(null);
+		LesInfoDelImmobilierController.InfoSurImmobilier.setQuiada(null);
 		LesInfoDelImmobilierController.InfoSurImmobilier.setAttestationDePocession(null);
-		LesInfoDelImmobilierController.InfoSurImmobilier.setDouar("");
-		LesInfoDelImmobilierController.InfoSurImmobilier.setCommune("");
-		LesInfoDelImmobilierController.InfoSurImmobilier.setProvince("");
+		LesInfoDelImmobilierController.InfoSurImmobilier.setDouar(null);
+		LesInfoDelImmobilierController.InfoSurImmobilier.setCommune(null);
+		LesInfoDelImmobilierController.InfoSurImmobilier.setProvince(null);
 		LesInfoDelImmobilierController.InfoSurImmobilier.setPlanImmobilier(null);;
 		
 		
-		InformationsConcernantPointDeauController.poinDeau.setLocalisationPoint("");
+		InformationsConcernantPointDeauController.poinDeau.setLocalisationPoint(null);
 		InformationsConcernantPointDeauController.poinDeau.setDebit(0);
 		InformationsConcernantPointDeauController.poinDeau.setProfondeur(0);
 		InformationsConcernantPointDeauController.poinDeau.setPlanEau(0);
@@ -135,11 +135,11 @@ public class AEteEnregistrerController implements Initializable {
 			qiyada = " " + result.getString("qiyada") + " ";
 		}
 		Document document = new Document();
-			PdfWriter.getInstance(document, new FileOutputStream(path+ "\\"+ cin + ".pdf"));
-			Font small = FontFactory.getFont("C:/Windows/Fonts/arial.ttf", BaseFont.IDENTITY_H, 14);
-			Font normal = FontFactory.getFont("C:/Windows/Fonts/arial.ttf", BaseFont.IDENTITY_H, 17);
-			Font big0 = FontFactory.getFont("C:/Windows/Fonts/arial.ttf", BaseFont.IDENTITY_H, 22);
-			Font big = FontFactory.getFont("C:/Windows/Fonts/arial.ttf", BaseFont.IDENTITY_H, 24);
+			PdfWriter.getInstance(document, new FileOutputStream(path+ "\\"+ cin + "_reçu.pdf"));
+			Font small = FontFactory.getFont("Fonts/arial.ttf", BaseFont.IDENTITY_H, 14);
+			Font normal = FontFactory.getFont("Fonts/arial.ttf", BaseFont.IDENTITY_H, 17);
+			Font big0 = FontFactory.getFont("Fonts/arial.ttf", BaseFont.IDENTITY_H, 22);
+			Font big = FontFactory.getFont("Fonts/arial.ttf", BaseFont.IDENTITY_H, 24);
 			document.open();
 			PdfPTable table = new PdfPTable(1);
 			table.setRunDirection(PdfWriter.RUN_DIRECTION_RTL);
@@ -225,7 +225,7 @@ public class AEteEnregistrerController implements Initializable {
 			document.add(table);
 			document.close();
 
-			Desktop.getDesktop().open(new File(path+ "\\" + cin + ".pdf"));
+			Desktop.getDesktop().open(new File(path+ "\\"+ cin + "_reçu.pdf"));
 		}
 		else {
 			textError.setText("\u064a\u0631\u062c\u0649 \u0627\u062e\u062a\u064a\u0627\u0631 \u0645\u062c\u0644\u062f \u0644\u062a\u0646\u0632\u064a\u0644 \u0627\u0644\u0631\u0627\u0628\u0637");
@@ -236,7 +236,8 @@ public class AEteEnregistrerController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
+
+		
 
 	}
 }
