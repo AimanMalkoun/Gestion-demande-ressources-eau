@@ -2,6 +2,7 @@ package Connectivity;
 
 
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,30 +14,33 @@ import Classes.DossierForDownload;
 
 public class ConnectionClassDossier {
 
-	private ConnectionClass conection;
+	private Connection conection;
 	public ConnectionClassDossier() {
-		conection =  new ConnectionClass();
+		conection =  new ConnectionClass().getConnection();
 	}
 	
 	//getters and setters
-	public ConnectionClass getConnection() {
+	public Connection getConnection() {
 		return conection;
 	}
-	public void setConnectTo(ConnectionClass connection) {
+	public void setConnectTo(Connection connection) {
 		this.conection = connection;
 	}
 	
 	
 	public DossierForDownload getDossierFromDatabase(int ID) {
-		
+
 		DossierForDownload dossier = new DossierForDownload();
 		
 		String sqlRequette = "SELECT * "
 						   + "FROM `dossier` "
 						   + "WHERE `IdDossier` = "+ ID +"" ;
 		try {
+
+			if(conection.isClosed())
+				conection = new ConnectionClass().getConnection();
 			
-			Statement stm = conection.getConnection().createStatement();
+			Statement stm = conection.createStatement();
 			ResultSet result = stm.executeQuery(sqlRequette);
 			if(result.next()) {
 				dossier.setIdDossier(ID);
@@ -86,7 +90,8 @@ public class ConnectionClassDossier {
 		return dossier;
 	}
 	
-	public int updateDossierToDatabase(DossierForDownload dossier) {
+	public int updateDossierToDatabase(DossierForDownload dossier){
+		
 		System.out.println(dossier);
 		
 		String sqlRequete = "UPDATE `dossier` " + 
@@ -120,7 +125,10 @@ public class ConnectionClassDossier {
 							"WHERE `IdDossier`= ?";
 		try {
 
-			PreparedStatement stm = conection.getConnection().prepareStatement(sqlRequete);
+			if(conection.isClosed())
+				conection = new ConnectionClass().getConnection();
+			
+			PreparedStatement stm = conection.prepareStatement(sqlRequete);
 			
 			stm.setString(1, dossier.getNom());
 			stm.setString(2, dossier.getPrenom());
@@ -175,26 +183,30 @@ public class ConnectionClassDossier {
 	}
 	
 
-	public int removeFolder(int id) {
+	public int removeFolder(int id){
 		
 		String sqlQuery = "DELETE FROM `dossier` WHERE `IdDossier` = ?;";
 		int result = 0;
-		
-		try {
 			
-			PreparedStatement stm = conection.getConnection().prepareStatement(sqlQuery);
+		PreparedStatement stm;
+		try {
+			stm = conection.prepareStatement(sqlQuery);
 			stm.setInt(1, id);
 			result = stm.executeUpdate();
 			if(result > 0)
 				System.out.println("row has been deleted");
 			
-			return result;
 		} catch (SQLException e) {
 
 			e.printStackTrace();
 		}
-		
 		return result;
+	}
+	
+	public void close() throws SQLException {
+		if (!conection.isClosed() && conection !=null)
+			conection.close();
+		
 	}
 	
 }

@@ -3,16 +3,19 @@ package Controllers;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 
-import alerts.DeleteConfirmationAlert;
-import alerts.WarningAlert;
 import Classes.FolderTable;
 import Connectivity.ConnectionClass;
 import Connectivity.ConnectionClassDossier;
+
+import alerts.DeleteConfirmationAlert;
+import alerts.WarningAlert;
+
 import javafx.beans.binding.Bindings;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
@@ -25,6 +28,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
@@ -42,6 +46,9 @@ public class ModifyFolder2Controller implements Initializable{
 	
 	Thread th = new Thread();
 	Task<Void> task;
+	
+	@FXML
+    private ProgressBar progressIndicator;
 	
 	@FXML
     private BorderPane rootPane;
@@ -299,33 +306,53 @@ public class ModifyFolder2Controller implements Initializable{
 		    					@Override 
 		    					protected Void call() throws Exception, SQLException {
 		    						
-		    						ConnectionClass conection =  new ConnectionClass(); 
+		    						Connection conection =  new ConnectionClass().getConnection(); 
 		    				    	
-		    						Statement statement = conection.getConnection().createStatement(), statement2 = conection.getConnection().createStatement();
+		    						Statement statement = conection.createStatement(), statement2 = conection.createStatement();
 		    						ResultSet result;
 		    						result = statement.executeQuery("SELECT `IdDossier` FROM `dossier` ORDER BY IdDossier DESC");
+		    						
+		    						//get the number of rows
+		    						int rowsCount = getRowCount(conection);
+		    						
+		    						float progress = 0f;
+
+	    							//display the progress bar and disable the table 
+	    							progressIndicator.setVisible(true);
+	    							tableInfo.setDisable(true);
+	    							
 		    						while(result.next())
 		    						{
-
-		    							if(this.isCancelled()) {
-		    								statement2.close();
-		    								result.close();
-		    								statement.close();
-		    								conection.getConnection().close();
-		    								System.out.println("canceled!");
-		    								break;
-		    							}
-		    							String sql = "SELECT `nom`, `prenom` , `cin`, `typeDemande`, `idDossierYear` FROM `dossier` WHERE `IdDossier`= " + result.getInt("IdDossier");
 		    							
-		    							ResultSet result2 = statement2.executeQuery(sql);
-		    							tableInfo.getItems().add( new FolderTable(result.getInt("idDossier"), result2.getString("idDossierYear"), result2.getString("typeDemande"), result2.getString("cin"),  result2.getString("nom") + " " + result2.getString("prenom")) );
+		    							if(this.isCancelled()) {
+		    								System.out.println("canceled!");
+		    								statement2.close();
+			    							progressIndicator.setVisible(false);
+			    							tableInfo.setDisable(false);
+		    								break;
+		    							}else {
+		    								String sql = "SELECT `nom`, `prenom` , `cin`, `typeDemande`, `idDossierYear` FROM `dossier` WHERE `IdDossier`= " + result.getInt("IdDossier");
 
-			    						statement2.close();
-			    						result2.close();
+		    								ResultSet result2 = statement2.executeQuery(sql);
+		    								if(result2.next()) {
+		    									tableInfo.getItems().add( new FolderTable(result.getInt("idDossier"), result2.getString("idDossierYear"), result2.getString("typeDemande"), result2.getString("cin"),  result2.getString("nom") + " " + result2.getString("prenom")) );
+
+				    							progress++;
+				    							progressIndicator.setProgress(progress/rowsCount);
+		    								}
+		    								result2.close();
+			    						}
 		    						}
+
+    								statement2.close();
     								result.close();
     								statement.close();
-    								conection.getConnection().close();
+    								conection.close();
+    								System.out.println("task ended!");
+    								
+    								//hide the progress bar and enable the table 
+	    							progressIndicator.setVisible(false);
+	    							tableInfo.setDisable(false);
 		    						
 		    						return null;
 		    					}
@@ -336,23 +363,29 @@ public class ModifyFolder2Controller implements Initializable{
 	}
 	
 	private boolean getFolderInfo(String idDossierYear){
+
+		if (th.isAlive())
+			task.cancel();
 		
-		tableInfo.getItems().clear();
-		
-		ConnectionClass conection =  new ConnectionClass(); 
+		Connection conection =  new ConnectionClass().getConnection(); 
     	
 		try {
 			
-			Statement statement = conection.getConnection().createStatement();
+			Statement statement = conection.createStatement();
 	    	ResultSet result;
 			result = statement.executeQuery("SELECT `IdDossier`,`nom`, `prenom` , `cin`, `typeDemande`, `idDossierYear` FROM `dossier` WHERE idDossierYear = '" + idDossierYear + "'");
+			tableInfo.getItems().clear();
 			while(result.next())
 			{
+				
 				tableInfo.getItems().add( new FolderTable(result.getInt("IdDossier"),result.getString("idDossierYear") ,result.getString("typeDemande"), result.getString("cin"),  result.getString("nom") + " " + result.getString("prenom")) );
+				result.close();
+				statement.close();
+				conection.close();
+				
 				return true;
 			}
 			
-			conection.getConnection().close();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -360,6 +393,18 @@ public class ModifyFolder2Controller implements Initializable{
 		
 		return false;
 		
+	}
+	
+	//this method return the number of rows of the database
+	private int getRowCount(Connection conection) throws SQLException {
+		
+		int row = 0;
+		
+	    ResultSet result = conection .createStatement().executeQuery("SELECT COUNT(`IdDossier`) FROM `dossier`");
+	    if(result.next())
+	    	row = result.getInt(1);
+
+	    return row;
 	}
 	
 	private void setTableColumns() {

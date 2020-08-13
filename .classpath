@@ -63,5 +63,5 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="E:/java tools/commons-io-2.7.jar"/>
 	<classpathentry kind="lib" path="E:/java tools/javafx-sdk-11.0.2/lib/javafx.swing.jar"/>
-	<classpathentry kind="output" path=""/>
+	<classpathentry kind="output" path="bin"/>
 </classpath>
