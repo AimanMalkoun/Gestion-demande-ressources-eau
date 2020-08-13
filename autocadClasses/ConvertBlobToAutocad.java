@@ -29,6 +29,8 @@ public class ConvertBlobToAutocad {
 				output.write(buffer);
 			}
 			
+			output.close();
+			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

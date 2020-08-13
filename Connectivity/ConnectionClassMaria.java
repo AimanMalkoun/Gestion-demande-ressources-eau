@@ -9,7 +9,7 @@ public class ConnectionClassMaria {
 	public ConnectionClassMaria(){
 
 		try {
-			connection = (Connection) DriverManager.getConnection("jdbc:sqlite:SQLiteDB/gestiondeamndeeau.sqlite");
+			connection = (Connection) DriverManager.getConnection("jdbc:sqlite:src/SQLiteDB/gestiondeamndeeau.sqlite");
 		} catch (Exception e) {
 
 			e.printStackTrace();

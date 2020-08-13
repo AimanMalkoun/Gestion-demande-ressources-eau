@@ -1,6 +1,5 @@
 package Controllers;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,6 +11,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Calendar;
 import java.util.ResourceBundle;
+
+import org.apache.commons.io.IOUtils;
 
 import Connectivity.ConnectionClass;
 import javafx.event.ActionEvent;
@@ -144,10 +145,10 @@ public class EnregistrerController implements Initializable {
 			stat.setString(2, LesInfoDuDemandeurController.demandeur.getNom());
 			stat.setString(3, LesInfoDuDemandeurController.demandeur.getPrenom());
 			stat.setString(4, LesInfoDuDemandeurController.demandeur.getCin());
-			stat.setBytes(5, cinFile.readAllBytes());
+			stat.setBytes(5, IOUtils.toByteArray(cinFile));
 			stat.setString(6, LesInfoDuDemandeurController.demandeur.getTypeDemande());
-			stat.setBytes(7, demandeCreusement.readAllBytes());
-			stat.setBytes(8, attistation.readAllBytes());
+			stat.setBytes(7, IOUtils.toByteArray(demandeCreusement));
+			stat.setBytes(8, IOUtils.toByteArray(attistation));
 			stat.setString(9, LesInfoDelImmobilierController.InfoSurImmobilier.getDouar());
 			stat.setString(10, LesInfoDelImmobilierController.InfoSurImmobilier.getCommune());
 			stat.setString(11, LesInfoDelImmobilierController.InfoSurImmobilier.getProvince());
@@ -167,7 +168,7 @@ public class EnregistrerController implements Initializable {
 			stat.setString(24, "\u0644\u0627 \u0634\u064a\u0621");
 			stat.setString(25, "\u0644\u0627 \u0634\u064a\u0621");
 			stat.setString(26, LesInfoDelImmobilierController.InfoSurImmobilier.getQuiada());
-			stat.setBytes(27, planImmFile.readAllBytes());
+			stat.setBytes(27, IOUtils.toByteArray(planImmFile));
 			stat.setString(28, LesInfoDelImmobilierController.InfoSurImmobilier.getNomImmobilier());
 			stat.setString(29, idDossierYear);
 			stat.execute();
