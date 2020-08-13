@@ -102,7 +102,7 @@ public class EnregistrerController implements Initializable {
 	public void savebuttonMethode(ActionEvent event) throws IOException, SQLException {
 
 		/* se connecter avec la base de donn�es */
-
+	for(int i=0; i<200; i++) {
 		Connection connection = new ConnectionClass().getConnection();
 
 		/* Selectionner le plus grand idDossier */
@@ -191,6 +191,7 @@ public class EnregistrerController implements Initializable {
 			    }
 			  }
 			}
+	}
 		try {
 
 			FXMLLoader loader = new FXMLLoader();

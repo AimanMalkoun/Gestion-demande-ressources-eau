@@ -205,7 +205,7 @@
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="codCinLabel" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" prefHeight="35.0" prefWidth="226.0" style="-fx-text-fill: #0b328b;" textFill="#0b328b">
+                              <Label fx:id="codCinLabel" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" prefHeight="35.0" prefWidth="226.0" style="-fx-text-fill: #0b328b;" textFill="#0b328b" GridPane.rowIndex="2">
                                  <font>
                                     <Font size="16.0" />
                                  </font>

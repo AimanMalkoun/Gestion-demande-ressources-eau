@@ -11,7 +11,7 @@ public class ConnectionClass {
 	public Connection getConnection() {
 
 		try {
-			 connection = DriverManager.getConnection("jdbc:sqlite:SQLiteDB/gestiondeamndeeau.sqlite");
+			 connection = DriverManager.getConnection("jdbc:sqlite:src/SQLiteDB/gestiondeamndeeau.sqlite");
 		
 		} catch (Exception e) {
 			
