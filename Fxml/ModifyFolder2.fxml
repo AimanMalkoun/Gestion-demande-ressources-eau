@@ -55,12 +55,12 @@
                               </Button>
                            </children>
                         </HBox>
-                        <TableView fx:id="tableInfo" prefHeight="329.0" prefWidth="645.0" GridPane.rowIndex="1">
+                        <TableView fx:id="tableInfo" prefHeight="316.0" prefWidth="770.0" GridPane.rowIndex="1">
                           <columns>
-                              <TableColumn fx:id="dateDepot" prefWidth="159.0" style="-fx-alignment: center;" text="رقم الملف" />
-                            <TableColumn fx:id="typeDemandeCl" prefWidth="146.0" resizable="false" style="-fx-alignment: center;" text="نوع الطلب" />
-                              <TableColumn fx:id="cinColumn" prefWidth="172.0" resizable="false" style="-fx-alignment: center;" text="رقم بطاقة التعريف الوطنية" />
-                              <TableColumn fx:id="nomCompletColumn" prefWidth="166.0" resizable="false" style="-fx-alignment: center;" text="الاسم الكامل" />
+                              <TableColumn fx:id="dateDepot" prefWidth="173.0" style="-fx-alignment: center;" text="رقم الملف" />
+                            <TableColumn fx:id="typeDemandeCl" prefWidth="197.0" resizable="false" style="-fx-alignment: center;" text="نوع الطلب" />
+                              <TableColumn fx:id="cinColumn" prefWidth="200.0" resizable="false" style="-fx-alignment: center;" text="رقم بطاقة التعريف الوطنية" />
+                              <TableColumn fx:id="nomCompletColumn" prefWidth="199.0" resizable="false" style="-fx-alignment: center;" text="الاسم الكامل" />
                           </columns>
                            <GridPane.margin>
                               <Insets top="30.0" />
@@ -77,7 +77,7 @@
       </ScrollPane>
    </center>
    <right>
-      <VBox id="vboxStyle" alignment="CENTER" prefHeight="556.0" prefWidth="186.0" spacing="20.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
+      <VBox id="vboxStyle" alignment="CENTER" prefHeight="470.0" prefWidth="170.0" spacing="20.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
          <children>
             <Button id="buttonProfile" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToHome" prefHeight="25.0" prefWidth="189.0" style="-fx-background-color: #A7BDE7;" text="الصفحة الرئيسية" textFill="#2b4067">
                <cursor>
@@ -105,7 +105,7 @@
       </VBox>
    </right>
    <top>
-      <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="120.0" prefWidth="858.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="130.0" prefWidth="1130.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
          <children>
             <GridPane alignment="CENTER" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
                <columnConstraints>

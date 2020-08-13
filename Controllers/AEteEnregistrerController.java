@@ -97,7 +97,7 @@ public class AEteEnregistrerController implements Initializable {
 	}
 
 	@FXML
-	public void downloadReceiptMethode(ActionEvent event) throws SQLException, DocumentException, IOException {
+	public void downloadReceiptMethode(ActionEvent event) throws DocumentException, IOException {
 		String nomPrenom = null, 
 				cin = null, 
 				nomImmobiler = null,
@@ -119,7 +119,10 @@ public class AEteEnregistrerController implements Initializable {
 
 		ConnectionClass conn = new ConnectionClass();
 		Connection connection = conn.getConnection();
-		Statement stat = connection.createStatement();
+		Statement stat;
+		try {
+			stat = connection.createStatement();
+
 		String sql = "SELECT `Nom`,`Prenom`,`cin`,`nomImmobilier`,`Commune`,`Province`, `typeDemande`, `DateDepot`, `qiyada`, `daaira`, `idDossierYear` FROM dossier WHERE `IdDossier` = "
 				+ Integer.toString(EnregistrerController.idDossier);
 		ResultSet result = stat.executeQuery(sql);
@@ -226,6 +229,22 @@ public class AEteEnregistrerController implements Initializable {
 			document.close();
 
 			Desktop.getDesktop().open(new File(path+ "\\"+ cin + "_reçu.pdf"));
+			stat.close();
+			result.close();
+			connection.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally {
+			  if (connection != null) {
+			    try {
+			    	connection.close();
+			    } catch (SQLException e) {
+			    	e.printStackTrace();
+			    }
+			  }
+		}
 		}
 		else {
 			textError.setText("\u064a\u0631\u062c\u0649 \u0627\u062e\u062a\u064a\u0627\u0631 \u0645\u062c\u0644\u062f \u0644\u062a\u0646\u0632\u064a\u0644 \u0627\u0644\u0631\u0627\u0628\u0637");

@@ -105,7 +105,7 @@ public class EnregistrerController implements Initializable {
 
 		Connection connection = new ConnectionClass().getConnection();
 
-		/* S�lectionner le plus grand idDossier */
+		/* Selectionner le plus grand idDossier */
 		String sqlId = "SELECT MAX(IdDossier)  FROM dossier";
 		ResultSet result = connection.createStatement().executeQuery(sqlId);
 		if (result.next()) {
@@ -169,6 +169,7 @@ public class EnregistrerController implements Initializable {
 			stat.execute();
 			
 			stat.close();
+			result.close();
 			connection.close();
 
 			//close the file input stream
@@ -181,6 +182,15 @@ public class EnregistrerController implements Initializable {
 			
 			e.printStackTrace();
 		}
+		finally {
+			  if (connection != null) {
+			    try {
+			    	connection.close();
+			    } catch (SQLException e) {
+			    	e.printStackTrace();
+			    }
+			  }
+			}
 		try {
 
 			FXMLLoader loader = new FXMLLoader();

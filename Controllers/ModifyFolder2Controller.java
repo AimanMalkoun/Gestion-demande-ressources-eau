@@ -3,6 +3,7 @@ package Controllers;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -96,11 +97,11 @@ public class ModifyFolder2Controller implements Initializable{
         	boolean answer = getFolderInfo(cinInputSearch.getText());
         	if(!answer) {
         		WarningAlert.desplay("\u062a\u0646\u0628\u064a\u0647", "\u0644\u0627 \u064a\u0648\u062c\u062f \u0647\u0630\u0627 \u0627\u0644\u0631\u0642\u0645");
-        		cinInputSearch.setText("");
         	}
     	}
+    	cinInputSearch.setText("");
     }
-    
+     
     
     @FXML
     void disconnect(ActionEvent event) throws IOException {
@@ -130,7 +131,7 @@ public class ModifyFolder2Controller implements Initializable{
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-
+		
 		//delete temporary files
 		File directory = new File(EnregistrerController.class.getClassLoader().getResource("tempFiles").getPath());
     	if(directory.listFiles().length > 0)
@@ -298,10 +299,10 @@ public class ModifyFolder2Controller implements Initializable{
 		task = new Task<Void>() {
 		    					@Override 
 		    					protected Void call() throws Exception, SQLException {
-		    						
-		    						ConnectionClass conection =  new ConnectionClass(); 
+		    						ConnectionClass conn = new ConnectionClass();
+		    						Connection connection = conn.getConnection();
 		    				    	
-		    						Statement statement = conection.getConnection().createStatement(), statement2 = conection.getConnection().createStatement();
+		    						Statement statement = connection.createStatement(), statement2 = connection.createStatement();
 		    						ResultSet result;
 		    						result = statement.executeQuery("SELECT `IdDossier` FROM `dossier` ORDER BY IdDossier DESC");
 		    						while(result.next())
@@ -311,7 +312,7 @@ public class ModifyFolder2Controller implements Initializable{
 		    								statement2.close();
 		    								result.close();
 		    								statement.close();
-		    								conection.getConnection().close();
+		    								connection.close();
 		    								System.out.println("canceled!");
 		    								break;
 		    							}
@@ -325,7 +326,7 @@ public class ModifyFolder2Controller implements Initializable{
 		    						}
     								result.close();
     								statement.close();
-    								conection.getConnection().close();
+    								connection.close();
 		    						
 		    						return null;
 		    					}
@@ -339,11 +340,12 @@ public class ModifyFolder2Controller implements Initializable{
 		
 		tableInfo.getItems().clear();
 		
-		ConnectionClass conection =  new ConnectionClass(); 
-    	
+		ConnectionClass conn = new ConnectionClass();
+		Connection connection = conn.getConnection();
 		try {
 			
-			Statement statement = conection.getConnection().createStatement();
+			
+			Statement statement = connection.createStatement();
 	    	ResultSet result;
 			result = statement.executeQuery("SELECT `IdDossier`,`nom`, `prenom` , `cin`, `typeDemande`, `idDossierYear` FROM `dossier` WHERE idDossierYear = '" + idDossierYear + "'");
 			while(result.next())
@@ -352,12 +354,18 @@ public class ModifyFolder2Controller implements Initializable{
 				return true;
 			}
 			
-			conection.getConnection().close();
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+		finally {
+			  if (connection != null) {
+			    try {
+			    	connection.close();
+			    } catch (SQLException e) {
+			    	e.printStackTrace();
+			    }
+			  }
+			}
 		return false;
 		
 	}
