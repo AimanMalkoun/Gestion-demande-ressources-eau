@@ -21,7 +21,7 @@
          <children>
             <VBox alignment="CENTER">
                <children>
-                  <HBox alignment="CENTER" prefHeight="158.0" prefWidth="865.0">
+                  <HBox alignment="CENTER" prefHeight="256.0" prefWidth="955.0">
                      <children>
                         <VBox alignment="CENTER" prefHeight="200.0" spacing="40.0">
                            <HBox.margin>
@@ -36,7 +36,7 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </ImageView>
-                              <Button id="switchButton" mnemonicParsing="false" onMouseClicked="#ShowFolderInformations" prefHeight="25.0" prefWidth="146.0" style="-fx-background-color: #2b4067;" text="عرض معلومات ملف" textFill="WHITE">
+                              <Button id="switchButton" mnemonicParsing="false" onMouseClicked="#ShowFolderInformations" prefHeight="35.0" prefWidth="146.0" style="-fx-background-color: #2b4067;" text="عرض معلومات ملف" textFill="WHITE">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -62,7 +62,7 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </ImageView>
-                              <Button id="switchButton" mnemonicParsing="false" onMouseClicked="#ModifyExistingFolder" prefHeight="8.0" prefWidth="139.0" style="-fx-background-color: #2b4067;" text="تعديل ملف" textFill="WHITE">
+                              <Button id="switchButton" mnemonicParsing="false" onMouseClicked="#ModifyExistingFolder" prefHeight="35.0" prefWidth="139.0" style="-fx-background-color: #2b4067;" text="تعديل ملف" textFill="WHITE">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -88,7 +88,7 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </ImageView>
-                              <Button id="switchButton" mnemonicParsing="false" onMouseClicked="#CreateNewFolder" prefHeight="30.0" prefWidth="143.0" style="-fx-background-color: #2b4067;" text="اضافة ملف" textFill="WHITE">
+                              <Button id="switchButton" mnemonicParsing="false" onMouseClicked="#CreateNewFolder" prefHeight="35.0" prefWidth="143.0" style="-fx-background-color: #2b4067;" text="اضافة ملف" textFill="WHITE">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -112,7 +112,7 @@
       </StackPane>
    </center>
    <right>
-      <VBox id="vboxStyle" alignment="CENTER" prefHeight="452.0" prefWidth="175.0" spacing="20.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
+      <VBox id="vboxStyle" alignment="CENTER" prefHeight="470.0" prefWidth="170.0" spacing="20.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
          <children>
             <Button id="buttonProfile" layoutX="10.0" layoutY="35.0" mnemonicParsing="false" onAction="#ChangePassword" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: #A7BDE7;" text="تغيير كلمة السر" textFill="#2b4067">
                <cursor>
@@ -121,7 +121,7 @@
                <font>
                   <Font size="14.0" />
                </font></Button>
-            <Button id="buttonLogin" layoutX="10.0" layoutY="140.0" mnemonicParsing="false" onAction="#disconnect" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: #A7BDE7;" text="تسجيل الخروج" textFill="#2b4067">
+            <Button id="buttonLogin" layoutX="10.0" layoutY="140.0" mnemonicParsing="false" onAction="#disconnect" prefHeight="35.0" prefWidth="115.0" style="-fx-background-color: #A7BDE7;" text="تسجيل الخروج" textFill="#2b4067">
                <VBox.margin>
                   <Insets top="150.0" />
                </VBox.margin>
@@ -139,9 +139,9 @@
       </VBox>
    </right>
    <top>
-      <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="128.0" prefWidth="877.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="130.0" prefWidth="1130.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
          <children>
-            <GridPane prefHeight="144.0" prefWidth="877.0" HBox.hgrow="ALWAYS">
+            <GridPane prefHeight="118.0" prefWidth="1130.0" HBox.hgrow="ALWAYS">
                <HBox.margin>
                   <Insets />
                </HBox.margin>

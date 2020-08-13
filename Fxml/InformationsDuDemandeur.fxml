@@ -50,7 +50,7 @@
       </HBox>
    </top>
    <center>
-      <HBox alignment="CENTER" prefHeight="476.0" prefWidth="960.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" prefHeight="470.0" prefWidth="966.0" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER" prefHeight="441.0" prefWidth="688.0">
                <children>
@@ -197,7 +197,7 @@
       </HBox>
    </center>
    <right>
-      <VBox alignment="CENTER" prefHeight="454.0" prefWidth="170.0" spacing="20.0" style="-fx-background-color: #2b4067; -fx-padding: 30px;" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="470.0" prefWidth="170.0" spacing="20.0" style="-fx-background-color: #2b4067; -fx-padding: 30px;" BorderPane.alignment="CENTER">
          <padding>
             <Insets top="60.0" />
          </padding>

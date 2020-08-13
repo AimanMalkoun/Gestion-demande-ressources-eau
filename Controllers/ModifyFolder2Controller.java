@@ -103,11 +103,11 @@ public class ModifyFolder2Controller implements Initializable{
         	boolean answer = getFolderInfo(cinInputSearch.getText());
         	if(!answer) {
         		WarningAlert.desplay("\u062a\u0646\u0628\u064a\u0647", "\u0644\u0627 \u064a\u0648\u062c\u062f \u0647\u0630\u0627 \u0627\u0644\u0631\u0642\u0645");
-        		cinInputSearch.setText("");
         	}
     	}
+    	cinInputSearch.setText("");
     }
-    
+     
     
     @FXML
     void disconnect(ActionEvent event) throws IOException {
@@ -137,7 +137,7 @@ public class ModifyFolder2Controller implements Initializable{
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-
+		
 		//delete temporary files
 		File directory = new File(EnregistrerController.class.getClassLoader().getResource("tempFiles").getPath());
     	if(directory.listFiles().length > 0)
@@ -390,7 +390,15 @@ public class ModifyFolder2Controller implements Initializable{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+		finally {
+			  if (conection != null) {
+			    try {
+			    	conection.close();
+			    } catch (SQLException e) {
+			    	e.printStackTrace();
+			    }
+			  }
+			}
 		return false;
 		
 	}

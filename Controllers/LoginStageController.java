@@ -68,6 +68,10 @@ public class LoginStageController  implements Initializable{
 			Parent dashboardRoot = (Parent) FXMLLoader.load(getClass().getResource("../Fxml/Dashboard.fxml"));
 			Scene dashboardScene = new Scene(dashboardRoot, primaryStage.getWidth(), primaryStage.getHeight());
 			primaryStage.setScene(dashboardScene);
+			
+			statement.close();
+			query.close();
+			connection.close();
 		}
 
 		else {

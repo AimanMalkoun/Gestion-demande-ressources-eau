@@ -205,7 +205,7 @@
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="codCinLabel" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" prefHeight="35.0" prefWidth="226.0" style="-fx-text-fill: #0b328b;" textFill="#0b328b" GridPane.rowIndex="2">
+                              <Label fx:id="codCinLabel" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" prefHeight="35.0" prefWidth="226.0" style="-fx-text-fill: #0b328b;" textFill="#0b328b">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
@@ -411,7 +411,7 @@
             </ScrollPane>
          </center>
          <right>
-            <VBox id="vboxStyle" alignment="CENTER" spacing="20.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
+            <VBox id="vboxStyle" alignment="CENTER" prefHeight="468.0" prefWidth="170.0" spacing="20.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
                <children>
                   <Button id="buttonProfile" mnemonicParsing="false" onMouseClicked="#goHomePage" prefHeight="35.0" prefWidth="126.0" style="-fx-background-color: #A7BDE7;" text="الصفحة الرئيسية" textFill="#2b4067">
                      <cursor>
@@ -439,7 +439,7 @@
             </VBox>
          </right>
          <top>
-            <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="147.0" prefWidth="876.0" spacing="30.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
+            <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="130.0" prefWidth="1128.0" spacing="30.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
                <children>
                   <GridPane alignment="CENTER" HBox.hgrow="ALWAYS">
                      <columnConstraints>

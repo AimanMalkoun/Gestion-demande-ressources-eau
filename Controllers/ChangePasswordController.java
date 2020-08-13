@@ -55,6 +55,9 @@ public class ChangePasswordController {
     			previousPassword.clear();
     			newPassword.clear();
     			confirmedPassword.clear();
+    			statement.close();
+    			query.close();
+    			connection.close();
     		}
 
     		else{
