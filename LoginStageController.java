@@ -1,4 +1,3 @@
-package Controllers;
 
 import java.io.IOException;
 import java.net.URL;
@@ -43,7 +42,7 @@ public class LoginStageController  implements Initializable{
 	void forgotPassword(MouseEvent event) throws IOException {
     	
     	Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    	Parent root = FXMLLoader.load(getClass().getResource("../Fxml/ForgotPassWord.fxml"));
+    	Parent root = FXMLLoader.load(getClass().getResource("Fxml/ForgotPassWord.fxml"));
     	Scene forgotPass = new Scene(root, primaryStage.getWidth(), primaryStage.getHeight());
     	primaryStage.setScene(forgotPass);
     }
@@ -65,7 +64,7 @@ public class LoginStageController  implements Initializable{
 		}
 		if (realPassword.equals(password.getText())) {
 			Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-			Parent dashboardRoot = (Parent) FXMLLoader.load(getClass().getResource("../Fxml/Dashboard.fxml"));
+			Parent dashboardRoot = (Parent) FXMLLoader.load(getClass().getResource("Fxml/Dashboard.fxml"));
 			Scene dashboardScene = new Scene(dashboardRoot, primaryStage.getWidth(), primaryStage.getHeight());
 			primaryStage.setScene(dashboardScene);
 		}

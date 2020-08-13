@@ -1,8 +1,7 @@
-package pdfClasses;
+
 	
 import java.io.IOException;
 
-import Controllers.ShowPdf2;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -18,7 +17,7 @@ public class ShowPdf {
 		try {
 
 			FXMLLoader loader= new FXMLLoader();
-			loader.setLocation(ShowPdf.class.getResource("../Fxml/showPdf2.fxml"));
+			loader.setLocation(ShowPdf.class.getResource("Fxml/showPdf2.fxml"));
 			Parent showFolderRoot = loader.load();
 
 			Stage primaryStage = new Stage();

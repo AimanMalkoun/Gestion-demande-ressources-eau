@@ -1,4 +1,3 @@
-package Controllers;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -86,7 +85,7 @@ public class EnregistrerController implements Initializable {
 
 			FXMLLoader loader = new FXMLLoader();
 			Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-			loader.setLocation(getClass().getResource("../Fxml/InformationsDuDemandeur.fxml"));
+			loader.setLocation(getClass().getResource("Fxml/InformationsDuDemandeur.fxml"));
 			Parent demandeurRoot = loader.load();
 
 			Scene demandeurScene = new Scene(demandeurRoot, primaryStage.getWidth(), primaryStage.getHeight());
@@ -189,7 +188,7 @@ public class EnregistrerController implements Initializable {
 		try {
 
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("../Fxml/AEteEnregistrer.fxml"));
+			loader.setLocation(getClass().getResource("Fxml/AEteEnregistrer.fxml"));
 			Parent AEteEnregistrerRoot = loader.load();
 
 			Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();

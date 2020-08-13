@@ -1,4 +1,3 @@
-package Controllers;
 
 import java.awt.Desktop;
 import java.io.File;
@@ -55,7 +54,7 @@ public class AEteEnregistrerController implements Initializable {
 		try {
 			
 			FXMLLoader loader= new FXMLLoader();
-			loader.setLocation(getClass().getResource("../Fxml/Dashboard.fxml"));
+			loader.setLocation(getClass().getResource("Fxml/Dashboard.fxml"));
 			Parent DashboardRoot = loader.load();
 			
 			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -135,7 +134,7 @@ public class AEteEnregistrerController implements Initializable {
 			qiyada = " " + result.getString("qiyada") + " ";
 		}
 		Document document = new Document();
-			PdfWriter.getInstance(document, new FileOutputStream(path+ "\\"+ cin + "_reçu.pdf"));
+			PdfWriter.getInstance(document, new FileOutputStream(path+ "\\"+ cin + "_recu.pdf"));
 			Font small = FontFactory.getFont("Fonts/arial.ttf", BaseFont.IDENTITY_H, 14);
 			Font normal = FontFactory.getFont("Fonts/arial.ttf", BaseFont.IDENTITY_H, 17);
 			Font big0 = FontFactory.getFont("Fonts/arial.ttf", BaseFont.IDENTITY_H, 22);

@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="485.0" minWidth="800.0" prefHeight="485.0" prefWidth="858.0" stylesheets="@../GestionDemandeEau/application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ShowFolderController">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="485.0" minWidth="800.0" prefHeight="485.0" prefWidth="858.0" stylesheets="@../GestionDemandeEau/application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ShowFolderController">
    <top>
       <Pane prefHeight="109.0" prefWidth="858.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
          <children>

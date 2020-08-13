@@ -1,4 +1,4 @@
-package autocadClasses;
+
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,7 +9,6 @@ import java.sql.Blob;
 import java.sql.SQLException;
 
 
-import pdfClasses.ConvertBlobToPdf;
 
 public class ConvertBlobToAutocad {
 

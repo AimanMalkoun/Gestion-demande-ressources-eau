@@ -1,10 +1,9 @@
-package alerts;
+
 
 import java.io.File;
 
 import org.apache.commons.io.FilenameUtils;
 
-import Classes.ImagesOrPdfChooser;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;

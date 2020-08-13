@@ -1,4 +1,3 @@
-package Controllers;
 
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -18,7 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class ShowFolderController{
+public class ModifyFolderController{
 	
     
     static String cinToModify;
@@ -75,15 +74,15 @@ public class ShowFolderController{
 				while(query.next())
 				{
 					FXMLLoader loader= new FXMLLoader();
-					loader.setLocation(getClass().getResource("../Fxml/afficher-un-dossier.fxml"));
-					Parent showFolderInfo = loader.load();
+					loader.setLocation(getClass().getResource("Fxml/modifier les informations du dossier.fxml"));
+					Parent modifyFolderInfo = loader.load();
 					
-					DisplayFolderController nextControler = loader.getController();
+					modifierInfoDuDossierController nextControler = loader.getController();
 					nextControler.setMessage(query.getInt("IdDossier"));
 					
+					Scene demandeurScene = new Scene(modifyFolderInfo);
 					Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-					Scene showFolderInfoScene = new Scene(showFolderInfo, primaryStage.getWidth(), primaryStage.getHeight());
-					primaryStage.setScene(showFolderInfoScene);
+					primaryStage.setScene(demandeurScene);
 				}
 				
 			} catch (SQLException e) {
@@ -101,20 +100,17 @@ public class ShowFolderController{
     
     @FXML
     void changePassword(ActionEvent event) throws IOException {
-    	Parent ChangePasswordRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/ChangePassword.fxml"));
+    	Parent ChangePasswordRoot = (Parent)FXMLLoader.load(getClass().getResource("Fxml/ChangePassword.fxml"));
+		Scene ChangePasswordScene = new Scene(ChangePasswordRoot);
 		Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-		Scene ChangePasswordScene = new Scene(ChangePasswordRoot, primaryStage.getWidth(), primaryStage.getHeight());
 		primaryStage.setScene(ChangePasswordScene);
     }
     
     @FXML
     void goToHome(ActionEvent event) throws IOException {
-    	Parent dashboardRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/Dashboard.fxml"));
-    	
+    	Parent dashboardRoot = (Parent)FXMLLoader.load(getClass().getResource("Fxml/Dashboard.fxml"));
+		Scene dashboardScene = new Scene(dashboardRoot);
 		Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-		Scene dashboardScene = new Scene(dashboardRoot, primaryStage.getWidth(), primaryStage.getHeight());
 		primaryStage.setScene(dashboardScene);
     }
-    
-  
 }

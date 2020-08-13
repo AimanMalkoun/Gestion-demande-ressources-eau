@@ -1,4 +1,3 @@
-package Controllers;
 
 import java.io.File;
 import java.io.IOException;
@@ -68,7 +67,7 @@ public class ModifyFolder2Controller implements Initializable{
 		if (th.isAlive()) 
 			task.cancel();
 		
-    	Parent root = FXMLLoader.load(getClass().getResource("../Fxml/Dashboard.fxml"));
+    	Parent root = FXMLLoader.load(getClass().getResource("Fxml/Dashboard.fxml"));
     	Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     	Scene dashBoard = new Scene(root, primaryStage.getWidth(), primaryStage.getHeight());
     	primaryStage.setScene(dashBoard);
@@ -108,7 +107,7 @@ public class ModifyFolder2Controller implements Initializable{
 		if (th.isAlive()) 
 			task.cancel();
 		
-    	Parent root = FXMLLoader.load(getClass().getResource("../Fxml/LoginStage.fxml"));
+    	Parent root = FXMLLoader.load(getClass().getResource("Fxml/LoginStage.fxml"));
     	Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     	Scene login = new Scene(root, primaryStage.getWidth(), primaryStage.getHeight());
     	primaryStage.setScene(login);
@@ -132,7 +131,7 @@ public class ModifyFolder2Controller implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
 		//delete temporary files
-		File directory = new File(EnregistrerController.class.getClassLoader().getResource("tempFiles").getPath());
+		File directory = new File("src/tempFiles");
     	if(directory.listFiles().length > 0)
     		for (File file : directory.listFiles())
     			if(!file.delete())System.out.println("file :" + file.getName() + " not deleted");;
@@ -180,7 +179,7 @@ public class ModifyFolder2Controller implements Initializable{
 		try {
 
 			FXMLLoader loader= new FXMLLoader();
-			loader.setLocation(getClass().getResource("../Fxml/afficher-un-dossier.fxml"));
+			loader.setLocation(getClass().getResource("Fxml/afficher-un-dossier.fxml"));
 			Parent showFolderRoot = loader.load();
 			
 			DisplayFolderController nextControler = loader.getController();
@@ -268,7 +267,7 @@ public class ModifyFolder2Controller implements Initializable{
 			try {
 
 				FXMLLoader loader= new FXMLLoader();
-				loader.setLocation(getClass().getResource("../Fxml/modifier les informations du dossier.fxml"));
+				loader.setLocation(getClass().getResource("Fxml/modifier les informations du dossier.fxml"));
 				Parent modifyFolderRoot = loader.load();
 				
 				modifierInfoDuDossierController nextControler = loader.getController();

@@ -1,4 +1,3 @@
-package Controllers;
 
 import java.awt.Desktop;
 import java.io.File;
@@ -35,7 +34,6 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
-import pdfClasses.ConvertBlobToPdf;
 
 
 public class DisplayFolderController implements Initializable {
@@ -143,7 +141,7 @@ public class DisplayFolderController implements Initializable {
 	    		try {
 
 	    			FXMLLoader loader= new FXMLLoader();
-	    			loader.setLocation(getClass().getResource("../Fxml/ModifyFolder2.fxml"));
+	    			loader.setLocation(getClass().getResource("Fxml/ModifyFolder2.fxml"));
 	    			Parent showFolderRoot = loader.load();
 				
 	    			ModifyFolder2Controller nextControler = loader.getController();
@@ -173,7 +171,7 @@ public class DisplayFolderController implements Initializable {
 	    		try {
 	    		
 	    			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-	    			Parent ModifyFolderRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/Dashboard.fxml"));
+	    			Parent ModifyFolderRoot = (Parent)FXMLLoader.load(getClass().getResource("Fxml/Dashboard.fxml"));
 	    			Scene ModifyFolderScene = new Scene(ModifyFolderRoot, primaryStage.getWidth(), primaryStage.getHeight());
 	    			primaryStage.setScene(ModifyFolderScene);
 				
@@ -196,7 +194,7 @@ public class DisplayFolderController implements Initializable {
 	    		try {
 	    		
 	    			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-	    			Parent ModifyFolderRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/LoginStage.fxml"));
+	    			Parent ModifyFolderRoot = (Parent)FXMLLoader.load(getClass().getResource("Fxml/LoginStage.fxml"));
 	    			Scene ModifyFolderScene = new Scene(ModifyFolderRoot, primaryStage.getWidth(), primaryStage.getHeight());
 	    			primaryStage.setScene(ModifyFolderScene);
 				
@@ -213,7 +211,7 @@ public class DisplayFolderController implements Initializable {
 	    
     private boolean filesHaveBeenDeleted() {
 
-    	File directory = new File(DisplayFolderController.class.getClassLoader().getResource("tempFiles").getPath());
+    	File directory = new File("src/tempFiles");
     	
     	for (File file : directory.listFiles()) {
     		if(!file.delete())

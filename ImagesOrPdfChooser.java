@@ -1,4 +1,4 @@
-package Classes;
+
 
 import java.io.File;
 import java.util.List;
@@ -13,7 +13,6 @@ import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import pdfClasses.CreatePdfWithImages;
 
 public class ImagesOrPdfChooser {
 	

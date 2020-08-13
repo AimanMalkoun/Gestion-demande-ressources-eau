@@ -1,4 +1,4 @@
-package pdfClasses;
+
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -21,7 +21,7 @@ public class CreatePdfWithImages{
 	
 	public static File createPdf(List<File> imagesList, String fileName) {
 		//get destination path
-		String destPath = CreatePdfWithImages.class.getClassLoader().getResource("tempFiles").getPath() + "/" + fileName;
+		String destPath = "src/tempFiles" + "/" + fileName;
 		
 		//creating pdf writer
 		Document document = new Document();

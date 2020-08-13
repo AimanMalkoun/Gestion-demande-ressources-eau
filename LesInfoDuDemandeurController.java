@@ -1,4 +1,3 @@
-package Controllers;
 
 import java.io.File;
 import java.io.IOException;
@@ -8,7 +7,6 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import Classes.Demandeur;
-import Classes.ImagesOrPdfChooser;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -86,7 +84,7 @@ public class LesInfoDuDemandeurController implements Initializable{
     	
 		try {
 			
-			Parent dashboardRoot = (Parent) FXMLLoader.load(getClass().getResource("../Fxml/Dashboard.fxml"));
+			Parent dashboardRoot = (Parent) FXMLLoader.load(getClass().getResource("Fxml/Dashboard.fxml"));
 			
 			Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			Scene dashboardScene = new Scene(dashboardRoot, primaryStage.getWidth(), primaryStage.getHeight());
@@ -142,7 +140,7 @@ public class LesInfoDuDemandeurController implements Initializable{
     		try {
     			
     			FXMLLoader loader= new FXMLLoader();
-    			loader.setLocation(getClass().getResource("../Fxml/Les-informations-concernant-l'immobilier.fxml"));
+    			loader.setLocation(getClass().getResource("Fxml/Les-informations-concernant-l'immobilier.fxml"));
     			Parent demandeurRoot = loader.load();
     			
 				Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();

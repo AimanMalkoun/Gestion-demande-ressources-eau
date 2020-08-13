@@ -1,4 +1,3 @@
-package Controllers;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -20,7 +19,6 @@ import Classes.DossierForDownload;
 import Connectivity.ConnectionClassDossier;
 import alerts.ChangeChoiceAlert;
 import alerts.ChangeDateAlert;
-import alerts.ChangeFileAlert;
 import alerts.ChangeNumberAlert;
 import alerts.ChangeStringAlert;
 import javafx.fxml.FXML;
@@ -210,7 +208,7 @@ public class modifierInfoDuDossierController implements Initializable{
     	try {
 
 			FXMLLoader loader= new FXMLLoader();
-			loader.setLocation(getClass().getResource("../Fxml/ModifyFolder2.fxml"));
+			loader.setLocation(getClass().getResource("Fxml/ModifyFolder2.fxml"));
 			Parent showFolderRoot = loader.load();
 			
 			ModifyFolder2Controller nextControler = loader.getController();
@@ -528,7 +526,7 @@ public class modifierInfoDuDossierController implements Initializable{
     	try {
 
 			FXMLLoader loader= new FXMLLoader();
-			loader.setLocation(getClass().getResource("../Fxml/ModifyFolder2.fxml"));
+			loader.setLocation(getClass().getResource("Fxml/ModifyFolder2.fxml"));
 			Parent showFolderRoot = loader.load();
 			
 			ModifyFolder2Controller nextControler = loader.getController();
@@ -550,7 +548,7 @@ public class modifierInfoDuDossierController implements Initializable{
     	
     	try {
     		
-    		Parent ModifyFolderRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/Dashboard.fxml"));
+    		Parent ModifyFolderRoot = (Parent)FXMLLoader.load(getClass().getResource("Fxml/Dashboard.fxml"));
 			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 			Scene ModifyFolderScene = new Scene(ModifyFolderRoot, primaryStage.getWidth(), primaryStage.getHeight());
 			primaryStage.setScene(ModifyFolderScene);
@@ -567,7 +565,7 @@ public class modifierInfoDuDossierController implements Initializable{
 
     	try {
     		
-    		Parent ModifyFolderRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/LoginStage.fxml"));
+    		Parent ModifyFolderRoot = (Parent)FXMLLoader.load(getClass().getResource("Fxml/LoginStage.fxml"));
 			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 			Scene ModifyFolderScene = new Scene(ModifyFolderRoot, primaryStage.getWidth(), primaryStage.getHeight());
 			primaryStage.setScene(ModifyFolderScene);
