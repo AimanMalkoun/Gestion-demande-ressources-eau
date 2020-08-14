@@ -26,7 +26,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class EnregistrerController implements Initializable {
-	
+
 	@FXML
 	private Label firstName;
 	@FXML
@@ -101,18 +101,19 @@ public class EnregistrerController implements Initializable {
 	@FXML
 	public void savebuttonMethode(ActionEvent event) throws IOException, SQLException {
 
-		/* se connecter avec la base de donn�es */
+		int year = Calendar.getInstance().get(Calendar.YEAR);
 
-		Connection connection = new ConnectionClass().getConnection();
+		/* connect with the local dataBase */
+		Connection connectionLocal = new ConnectionClass().getConnectionLocal();
+		/* get the maximum idDossier */
 
-		/* Selectionner le plus grand idDossier */
 		String sqlId = "SELECT MAX(IdDossier)  FROM dossier";
-		ResultSet result = connection.createStatement().executeQuery(sqlId);
+		ResultSet result = connectionLocal.createStatement().executeQuery(sqlId);
 		if (result.next()) {
-			int year = Calendar.getInstance().get(Calendar.YEAR);
+
 			idDossier = result.getInt(1) + 1;
-			idDossierYear =  idDossier + "/" + year ; 
-			
+			idDossierYear = idDossier + "/" + year;
+
 		}
 		result.close();
 		/*
@@ -121,8 +122,10 @@ public class EnregistrerController implements Initializable {
 
 		InputStream cinFile = new FileInputStream(LesInfoDuDemandeurController.demandeur.getCinFile());
 		InputStream demandeCreusement = new FileInputStream(LesInfoDuDemandeurController.demandeur.getDemandeFile());
-		InputStream attistation = new FileInputStream(LesInfoDelImmobilierController.InfoSurImmobilier.getAttestationDePocession());
-		InputStream planImmFile = new FileInputStream(LesInfoDelImmobilierController.InfoSurImmobilier.getPlanImmobilier());
+		InputStream attistation = new FileInputStream(
+				LesInfoDelImmobilierController.InfoSurImmobilier.getAttestationDePocession());
+		InputStream planImmFile = new FileInputStream(
+				LesInfoDelImmobilierController.InfoSurImmobilier.getPlanImmobilier());
 		/* la requite sql de l'insertion */
 
 		String sql = "INSERT INTO `dossier`(`IdDossier`, `Nom`, `Prenom`, `cin`, `cinImg`, `typeDemande`,"
@@ -135,7 +138,7 @@ public class EnregistrerController implements Initializable {
 
 			/* l'insertion des el�ments dans la base de donnees */
 
-			PreparedStatement stat = connection.prepareStatement(sql);
+			PreparedStatement stat = connectionLocal.prepareStatement(sql);
 			stat.setInt(1, idDossier);
 			stat.setString(2, LesInfoDuDemandeurController.demandeur.getNom());
 			stat.setString(3, LesInfoDuDemandeurController.demandeur.getPrenom());
@@ -167,31 +170,52 @@ public class EnregistrerController implements Initializable {
 			stat.setString(28, LesInfoDelImmobilierController.InfoSurImmobilier.getNomImmobilier());
 			stat.setString(29, idDossierYear);
 			stat.execute();
-			
+
 			stat.close();
 			result.close();
-			connection.close();
+			connectionLocal.close();
 
-			//close the file input stream
+			// close the file input stream
 			cinFile.close();
 			demandeCreusement.close();
 			attistation.close();
 			planImmFile.close();
-			
+
 		} catch (SQLException e) {
-			
+
 			e.printStackTrace();
-		}
-		finally {
-			  if (connection != null) {
-			    try {
-			    	connection.close();
-			    } catch (SQLException e) {
-			    	e.printStackTrace();
-			    }
-			  }
+		} finally {
+			if (connectionLocal != null) {
+				try {
+					connectionLocal.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 			}
-	
+		}
+
+		/* connect with the global dataBase */
+		Connection connectionGlobal = new ConnectionClass().getConnectionGlobal();
+		String sqlGlobal = "INSERT INTO `user`(`ID_FOLDER`, `CIN`, `AUTORISATION`) VALUES (?, ?, ?)";
+		try {
+			PreparedStatement statment = connectionGlobal.prepareStatement(sqlGlobal);
+			statment.setString(1, idDossierYear);
+			statment.setString(2, LesInfoDuDemandeurController.demandeur.getCin());
+			statment.setString(3, "\u0647\u0630\u0627 \u0627\u0644\u0645\u0644\u0641 \u0644\u0627 \u064a\u0632\u0627\u0644 \u0642\u064a\u062f \u0627\u0644\u062f\u0631\u0627\u0633\u0629");
+			statment.execute();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}finally {
+			if (connectionGlobal != null) {
+				try {
+					connectionGlobal.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
 		try {
 
 			FXMLLoader loader = new FXMLLoader();
@@ -199,14 +223,15 @@ public class EnregistrerController implements Initializable {
 			Parent AEteEnregistrerRoot = loader.load();
 
 			Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-			Scene AEteEnregistrerScene = new Scene(AEteEnregistrerRoot, primaryStage.getWidth(), primaryStage.getHeight());
+			Scene AEteEnregistrerScene = new Scene(AEteEnregistrerRoot, primaryStage.getWidth(),
+					primaryStage.getHeight());
 			primaryStage.setScene(AEteEnregistrerScene);
 
 		} catch (IOException e) {
 
 			e.printStackTrace();
 		}
-	
+
 	}
 
 	@Override

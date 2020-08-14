@@ -16,7 +16,7 @@ public class ConnectionClassDossier {
 
 	private Connection conection;
 	public ConnectionClassDossier() {
-		conection =  new ConnectionClass().getConnection();
+		conection =  new ConnectionClass().getConnectionLocal();
 	}
 	
 	//getters and setters
@@ -38,7 +38,7 @@ public class ConnectionClassDossier {
 		try {
 
 			if(conection.isClosed())
-				conection = new ConnectionClass().getConnection();
+				conection = new ConnectionClass().getConnectionLocal();
 			
 			Statement stm = conection.createStatement();
 			ResultSet result = stm.executeQuery(sqlRequette);
@@ -126,7 +126,7 @@ public class ConnectionClassDossier {
 		try {
 
 			if(conection.isClosed())
-				conection = new ConnectionClass().getConnection();
+				conection = new ConnectionClass().getConnectionLocal();
 			
 			PreparedStatement stm = conection.prepareStatement(sqlRequete);
 			
