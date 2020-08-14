@@ -273,7 +273,7 @@ public class modifierInfoDuDossierController implements Initializable{
     			
     			
     			
-    			File result = ChangeFileAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u0635\u0648\u0631\u0629 \u0628\u0637\u0627\u0642\u0629 \u0627\u0644\u062a\u0639\u0631\u064a\u0641 \u0627\u0644\u0648\u0637\u0646\u064a\u0629", dossier.getCin() + "CIN.pdf");
+    			File result = ChangeFileAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u0635\u0648\u0631\u0629 \u0628\u0637\u0627\u0642\u0629 \u0627\u0644\u062a\u0639\u0631\u064a\u0641 \u0627\u0644\u0648\u0637\u0646\u064a\u0629", "CIN.pdf");
     			if(result != null){
     				dossier.setCinFile(fileToBlob(result));
     				carteCinPathLabel.setText(result.getPath());
@@ -281,7 +281,7 @@ public class modifierInfoDuDossierController implements Initializable{
     			
     		}else if(event.getSource() == demandeCreusementFileButton) {
     			//file
-    			File result = ChangeFileAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u0645\u0644\u0641 \u0627\u0644\u0637\u0644\u0628", dossier.getCin() + "demandeFile.pdf");
+    			File result = ChangeFileAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u0645\u0644\u0641 \u0627\u0644\u0637\u0644\u0628", "demandeFile.pdf");
     			
     			if(result != null){
     				dossier.setDemandeFile(fileToBlob(result));
@@ -299,7 +299,7 @@ public class modifierInfoDuDossierController implements Initializable{
     			
     		}else if(event.getSource() == attestationPocessionImmobilierFileButton) {
     			//file
-    			File result = ChangeFileAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u0634\u0647\u0627\u062f\u0629 \u0645\u0644\u0643\u064a\u0629 \u0627\u0644\u0639\u0642\u0627\u0631", dossier.getCin() + "attestation_Pocession_Immobilier.pdf");
+    			File result = ChangeFileAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u0634\u0647\u0627\u062f\u0629 \u0645\u0644\u0643\u064a\u0629 \u0627\u0644\u0639\u0642\u0627\u0631", "attestation_Pocession_Immobilier.pdf");
     			
     			if(result != null){
     				dossier.setAttestationDePocession(fileToBlob(result));
@@ -308,7 +308,7 @@ public class modifierInfoDuDossierController implements Initializable{
     			
     		}else if(event.getSource() == planImmobilierFileButton) {
     			//file
-    			File result = ChangeFileAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u062a\u0635\u0645\u064a\u0645 \u0627\u0644\u0639\u0642\u0627\u0631", dossier.getCin() + "plan_Immobilier.pdf");
+    			File result = ChangeFileAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u062a\u0635\u0645\u064a\u0645 \u0627\u0644\u0639\u0642\u0627\u0631", "plan_Immobilier.pdf");
     			
     			if(result != null){
     				dossier.setPlanImmobilier(fileToBlob(result));

@@ -26,6 +26,11 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="E:/java tools/javafx-sdk-11.0.2/lib/javafx.base.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="lib" path="E:/java tools/javafx-sdk-11.0.2/lib/javafx.controls.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
@@ -36,17 +41,17 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/java tools/javafx-sdk-11.0.2/lib/javafx.base.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="lib" path="E:/java tools/javafx-sdk-11.0.2/lib/javafx.graphics.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="E:/java tools/javafx-sdk-11.0.2/lib/javafx.media.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="E:/java tools/javafx-sdk-11.0.2/lib/javafx.swing.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
@@ -62,6 +67,5 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="E:/java tools/commons-io-2.7.jar"/>
-	<classpathentry kind="lib" path="E:/java tools/javafx-sdk-11.0.2/lib/javafx.swing.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
