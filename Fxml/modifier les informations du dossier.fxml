@@ -16,9 +16,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="1130.0" style="-fx-background-color: #2b4067;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.modifierInfoDuDossierController">
+<ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="600.0" prefWidth="1130.0" style="-fx-background-color: #2b4067;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.modifierInfoDuDossierController">
    <content>
-      <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="578.0" prefWidth="1121.0" stylesheets="@../GestionDemandeEau/application.css">
+      <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="1130.0" stylesheets="@../GestionDemandeEau/application.css">
          <center>
             <ScrollPane fitToWidth="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <content>

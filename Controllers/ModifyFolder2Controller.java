@@ -152,9 +152,9 @@ public class ModifyFolder2Controller implements Initializable{
 
 	public void setMessage(int message) {
 		
-		if(message == 0)  //in case of modify folder
+		if(message == 0)  			//in case of modify folder
 			initializeMenuItems();
-		else  //in case of show folder
+		else  						//in case of show folder
 			nitializeRowsForMouseClick();
 		
 	}
@@ -301,7 +301,6 @@ public class ModifyFolder2Controller implements Initializable{
 			task.cancel();
 			
 		
-		tableInfo.getItems().clear();
 		task = new Task<Void>() {
 		    					@Override 
 		    					protected Void call() throws Exception, SQLException {
@@ -321,6 +320,7 @@ public class ModifyFolder2Controller implements Initializable{
 	    							progressIndicator.setVisible(true);
 	    							tableInfo.setDisable(true);
 	    							
+	    							tableInfo.getItems().clear();
 		    						while(result.next())
 		    						{
 		    							
