@@ -118,7 +118,7 @@ public class AEteEnregistrerController implements Initializable {
 		/* se connecter avec la base de donnees */
 
 		ConnectionClass conn = new ConnectionClass();
-		Connection connection = conn.getConnection();
+		Connection connection = conn.getConnectionLocal();
 		Statement stat;
 		try {
 			stat = connection.createStatement();

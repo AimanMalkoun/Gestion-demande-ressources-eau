@@ -50,7 +50,7 @@ public class ForgotPassWordController {
 			if(NewPassword.getText().equals(confermPassword.getText())) {
 				if(PasswordChange.lengthMethode(NewPassword.getText())) {
 					ConnectionClass conn = new ConnectionClass();
-					Connection connection = conn.getConnection();
+					Connection connection = conn.getConnectionLocal();
 					Statement statement = connection.createStatement();
 					statement.executeUpdate("UPDATE `login` SET `Password`='"+ NewPassword.getText() +"'");
 					

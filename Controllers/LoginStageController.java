@@ -56,7 +56,7 @@ public class LoginStageController  implements Initializable{
 	public void loginIn(Event event) throws SQLException, IOException {
 		
 		ConnectionClass conn = new ConnectionClass();
-		Connection connection = conn.getConnection();
+		Connection connection = conn.getConnectionLocal();
 		Statement statement = connection.createStatement();
 		ResultSet query = statement.executeQuery("SELECT * FROM `login`;");
 

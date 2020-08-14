@@ -38,7 +38,7 @@ public class ChangePasswordController {
     void changePasswordConfirmation(ActionEvent event){
     	
 		ConnectionClass conn = new ConnectionClass();
-		Connection connection = conn.getConnection();
+		Connection connection = conn.getConnectionLocal();
     	try {
     		Statement statement = connection.createStatement();
     		ResultSet query = statement.executeQuery("SELECT * FROM `login` ;");

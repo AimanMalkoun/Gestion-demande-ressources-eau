@@ -305,7 +305,7 @@ public class ModifyFolder2Controller implements Initializable{
 		    					@Override 
 		    					protected Void call() throws Exception, SQLException {
 		    						
-		    						Connection conection =  new ConnectionClass().getConnection(); 
+		    						Connection conection =  new ConnectionClass().getConnectionLocal(); 
 		    				    	
 		    						Statement statement = conection.createStatement(), statement2 = conection.createStatement();
 		    						ResultSet result;
@@ -367,7 +367,7 @@ public class ModifyFolder2Controller implements Initializable{
 		if (th.isAlive())
 			task.cancel();
 		
-		Connection conection =  new ConnectionClass().getConnection(); 
+		Connection conection =  new ConnectionClass().getConnectionLocal(); 
     	
 		try {
 			
