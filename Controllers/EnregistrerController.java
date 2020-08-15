@@ -102,9 +102,9 @@ public class EnregistrerController implements Initializable {
 	public void savebuttonMethode(ActionEvent event) throws IOException, SQLException {
 
 		int year = Calendar.getInstance().get(Calendar.YEAR);
-
+		
 		/* connect with the local dataBase */
-		Connection connectionLocal = new ConnectionClass().getConnectionLocal();
+		Connection connectionLocal = ConnectionClass.getConnectionLocal();
 		/* get the maximum idDossier */
 
 		String sqlId = "SELECT MAX(IdDossier)  FROM dossier";
@@ -115,7 +115,7 @@ public class EnregistrerController implements Initializable {
 			idDossierYear = idDossier + "/" + year;
 
 		}
-		result.close();
+
 		/*
 		 * Creation de l'objet InputStream afin de le stocker dans la base de donn�es
 		 */
@@ -171,9 +171,6 @@ public class EnregistrerController implements Initializable {
 			stat.setString(29, idDossierYear);
 			stat.execute();
 
-			stat.close();
-			result.close();
-			connectionLocal.close();
 
 			// close the file input stream
 			cinFile.close();
@@ -184,20 +181,12 @@ public class EnregistrerController implements Initializable {
 		} catch (SQLException e) {
 
 			e.printStackTrace();
-		} finally {
-			if (connectionLocal != null) {
-				try {
-					connectionLocal.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
 		}
 
 		/* connect with the global dataBase */
-		Connection connectionGlobal = new ConnectionClass().getConnectionGlobal();
 		String sqlGlobal = "INSERT INTO `user`(`ID_FOLDER`, `ID_FOLDER_YEAR`, `CIN`, `AUTORISATION`) VALUES (?, ?, ?, ?)";
 		try {
+			Connection connectionGlobal = ConnectionClass.getConnectionGlobal();
 			PreparedStatement statment = connectionGlobal.prepareStatement(sqlGlobal);
 			statment.setInt(1, idDossier);
 			statment.setString(2, idDossierYear);
@@ -205,18 +194,13 @@ public class EnregistrerController implements Initializable {
 			statment.setString(4, "\u0647\u0630\u0627 \u0627\u0644\u0645\u0644\u0641 \u0644\u0627 \u064a\u0632\u0627\u0644 \u0642\u064a\u062f \u0627\u0644\u062f\u0631\u0627\u0633\u0629");
 			statment.execute();
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
+
 			e1.printStackTrace();
-		}finally {
-			if (connectionGlobal != null) {
-				try {
-					connectionGlobal.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
+		} catch (ClassNotFoundException e) {
+
+			e.printStackTrace();
 		}
-		
+
 		try {
 
 			FXMLLoader loader = new FXMLLoader();

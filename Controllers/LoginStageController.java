@@ -55,8 +55,7 @@ public class LoginStageController  implements Initializable{
 	
 	public void loginIn(Event event) throws SQLException, IOException {
 		
-		ConnectionClass conn = new ConnectionClass();
-		Connection connection = conn.getConnectionLocal();
+		Connection connection = ConnectionClass.getConnectionLocal();
 		Statement statement = connection.createStatement();
 		ResultSet query = statement.executeQuery("SELECT * FROM `login`;");
 
@@ -69,9 +68,6 @@ public class LoginStageController  implements Initializable{
 			Scene dashboardScene = new Scene(dashboardRoot, primaryStage.getWidth(), primaryStage.getHeight());
 			primaryStage.setScene(dashboardScene);
 			
-			statement.close();
-			query.close();
-			connection.close();
 		}
 
 		else {

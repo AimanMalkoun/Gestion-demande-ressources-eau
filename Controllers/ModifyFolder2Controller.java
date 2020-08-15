@@ -246,14 +246,22 @@ public class ModifyFolder2Controller implements Initializable{
 		private void removeRow(TableRow<FolderTable> row){
 			
 			if (!th.isAlive()) {
-			
+				
 				//first let the user confirm the delete order
 				if(DeleteConfirmationAlert.desplay()) {
+					
+					int result  = 0;
 					FolderTable folder = row.getItem();
 			
 					//remove folder from dataBase
-					ConnectionClassDossier connection = new ConnectionClassDossier();
-					int result = connection.removeFolder(folder.getId());
+					ConnectionClassDossier connection;
+					try {
+						connection = new ConnectionClassDossier();
+						result= connection.removeFolder(folder.getId());
+					} catch (ClassNotFoundException | SQLException e) {
+						
+						e.printStackTrace();
+					}
 
 					if(result > 0) {
 						//remove folder from tableView
@@ -305,7 +313,7 @@ public class ModifyFolder2Controller implements Initializable{
 		    					@Override 
 		    					protected Void call() throws Exception, SQLException {
 		    						
-		    						Connection conection =  new ConnectionClass().getConnectionLocal(); 
+		    						Connection conection =  ConnectionClass.getConnectionLocal(); 
 		    				    	
 		    						Statement statement = conection.createStatement(), statement2 = conection.createStatement();
 		    						ResultSet result;
@@ -326,7 +334,6 @@ public class ModifyFolder2Controller implements Initializable{
 		    							
 		    							if(this.isCancelled()) {
 		    								System.out.println("canceled!");
-		    								statement2.close();
 			    							progressIndicator.setVisible(false);
 			    							tableInfo.setDisable(false);
 		    								break;
@@ -340,14 +347,10 @@ public class ModifyFolder2Controller implements Initializable{
 				    							progress++;
 				    							progressIndicator.setProgress(progress/rowsCount);
 		    								}
-		    								result2.close();
+		    								
 			    						}
 		    						}
-
-    								statement2.close();
-    								result.close();
-    								statement.close();
-    								conection.close();
+		    						
     								System.out.println("task ended!");
     								
     								//hide the progress bar and enable the table 
@@ -367,10 +370,10 @@ public class ModifyFolder2Controller implements Initializable{
 		if (th.isAlive())
 			task.cancel();
 		
-		Connection conection =  new ConnectionClass().getConnectionLocal(); 
     	
 		try {
-			
+
+			Connection conection =  ConnectionClass.getConnectionLocal(); 
 			Statement statement = conection.createStatement();
 	    	ResultSet result;
 			result = statement.executeQuery("SELECT `IdDossier`,`nom`, `prenom` , `cin`, `typeDemande`, `idDossierYear` FROM `dossier` WHERE idDossierYear = '" + idDossierYear + "'");
@@ -379,9 +382,7 @@ public class ModifyFolder2Controller implements Initializable{
 			{
 				
 				tableInfo.getItems().add( new FolderTable(result.getInt("IdDossier"),result.getString("idDossierYear") ,result.getString("typeDemande"), result.getString("cin"),  result.getString("nom") + " " + result.getString("prenom")) );
-				result.close();
-				statement.close();
-				conection.close();
+				
 				
 				return true;
 			}
@@ -390,15 +391,7 @@ public class ModifyFolder2Controller implements Initializable{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		finally {
-			  if (conection != null) {
-			    try {
-			    	conection.close();
-			    } catch (SQLException e) {
-			    	e.printStackTrace();
-			    }
-			  }
-			}
+		
 		return false;
 		
 	}

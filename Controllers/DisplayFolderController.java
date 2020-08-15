@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.ResourceBundle;
 
@@ -399,10 +400,18 @@ public class DisplayFolderController implements Initializable {
 	
 	public void setMessage(int idDossier) {
 		
-		ConnectionClassDossier myDataBaseFolder = new ConnectionClassDossier();
-		dossier = myDataBaseFolder.getDossierFromDatabase(idDossier);
-		initializeTextForLabels();
-		
+		try {
+			
+			ConnectionClassDossier myDataBaseFolder = new ConnectionClassDossier();
+			
+			dossier = myDataBaseFolder.getDossierFromDatabase(idDossier);
+			initializeTextForLabels();
+			
+			
+		} catch (ClassNotFoundException | SQLException e) {
+
+			e.printStackTrace();
+		}
 	}
 	
 	
