@@ -3,6 +3,7 @@ package Connectivity;
 
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -128,6 +129,7 @@ public class ConnectionClassDossier {
 			if(conection.isClosed())
 				conection = new ConnectionClass().getConnectionLocal();
 			
+			//update to local database
 			PreparedStatement stm = conection.prepareStatement(sqlRequete);
 			
 			stm.setString(1, dossier.getNom());
@@ -165,7 +167,24 @@ public class ConnectionClassDossier {
 			
 			stm.setInt(28, dossier.getIdDossier());
 			
-			int result = stm.executeUpdate();
+			stm.executeUpdate();
+			
+			
+			//update to global database
+			Connection connectionGlobal = new ConnectionClass().getConnectionGlobal();
+			
+			String sqlRequete2 = "UPDATE `user` SET `ID_FOLDER_YEAR`=?,`CIN`=?,`AUTORISATION`=? WHERE `ID_FOLDER`=?";
+			PreparedStatement stm2 = connectionGlobal.prepareStatement(sqlRequete2);
+
+			String idDossierYear = Integer.toString(dossier.getIdDossier()) + "/" + Integer.toString(Date.valueOf(dossier.getDateDepotDossier()).getYear());
+			
+			stm2.setString(1, idDossierYear);
+			stm2.setString(2, dossier.getCin());
+			stm2.setString(3, dossier.getAutorisation());
+			stm2.setInt(4, dossier.getIdDossier());
+			
+			int result = stm2.executeUpdate();
+			
 			return result;
 			
 		} catch (SQLException e) {
@@ -185,16 +204,30 @@ public class ConnectionClassDossier {
 
 	public int removeFolder(int id){
 		
-		String sqlQuery = "DELETE FROM `dossier` WHERE `IdDossier` = ?;";
+		Connection connectionGlobal = new ConnectionClass().getConnectionGlobal();
+		
+		String sqlQuery = "DELETE FROM `dossier` WHERE `IdDossier` = ?;",         //this query is for the local database
+			   sqlQuery2 = "DELETE FROM `user` WHERE `ID_FOLDER` = ?;";		  //this query is for the global database
 		int result = 0;
 			
-		PreparedStatement stm;
+		PreparedStatement stm, stm2;
 		try {
+			
 			stm = conection.prepareStatement(sqlQuery);
 			stm.setInt(1, id);
+			
+			stm2 = connectionGlobal.prepareStatement(sqlQuery2);
+			stm2.setInt(1, id);
+			
 			result = stm.executeUpdate();
+			int result2 = stm2.executeUpdate();
+			
 			if(result > 0)
-				System.out.println("row has been deleted");
+				System.out.println("row has been deleted from local database");
+			
+			if(result2 > 0)
+				System.out.println("row has been deleted from global database");
+			
 			
 		} catch (SQLException e) {
 

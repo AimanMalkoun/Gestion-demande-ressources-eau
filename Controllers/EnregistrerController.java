@@ -196,12 +196,13 @@ public class EnregistrerController implements Initializable {
 
 		/* connect with the global dataBase */
 		Connection connectionGlobal = new ConnectionClass().getConnectionGlobal();
-		String sqlGlobal = "INSERT INTO `user`(`ID_FOLDER`, `CIN`, `AUTORISATION`) VALUES (?, ?, ?)";
+		String sqlGlobal = "INSERT INTO `user`(`ID_FOLDER`, `ID_FOLDER_YEAR`, `CIN`, `AUTORISATION`) VALUES (?, ?, ?, ?)";
 		try {
 			PreparedStatement statment = connectionGlobal.prepareStatement(sqlGlobal);
-			statment.setString(1, idDossierYear);
-			statment.setString(2, LesInfoDuDemandeurController.demandeur.getCin());
-			statment.setString(3, "\u0647\u0630\u0627 \u0627\u0644\u0645\u0644\u0641 \u0644\u0627 \u064a\u0632\u0627\u0644 \u0642\u064a\u062f \u0627\u0644\u062f\u0631\u0627\u0633\u0629");
+			statment.setInt(1, idDossier);
+			statment.setString(2, idDossierYear);
+			statment.setString(3, LesInfoDuDemandeurController.demandeur.getCin());
+			statment.setString(4, "\u0647\u0630\u0627 \u0627\u0644\u0645\u0644\u0641 \u0644\u0627 \u064a\u0632\u0627\u0644 \u0642\u064a\u062f \u0627\u0644\u062f\u0631\u0627\u0633\u0629");
 			statment.execute();
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block

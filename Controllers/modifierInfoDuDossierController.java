@@ -615,7 +615,7 @@ public class modifierInfoDuDossierController implements Initializable{
 			AvisDeCEPButton.setDisable(false);
 		}
 
-		if(dossier.getAvisDe_CEP().equals("\u0645\u062a\u0627\u062d\u0629")) {
+		if(dossier.getAvisDe_CEP().equals("\u0628\u0627\u0644\u0645\u0648\u0627\u0641\u0642\u0629")) {
 			dateEnvoitPvAbhoerEljadidaButton.setDisable(false);
 		}
 
