@@ -169,6 +169,7 @@ public class ConnectionClassDossier {
 			
 			stm.executeUpdate();
 			
+			close();
 			
 			//update to global database
 			Connection connectionGlobal = new ConnectionClass().getConnectionGlobal();

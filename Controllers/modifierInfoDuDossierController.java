@@ -6,13 +6,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Blob;
-import java.sql.Connection;
 import java.sql.Date;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.time.LocalDate;
-import java.util.Calendar;
 import java.util.ResourceBundle;
 
 import javax.sql.rowset.serial.SerialBlob;
@@ -21,7 +17,6 @@ import javax.sql.rowset.serial.SerialException;
 import org.apache.commons.io.IOUtils;
 
 import Classes.DossierForDownload;
-import Connectivity.ConnectionClass;
 import Connectivity.ConnectionClassDossier;
 import alerts.ChangeChoiceAlert;
 import alerts.ChangeDateAlert;

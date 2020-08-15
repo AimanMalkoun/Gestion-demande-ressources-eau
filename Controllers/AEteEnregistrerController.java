@@ -24,6 +24,7 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
 import Connectivity.ConnectionClass;
+import alerts.WarningAlert;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -47,27 +48,7 @@ public class AEteEnregistrerController implements Initializable {
 	@FXML
 	private Label textError;
 	String path;
-	@FXML
-	public void handelBackMethode(ActionEvent event) throws IOException {
-		
-		cleanup(); // will clean the previous input except the import files
-
-		try {
-			
-			FXMLLoader loader= new FXMLLoader();
-			loader.setLocation(getClass().getResource("../Fxml/Dashboard.fxml"));
-			Parent DashboardRoot = loader.load();
-			
-			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-			Scene DashboardScene = new Scene(DashboardRoot, primaryStage.getWidth(), primaryStage.getHeight());
-			primaryStage.setScene(DashboardScene);
-			
-		} catch (IOException e) {
-
-			e.printStackTrace();
-		}
-
-	}
+	boolean downloadedReceipt;
 
 	private void cleanup() {
 		LesInfoDuDemandeurController.demandeur.setNom(null);
@@ -229,6 +210,7 @@ public class AEteEnregistrerController implements Initializable {
 			document.close();
 
 			Desktop.getDesktop().open(new File(path+ "\\"+ cin + "_reçu.pdf"));
+			downloadedReceipt = true;
 			stat.close();
 			result.close();
 			connection.close();
@@ -248,8 +230,27 @@ public class AEteEnregistrerController implements Initializable {
 		}
 		else {
 			textError.setText("\u064a\u0631\u062c\u0649 \u0627\u062e\u062a\u064a\u0627\u0631 \u0645\u062c\u0644\u062f \u0644\u062a\u0646\u0632\u064a\u0644 \u0627\u0644\u0631\u0627\u0628\u0637");
+			downloadedReceipt = false;
 		}
 
+
+	}
+	@FXML
+	public void handelBackMethode(ActionEvent event) throws IOException {
+		
+		cleanup(); // will clean the previous input except the import files
+
+		if(downloadedReceipt) {
+			FXMLLoader loader= new FXMLLoader();
+			loader.setLocation(getClass().getResource("../Fxml/Dashboard.fxml"));
+			Parent DashboardRoot = loader.load();
+			
+			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			Scene DashboardScene = new Scene(DashboardRoot, primaryStage.getWidth(), primaryStage.getHeight());
+			primaryStage.setScene(DashboardScene);
+		}else {
+			WarningAlert.desplay("\u0627\u0646\u062a\u0628\u0627\u0647", "\u064a\u0631\u062c\u0649 \u062a\u062d\u0645\u064a\u0644 \ufeed\ufebb\ufede \u0627\u0644\u0625\ufef3\ufeaa\ufe8d\ufec9");
+		}
 
 	}
 
