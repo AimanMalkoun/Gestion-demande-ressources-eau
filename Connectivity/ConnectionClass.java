@@ -2,38 +2,33 @@ package Connectivity;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class ConnectionClass {
 	
+	private static Connection sqliteConnection = null; // for local connection
+	private static Connection sqlConnection = null;    //for global connection
+	
 	//public Connection connection;
-	public String dbName = "gestiondeamndeeauglobal";
-	public String userName = "root";
-	public String password = "";
+	public static String dbName = "gestiondeamndeeauglobal";
+	public static String userName = "root";
+	public static String password = "";
 	
-	public Connection getConnectionLocal() {
+	public static Connection getConnectionLocal() throws SQLException {
 	
-		try {
-			 return DriverManager.getConnection("jdbc:sqlite:src/SQLiteDB/gestiondeamndeeau.sqlite");
+		if(sqliteConnection == null)
+			sqliteConnection =  DriverManager.getConnection("jdbc:sqlite:src/SQLiteDB/gestiondeamndeeau.sqlite");
 		
-		} catch (Exception e) {
-			
-			e.printStackTrace();
-		}
-		
-		return null;
+		return sqliteConnection;
 	}
 	
-	public Connection getConnectionGlobal() {
+	public static Connection getConnectionGlobal() throws  SQLException, ClassNotFoundException {
 		
-		try {
+		if(sqlConnection == null) {
 			Class.forName("com.mysql.jdbc.Driver");
-			return DriverManager.getConnection("jdbc:mysql://localhost:3306/"+dbName, userName, password);
-		
-		} catch (Exception e) {
-			
-			e.printStackTrace();
+			sqlConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+dbName, userName, password);
 		}
 		
-		return null;
+		return sqlConnection;
 	}
 }

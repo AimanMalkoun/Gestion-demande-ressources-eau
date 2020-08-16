@@ -17,8 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<ScrollPane fitToHeight="true" fitToWidth="true" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.EnregistrerController">
+<ScrollPane fitToHeight="true" fitToWidth="true" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.EnregistrerController">
    <content>
       <BorderPane fx:id="borderPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1130.0" stylesheets="@../GestionDemandeEau/application.css">
          <center>
@@ -332,6 +331,14 @@
          <right>
             <VBox id="vboxStyle" alignment="CENTER" prefHeight="470.0" prefWidth="170.0" spacing="20.0" style="-fx-background-color: #2b4067;" BorderPane.alignment="CENTER">
                <children>
+                  <Button id="switchButton" mnemonicParsing="false" onAction="#goHome" prefHeight="35.0" prefWidth="126.0" style="-fx-background-color: #A7BDE7;" text="الصفحة الرئيسية" textFill="#2b4067">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="100.0" />
+                     </VBox.margin>
+                  </Button>
                   <Button id="buttonProfile2" alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="186.0" style="-fx-background-color: #4cd4b9;" text="صاحب الطلب" textFill="WHITE">
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -365,7 +372,7 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="106.0" style="-fx-background-color: #ffffff;" text="التسجيل">
+                  <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="135.0" style="-fx-background-color: #ffffff;" text="التسجيل">
                      <font>
                         <Font size="14.0" />
                      </font>

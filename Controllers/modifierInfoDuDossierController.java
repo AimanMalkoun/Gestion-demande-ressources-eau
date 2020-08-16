@@ -23,6 +23,7 @@ import alerts.ChangeDateAlert;
 import alerts.ChangeFileAlert;
 import alerts.ChangeNumberAlert;
 import alerts.ChangeStringAlert;
+import alerts.WarningAlert;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -520,11 +521,26 @@ public class modifierInfoDuDossierController implements Initializable{
     @FXML
     void enregistrer(MouseEvent event) {
     	/* connect to the local database */
-    	ConnectionClassDossier myDataBaseFolder = new ConnectionClassDossier();
-    	int rows = myDataBaseFolder.updateDossierToDatabase(dossier);
-    
-    	System.out.println("rows updated = " + rows);
-
+    	ConnectionClassDossier myDataBaseFolder;
+    	int rows[] = {0, 0};
+    	try {
+			
+			myDataBaseFolder = new ConnectionClassDossier();
+	    	rows = myDataBaseFolder.updateDossierToDatabase(dossier);
+	        
+		} catch (ClassNotFoundException | SQLException e1) {
+			
+			e1.printStackTrace();
+		}
+    	if(rows[0] == 0) {
+			String title = "\u0627\u0646\u062a\u0628\u0627\u0647"; 
+			String message1 = "\u0644\u0642\u062f \u062d\u062f\u062b \u062e\u0637\u0623 \u0645\u0627!";
+			String message2 = "\u0627\u0644\u0645\u0631\u062c\u0648 \u0627\u0644\u062a\u062d\u0642\u0642 \u0645\u0646 \u0627\u0644\u0625\u062a\u0635\u0627\u0644 \u0628\u0627\u0644\u0625\u0646\u062a\u0631\u0646\u062a \u0648 \u0625\u0639\u0627\u062f\u0629 \u0627\u0644\u0645\u062d\u0627\u0648\u0644\u0629 \u0645\u0631\u0629 \u0623\u062e\u0631\u0649.";
+			String titleButton = "\u062d\u0633\u0646\u0627";
+			WarningAlert.desplay(title, message1,  message2, titleButton);
+			return;
+		}
+    	
     	try {
 
 			FXMLLoader loader= new FXMLLoader();
@@ -542,7 +558,7 @@ public class modifierInfoDuDossierController implements Initializable{
 
 			e.printStackTrace();
 		}
-    	}
+    }
 
     @FXML
     void goHomePage(MouseEvent event) {
@@ -588,9 +604,22 @@ public class modifierInfoDuDossierController implements Initializable{
 	}
 	
 	//recieve the message from the last controler
- 	 public void setMessage(int id) {
+ 	 public int setMessage(int id) {
 
-		ConnectionClassDossier myDataBaseFolder = new ConnectionClassDossier();
+		ConnectionClassDossier myDataBaseFolder = null;
+		try {
+			
+			myDataBaseFolder = new ConnectionClassDossier();
+
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			String title = "\u0627\u0646\u062a\u0628\u0627\u0647"; 
+			String message1 = "\u0644\u0642\u062f \u062d\u062f\u062b \u062e\u0637\u0623 \u0645\u0627!";
+			String message2 = "\u0627\u0644\u0645\u0631\u062c\u0648 \u0627\u0644\u062a\u062d\u0642\u0642 \u0645\u0646 \u0627\u0644\u0625\u062a\u0635\u0627\u0644 \u0628\u0627\u0644\u0625\u0646\u062a\u0631\u0646\u062a \u0648 \u0625\u0639\u0627\u062f\u0629 \u0627\u0644\u0645\u062d\u0627\u0648\u0644\u0629 \u0645\u0631\u0629 \u0623\u062e\u0631\u0649.";
+			String titleButton = "\u062d\u0633\u0646\u0627";
+			WarningAlert.desplay(title, message1,  message2, titleButton);
+			return 0;
+		}
 		dossier = myDataBaseFolder.getDossierFromDatabase(id);
 		initializeTextForLabels();
 		
@@ -618,6 +647,7 @@ public class modifierInfoDuDossierController implements Initializable{
 			AvisAbhoerButton.setDisable(false);
 		}
 		
+		return 1;
  	 }
 	
     private void initializeTextForLabels() {

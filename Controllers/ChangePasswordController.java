@@ -33,9 +33,9 @@ public class ChangePasswordController {
     @FXML
     void changePasswordConfirmation(ActionEvent event){
     	
-		ConnectionClass conn = new ConnectionClass();
-		Connection connection = conn.getConnectionLocal();
+		Connection connection;
     	try {
+    		connection = ConnectionClass.getConnectionLocal();
     		Statement statement = connection.createStatement();
     		ResultSet query = statement.executeQuery("SELECT * FROM `login` ;");
     		while(query.next()){
