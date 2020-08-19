@@ -19,8 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<ScrollPane fitToHeight="true" fitToWidth="true" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LesInfoDuDemandeurController">
+<ScrollPane fitToHeight="true" fitToWidth="true" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LesInfoDuDemandeurController">
    <content>
       <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1130.0" stylesheets="@../GestionDemandeEau/application.css">
          <top>
@@ -155,7 +154,7 @@
                                                 <Font size="18.0" />
                                              </font>
                                           </Label>
-                                          <Button id="switchButton" fx:id="suivantButton" mnemonicParsing="false" onMouseClicked="#suivant" prefHeight="29.0" prefWidth="104.0" style="-fx-background-color: #2b4067;" text="التالي" textFill="WHITE" GridPane.rowIndex="7">
+                                          <Button id="switchButton" fx:id="suivantButton" mnemonicParsing="false" onMouseClicked="#suivant" prefHeight="29.0" prefWidth="104.0" text="التالي" textFill="WHITE" GridPane.rowIndex="7">
                                              <cursor>
                                                 <Cursor fx:constant="HAND" />
                                              </cursor>
