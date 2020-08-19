@@ -1,0 +1,19 @@
+package Connectivity;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class ConnectionClassMaria {
+	public Connection connection;
+
+	public ConnectionClassMaria(){
+
+		try {
+			connection = (Connection) DriverManager.getConnection("jdbc:sqlite:SQLiteDB/gestiondeamndeeau.sqlite");
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}
+
+	}
+}

@@ -25,9 +25,8 @@ public class WarningAlert {
 	
 			//creating nodes
 			Label messageLabel = new Label(message);
-			messageLabel.setStyle("-fx-text-fill: #2b4067");
 			
-			Button okButton = new Button("\u062d\u0633\u0646\u0627");
+			Button okButton = new Button("\u062a\u0623\u0643\u064a\u062f");
 			okButton.setStyle("-fx-background-color: #2b4067; -fx-text-fill: white");
 			okButton.setPrefWidth(50);
 			okButton.setPrefHeight(30);
@@ -45,7 +44,7 @@ public class WarningAlert {
 			layout.add(okButton, 0, 1);
 			layout.setVgap(20);
 			
-			GridPane.setHalignment(okButton, HPos.CENTER);
+			GridPane.setHalignment(okButton, HPos.RIGHT);
 			
 			StackPane root = new StackPane(layout);
 			root.setAlignment(Pos.CENTER);

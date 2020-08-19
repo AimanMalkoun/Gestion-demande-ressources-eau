@@ -7,8 +7,12 @@ import java.sql.SQLException;
 public class ConnectionClass {
 	
 	private static Connection sqliteConnection = null; // for local connection
+	private static Connection sqlConnection = null;    //for global connection
 	
-
+	//public Connection connection;
+	public static String dbName = "gestiondeamndeeauglobal";
+	public static String userName = "root";
+	public static String password = "";
 	
 	public static Connection getConnectionLocal() throws SQLException {
 	
@@ -18,4 +22,13 @@ public class ConnectionClass {
 		return sqliteConnection;
 	}
 	
+	public static Connection getConnectionGlobal() throws  SQLException, ClassNotFoundException {
+		
+		if(sqlConnection == null) {
+			Class.forName("com.mysql.jdbc.Driver");
+			sqlConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+dbName, userName, password);
+		}
+		
+		return sqlConnection;
+	}
 }

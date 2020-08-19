@@ -177,12 +177,12 @@ public class LesInfoDelImmobilierController implements Initializable {
 		}
 
 		if (attestationFile == null) {
-			attistationFileButton.setStyle("-fx-border-color: red; -fx-background-color: #2b4067;");
+			attistationFileButton.setStyle("-fx-border-color: red");
 			condition = condition && false;
 		}
 		
 		if (planImmobilierFile == null) {
-			planImmobilierFileButton.setStyle("-fx-border-color: red; -fx-background-color: #2b4067;");
+			planImmobilierFileButton.setStyle("-fx-border-color: red");
 			condition = condition && false;
 		}
 
