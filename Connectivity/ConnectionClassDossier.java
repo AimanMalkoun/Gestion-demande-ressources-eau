@@ -8,6 +8,8 @@ import java.sql.Statement;
 
 import javax.sql.rowset.serial.SerialBlob;
 
+import org.apache.commons.io.IOUtils;
+
 import Classes.DossierForDownload;
 
 public class ConnectionClassDossier {
@@ -113,11 +115,11 @@ public class ConnectionClassDossier {
 			stm.setString(1, dossier.getNom());
 			stm.setString(2, dossier.getPrenom());
 			stm.setString(3, dossier.getCin());
-			stm.setBytes(4, dossier.getCinFile().getBinaryStream().readAllBytes());
+			stm.setBytes(4, IOUtils.toByteArray(dossier.getCinFile().getBinaryStream()));
 			stm.setString(5, dossier.getTypeDemande());
-			stm.setBytes(6, dossier.getDemandeFile().getBinaryStream().readAllBytes());
+			stm.setBytes(6, IOUtils.toByteArray(dossier.getDemandeFile().getBinaryStream()));
 
-			stm.setBytes(7, dossier.getAttestationDePocession().getBinaryStream().readAllBytes());
+			stm.setBytes(7, IOUtils.toByteArray(dossier.getAttestationDePocession().getBinaryStream()));
 			stm.setString(8, dossier.getDouar());
 			stm.setString(9, dossier.getCommune());
 			stm.setString(10, dossier.getProvince());
@@ -140,7 +142,7 @@ public class ConnectionClassDossier {
 			stm.setString(24, dossier.getAutorisation());
 
 			stm.setString(25, dossier.getQuiada());
-			stm.setBytes(26, dossier.getPlanImmobilier().getBinaryStream().readAllBytes());
+			stm.setBytes(26, IOUtils.toByteArray(dossier.getPlanImmobilier().getBinaryStream()));
 			stm.setString(27, dossier.getNomImmobilier());
 
 			stm.setInt(28, dossier.getIdDossier());
