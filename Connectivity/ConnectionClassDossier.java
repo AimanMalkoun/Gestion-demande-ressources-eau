@@ -1,21 +1,20 @@
 package Connectivity;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Calendar;
 
 import javax.sql.rowset.serial.SerialBlob;
+
+import org.apache.commons.io.IOUtils;
 
 import Classes.DossierForDownload;
 
 public class ConnectionClassDossier {
 
 	private Connection localConection;
-	private Connection globalConnection;
 
 	public ConnectionClassDossier() throws SQLException, ClassNotFoundException {
 		localConection = ConnectionClass.getConnectionLocal();
@@ -92,10 +91,9 @@ public class ConnectionClassDossier {
 		return dossier;
 	}
 
-	public int[] updateDossierToDatabase(DossierForDownload dossier) throws ClassNotFoundException, SQLException {
+	public void updateDossierToDatabase(DossierForDownload dossier) throws ClassNotFoundException, SQLException {
 
-		globalConnection = ConnectionClass.getConnectionGlobal();
-		int resultGlobal = 0, resultLocal = 0;
+		//int resultLocal = 0;
 
 		String sqliteRequete = "UPDATE `dossier` " + // this query is for local database
 				"SET `Nom`=?," + "    `Prenom`=?," + "    `cin`=?," + "    `cinImg`=?," + "    `typeDemande`=?,"
@@ -106,30 +104,10 @@ public class ConnectionClassDossier {
 				+ "    `DateEnvoiDuPV_ABHOER`=?," + "    `AvisABHOER`=?," + "    `Autorisation`=?," + "    `qiyada`=?,"
 				+ "    `planImmo`=?," + "    `nomImmobilier`=?" + "WHERE `IdDossier`= ?";
 
-		String globalSqlRequete = "UPDATE `user` SET `ID_FOLDER_YEAR`=?,`CIN`=?,`AUTORISATION`=? WHERE `ID_FOLDER`=?"; // this
-																														// query
-																														// is
-																														// for
-																														// global
-																														// database
-
 		try {
 
 			if (localConection.isClosed())
 				localConection = ConnectionClass.getConnectionLocal();
-
-			if (globalConnection.isClosed())
-				globalConnection = ConnectionClass.getConnectionGlobal();
-
-			// update to global database
-			PreparedStatement stm2 = globalConnection.prepareStatement(globalSqlRequete);
-
-			String idDossierYear = dossier.getIdDossier() + "/" +Calendar.getInstance().get(Calendar.YEAR);
-
-			stm2.setString(1, idDossierYear);
-			stm2.setString(2, dossier.getCin());
-			stm2.setString(3, dossier.getAutorisation());
-			stm2.setInt(4, dossier.getIdDossier());
 
 			// update to local database
 			PreparedStatement stm = localConection.prepareStatement(sqliteRequete);
@@ -137,11 +115,11 @@ public class ConnectionClassDossier {
 			stm.setString(1, dossier.getNom());
 			stm.setString(2, dossier.getPrenom());
 			stm.setString(3, dossier.getCin());
-			stm.setBytes(4, dossier.getCinFile().getBinaryStream().readAllBytes());
+			stm.setBytes(4, IOUtils.toByteArray(dossier.getCinFile().getBinaryStream()));
 			stm.setString(5, dossier.getTypeDemande());
-			stm.setBytes(6, dossier.getDemandeFile().getBinaryStream().readAllBytes());
+			stm.setBytes(6, IOUtils.toByteArray(dossier.getDemandeFile().getBinaryStream()));
 
-			stm.setBytes(7, dossier.getAttestationDePocession().getBinaryStream().readAllBytes());
+			stm.setBytes(7, IOUtils.toByteArray(dossier.getAttestationDePocession().getBinaryStream()));
 			stm.setString(8, dossier.getDouar());
 			stm.setString(9, dossier.getCommune());
 			stm.setString(10, dossier.getProvince());
@@ -164,55 +142,43 @@ public class ConnectionClassDossier {
 			stm.setString(24, dossier.getAutorisation());
 
 			stm.setString(25, dossier.getQuiada());
-			stm.setBytes(26, dossier.getPlanImmobilier().getBinaryStream().readAllBytes());
+			stm.setBytes(26, IOUtils.toByteArray(dossier.getPlanImmobilier().getBinaryStream()));
 			stm.setString(27, dossier.getNomImmobilier());
 
 			stm.setInt(28, dossier.getIdDossier());
 
-			resultGlobal = stm2.executeUpdate();
-			resultLocal = stm.executeUpdate();
+			stm.executeUpdate();
 
-			return new int[] { resultGlobal, resultLocal };
 
 		} catch (SQLException e) {
 			
-			return new int[] { resultGlobal, resultLocal };
-		} catch (Exception e) {
-			
-			return new int[] { resultGlobal, resultLocal };
+			e.printStackTrace();
+		} catch (Exception e1) {
+			e1.printStackTrace();
+
 		}
 
 	}
 
-	public int[] removeFolder(int id) throws ClassNotFoundException, SQLException {
-
-		globalConnection = ConnectionClass.getConnectionGlobal();
-		if (globalConnection.isClosed())
-			globalConnection = ConnectionClass.getConnectionGlobal();
+	public int removeFolder(int id) throws ClassNotFoundException, SQLException {
 
 		if (localConection.isClosed())
-			globalConnection = ConnectionClass.getConnectionGlobal();
+			localConection = ConnectionClass.getConnectionLocal();
 
-		String sqlQuery = "DELETE FROM `dossier` WHERE `IdDossier` = ?;", // this query is for the local database
-				sqlQuery2 = "DELETE FROM `user` WHERE `ID_FOLDER` = ?;"; // this query is for the global database
-		int resultGlobal = 0, resultLocal = 0;
+		String sqlQuery = "DELETE FROM `dossier` WHERE `IdDossier` = ?;"; // this query is for the local database
+		int resultLocal = 0;
 
-		PreparedStatement stm, stm2;
+		PreparedStatement stm;
 		try {
 
 			stm = localConection.prepareStatement(sqlQuery);
 			stm.setInt(1, id);
-
-			stm2 = globalConnection.prepareStatement(sqlQuery2);
-			stm2.setInt(1, id);
-			
-			resultGlobal = stm2.executeUpdate(); // delete for global database
 			resultLocal = stm.executeUpdate(); // delete for local database
 			
-			return new int[] { resultGlobal, resultLocal };
+			return resultLocal;
 		} catch (SQLException e) {
 
-			return new int[] { resultGlobal, resultLocal };
+			return resultLocal;
 		}
 		
 	}

@@ -236,43 +236,34 @@ public class ModifyFolder2Controller implements Initializable {
 		});
 
 	}
-	
-	//this method is for removing a folder from dataBase and the table items
-		private void removeRow(TableRow<FolderTable> row){
-			
-			if (!th.isAlive()) {
-				
-				//first let the user confirm the delete order
-				if(DeleteConfirmationAlert.desplay()) {
-					
-					int result[] = {0, 0};
-					FolderTable folder = row.getItem();
-			
-					//remove folder from dataBase
-					ConnectionClassDossier connection;
-					try {
-						connection = new ConnectionClassDossier();
-						result= connection.removeFolder(folder.getId());
-					} catch (ClassNotFoundException | SQLException e) {
-						
-						e.printStackTrace();
-					}
-					if(result[0] == 0) {
-						String title = "\u0627\u0646\u062a\u0628\u0627\u0647"; 
-						String message1 = "\u0644\u0642\u062f \u062d\u062f\u062b \u062e\u0637\u0623 \u0645\u0627!";
-						String message2 = "\u0627\u0644\u0645\u0631\u062c\u0648 \u0627\u0644\u062a\u062d\u0642\u0642 \u0645\u0646 \u0627\u0644\u0625\u062a\u0635\u0627\u0644 \u0628\u0627\u0644\u0625\u0646\u062a\u0631\u0646\u062a \u0648 \u0625\u0639\u0627\u062f\u0629 \u0627\u0644\u0645\u062d\u0627\u0648\u0644\u0629 \u0645\u0631\u0629 \u0623\u062e\u0631\u0649.";
-						String titleButton = "\u062d\u0633\u0646\u0627";
-						WarningAlert.desplay(title, message1,  message2, titleButton);
-						return;
-					}
-					else if(result[0] > 0) {
-						//remove folder from tableView
-						tableInfo.getItems().remove(folder);
-					}
+
+	// this method is for removing a folder from dataBase and the table items
+	private void removeRow(TableRow<FolderTable> row) {
+
+		if (!th.isAlive()) {
+
+			// first let the user confirm the delete order
+			if (DeleteConfirmationAlert.desplay()) {
+
+				int result = 0;
+				FolderTable folder = row.getItem();
+
+				// remove folder from dataBase
+				ConnectionClassDossier connection;
+				try {
+					connection = new ConnectionClassDossier();
+					result = connection.removeFolder(folder.getId());
+				} catch (ClassNotFoundException | SQLException e) {
+
+					e.printStackTrace();
+				}
+				if (result > 0) {
+					// remove folder from tableView
+					tableInfo.getItems().remove(folder);
 				}
 			}
+		}
 	}
-
 
 	// this method riderects to modifyFolderIni.fxml in order to modify folder in
 	// the dataBase
@@ -287,10 +278,11 @@ public class ModifyFolder2Controller implements Initializable {
 				Parent modifyFolderRoot = loader.load();
 
 				modifierInfoDuDossierController nextControler = loader.getController();
-				if(nextControler.setMessage(row.getItem().getId()) != 0){
-					
+				if (nextControler.setMessage(row.getItem().getId()) != 0) {
+
 					Stage primaryStage = (Stage) rootPane.getScene().getWindow();
-					Scene modifyFolderScene = new Scene(modifyFolderRoot, primaryStage.getWidth(), primaryStage.getHeight());
+					Scene modifyFolderScene = new Scene(modifyFolderRoot, primaryStage.getWidth(),
+							primaryStage.getHeight());
 					primaryStage.setScene(modifyFolderScene);
 				}
 
@@ -309,56 +301,59 @@ public class ModifyFolder2Controller implements Initializable {
 			task.cancel();
 
 		task = new Task<Void>() {
-		    					@Override 
-		    					protected Void call() throws Exception, SQLException {
-		    						
-		    						Connection conection =  ConnectionClass.getConnectionLocal(); 
-		    				    	
-		    						Statement statement = conection.createStatement(), statement2 = conection.createStatement();
-		    						ResultSet result;
-		    						result = statement.executeQuery("SELECT `IdDossier` FROM `dossier` ORDER BY IdDossier DESC");
-		    						
-		    						//get the number of rows
-		    						int rowsCount = getRowCount(conection);
-		    						
-		    						float progress = 0f;
+			@Override
+			protected Void call() throws Exception, SQLException {
 
-	    							//display the progress bar and disable the table 
-	    							progressIndicator.setVisible(true);
-	    							tableInfo.setDisable(true);
-	    							
-	    							tableInfo.getItems().clear();
-		    						while(result.next())
-		    						{
-		    							
-		    							if(this.isCancelled()) {
-		    								System.out.println("canceled!");
-			    							progressIndicator.setVisible(false);
-			    							tableInfo.setDisable(false);
-		    								break;
-		    							}else {
-		    								String sql = "SELECT `nom`, `prenom` , `cin`, `typeDemande`, `idDossierYear` FROM `dossier` WHERE `IdDossier`= " + result.getInt("IdDossier");
+				Connection conection = ConnectionClass.getConnectionLocal();
 
-		    								ResultSet result2 = statement2.executeQuery(sql);
-		    								if(result2.next()) {
-		    									tableInfo.getItems().add( new FolderTable(result.getInt("idDossier"), result2.getString("idDossierYear"), result2.getString("typeDemande"), result2.getString("cin"),  result2.getString("nom") + " " + result2.getString("prenom")) );
+				Statement statement = conection.createStatement(), statement2 = conection.createStatement();
+				ResultSet result;
+				result = statement.executeQuery("SELECT `IdDossier` FROM `dossier` ORDER BY IdDossier DESC");
 
-				    							progress++;
-				    							progressIndicator.setProgress(progress/rowsCount);
-		    								}
-		    								
-			    						}
-		    						}
-		    						
-    								System.out.println("task ended!");
-    								
-    								//hide the progress bar and enable the table 
-	    							progressIndicator.setVisible(false);
-	    							tableInfo.setDisable(false);
-		    						
-		    						return null;
-		    					}
-					};
+				// get the number of rows
+				int rowsCount = getRowCount(conection);
+
+				float progress = 0f;
+
+				// display the progress bar and disable the table
+				progressIndicator.setVisible(true);
+				tableInfo.setDisable(true);
+
+				tableInfo.getItems().clear();
+				while (result.next()) {
+
+					if (this.isCancelled()) {
+						System.out.println("canceled!");
+						progressIndicator.setVisible(false);
+						tableInfo.setDisable(false);
+						break;
+					} else {
+						String sql = "SELECT `nom`, `prenom` , `cin`, `typeDemande`, `idDossierYear` FROM `dossier` WHERE `IdDossier`= "
+								+ result.getInt("IdDossier");
+
+						ResultSet result2 = statement2.executeQuery(sql);
+						if (result2.next()) {
+							tableInfo.getItems()
+									.add(new FolderTable(result.getInt("idDossier"), result2.getString("idDossierYear"),
+											result2.getString("typeDemande"), result2.getString("cin"),
+											result2.getString("nom") + " " + result2.getString("prenom")));
+
+							progress++;
+							progressIndicator.setProgress(progress / rowsCount);
+						}
+
+					}
+				}
+
+				System.out.println("task ended!");
+
+				// hide the progress bar and enable the table
+				progressIndicator.setVisible(false);
+				tableInfo.setDisable(false);
+
+				return null;
+			}
+		};
 		th = new Thread(task);
 		th.setDaemon(true);
 		th.start();
@@ -368,30 +363,30 @@ public class ModifyFolder2Controller implements Initializable {
 
 		if (th.isAlive())
 			task.cancel();
-		
-    	
+
 		try {
 
-			Connection conection =  ConnectionClass.getConnectionLocal(); 
+			Connection conection = ConnectionClass.getConnectionLocal();
 			Statement statement = conection.createStatement();
 			ResultSet result;
 			result = statement.executeQuery(
 					"SELECT `IdDossier`,`nom`, `prenom` , `cin`, `typeDemande`, `idDossierYear` FROM `dossier` WHERE idDossierYear = '"
 							+ idDossierYear + "'");
 			tableInfo.getItems().clear();
-			while(result.next())
-			{
-				
-				tableInfo.getItems().add( new FolderTable(result.getInt("IdDossier"),result.getString("idDossierYear") ,result.getString("typeDemande"), result.getString("cin"),  result.getString("nom") + " " + result.getString("prenom")) );
-				
-				
+			while (result.next()) {
+
+				tableInfo.getItems()
+						.add(new FolderTable(result.getInt("IdDossier"), result.getString("idDossierYear"),
+								result.getString("typeDemande"), result.getString("cin"),
+								result.getString("nom") + " " + result.getString("prenom")));
+
 				return true;
 			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		return false;
 
 	}
