@@ -119,7 +119,7 @@ public class AEteEnregistrerController implements Initializable {
 					qiyada = " " + result.getString("qiyada") + " ";
 				}
 				Document document = new Document();
-				PdfWriter.getInstance(document, new FileOutputStream(path+ "\\"+ cin + "_reÃ§u.pdf"));
+				PdfWriter.getInstance(document, new FileOutputStream(path+ "\\"+ cin + "_reçu.pdf"));
 				Font small = FontFactory.getFont("Fonts/arial.ttf", BaseFont.IDENTITY_H, 14);
 				Font normal = FontFactory.getFont("Fonts/arial.ttf", BaseFont.IDENTITY_H, 17);
 				Font big0 = FontFactory.getFont("Fonts/arial.ttf", BaseFont.IDENTITY_H, 22);
@@ -209,7 +209,7 @@ public class AEteEnregistrerController implements Initializable {
 				document.add(table);
 				document.close();
 
-				Desktop.getDesktop().open(new File(path+ "\\"+ cin + "_reÃ§u.pdf"));
+				Desktop.getDesktop().open(new File(path+ "\\"+ cin + "_reçu.pdf"));
 				downloadedReceipt = true;
 			} catch (SQLException e) {
 

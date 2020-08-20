@@ -238,32 +238,41 @@ public class ModifyFolder2Controller implements Initializable {
 	}
 
 	// this method is for removing a folder from dataBase and the table items
-	private void removeRow(TableRow<FolderTable> row) {
-
+	private void removeRow(TableRow<FolderTable> row){
+		
 		if (!th.isAlive()) {
-
-			// first let the user confirm the delete order
-			if (DeleteConfirmationAlert.desplay()) {
-
-				int result = 0;
+			
+			//first let the user confirm the delete order
+			if(DeleteConfirmationAlert.desplay()) {
+				
+				int result[] = {0, 0};
 				FolderTable folder = row.getItem();
-
-				// remove folder from dataBase
+		
+				//remove folder from dataBase
 				ConnectionClassDossier connection;
 				try {
 					connection = new ConnectionClassDossier();
-					result = connection.removeFolder(folder.getId());
+					result= connection.removeFolder(folder.getId());
 				} catch (ClassNotFoundException | SQLException e) {
-
+					
 					e.printStackTrace();
 				}
-				if (result > 0) {
-					// remove folder from tableView
+				if(result[0] == 0) {
+					String title = "\u0627\u0646\u062a\u0628\u0627\u0647"; 
+					String message1 = "\u0644\u0642\u062f \u062d\u062f\u062b \u062e\u0637\u0623 \u0645\u0627!";
+					String message2 = "\u0627\u0644\u0645\u0631\u062c\u0648 \u0627\u0644\u062a\u062d\u0642\u0642 \u0645\u0646 \u0627\u0644\u0625\u062a\u0635\u0627\u0644 \u0628\u0627\u0644\u0625\u0646\u062a\u0631\u0646\u062a \u0648 \u0625\u0639\u0627\u062f\u0629 \u0627\u0644\u0645\u062d\u0627\u0648\u0644\u0629 \u0645\u0631\u0629 \u0623\u062e\u0631\u0649.";
+					String titleButton = "\u062d\u0633\u0646\u0627";
+					WarningAlert.desplay(title, message1,  message2, titleButton);
+					return;
+				}
+				else if(result[0] > 0) {
+					//remove folder from tableView
 					tableInfo.getItems().remove(folder);
 				}
 			}
 		}
 	}
+
 
 	// this method riderects to modifyFolderIni.fxml in order to modify folder in
 	// the dataBase
