@@ -22,7 +22,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class EnregistrerController implements Initializable {
@@ -72,7 +74,11 @@ public class EnregistrerController implements Initializable {
 	@FXML
 	private Label nomImmobilier;
 	@FXML
-	BorderPane borderPane;
+	private  GridPane gridPane;
+	@FXML
+	private  BorderPane borderPane;
+	@FXML
+	private ProgressIndicator progIndc;
 	public static int idDossier = 20200000;
 	public static String idDossierYear;
 
@@ -100,18 +106,19 @@ public class EnregistrerController implements Initializable {
 	// Event Listener on Button[#saveBuuton].onAction
 	@FXML
 	public void savebuttonMethode(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
-
+		progIndc.setVisible(true);
 		int year = Calendar.getInstance().get(Calendar.YEAR);
-		
+		Connection globalConnection;
+		Connection localConection;
 		
 		
 		
 		/* connect with the local dataBase */
-		Connection connectionLocal = ConnectionClass.getConnectionLocal();
+		localConection = ConnectionClass.getConnectionLocal();
 		/* get the maximum idDossier */
 
 		String sqlId = "SELECT MAX(IdDossier)  FROM dossier";
-		ResultSet result = connectionLocal.createStatement().executeQuery(sqlId);
+		ResultSet result = localConection.createStatement().executeQuery(sqlId);
 		if (result.next()) {
 
 			idDossier = result.getInt(1) + 1;
@@ -123,24 +130,22 @@ public class EnregistrerController implements Initializable {
 		String sqlGlobal = "INSERT INTO `user`(`ID_FOLDER`, `ID_FOLDER_YEAR`, `CIN`, `AUTORISATION`) VALUES (?, ?, ?, ?)";
 
 		try {
-			Connection connectionGlobal = ConnectionClass.getConnectionGlobal();
-			PreparedStatement statment = connectionGlobal.prepareStatement(sqlGlobal);
+			globalConnection = ConnectionClass.getConnectionGlobal();
+			PreparedStatement statment = globalConnection.prepareStatement(sqlGlobal);
 			statment.setInt(1, idDossier);
 			statment.setString(2, idDossierYear);
 			statment.setString(3, LesInfoDuDemandeurController.demandeur.getCin());
-			statment.setString(4, "\u0647\u0630\u0627 \u0627\u0644\u0645\u0644\u0641 \u0644\u0627 \u064a\u0632\u0627\u0644 \u0642\u064a\u062f \u0627\u0644\u062f\u0631\u0627\u0633\u0629");
+			statment.setString(4, "\u0627\u0644\u0645\u0644\u0641 \u0642\u064a\u062f \u0627\u0644\u062f\u0631\u0627\u0633\u0629");
 			statment.execute();
 		} catch (SQLException e1) {
-			try {
-				String title = "\u0627\u0646\u062a\u0628\u0627\u0647"; 
-				String message1 = "\u0644\u0642\u062f \u062d\u062f\u062b \u062e\u0637\u0623 \u0645\u0627!";
-				String message2 = "\u0627\u0644\u0645\u0631\u062c\u0648 \u0627\u0644\u062a\u062d\u0642\u0642 \u0645\u0646 \u0627\u0644\u0625\u062a\u0635\u0627\u0644 \u0628\u0627\u0644\u0625\u0646\u062a\u0631\u0646\u062a \u0648 \u0625\u0639\u0627\u062f\u0629 \u0627\u0644\u0645\u062d\u0627\u0648\u0644\u0629 \u0645\u0631\u0629 \u0623\u062e\u0631\u0649.";
-				String titleButton = "\u062d\u0633\u0646\u0627";
-				WarningAlert.desplay(title, message1,  message2, titleButton);
-				return;
-			} catch (Exception e) {
-
-			}
+		
+			String title = "\u0627\u0646\u062a\u0628\u0627\u0647"; 
+			String message1 = "\u0644\u0642\u062f \u062d\u062f\u062b \u062e\u0637\u0623 \u0645\u0627!";
+			String message2 = "\u0627\u0644\u0645\u0631\u062c\u0648 \u0627\u0644\u062a\u062d\u0642\u0642 \u0645\u0646 \u0627\u0644\u0625\u062a\u0635\u0627\u0644 \u0628\u0627\u0644\u0625\u0646\u062a\u0631\u0646\u062a \u0648 \u0625\u0639\u0627\u062f\u0629 \u0627\u0644\u0645\u062d\u0627\u0648\u0644\u0629 \u0645\u0631\u0629 \u0623\u062e\u0631\u0649.";
+			String titleButton = "\u062d\u0633\u0646\u0627";
+			WarningAlert.desplay(title, message1,  message2, titleButton);
+			progIndc.setVisible(false);
+			return;
 		}
 
 		/*
@@ -165,7 +170,7 @@ public class EnregistrerController implements Initializable {
 
 			/* l'insertion des el�ments dans la base de donnees */
 
-			PreparedStatement stat = connectionLocal.prepareStatement(sql);
+			PreparedStatement stat = localConection.prepareStatement(sql);
 			stat.setInt(1, idDossier);
 			stat.setString(2, LesInfoDuDemandeurController.demandeur.getNom());
 			stat.setString(3, LesInfoDuDemandeurController.demandeur.getPrenom());
@@ -242,7 +247,6 @@ public class EnregistrerController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-
 		/* Les information du demandeur */
 
 		firstName.setText(LesInfoDuDemandeurController.demandeur.getNom());

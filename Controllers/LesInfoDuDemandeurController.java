@@ -226,12 +226,12 @@ public class LesInfoDuDemandeurController implements Initializable{
 	    	}
 	    	
 	    	if(cinFile == null) {
-	    		cinFileButton.setStyle("-fx-border-color: red");
+	    		cinFileButton.setStyle("-fx-border-color: red; -fx-background-color: #2b4067;");
 	    		condition = condition && false;
 	    	}
 	    	
 	    	if(demandeFile == null) {
-	    		demandeFileButton.setStyle("-fx-border-color: red");
+	    		demandeFileButton.setStyle("-fx-border-color: red; -fx-background-color: #2b4067;");
 	    		condition = condition && false;
 	    	}
 	    	

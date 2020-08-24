@@ -32,6 +32,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -203,6 +204,8 @@ public class modifierInfoDuDossierController implements Initializable{
 
     @FXML
     private Label planImmobilierFilePathLabel;
+    @FXML
+    private ProgressIndicator progInd;
 
     @FXML
     void annuler(MouseEvent event) {
@@ -520,6 +523,7 @@ public class modifierInfoDuDossierController implements Initializable{
 
     @FXML
     void enregistrer(MouseEvent event) {
+    	progInd.setVisible(true);
     	/* connect to the local database */
     	ConnectionClassDossier myDataBaseFolder;
     	int rows[] = {0, 0};
@@ -529,8 +533,7 @@ public class modifierInfoDuDossierController implements Initializable{
 	    	rows = myDataBaseFolder.updateDossierToDatabase(dossier);
 	        
 		} catch (ClassNotFoundException | SQLException e1) {
-			
-			e1.printStackTrace();
+
 		}
     	if(rows[0] == 0) {
 			String title = "\u0627\u0646\u062a\u0628\u0627\u0647"; 
@@ -538,6 +541,7 @@ public class modifierInfoDuDossierController implements Initializable{
 			String message2 = "\u0627\u0644\u0645\u0631\u062c\u0648 \u0627\u0644\u062a\u062d\u0642\u0642 \u0645\u0646 \u0627\u0644\u0625\u062a\u0635\u0627\u0644 \u0628\u0627\u0644\u0625\u0646\u062a\u0631\u0646\u062a \u0648 \u0625\u0639\u0627\u062f\u0629 \u0627\u0644\u0645\u062d\u0627\u0648\u0644\u0629 \u0645\u0631\u0629 \u0623\u062e\u0631\u0649.";
 			String titleButton = "\u062d\u0633\u0646\u0627";
 			WarningAlert.desplay(title, message1,  message2, titleButton);
+			progInd.setVisible(false);
 			return;
 		}
     	

@@ -12,10 +12,8 @@ import java.util.ResourceBundle;
 import Classes.FolderTable;
 import Connectivity.ConnectionClass;
 import Connectivity.ConnectionClassDossier;
-
 import alerts.DeleteConfirmationAlert;
 import alerts.WarningAlert;
-
 import javafx.beans.binding.Bindings;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
@@ -29,6 +27,7 @@ import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
@@ -58,6 +57,8 @@ public class ModifyFolder2Controller implements Initializable {
 
 	@FXML
 	private TextField cinInputSearch;
+	@FXML
+	private ProgressIndicator progInd;
 
 	@FXML
 	private TableColumn<FolderTable, String> cinColumn;
@@ -239,9 +240,8 @@ public class ModifyFolder2Controller implements Initializable {
 
 	// this method is for removing a folder from dataBase and the table items
 	private void removeRow(TableRow<FolderTable> row){
-		
 		if (!th.isAlive()) {
-			
+			progInd.setVisible(true);
 			//first let the user confirm the delete order
 			if(DeleteConfirmationAlert.desplay()) {
 				
@@ -254,8 +254,7 @@ public class ModifyFolder2Controller implements Initializable {
 					connection = new ConnectionClassDossier();
 					result= connection.removeFolder(folder.getId());
 				} catch (ClassNotFoundException | SQLException e) {
-					
-					e.printStackTrace();
+				
 				}
 				if(result[0] == 0) {
 					String title = "\u0627\u0646\u062a\u0628\u0627\u0647"; 
@@ -263,6 +262,7 @@ public class ModifyFolder2Controller implements Initializable {
 					String message2 = "\u0627\u0644\u0645\u0631\u062c\u0648 \u0627\u0644\u062a\u062d\u0642\u0642 \u0645\u0646 \u0627\u0644\u0625\u062a\u0635\u0627\u0644 \u0628\u0627\u0644\u0625\u0646\u062a\u0631\u0646\u062a \u0648 \u0625\u0639\u0627\u062f\u0629 \u0627\u0644\u0645\u062d\u0627\u0648\u0644\u0629 \u0645\u0631\u0629 \u0623\u062e\u0631\u0649.";
 					String titleButton = "\u062d\u0633\u0646\u0627";
 					WarningAlert.desplay(title, message1,  message2, titleButton);
+					progInd.setVisible(false);
 					return;
 				}
 				else if(result[0] > 0) {
