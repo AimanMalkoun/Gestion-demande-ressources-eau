@@ -17,18 +17,16 @@ public class ConnectionClass {
 	public static Connection getConnectionLocal() throws SQLException {
 	
 		if(sqliteConnection == null)
-			sqliteConnection =  DriverManager.getConnection("jdbc:sqlite:SQLiteDB/gestiondeamndeeau.sqlite");
+			sqliteConnection =  DriverManager.getConnection("jdbc:sqlite:src/SQLiteDB/gestiondeamndeeau.sqlite");
 		
 		return sqliteConnection;
 	}
 	
 	public static Connection getConnectionGlobal() throws  SQLException, ClassNotFoundException {
-		
-		if(sqlConnection == null) {
+			
 			Class.forName("com.mysql.jdbc.Driver");
 			sqlConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+dbName, userName, password);
-		}
-		
+
 		return sqlConnection;
 	}
 }

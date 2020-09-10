@@ -37,7 +37,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 import pdfClasses.ConvertBlobToPdf;
-import pdfClasses.ShowPdf;
 
 
 public class DisplayFolderController implements Initializable {

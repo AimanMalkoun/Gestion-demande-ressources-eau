@@ -18,8 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<ScrollPane fitToHeight="true" fitToWidth="true" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.InformationsConcernantPointDeauController">
+<ScrollPane fitToHeight="true" fitToWidth="true" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.InformationsConcernantPointDeauController">
    <content>
       <BorderPane fx:id="borderPan" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1130.0" stylesheets="@../GestionDemandeEau/application.css">
          <center>
@@ -122,7 +121,7 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button id="buttonSetting2" alignment="CENTER" layoutX="10.0" layoutY="35.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="106.0" style="-fx-background-color: #ffffff;" text="الثقب المائي" textFill="#2b4067">
+                  <Button id="buttonSetting2" alignment="CENTER" layoutX="10.0" layoutY="35.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="174.0" style="-fx-background-color: #ffffff;" text="الثقب المائي" textFill="#2b4067">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -136,7 +135,7 @@
                         <DropShadow height="8.0" offsetX="8.0" offsetY="8.0" radius="3.5" spread="0.8" width="8.0" />
                      </effect>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="106.0" style="-fx-background-color: #ffffff;" text="التسجيل" textFill="#2b4067">
+                  <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="153.0" style="-fx-background-color: #ffffff;" text="التسجيل" textFill="#2b4067">
                      <font>
                         <Font size="14.0" />
                      </font>

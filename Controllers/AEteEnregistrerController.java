@@ -24,6 +24,7 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
 import Connectivity.ConnectionClass;
+import alerts.WarningAlert;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -47,27 +48,7 @@ public class AEteEnregistrerController implements Initializable {
 	@FXML
 	private Label textError;
 	String path;
-	@FXML
-	public void handelBackMethode(ActionEvent event) throws IOException {
-		
-		cleanup(); // will clean the previous input except the import files
-
-		try {
-			
-			FXMLLoader loader= new FXMLLoader();
-			loader.setLocation(getClass().getResource("../Fxml/Dashboard.fxml"));
-			Parent DashboardRoot = loader.load();
-			
-			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-			Scene DashboardScene = new Scene(DashboardRoot, primaryStage.getWidth(), primaryStage.getHeight());
-			primaryStage.setScene(DashboardScene);
-			
-		} catch (IOException e) {
-
-			e.printStackTrace();
-		}
-
-	}
+	boolean downloadedReceipt;
 
 	private void cleanup() {
 		LesInfoDuDemandeurController.demandeur.setNom(null);
@@ -138,7 +119,7 @@ public class AEteEnregistrerController implements Initializable {
 					qiyada = " " + result.getString("qiyada") + " ";
 				}
 				Document document = new Document();
-				PdfWriter.getInstance(document, new FileOutputStream(path+ "\\"+ cin + "_reÃ§u.pdf"));
+				PdfWriter.getInstance(document, new FileOutputStream(path+ "\\"+ cin + "_reçu.pdf"));
 				Font small = FontFactory.getFont("Fonts/arial.ttf", BaseFont.IDENTITY_H, 14);
 				Font normal = FontFactory.getFont("Fonts/arial.ttf", BaseFont.IDENTITY_H, 17);
 				Font big0 = FontFactory.getFont("Fonts/arial.ttf", BaseFont.IDENTITY_H, 22);
@@ -228,20 +209,48 @@ public class AEteEnregistrerController implements Initializable {
 				document.add(table);
 				document.close();
 
-				Desktop.getDesktop().open(new File(path+ "\\"+ cin + "_reÃ§u.pdf"));
-
+				Desktop.getDesktop().open(new File(path+ "\\"+ cin + "_reçu.pdf"));
+				downloadedReceipt = true;
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+
 				e.printStackTrace();
 			}
 			
 		}else {
 			textError.setText("\u064a\u0631\u062c\u0649 \u0627\u062e\u062a\u064a\u0627\u0631 \u0645\u062c\u0644\u062f \u0644\u062a\u0646\u0632\u064a\u0644 \u0627\u0644\u0631\u0627\u0628\u0637");
+			downloadedReceipt = false;
 		}
 
 
 	}
+	
+	@FXML
+	public void handelBackMethode(ActionEvent event) throws IOException {
+		
+		cleanup(); // will clean the previous input except the import files
+		if(downloadedReceipt) {
+			dashboard(event);
+			
+		}else if(!downloadedReceipt){
+			if(!WarningAlert.displayChoice()) {
+				dashboard(event);
+			}
+		}
 
+	}
+	
+	/*this method will send you to dashboard page*/
+	public void dashboard(ActionEvent event) throws IOException {
+		FXMLLoader loader= new FXMLLoader();
+		loader.setLocation(getClass().getResource("../Fxml/Dashboard.fxml"));
+		Parent DashboardRoot = loader.load();
+		
+		Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		Scene DashboardScene = new Scene(DashboardRoot, primaryStage.getWidth(), primaryStage.getHeight());
+		primaryStage.setScene(DashboardScene);
+	}
+
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 

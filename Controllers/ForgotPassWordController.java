@@ -2,11 +2,8 @@ package Controllers;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
-import javax.swing.JOptionPane;
 
 import Classes.PasswordChange;
 import Connectivity.ConnectionClass;
@@ -49,8 +46,7 @@ public class ForgotPassWordController {
 		if(backUpPassword.getText().equals(backUpKey)) {
 			if(NewPassword.getText().equals(confermPassword.getText())) {
 				if(PasswordChange.lengthMethode(NewPassword.getText())) {
-					ConnectionClass conn = new ConnectionClass();
-					Connection connection = conn.getConnectionLocal();
+					Connection connection = ConnectionClass.getConnectionLocal();
 					Statement statement = connection.createStatement();
 					statement.executeUpdate("UPDATE `login` SET `Password`='"+ NewPassword.getText() +"'");
 					
