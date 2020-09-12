@@ -135,7 +135,7 @@
                   </StackPane>
                   <ProgressIndicator fx:id="progInd" prefHeight="55.0" prefWidth="32.0" visible="false" StackPane.alignment="CENTER">
 	                   <cursor>
-	                      <Cursor fx:constant="WAIT" />
+	                      <Cursor fx:constant="DEFAULT" />
 	                   </cursor>
 	                   <StackPane.margin>
 	                      <Insets />
