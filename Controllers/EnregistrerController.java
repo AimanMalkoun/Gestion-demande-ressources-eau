@@ -13,6 +13,7 @@ import java.util.ResourceBundle;
 
 import Connectivity.ConnectionClass;
 import alerts.WarningAlert;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,12 +24,15 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class EnregistrerController implements Initializable {
 
+	Thread th = null;
+	
 	@FXML
 	private Label firstName;
 	@FXML
@@ -77,6 +81,8 @@ public class EnregistrerController implements Initializable {
 	private  GridPane gridPane;
 	@FXML
 	private  BorderPane borderPane;
+    @FXML
+    private ScrollPane scrollPaneContainer;
 	@FXML
 	private ProgressIndicator progIndc;
 	public static int idDossier = 20200000;
@@ -107,141 +113,173 @@ public class EnregistrerController implements Initializable {
 	@FXML
 	public void savebuttonMethode(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
 		progIndc.setVisible(true);
-		int year = Calendar.getInstance().get(Calendar.YEAR);
-		Connection globalConnection;
-		Connection localConection;
+		scrollPaneContainer.setDisable(true);
 		
+		Task<Parent> loadTask = new Task<Parent>() {
+
+			@Override
+			protected Parent call() throws Exception {
+				
+				int year = Calendar.getInstance().get(Calendar.YEAR);
+				Connection globalConnection;
+				Connection localConection;
+				
+				
+				
+				/* connect with the local dataBase */
+				localConection = ConnectionClass.getConnectionLocal();
+				/* get the maximum idDossier */
+
+				String sqlId = "SELECT MAX(IdDossier)  FROM dossier";
+				ResultSet result = localConection.createStatement().executeQuery(sqlId);
+				if (result.next()) {
+
+					idDossier = result.getInt(1) + 1;
+					idDossierYear = idDossier + "/" + year;
+
+				}
+				
+				/* connect with the global dataBase */
+				String sqlGlobal = "INSERT INTO `user`(`ID_FOLDER`, `ID_FOLDER_YEAR`, `CIN`, `AUTORISATION`) VALUES (?, ?, ?, ?)";
+
+				try {
+					globalConnection = ConnectionClass.getConnectionGlobal();
+					PreparedStatement statment = globalConnection.prepareStatement(sqlGlobal);
+					statment.setInt(1, idDossier);
+					statment.setString(2, idDossierYear);
+					statment.setString(3, LesInfoDuDemandeurController.demandeur.getCin());
+					statment.setString(4, "\u0627\u0644\u0645\u0644\u0641 \u0642\u064a\u062f \u0627\u0644\u062f\u0631\u0627\u0633\u0629");
+					statment.execute();
+					System.out.println("folder has been added successfully to global database");
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+					return null;
+				}
+
+				/*
+				 * Creation de l'objet InputStream afin de le stocker dans la base de donn�es
+				 */
+
+				InputStream cinFile = new FileInputStream(LesInfoDuDemandeurController.demandeur.getCinFile());
+				InputStream demandeCreusement = new FileInputStream(LesInfoDuDemandeurController.demandeur.getDemandeFile());
+				InputStream attistation = new FileInputStream(
+						LesInfoDelImmobilierController.InfoSurImmobilier.getAttestationDePocession());
+				InputStream planImmFile = new FileInputStream(
+						LesInfoDelImmobilierController.InfoSurImmobilier.getPlanImmobilier());
+				/* la requite sql de l'insertion */
+
+				String sql = "INSERT INTO `dossier`(`IdDossier`, `Nom`, `Prenom`, `cin`, `cinImg`, `typeDemande`,"
+						+ " `demandeCreusement`, `attistationPocession`, `Douar`, `Commune`, `Province`, `localisationPointEau`"
+						+ ", `Debit`, `Profendeur`, `PlanDeau`, `daaira`, `DateDepot`, `dateEnvoiABHOER`, "
+						+ "`dateDebut_EP`, `dateFin_EP`, `dateSignature_PV`, `AvisDeCEP`, `DateEnvoiDuPV_ABHOER`, "
+						+ "`AvisABHOER`, `Autorisation`, `qiyada`, `planImmo`, `nomImmobilier`, `idDossierYear`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, "
+						+ "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				try {
+
+					/* l'insertion des el�ments dans la base de donnees */
+
+					PreparedStatement stat = localConection.prepareStatement(sql);
+					stat.setInt(1, idDossier);
+					stat.setString(2, LesInfoDuDemandeurController.demandeur.getNom());
+					stat.setString(3, LesInfoDuDemandeurController.demandeur.getPrenom());
+					stat.setString(4, LesInfoDuDemandeurController.demandeur.getCin());
+					stat.setBytes(5, cinFile.readAllBytes());
+					stat.setString(6, LesInfoDuDemandeurController.demandeur.getTypeDemande());
+					stat.setBytes(7, demandeCreusement.readAllBytes());
+					stat.setBytes(8, attistation.readAllBytes());
+					stat.setString(9, LesInfoDelImmobilierController.InfoSurImmobilier.getDouar());
+					stat.setString(10, LesInfoDelImmobilierController.InfoSurImmobilier.getCommune());
+					stat.setString(11, LesInfoDelImmobilierController.InfoSurImmobilier.getProvince());
+					stat.setString(12, InformationsConcernantPointDeauController.poinDeau.getLocalisationPoint());
+					stat.setFloat(13, InformationsConcernantPointDeauController.poinDeau.getDebit());
+					stat.setFloat(14, InformationsConcernantPointDeauController.poinDeau.getProfondeur());
+					stat.setFloat(15, InformationsConcernantPointDeauController.poinDeau.getPlanEau());
+					stat.setString(16, LesInfoDelImmobilierController.InfoSurImmobilier.getDaaira());
+
+					stat.setString(17, LesInfoDuDemandeurController.demandeur.getDateDepotDossier());
+					stat.setString(18, "");
+					stat.setString(19, "");
+					stat.setString(20, "");
+					stat.setString(21, "");
+					stat.setString(22, "\u0644\u0627 \u0634\u064a\u0621");
+					stat.setString(23, "");
+					stat.setString(24, "\u0644\u0627 \u0634\u064a\u0621");
+					stat.setString(25, "\u0644\u0627 \u0634\u064a\u0621");
+					stat.setString(26, LesInfoDelImmobilierController.InfoSurImmobilier.getQuiada());
+					stat.setBytes(27, planImmFile.readAllBytes());
+					stat.setString(28, LesInfoDelImmobilierController.InfoSurImmobilier.getNomImmobilier());
+					stat.setString(29, idDossierYear);
+					stat.execute();
+					System.out.println("folder has been added successfully to local database");
+
+
+					// close the file input stream
+					cinFile.close();
+					demandeCreusement.close();
+					attistation.close();
+					planImmFile.close();
+
+				} catch (SQLException e) {
+
+					e.printStackTrace();
+				}
+
+				Parent AEteEnregistrerRoot = null;
+				try {
+
+					FXMLLoader loader = new FXMLLoader();
+					loader.setLocation(getClass().getResource("../Fxml/AEteEnregistrer.fxml"));
+					AEteEnregistrerRoot = loader.load();
+					return AEteEnregistrerRoot;
+					
+				} catch (IOException e) {
+					e.printStackTrace();
+					return null;
+				}
+			}
 		
+		};
 		
-		/* connect with the local dataBase */
-		localConection = ConnectionClass.getConnectionLocal();
-		/* get the maximum idDossier */
+		loadTask.setOnSucceeded(e -> {
 
-		String sqlId = "SELECT MAX(IdDossier)  FROM dossier";
-		ResultSet result = localConection.createStatement().executeQuery(sqlId);
-		if (result.next()) {
+			Parent AEteEnregistrerRoot = loadTask.getValue();
+			if(AEteEnregistrerRoot != null) {
 
-			idDossier = result.getInt(1) + 1;
-			idDossierYear = idDossier + "/" + year;
+				Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+				Scene AEteEnregistrerScene = new Scene(AEteEnregistrerRoot, primaryStage.getWidth(),
+						primaryStage.getHeight());
+				primaryStage.setScene(AEteEnregistrerScene);
+				
+			}else {
+				
+				progIndc.setVisible(false);
+				scrollPaneContainer.setDisable(false);
+				String title = "\u0627\u0646\u062a\u0628\u0627\u0647"; 
+				String message1 = "\u0644\u0642\u062f \u062d\u062f\u062b \u062e\u0637\u0623 \u0645\u0627!";
+				String message2 = "\u0627\u0644\u0645\u0631\u062c\u0648 \u0627\u0644\u062a\u062d\u0642\u0642 \u0645\u0646 \u0627\u0644\u0625\u062a\u0635\u0627\u0644 \u0628\u0627\u0644\u0625\u0646\u062a\u0631\u0646\u062a \u0648 \u0625\u0639\u0627\u062f\u0629 \u0627\u0644\u0645\u062d\u0627\u0648\u0644\u0629 \u0645\u0631\u0629 \u0623\u062e\u0631\u0649.";
+				String titleButton = "\u062d\u0633\u0646\u0627";
+				WarningAlert.desplay(title, message1,  message2, titleButton);
+				
+			}
+			
+		});
 
-		}
+		th = new Thread(loadTask);
+		th.start();
 		
-		/* connect with the global dataBase */
-		String sqlGlobal = "INSERT INTO `user`(`ID_FOLDER`, `ID_FOLDER_YEAR`, `CIN`, `AUTORISATION`) VALUES (?, ?, ?, ?)";
-
-		try {
-			globalConnection = ConnectionClass.getConnectionGlobal();
-			PreparedStatement statment = globalConnection.prepareStatement(sqlGlobal);
-			statment.setInt(1, idDossier);
-			statment.setString(2, idDossierYear);
-			statment.setString(3, LesInfoDuDemandeurController.demandeur.getCin());
-			statment.setString(4, "\u0627\u0644\u0645\u0644\u0641 \u0642\u064a\u062f \u0627\u0644\u062f\u0631\u0627\u0633\u0629");
-			statment.execute();
-		} catch (SQLException e1) {
-		
-			String title = "\u0627\u0646\u062a\u0628\u0627\u0647"; 
-			String message1 = "\u0644\u0642\u062f \u062d\u062f\u062b \u062e\u0637\u0623 \u0645\u0627!";
-			String message2 = "\u0627\u0644\u0645\u0631\u062c\u0648 \u0627\u0644\u062a\u062d\u0642\u0642 \u0645\u0646 \u0627\u0644\u0625\u062a\u0635\u0627\u0644 \u0628\u0627\u0644\u0625\u0646\u062a\u0631\u0646\u062a \u0648 \u0625\u0639\u0627\u062f\u0629 \u0627\u0644\u0645\u062d\u0627\u0648\u0644\u0629 \u0645\u0631\u0629 \u0623\u062e\u0631\u0649.";
-			String titleButton = "\u062d\u0633\u0646\u0627";
-			WarningAlert.desplay(title, message1,  message2, titleButton);
-			progIndc.setVisible(false);
-			return;
-		}
-
-		/*
-		 * Creation de l'objet InputStream afin de le stocker dans la base de donn�es
-		 */
-
-		InputStream cinFile = new FileInputStream(LesInfoDuDemandeurController.demandeur.getCinFile());
-		InputStream demandeCreusement = new FileInputStream(LesInfoDuDemandeurController.demandeur.getDemandeFile());
-		InputStream attistation = new FileInputStream(
-				LesInfoDelImmobilierController.InfoSurImmobilier.getAttestationDePocession());
-		InputStream planImmFile = new FileInputStream(
-				LesInfoDelImmobilierController.InfoSurImmobilier.getPlanImmobilier());
-		/* la requite sql de l'insertion */
-
-		String sql = "INSERT INTO `dossier`(`IdDossier`, `Nom`, `Prenom`, `cin`, `cinImg`, `typeDemande`,"
-				+ " `demandeCreusement`, `attistationPocession`, `Douar`, `Commune`, `Province`, `localisationPointEau`"
-				+ ", `Debit`, `Profendeur`, `PlanDeau`, `daaira`, `DateDepot`, `dateEnvoiABHOER`, "
-				+ "`dateDebut_EP`, `dateFin_EP`, `dateSignature_PV`, `AvisDeCEP`, `DateEnvoiDuPV_ABHOER`, "
-				+ "`AvisABHOER`, `Autorisation`, `qiyada`, `planImmo`, `nomImmobilier`, `idDossierYear`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, "
-				+ "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		try {
-
-			/* l'insertion des el�ments dans la base de donnees */
-
-			PreparedStatement stat = localConection.prepareStatement(sql);
-			stat.setInt(1, idDossier);
-			stat.setString(2, LesInfoDuDemandeurController.demandeur.getNom());
-			stat.setString(3, LesInfoDuDemandeurController.demandeur.getPrenom());
-			stat.setString(4, LesInfoDuDemandeurController.demandeur.getCin());
-			stat.setBytes(5, cinFile.readAllBytes());
-			stat.setString(6, LesInfoDuDemandeurController.demandeur.getTypeDemande());
-			stat.setBytes(7, demandeCreusement.readAllBytes());
-			stat.setBytes(8, attistation.readAllBytes());
-			stat.setString(9, LesInfoDelImmobilierController.InfoSurImmobilier.getDouar());
-			stat.setString(10, LesInfoDelImmobilierController.InfoSurImmobilier.getCommune());
-			stat.setString(11, LesInfoDelImmobilierController.InfoSurImmobilier.getProvince());
-			stat.setString(12, InformationsConcernantPointDeauController.poinDeau.getLocalisationPoint());
-			stat.setFloat(13, InformationsConcernantPointDeauController.poinDeau.getDebit());
-			stat.setFloat(14, InformationsConcernantPointDeauController.poinDeau.getProfondeur());
-			stat.setFloat(15, InformationsConcernantPointDeauController.poinDeau.getPlanEau());
-			stat.setString(16, LesInfoDelImmobilierController.InfoSurImmobilier.getDaaira());
-
-			stat.setString(17, LesInfoDuDemandeurController.demandeur.getDateDepotDossier());
-			stat.setString(18, "");
-			stat.setString(19, "");
-			stat.setString(20, "");
-			stat.setString(21, "");
-			stat.setString(22, "\u0644\u0627 \u0634\u064a\u0621");
-			stat.setString(23, "");
-			stat.setString(24, "\u0644\u0627 \u0634\u064a\u0621");
-			stat.setString(25, "\u0644\u0627 \u0634\u064a\u0621");
-			stat.setString(26, LesInfoDelImmobilierController.InfoSurImmobilier.getQuiada());
-			stat.setBytes(27, planImmFile.readAllBytes());
-			stat.setString(28, LesInfoDelImmobilierController.InfoSurImmobilier.getNomImmobilier());
-			stat.setString(29, idDossierYear);
-			stat.execute();
-
-
-			// close the file input stream
-			cinFile.close();
-			demandeCreusement.close();
-			attistation.close();
-			planImmFile.close();
-
-		} catch (SQLException e) {
-
-			e.printStackTrace();
-		}
-
-		try {
-
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("../Fxml/AEteEnregistrer.fxml"));
-			Parent AEteEnregistrerRoot = loader.load();
-
-			Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-			Scene AEteEnregistrerScene = new Scene(AEteEnregistrerRoot, primaryStage.getWidth(),
-					primaryStage.getHeight());
-			primaryStage.setScene(AEteEnregistrerScene);
-
-		} catch (IOException e) {
-
-			e.printStackTrace();
-		}
-
 	}
 	
 	@FXML
 	public void	goHome(ActionEvent event) throws IOException {
-
+		if(!th.isAlive()){
+			
 			FXMLLoader loader = new FXMLLoader();
 			Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			loader.setLocation(getClass().getResource("../Fxml/Dashboard.fxml"));
 			Parent dashBoard = loader.load();
 			Scene dashboardScene = new Scene(dashBoard, primaryStage.getWidth(), primaryStage.getHeight());
 			primaryStage.setScene(dashboardScene);
+		}
 
 	}
 

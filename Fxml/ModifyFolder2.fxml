@@ -80,64 +80,68 @@
             </HBox>
          </top>
          <center>
-            <StackPane alignment="TOP_CENTER" BorderPane.alignment="CENTER">
+            <StackPane BorderPane.alignment="CENTER">
                <children>
-                  <GridPane alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="423.0" prefWidth="770.0" StackPane.alignment="CENTER">
-                     <columnConstraints>
-                        <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints maxHeight="170.0" minHeight="10.0" prefHeight="58.0" vgrow="SOMETIMES" />
-                        <RowConstraints fillHeight="false" maxHeight="354.0" minHeight="10.0" prefHeight="339.0" valignment="TOP" vgrow="SOMETIMES" />
-                     </rowConstraints>
+                  <StackPane fx:id="stackPaneContainer" alignment="TOP_CENTER">
                      <children>
-                        <HBox alignment="CENTER" fillHeight="false" prefHeight="71.0" prefWidth="783.0" spacing="150.0">
+                        <GridPane alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="423.0" prefWidth="770.0" StackPane.alignment="CENTER">
+                           <columnConstraints>
+                              <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints maxHeight="170.0" minHeight="10.0" prefHeight="58.0" vgrow="SOMETIMES" />
+                              <RowConstraints fillHeight="false" maxHeight="354.0" minHeight="10.0" prefHeight="339.0" valignment="TOP" vgrow="SOMETIMES" />
+                           </rowConstraints>
                            <children>
-                              <TextField fx:id="cinInputSearch" alignment="CENTER_RIGHT" onKeyPressed="#handlEnterAction" prefHeight="35.0" prefWidth="162.0" promptText="رقم الملف" />
-                              <Button id="switchButton" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#searchForFile" prefHeight="35.0" prefWidth="142.0" style="-fx-background-color: #2b4067;" text="ابحث عن ملف" textFill="WHITE">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </Button>
-                              <Button id="switchButton" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#showAllFiles" prefHeight="35.0" prefWidth="162.0" style="-fx-background-color: #2b4067;" text="إظهار كافة الملفات" textFill="WHITE">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </Button>
+                              <HBox alignment="CENTER" fillHeight="false" prefHeight="71.0" prefWidth="783.0" spacing="150.0">
+                                 <children>
+                                    <TextField fx:id="cinInputSearch" alignment="CENTER_RIGHT" onKeyPressed="#handlEnterAction" prefHeight="35.0" prefWidth="162.0" promptText="رقم الملف" />
+                                    <Button id="switchButton" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#searchForFile" prefHeight="35.0" prefWidth="142.0" style="-fx-background-color: #2b4067;" text="ابحث عن ملف" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <Button id="switchButton" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#showAllFiles" prefHeight="35.0" prefWidth="162.0" style="-fx-background-color: #2b4067;" text="إظهار كافة الملفات" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                              <TableView fx:id="tableInfo" prefHeight="316.0" prefWidth="770.0" GridPane.rowIndex="1">
+                                <columns>
+                                    <TableColumn fx:id="dateDepot" prefWidth="173.0" style="-fx-alignment: center;" text="رقم الملف" />
+                                  <TableColumn fx:id="typeDemandeCl" prefWidth="197.0" resizable="false" style="-fx-alignment: center;" text="نوع الطلب" />
+                                    <TableColumn fx:id="cinColumn" prefWidth="200.0" resizable="false" style="-fx-alignment: center;" text="رقم بطاقة التعريف الوطنية" />
+                                    <TableColumn fx:id="nomCompletColumn" prefWidth="199.0" resizable="false" style="-fx-alignment: center;" text="الاسم الكامل" />
+                                </columns>
+                                 <GridPane.margin>
+                                    <Insets top="30.0" />
+                                 </GridPane.margin>
+                              </TableView>
+                              <ProgressBar fx:id="progressIndicator" prefHeight="25.0" prefWidth="169.0" progress="0.0" visible="false" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                            </children>
-                        </HBox>
-                        <TableView fx:id="tableInfo" prefHeight="316.0" prefWidth="770.0" GridPane.rowIndex="1">
-                          <columns>
-                              <TableColumn fx:id="dateDepot" prefWidth="173.0" style="-fx-alignment: center;" text="رقم الملف" />
-                            <TableColumn fx:id="typeDemandeCl" prefWidth="197.0" resizable="false" style="-fx-alignment: center;" text="نوع الطلب" />
-                              <TableColumn fx:id="cinColumn" prefWidth="200.0" resizable="false" style="-fx-alignment: center;" text="رقم بطاقة التعريف الوطنية" />
-                              <TableColumn fx:id="nomCompletColumn" prefWidth="199.0" resizable="false" style="-fx-alignment: center;" text="الاسم الكامل" />
-                          </columns>
-                           <GridPane.margin>
-                              <Insets top="30.0" />
-                           </GridPane.margin>
-                        </TableView>
-                        <ProgressBar fx:id="progressIndicator" prefHeight="25.0" prefWidth="169.0" progress="0.0" visible="false" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                        </GridPane>
                      </children>
-                  </GridPane>
+                     <padding>
+                        <Insets bottom="20.0" top="40.0" />
+                     </padding>
+                  </StackPane>
                   <ProgressIndicator fx:id="progInd" prefHeight="55.0" prefWidth="32.0" visible="false" StackPane.alignment="CENTER">
 	                   <cursor>
 	                      <Cursor fx:constant="WAIT" />
 	                   </cursor>
 	                   <StackPane.margin>
-	                      <Insets top="650.0" />
+	                      <Insets />
 	                   </StackPane.margin>
                	</ProgressIndicator>
                </children>
-               <padding>
-                  <Insets bottom="20.0" top="40.0" />
-               </padding>
             </StackPane>
          </center>
       </BorderPane>
