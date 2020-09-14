@@ -17,6 +17,7 @@ import alerts.WarningAlert;
 import javafx.beans.binding.Bindings;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -181,6 +182,12 @@ public class ModifyFolder2Controller implements Initializable {
 					goToShowFolderPage(selectedFolder);
 				}
 			});
+			row.setOnKeyPressed(event -> {
+				if(event.getCode().equals(KeyCode.ENTER)) {
+					FolderTable selectedFolder = row.getItem();
+					goToShowFolderPage(selectedFolder);
+				}
+			});
 
 			return row;
 
@@ -240,6 +247,20 @@ public class ModifyFolder2Controller implements Initializable {
 				// rows:
 				row.contextMenuProperty()
 						.bind(Bindings.when(row.emptyProperty()).then((ContextMenu) null).otherwise(contextMenu));
+				
+				//set the row on double clicking event
+				row.setOnMouseClicked(event ->{
+					if (!row.isEmpty() && event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2) {
+						modifyRow(row, event);
+					}
+				});
+				
+				row.setOnKeyPressed(event -> {
+					if(event.getCode().equals(KeyCode.ENTER))
+						modifyRow(row, event);
+					else if(event.getCode().equals(KeyCode.DELETE))
+						removeRow(row);
+				});
 
 				return row;
 			}
@@ -310,9 +331,9 @@ public class ModifyFolder2Controller implements Initializable {
 	}
 
 
-	// this method riderects to modifyFolderIni.fxml in order to modify folder in
-	// the dataBase
-	private void modifyRow(TableRow<FolderTable> row, ActionEvent event) {
+	// this method redirects to modifyFolderIni.fxml in order to modify folder in
+	// the dataBase 
+	private void modifyRow(TableRow<FolderTable> row, Event event) {
 
 		if (!th.isAlive()) {
 
@@ -337,8 +358,8 @@ public class ModifyFolder2Controller implements Initializable {
 			}
 		}
 	}
+	
 
-	// this method return the table items as observabaleList of type FolderTable
 
 	private void getFolderInfo() {
 

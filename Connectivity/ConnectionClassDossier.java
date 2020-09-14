@@ -127,8 +127,11 @@ public class ConnectionClassDossier {
 
 			stm2.setString(1, idDossierYear);
 			stm2.setString(2, dossier.getCin());
-			stm2.setString(3, dossier.getAutorisation());
 			stm2.setInt(4, dossier.getIdDossier());
+			if(dossier.getAvisDe_CEP().equals("\u0628\u0627\u0644\u0631\u0641\u0636") || dossier.getAvisABHOER().equals("\u0628\u0627\u0644\u0631\u0641\u0636"))
+				stm2.setString(3, "\u0644\u0642\u062f \u062a\u0645 \u0631\u0641\u0636 \u0637\u0644\u0628\u0643\u0645");
+			else
+				stm2.setString(3, dossier.getAutorisation());
 
 			// update to local database
 			PreparedStatement stm = localConection.prepareStatement(sqliteRequete);
