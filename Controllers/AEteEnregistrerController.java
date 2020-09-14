@@ -48,8 +48,7 @@ public class AEteEnregistrerController implements Initializable {
 	@FXML
 	private Label textError;
 	String path;
-	boolean downloadedReceipt;
-
+	
 	private void cleanup() {
 		LesInfoDuDemandeurController.demandeur.setNom(null);
 		LesInfoDuDemandeurController.demandeur.setPrenom(null);
@@ -210,7 +209,8 @@ public class AEteEnregistrerController implements Initializable {
 				document.close();
 
 				Desktop.getDesktop().open(new File(path+ "\\"+ cin + "_reçu.pdf"));
-				downloadedReceipt = true;
+				back.setDisable(false);
+				//downloadedReceipt = true;
 			} catch (SQLException e) {
 
 				e.printStackTrace();
@@ -218,7 +218,6 @@ public class AEteEnregistrerController implements Initializable {
 			
 		}else {
 			textError.setText("\u064a\u0631\u062c\u0649 \u0627\u062e\u062a\u064a\u0627\u0631 \u0645\u062c\u0644\u062f \u0644\u062a\u0646\u0632\u064a\u0644 \u0627\u0644\u0631\u0627\u0628\u0637");
-			downloadedReceipt = false;
 		}
 
 
@@ -228,15 +227,8 @@ public class AEteEnregistrerController implements Initializable {
 	public void handelBackMethode(ActionEvent event) throws IOException {
 		
 		cleanup(); // will clean the previous input except the import files
-		if(downloadedReceipt) {
-			dashboard(event);
+		dashboard(event);// will take to the dashBoard page.
 			
-		}else if(!downloadedReceipt){
-			if(!WarningAlert.displayChoice()) {
-				dashboard(event);
-			}
-		}
-
 	}
 	
 	/*this method will send you to dashboard page*/
