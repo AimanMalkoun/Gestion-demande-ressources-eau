@@ -2,6 +2,7 @@ package Classes;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -24,8 +25,10 @@ public class ExitApplication {
 
 		Button yesButton = new Button("\u0646\u0639\u0645"), noButton = new Button("\u0644\u0627");
 		
+		yesButton.setCursor(Cursor.HAND);
 		yesButton.setStyle("-fx-background-color: #2b4067; -fx-text-fill: white;");
 		yesButton.setPrefWidth(40);
+		noButton.setCursor(Cursor.HAND);
 		noButton.setStyle("-fx-background-color: #2b4067; -fx-text-fill: white;");
 		noButton.setPrefWidth(40);;
 		
