@@ -5,6 +5,7 @@ import java.util.List;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -30,10 +31,12 @@ public class ImagesOrPdfChooser {
 		Button inputImages = new Button("\u0645\u062c\u0645\u0648\u0639\u0629 \u0635\u0648\u0631");
 		inputImages.setStyle("-fx-background-color: #2b4067; -fx-text-fill: white");
 		inputImages.setPrefSize(150, 30);
+		inputImages.setCursor(Cursor.HAND);
 		
 		Button inputPdf = new Button("\u0645\u0644\u0641 pdf");
 		inputPdf.setStyle("-fx-background-color: #2b4067; -fx-text-fill: white");
 		inputPdf.setPrefSize(150, 30);
+		inputPdf.setCursor(Cursor.HAND);
 
 		Label pathLabel = new Label("");
 		pathLabel.setStyle("-fx-font-color: red");
