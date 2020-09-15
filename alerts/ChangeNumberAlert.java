@@ -2,6 +2,7 @@ package alerts;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -30,7 +31,10 @@ public class ChangeNumberAlert {
 		Label textError = new Label("");
 		textError.setStyle("-fx-font-color: red");
 		
-		Button okButton = new Button("\u062a\u0623\u0643\u064a\u062f"), annulerButton = new Button("\u0625\u0644\u063a\u0627\u0621");
+		Button okButton = new Button("\u062a\u0623\u0643\u064a\u062f"), 
+			   annulerButton = new Button("\u0625\u0644\u063a\u0627\u0621");
+		okButton.setCursor(Cursor.HAND);
+		annulerButton.setCursor(Cursor.HAND);
 		
 		okButton.setStyle("-fx-background-color: #2b4067; -fx-text-fill: white");
 		annulerButton.setStyle("-fx-background-color: #2b4067; -fx-text-fill: white");

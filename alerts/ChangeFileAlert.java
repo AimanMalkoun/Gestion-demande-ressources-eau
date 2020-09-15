@@ -7,6 +7,7 @@ import org.apache.commons.io.FilenameUtils;
 import Classes.ImagesOrPdfChooser;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -28,6 +29,7 @@ public class ChangeFileAlert {
 		window.initModality(Modality.APPLICATION_MODAL);
 
 		Button input = new Button("\u0627\u062e\u062a\u064a\u0627\u0631 \u0645\u0644\u0641");
+		input.setCursor(Cursor.HAND);
 		input.setPrefSize(150, 30);
 
 		Label fileName = new Label("");
@@ -47,7 +49,10 @@ public class ChangeFileAlert {
 				
 			});
 		
-		Button okButton = new Button("\u062a\u0623\u0643\u064a\u062f"), annulerButton = new Button("\u0625\u0644\u063a\u0627\u0621");
+		Button okButton = new Button("\u062a\u0623\u0643\u064a\u062f"), 
+			   annulerButton = new Button("\u0625\u0644\u063a\u0627\u0621");
+		okButton.setCursor(Cursor.HAND);
+		annulerButton.setCursor(Cursor.HAND);
 		
 		okButton.setStyle("-fx-background-color: #2b4067; -fx-text-fill: white");
 		annulerButton.setStyle("-fx-background-color: #2b4067; -fx-text-fill: white");
