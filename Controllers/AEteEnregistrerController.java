@@ -217,7 +217,6 @@ public class AEteEnregistrerController implements Initializable {
 			
 		}else {
 			textError.setText("\u064a\u0631\u062c\u0649 \u0627\u062e\u062a\u064a\u0627\u0631 \u0645\u062c\u0644\u062f \u0644\u062a\u0646\u0632\u064a\u0644 \u0627\u0644\u0631\u0627\u0628\u0637");
-			downloadedReceipt = false;
 		}
 
 

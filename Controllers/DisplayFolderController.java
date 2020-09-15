@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.ResourceBundle;
 
-import org.jpedal.exception.PdfException;
+import com.itextpdf.text.pdf.PdfException;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;

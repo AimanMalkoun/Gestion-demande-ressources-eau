@@ -19,6 +19,7 @@ import alerts.WarningAlert;
 import javafx.beans.binding.Bindings;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -135,7 +136,7 @@ public class ModifyFolder2Controller implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-
+		
 		// delete temporary files
 		File directory = new File(EnregistrerController.class.getClassLoader().getResource("tempFiles").getPath());
 		if (directory.listFiles().length > 0)
@@ -152,9 +153,27 @@ public class ModifyFolder2Controller implements Initializable {
 	public void setMessage(int message) {
 
 		if (message == 0) // in case of modify folder
+		{
 			initializeMenuItems();
+			
+			tableInfo.setOnKeyPressed(event ->{
+				if(event.getCode().equals(KeyCode.ENTER)) {
+					modifyRow(tableInfo.getSelectionModel().getSelectedItem(), event);
+				}else if(event.getCode().equals(KeyCode.DELETE)) {
+					removeRow(tableInfo.getSelectionModel().getSelectedItem());
+				}
+			});
+			
+		}
 		else // in case of show folder
+		{
 			nitializeRowsForMouseClick();
+			tableInfo.setOnKeyPressed(event ->{
+				if(event.getCode().equals(KeyCode.ENTER))
+					goToShowFolderPage(tableInfo.getSelectionModel().getSelectedItem());
+				
+			});
+		}
 
 	}
 
@@ -218,10 +237,10 @@ public class ModifyFolder2Controller implements Initializable {
 				final MenuItem removeMenuItem = new MenuItem("\u062d\u0630\u0641 \u0627\u0644\u0645\u0644\u0641");
 
 				// handle action when you click on remove in the menu
-				modifyMenuItem.setOnAction(event -> modifyRow(row, event));
+				modifyMenuItem.setOnAction(event -> modifyRow(row.getItem(), event));
 
 				// handle action when you click on remove in the menu
-				removeMenuItem.setOnAction(e -> removeRow(row));
+				removeMenuItem.setOnAction(e -> removeRow(row.getItem()));
 
 				contextMenu.getItems().addAll(modifyMenuItem, removeMenuItem);
 
@@ -229,6 +248,13 @@ public class ModifyFolder2Controller implements Initializable {
 				// rows:
 				row.contextMenuProperty()
 						.bind(Bindings.when(row.emptyProperty()).then((ContextMenu) null).otherwise(contextMenu));
+				
+				row.setOnMouseClicked(event -> {
+					if (!row.isEmpty() && event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2) {
+
+						modifyRow(row.getItem(), event);
+					}
+				});
 
 				return row;
 			}
@@ -238,7 +264,7 @@ public class ModifyFolder2Controller implements Initializable {
 	}
 
 	// this method is for removing a folder from dataBase and the table items
-	private void removeRow(TableRow<FolderTable> row) {
+	private void removeRow(FolderTable folderTable) {
 
 		if (!th.isAlive()) {
 
@@ -246,20 +272,19 @@ public class ModifyFolder2Controller implements Initializable {
 			if (DeleteConfirmationAlert.desplay()) {
 
 				int result = 0;
-				FolderTable folder = row.getItem();
 
 				// remove folder from dataBase
 				ConnectionClassDossier connection;
 				try {
 					connection = new ConnectionClassDossier();
-					result = connection.removeFolder(folder.getId());
+					result = connection.removeFolder(folderTable.getId());
 				} catch (ClassNotFoundException | SQLException e) {
 
 					e.printStackTrace();
 				}
 				if (result > 0) {
 					// remove folder from tableView
-					tableInfo.getItems().remove(folder);
+					tableInfo.getItems().remove(folderTable);
 				}
 			}
 		}
@@ -267,7 +292,7 @@ public class ModifyFolder2Controller implements Initializable {
 
 	// this method riderects to modifyFolderIni.fxml in order to modify folder in
 	// the dataBase
-	private void modifyRow(TableRow<FolderTable> row, ActionEvent event) {
+	private void modifyRow(FolderTable folderTable, Event event) {
 
 		if (!th.isAlive()) {
 
@@ -278,7 +303,7 @@ public class ModifyFolder2Controller implements Initializable {
 				Parent modifyFolderRoot = loader.load();
 
 				modifierInfoDuDossierController nextControler = loader.getController();
-				if (nextControler.setMessage(row.getItem().getId()) != 0) {
+				if (nextControler.setMessage(folderTable.getId()) != 0) {
 
 					Stage primaryStage = (Stage) rootPane.getScene().getWindow();
 					Scene modifyFolderScene = new Scene(modifyFolderRoot, primaryStage.getWidth(),

@@ -6,14 +6,14 @@ import java.sql.SQLException;
 
 public class ConnectionClass {
 	
-	private static Connection sqliteConnection = null; // for local connection
+	private static Connection sqliteConnection = null; 
 	
 
 	
 	public static Connection getConnectionLocal() throws SQLException {
 	
 		if(sqliteConnection == null)
-			sqliteConnection =  DriverManager.getConnection("jdbc:sqlite:src/SQLiteDB/gestiondeamndeeau.sqlite");
+			sqliteConnection =  DriverManager.getConnection("jdbc:sqlite:SQLiteDB/gestiondeamndeeau.sqlite");
 		
 		return sqliteConnection;
 	}
