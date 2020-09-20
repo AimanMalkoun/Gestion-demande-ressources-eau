@@ -1,5 +1,8 @@
 package test;
 
+import java.io.File;
+import java.util.Scanner;
+
 import alerts.DeleteConfirmationAlert;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -15,8 +18,9 @@ public class Test extends Application{
 	@Override
 	public void start(Stage arg0) throws Exception {
 		
-		if(DeleteConfirmationAlert.desplay())
+		if(DeleteConfirmationAlert.desplay()) {
 			System.out.println("true");
+		}
 		
 	}
 
