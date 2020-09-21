@@ -1,4 +1,3 @@
-package Controllers;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -35,7 +34,7 @@ public class ForgotPassWordController {
 	@FXML
 	public void backToLoginPage(MouseEvent event) throws IOException {
 		
-		Parent root = FXMLLoader.load(getClass().getResource("../Fxml/LoginStage.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("Fxml/LoginStage.fxml"));
 		Stage primaryStage  = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		primaryStage.setScene(new Scene(root, primaryStage.getWidth(), primaryStage.getHeight()));
 	}
@@ -56,7 +55,7 @@ public class ForgotPassWordController {
 					
 										/* back to the login page*/	
 					
-					Parent root = FXMLLoader.load(getClass().getResource("../Fxml/LoginStage.fxml"));
+					Parent root = FXMLLoader.load(getClass().getResource("Fxml/LoginStage.fxml"));
 					Stage primaryStage  = (Stage) ((Node) event.getSource()).getScene().getWindow();
 					primaryStage.setScene(new Scene(root, primaryStage.getWidth(), primaryStage.getHeight()));
 				}

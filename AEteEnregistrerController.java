@@ -1,4 +1,3 @@
-package Controllers;
 
 import java.awt.Desktop;
 import java.io.File;
@@ -119,7 +118,7 @@ public class AEteEnregistrerController implements Initializable {
 					qiyada = " " + result.getString("qiyada") + " ";
 				}
 				Document document = new Document();
-				PdfWriter.getInstance(document, new FileOutputStream(path+ "\\"+ cin + "_reçu.pdf"));
+				PdfWriter.getInstance(document, new FileOutputStream(path+ "\\"+ cin + "_recu.pdf"));
 				Font small = FontFactory.getFont("Fonts/arial.ttf", BaseFont.IDENTITY_H, 14);
 				Font normal = FontFactory.getFont("Fonts/arial.ttf", BaseFont.IDENTITY_H, 17);
 				Font big0 = FontFactory.getFont("Fonts/arial.ttf", BaseFont.IDENTITY_H, 22);
@@ -209,7 +208,7 @@ public class AEteEnregistrerController implements Initializable {
 				document.add(table);
 				document.close();
 
-				Desktop.getDesktop().open(new File(path+ "\\"+ cin + "_reçu.pdf"));
+				Desktop.getDesktop().open(new File(path+ "\\"+ cin + "_recu.pdf"));
 				downloadedReceipt = true;
 			} catch (SQLException e) {
 
@@ -242,7 +241,7 @@ public class AEteEnregistrerController implements Initializable {
 	/*this method will send you to dashboard page*/
 	public void dashboard(ActionEvent event) throws IOException {
 		FXMLLoader loader= new FXMLLoader();
-		loader.setLocation(getClass().getResource("../Fxml/Dashboard.fxml"));
+		loader.setLocation(getClass().getResource("Fxml/Dashboard.fxml"));
 		Parent DashboardRoot = loader.load();
 		
 		Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();

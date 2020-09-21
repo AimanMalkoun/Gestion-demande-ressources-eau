@@ -1,4 +1,3 @@
-package Controllers;
 
 import java.io.File;
 import java.io.IOException;
@@ -69,7 +68,7 @@ public class LesInfoDelImmobilierController implements Initializable {
 		try {
 
 			Parent dashboardRoot = (Parent) FXMLLoader
-					.load(getClass().getResource("../Fxml/InformationsDuDemandeur.fxml"));
+					.load(getClass().getResource("Fxml/InformationsDuDemandeur.fxml"));
 			Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			Scene dashboardScene = new Scene(dashboardRoot, primaryStage.getWidth(), primaryStage.getHeight());
 			primaryStage.setScene(dashboardScene);
@@ -97,7 +96,7 @@ public class LesInfoDelImmobilierController implements Initializable {
 			try {
 
 				Parent dashboardRoot = (Parent) FXMLLoader
-						.load(getClass().getResource("../Fxml/InformationsConcernantPointDeau.fxml"));
+						.load(getClass().getResource("Fxml/InformationsConcernantPointDeau.fxml"));
 				
 				Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 				Scene dashboardScene = new Scene(dashboardRoot, primaryStage.getWidth(), primaryStage.getHeight());

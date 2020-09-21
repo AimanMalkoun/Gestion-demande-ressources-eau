@@ -1,4 +1,3 @@
-package Controllers;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -221,7 +220,7 @@ public class modifierInfoDuDossierController implements Initializable{
     	try {
 
 			FXMLLoader loader= new FXMLLoader();
-			loader.setLocation(getClass().getResource("../Fxml/ModifyFolder2.fxml"));
+			loader.setLocation(getClass().getResource("Fxml/ModifyFolder2.fxml"));
 			Parent showFolderRoot = loader.load();
 			
 			ModifyFolder2Controller nextControler = loader.getController();
@@ -406,8 +405,7 @@ public class modifierInfoDuDossierController implements Initializable{
     				dateDenvoiAlabhouerEljaidaLabel.setText(result.toString());
     				
     				//set the next button to be enabled 
-    				if(!dossier.getDateEnvoiA_LABHOER().equals(dossier.getDateDepot()))
-    					dateDebutEnquetePublicButton.setDisable(false);
+    				dateDebutEnquetePublicButton.setDisable(false);
     			}
     			
     		}else if(event.getSource() == dateDebutEnquetePublicButton) {
@@ -418,9 +416,8 @@ public class modifierInfoDuDossierController implements Initializable{
     				dossier.setDateDebutde_EP(result.toString());
     				dateDebutEnquetePublicLabel.setText(result.toString());
 
-    				//set the next button to be enabled
-    				if(!dossier.getDateDebutde_EP().equals(dossier.getDateDepot())) 
-    					dateFinEnquetePublicButton.setDisable(false);
+    				//set the next button to be enabled 
+    				dateFinEnquetePublicButton.setDisable(false);
     			}
     			
     		}else if(event.getSource() == dateFinEnquetePublicButton) {
@@ -432,8 +429,7 @@ public class modifierInfoDuDossierController implements Initializable{
     				dateFinEnquetePublicLabel.setText(result.toString());
 
     				//set the next button to be enabled
-    				if(!dossier.getDateFin_EP().equals(dossier.getDateDepot())) 
-    					dateSignaturPVparCEPButton.setDisable(false);
+    				dateSignaturPVparCEPButton.setDisable(false);
     			}
     			
     		}else if(event.getSource() == dateSignaturPVparCEPButton) {
@@ -445,8 +441,7 @@ public class modifierInfoDuDossierController implements Initializable{
     				dateSignaturPVparCEPLabel.setText(result.toString());
 
     				//set the next button to be enabled
-    				if(!dossier.getDateSignateureDuPv().equals(dossier.getDateDepot()))
-    					AvisDeCEPButton.setDisable(false);
+    				AvisDeCEPButton.setDisable(false);
     			}
     			
     		}else if(event.getSource() == AvisDeCEPButton) {
@@ -455,12 +450,27 @@ public class modifierInfoDuDossierController implements Initializable{
     			String result = ChangeChoiceAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u0631\u0623\u064a \u0644\u062c\u0646\u0629 \u0627\u0644\u0628\u062d\u062b \u0627\u0644\u0639\u0644\u0646\u064a", items, dossier.getAvisDe_CEP());
 
     			if(result != null) {
+    				
+    				if(result.equals("\u0628\u0627\u0644\u0645\u0648\u0627\u0641\u0642\u0629"))  
+    					dateEnvoitPvAbhoerEljadidaButton.setDisable(false);      				//set the next button to be enabled
+    				
+    				else if(result.equals("\u0644\u0627 \u0634\u064a\u0621") || result.equals("\u0628\u0627\u0644\u0631\u0641\u0636")){					
+    					dateEnvoitPvAbhoerEljadidaButton.setDisable(true);						//set the next button to be enabled
+    					dossier.setDateEnvoiDuPVa_LABHOER("XXXX-XX-XX");
+        				dateEnvoitPvAbhoerEljadidaLabel.setText("XXXX-XX-XX");
+    					dossier.setAvisABHOER("\u0644\u0627 \u0634\u064a\u0621");
+        				AvisAbhoerLabel.setText("\u0644\u0627 \u0634\u064a\u0621");
+        				AvisAbhoerButton.setDisable(true);
+    					dossier.setAutorisation("\u0644\u0627 \u0634\u064a\u0621");
+    		    		autorisationTitleLabel.setVisible(false);
+    		    		autorisationLabel.setVisible(false);
+    		    		autorisationButton.setVisible(false);
+    					
+    				}
+
     				dossier.setAvisDe_CEP(result);
     				AvisDeCEPLabel.setText(result);
 
-    				//set the next button to be enabled
-    				if(dossier.getAvisDe_CEP().equals("\u0628\u0627\u0644\u0645\u0648\u0627\u0641\u0642\u0629"))
-    					dateEnvoitPvAbhoerEljadidaButton.setDisable(false);
     			}
     			
     		}else if(event.getSource() == dateEnvoitPvAbhoerEljadidaButton) {
@@ -472,8 +482,7 @@ public class modifierInfoDuDossierController implements Initializable{
     				dateEnvoitPvAbhoerEljadidaLabel.setText(result.toString());
 
     				//set the next button to be enabled
-    				if(!dossier.getDateEnvoiDuPVa_LABHOER().equals(dossier.getDateDepot()))
-    					AvisAbhoerButton.setDisable(false);
+    				AvisAbhoerButton.setDisable(false);
     			}
     			
     		}else if(event.getSource() == AvisAbhoerButton) {
@@ -493,7 +502,12 @@ public class modifierInfoDuDossierController implements Initializable{
     		    		autorisationButton.setVisible(true);
     		    		autorisationLabel.setText(dossier.getAutorisation());
     		    		
-    		    	}
+    		    	}else if(result.equals("\u0644\u0627 \u0634\u064a\u0621") || result.equals("\u0628\u0627\u0644\u0631\u0641\u0636")){					
+    					dossier.setAutorisation("\u0644\u0627 \u0634\u064a\u0621");
+    		    		autorisationTitleLabel.setVisible(false);
+    		    		autorisationLabel.setVisible(false);
+    		    		autorisationButton.setVisible(false);
+    				}
     				
     			}
     			
@@ -549,8 +563,9 @@ public class modifierInfoDuDossierController implements Initializable{
 			    	rows = myDataBaseFolder.updateDossierToDatabase(dossier);
 			        
 				} catch (ClassNotFoundException | SQLException e1) {
-
+					//
 				}
+		    	
 		    	if(rows[0] == 0) {
 					return null;
 				}
@@ -559,7 +574,7 @@ public class modifierInfoDuDossierController implements Initializable{
 		    	try {
 
 					FXMLLoader loader= new FXMLLoader();
-					loader.setLocation(getClass().getResource("../Fxml/ModifyFolder2.fxml"));
+					loader.setLocation(getClass().getResource("Fxml/ModifyFolder2.fxml"));
 					showFolderRoot = loader.load();
 
 					ModifyFolder2Controller nextControler = loader.getController();
@@ -568,8 +583,7 @@ public class modifierInfoDuDossierController implements Initializable{
 					return showFolderRoot;
 
 				} catch (IOException e) {
-
-					e.printStackTrace();
+					//
 				}
 				
 				return showFolderRoot;
@@ -612,7 +626,7 @@ public class modifierInfoDuDossierController implements Initializable{
     	if(!th.isAlive()) {
     		try {
         		
-        		Parent ModifyFolderRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/Dashboard.fxml"));
+        		Parent ModifyFolderRoot = (Parent)FXMLLoader.load(getClass().getResource("Fxml/Dashboard.fxml"));
     			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
     			Scene ModifyFolderScene = new Scene(ModifyFolderRoot, primaryStage.getWidth(), primaryStage.getHeight());
     			primaryStage.setScene(ModifyFolderScene);
@@ -630,7 +644,7 @@ public class modifierInfoDuDossierController implements Initializable{
     	if(!th.isAlive()) {
     		try {
         		
-        		Parent ModifyFolderRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/LoginStage.fxml"));
+        		Parent ModifyFolderRoot = (Parent)FXMLLoader.load(getClass().getResource("Fxml/LoginStage.fxml"));
     			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
     			Scene ModifyFolderScene = new Scene(ModifyFolderRoot, primaryStage.getWidth(), primaryStage.getHeight());
     			primaryStage.setScene(ModifyFolderScene);

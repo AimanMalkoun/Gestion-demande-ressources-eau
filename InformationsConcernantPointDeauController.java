@@ -1,4 +1,3 @@
-package Controllers;
 
 import java.io.File;
 import java.io.IOException;
@@ -63,7 +62,7 @@ public class InformationsConcernantPointDeauController implements Initializable 
 					new Float(profondeur.getText()), new Float(poinEau.getText()));
 
 			FXMLLoader loader= new FXMLLoader();
-			loader.setLocation(getClass().getResource("../Fxml/Enregistrer.fxml"));
+			loader.setLocation(getClass().getResource("Fxml/Enregistrer.fxml"));
 			Parent demandeurRoot = loader.load();
 			
 			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -82,7 +81,7 @@ public class InformationsConcernantPointDeauController implements Initializable 
 		try {
 			
 			FXMLLoader loader= new FXMLLoader();
-			loader.setLocation(getClass().getResource("../Fxml/Les-informations-concernant-l'immobilier.fxml"));
+			loader.setLocation(getClass().getResource("Fxml/Les-informations-concernant-l'immobilier.fxml"));
 			Parent demandeurRoot = loader.load();
 			
 			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();

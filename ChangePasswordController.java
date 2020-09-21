@@ -1,4 +1,3 @@
-package Controllers;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -86,7 +85,7 @@ public class ChangePasswordController {
 		try {
 			
 			FXMLLoader loader= new FXMLLoader();
-			loader.setLocation(getClass().getResource("../Fxml/LoginStage.fxml"));
+			loader.setLocation(getClass().getResource("Fxml/LoginStage.fxml"));
 			Parent LoginRoot = loader.load();
 			
 			Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -104,7 +103,7 @@ public class ChangePasswordController {
     void goToHome(ActionEvent event) throws IOException {
     	
 		Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-    	Parent dashboardRoot = (Parent)FXMLLoader.load(getClass().getResource("../Fxml/Dashboard.fxml"));
+    	Parent dashboardRoot = (Parent)FXMLLoader.load(getClass().getResource("Fxml/Dashboard.fxml"));
 		Scene dashboardScene = new Scene(dashboardRoot, primaryStage.getWidth(), primaryStage.getHeight());
 		primaryStage.setScene(dashboardScene);
 		

@@ -7,6 +7,7 @@ import org.apache.commons.io.FilenameUtils;
 import Classes.ImagesOrPdfChooser;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -29,6 +30,7 @@ public class ChangeFileAlert {
 
 		Button input = new Button("\u0627\u062e\u062a\u064a\u0627\u0631 \u0645\u0644\u0641");
 		input.setPrefSize(150, 30);
+		input.setCursor(Cursor.HAND);
 
 		Label fileName = new Label("");
 		fileName.setStyle("-fx-font-color: red");
@@ -51,6 +53,8 @@ public class ChangeFileAlert {
 		
 		okButton.setStyle("-fx-background-color: #2b4067; -fx-text-fill: white");
 		annulerButton.setStyle("-fx-background-color: #2b4067; -fx-text-fill: white");
+		okButton.setCursor(Cursor.HAND);
+		annulerButton.setCursor(Cursor.HAND);
 		
 		//Handling buttons actions
 		okButton.setOnMouseClicked(event -> {

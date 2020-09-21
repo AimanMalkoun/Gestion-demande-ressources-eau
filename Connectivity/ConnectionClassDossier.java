@@ -9,6 +9,8 @@ import java.util.Calendar;
 
 import javax.sql.rowset.serial.SerialBlob;
 
+import org.apache.commons.io.IOUtils;
+
 import Classes.DossierForDownload;
 
 public class ConnectionClassDossier {
@@ -127,8 +129,11 @@ public class ConnectionClassDossier {
 
 			stm2.setString(1, idDossierYear);
 			stm2.setString(2, dossier.getCin());
-			stm2.setString(3, dossier.getAutorisation());
 			stm2.setInt(4, dossier.getIdDossier());
+			if(dossier.getAvisDe_CEP().equals("\u0628\u0627\u0644\u0631\u0641\u0636") || dossier.getAvisABHOER().equals("\u0628\u0627\u0644\u0631\u0641\u0636"))
+				stm2.setString(3, "\u0644\u0642\u062f \u062a\u0645 \u0631\u0641\u0636 \u0637\u0644\u0628\u0643\u0645");
+			else
+				stm2.setString(3, dossier.getAutorisation());
 
 			// update to local database
 			PreparedStatement stm = localConection.prepareStatement(sqliteRequete);
@@ -136,11 +141,11 @@ public class ConnectionClassDossier {
 			stm.setString(1, dossier.getNom());
 			stm.setString(2, dossier.getPrenom());
 			stm.setString(3, dossier.getCin());
-			stm.setBytes(4, dossier.getCinFile().getBinaryStream().readAllBytes());
+			stm.setBytes(4, IOUtils.toByteArray(dossier.getCinFile().getBinaryStream()));
 			stm.setString(5, dossier.getTypeDemande());
-			stm.setBytes(6, dossier.getDemandeFile().getBinaryStream().readAllBytes());
+			stm.setBytes(6, IOUtils.toByteArray(dossier.getDemandeFile().getBinaryStream()));
 
-			stm.setBytes(7, dossier.getAttestationDePocession().getBinaryStream().readAllBytes());
+			stm.setBytes(7, IOUtils.toByteArray(dossier.getAttestationDePocession().getBinaryStream()));
 			stm.setString(8, dossier.getDouar());
 			stm.setString(9, dossier.getCommune());
 			stm.setString(10, dossier.getProvince());
@@ -163,7 +168,7 @@ public class ConnectionClassDossier {
 			stm.setString(24, dossier.getAutorisation());
 
 			stm.setString(25, dossier.getQuiada());
-			stm.setBytes(26, dossier.getPlanImmobilier().getBinaryStream().readAllBytes());
+			stm.setBytes(26, IOUtils.toByteArray(dossier.getPlanImmobilier().getBinaryStream()));
 			stm.setString(27, dossier.getNomImmobilier());
 
 			stm.setInt(28, dossier.getIdDossier());

@@ -1,4 +1,3 @@
-package Controllers;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -10,6 +9,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.ResourceBundle;
+
+import org.apache.commons.io.IOUtils;
 
 import Connectivity.ConnectionClass;
 import alerts.WarningAlert;
@@ -96,7 +97,7 @@ public class EnregistrerController implements Initializable {
 
 			FXMLLoader loader = new FXMLLoader();
 			Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-			loader.setLocation(getClass().getResource("../Fxml/InformationsDuDemandeur.fxml"));
+			loader.setLocation(getClass().getResource("Fxml/InformationsDuDemandeur.fxml"));
 			Parent demandeurRoot = loader.load();
 
 			Scene demandeurScene = new Scene(demandeurRoot, primaryStage.getWidth(), primaryStage.getHeight());
@@ -183,10 +184,10 @@ public class EnregistrerController implements Initializable {
 					stat.setString(2, LesInfoDuDemandeurController.demandeur.getNom());
 					stat.setString(3, LesInfoDuDemandeurController.demandeur.getPrenom());
 					stat.setString(4, LesInfoDuDemandeurController.demandeur.getCin());
-					stat.setBytes(5, cinFile.readAllBytes());
+					stat.setBytes(5, IOUtils.toByteArray(cinFile));
 					stat.setString(6, LesInfoDuDemandeurController.demandeur.getTypeDemande());
-					stat.setBytes(7, demandeCreusement.readAllBytes());
-					stat.setBytes(8, attistation.readAllBytes());
+					stat.setBytes(7, IOUtils.toByteArray(demandeCreusement));
+					stat.setBytes(8, IOUtils.toByteArray(attistation));
 					stat.setString(9, LesInfoDelImmobilierController.InfoSurImmobilier.getDouar());
 					stat.setString(10, LesInfoDelImmobilierController.InfoSurImmobilier.getCommune());
 					stat.setString(11, LesInfoDelImmobilierController.InfoSurImmobilier.getProvince());
@@ -206,7 +207,7 @@ public class EnregistrerController implements Initializable {
 					stat.setString(24, "\u0644\u0627 \u0634\u064a\u0621");
 					stat.setString(25, "\u0644\u0627 \u0634\u064a\u0621");
 					stat.setString(26, LesInfoDelImmobilierController.InfoSurImmobilier.getQuiada());
-					stat.setBytes(27, planImmFile.readAllBytes());
+					stat.setBytes(27, IOUtils.toByteArray(planImmFile));
 					stat.setString(28, LesInfoDelImmobilierController.InfoSurImmobilier.getNomImmobilier());
 					stat.setString(29, idDossierYear);
 					stat.execute();
@@ -228,7 +229,7 @@ public class EnregistrerController implements Initializable {
 				try {
 
 					FXMLLoader loader = new FXMLLoader();
-					loader.setLocation(getClass().getResource("../Fxml/AEteEnregistrer.fxml"));
+					loader.setLocation(getClass().getResource("Fxml/AEteEnregistrer.fxml"));
 					AEteEnregistrerRoot = loader.load();
 					return AEteEnregistrerRoot;
 					
@@ -275,7 +276,7 @@ public class EnregistrerController implements Initializable {
 			
 			FXMLLoader loader = new FXMLLoader();
 			Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-			loader.setLocation(getClass().getResource("../Fxml/Dashboard.fxml"));
+			loader.setLocation(getClass().getResource("Fxml/Dashboard.fxml"));
 			Parent dashBoard = loader.load();
 			Scene dashboardScene = new Scene(dashBoard, primaryStage.getWidth(), primaryStage.getHeight());
 			primaryStage.setScene(dashboardScene);

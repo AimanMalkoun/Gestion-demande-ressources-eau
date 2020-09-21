@@ -1,4 +1,3 @@
-package Controllers;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,6 +16,7 @@ import alerts.WarningAlert;
 import javafx.beans.binding.Bindings;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -82,7 +82,7 @@ public class ModifyFolder2Controller implements Initializable {
 
 		if (!th.isAlive()){
 			
-			Parent root = FXMLLoader.load(getClass().getResource("../Fxml/Dashboard.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("Fxml/Dashboard.fxml"));
 			Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			Scene dashBoard = new Scene(root, primaryStage.getWidth(), primaryStage.getHeight());
 			primaryStage.setScene(dashBoard);
@@ -123,7 +123,7 @@ public class ModifyFolder2Controller implements Initializable {
 
 		if (!th.isAlive()) {
 			
-			Parent root = FXMLLoader.load(getClass().getResource("../Fxml/LoginStage.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("Fxml/LoginStage.fxml"));
 			Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			Scene login = new Scene(root, primaryStage.getWidth(), primaryStage.getHeight());
 			primaryStage.setScene(login);
@@ -148,7 +148,7 @@ public class ModifyFolder2Controller implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
 		// delete temporary files
-		File directory = new File(EnregistrerController.class.getClassLoader().getResource("tempFiles").getPath());
+		File directory = new File("src/tempFiles");
 		if (directory.listFiles().length > 0)
 			for (File file : directory.listFiles())
 				if (!file.delete())
@@ -163,9 +163,27 @@ public class ModifyFolder2Controller implements Initializable {
 	public void setMessage(int message) {
 
 		if (message == 0) // in case of modify folder
+		{
 			initializeMenuItems();
+			
+			tableInfo.setOnKeyPressed(event ->{
+				if(event.getCode().equals(KeyCode.ENTER)) {
+					modifyRow(tableInfo.getSelectionModel().getSelectedItem(), event);
+				}else if(event.getCode().equals(KeyCode.DELETE)) {
+					removeRow(tableInfo.getSelectionModel().getSelectedItem());
+				}
+			});
+			
+		}
 		else // in case of show folder
+		{
 			nitializeRowsForMouseClick();
+			tableInfo.setOnKeyPressed(event ->{
+				if(event.getCode().equals(KeyCode.ENTER))
+					goToShowFolderPage(tableInfo.getSelectionModel().getSelectedItem());
+				
+			});
+		}
 
 	}
 
@@ -177,6 +195,12 @@ public class ModifyFolder2Controller implements Initializable {
 			row.setOnMouseClicked(event -> {
 				if (!row.isEmpty() && event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2) {
 
+					FolderTable selectedFolder = row.getItem();
+					goToShowFolderPage(selectedFolder);
+				}
+			});
+			row.setOnKeyPressed(event -> {
+				if(event.getCode().equals(KeyCode.ENTER)) {
 					FolderTable selectedFolder = row.getItem();
 					goToShowFolderPage(selectedFolder);
 				}
@@ -196,7 +220,7 @@ public class ModifyFolder2Controller implements Initializable {
 		try {
 
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("../Fxml/afficher-un-dossier.fxml"));
+			loader.setLocation(getClass().getResource("Fxml/afficher-un-dossier.fxml"));
 			Parent showFolderRoot = loader.load();
 
 			DisplayFolderController nextControler = loader.getController();
@@ -229,10 +253,10 @@ public class ModifyFolder2Controller implements Initializable {
 				final MenuItem removeMenuItem = new MenuItem("\u062d\u0630\u0641 \u0627\u0644\u0645\u0644\u0641");
 
 				// handle action when you click on remove in the menu
-				modifyMenuItem.setOnAction(event -> modifyRow(row, event));
+				modifyMenuItem.setOnAction(event -> modifyRow(row.getItem(), event));
 
 				// handle action when you click on remove in the menu
-				removeMenuItem.setOnAction(e -> removeRow(row));
+				removeMenuItem.setOnAction(e -> removeRow(row.getItem()));
 
 				contextMenu.getItems().addAll(modifyMenuItem, removeMenuItem);
 
@@ -240,6 +264,20 @@ public class ModifyFolder2Controller implements Initializable {
 				// rows:
 				row.contextMenuProperty()
 						.bind(Bindings.when(row.emptyProperty()).then((ContextMenu) null).otherwise(contextMenu));
+				
+				//set the row on double clicking event
+				row.setOnMouseClicked(event ->{
+					if (!row.isEmpty() && event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2) {
+						modifyRow(row.getItem(), event);
+					}
+				});
+				
+				row.setOnKeyPressed(event -> {
+					if(event.getCode().equals(KeyCode.ENTER))
+						modifyRow(row.getItem(), event);
+					else if(event.getCode().equals(KeyCode.DELETE))
+						removeRow(row.getItem());
+				});
 
 				return row;
 			}
@@ -249,7 +287,7 @@ public class ModifyFolder2Controller implements Initializable {
 	}
 
 	// this method is for removing a folder from dataBase and the table items
-	private void removeRow(TableRow<FolderTable> row){
+	private void removeRow(FolderTable folderTable){
 
 			//first let the user confirm the delete order
 			if(DeleteConfirmationAlert.desplay()) {
@@ -262,13 +300,12 @@ public class ModifyFolder2Controller implements Initializable {
 					@Override
 					protected Boolean call() throws Exception {
 							int result[] = {0, 0};
-							FolderTable folder = row.getItem();
 					
 							//remove folder from dataBase
 							ConnectionClassDossier connection;
 							try {
 								connection = new ConnectionClassDossier();
-								result= connection.removeFolder(folder.getId());
+								result= connection.removeFolder(folderTable.getId());
 							} catch (ClassNotFoundException | SQLException e) {
 								
 							}
@@ -281,7 +318,7 @@ public class ModifyFolder2Controller implements Initializable {
 								//remove folder from tableView
 								progInd.setVisible(false);
 								stackPaneContainer.setDisable(false);
-								tableInfo.getItems().remove(folder);
+								tableInfo.getItems().remove(folderTable);
 								return true;
 							}
 						return null;
@@ -310,20 +347,20 @@ public class ModifyFolder2Controller implements Initializable {
 	}
 
 
-	// this method riderects to modifyFolderIni.fxml in order to modify folder in
-	// the dataBase
-	private void modifyRow(TableRow<FolderTable> row, ActionEvent event) {
+	// this method redirects to modifyFolderIni.fxml in order to modify folder in
+	// the dataBase 
+	private void modifyRow(FolderTable folderTable, Event event) {
 
 		if (!th.isAlive()) {
 
 			try {
 
 				FXMLLoader loader = new FXMLLoader();
-				loader.setLocation(getClass().getResource("../Fxml/modifier les informations du dossier.fxml"));
+				loader.setLocation(getClass().getResource("Fxml/modifier les informations du dossier.fxml"));
 				Parent modifyFolderRoot = loader.load();
 
 				modifierInfoDuDossierController nextControler = loader.getController();
-				if (nextControler.setMessage(row.getItem().getId()) != 0) {
+				if (nextControler.setMessage(folderTable.getId()) != 0) {
 
 					Stage primaryStage = (Stage) rootPane.getScene().getWindow();
 					Scene modifyFolderScene = new Scene(modifyFolderRoot, primaryStage.getWidth(),
@@ -337,8 +374,8 @@ public class ModifyFolder2Controller implements Initializable {
 			}
 		}
 	}
+	
 
-	// this method return the table items as observabaleList of type FolderTable
 
 	private void getFolderInfo() {
 
