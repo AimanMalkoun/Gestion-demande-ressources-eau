@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.ResourceBundle;
 
-import org.jpedal.exception.PdfException;
+import com.itextpdf.text.pdf.PdfException;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -35,6 +35,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
+import pdfClasses.ConvertBlobToPdf;
 
 
 public class DisplayFolderController implements Initializable {
@@ -212,7 +213,7 @@ public class DisplayFolderController implements Initializable {
 	    
     private boolean filesHaveBeenDeleted() {
 
-    	File directory = new File("src/tempFiles");
+    	File directory = new File(DisplayFolderController.class.getClassLoader().getResource("tempFiles").getPath());
     	
     	for (File file : directory.listFiles()) {
     		if(!file.delete())
@@ -272,7 +273,7 @@ public class DisplayFolderController implements Initializable {
 			/* les elements du paragraphe 1 */
 			
 			Paragraph para1_1_1 = new Paragraph(20);
-			para1_1_1.add(new Phrase("\u0631\u0642\u0645 \u0627\u0644\u0645\u0644\u0641 : " + Calendar.getInstance().get(Calendar.YEAR) + "/" + dossier.getIdDossier(), small));
+			para1_1_1.add(new Phrase("\u0631\u0642\u0645 \u0627\u0644\u0645\u0644\u0641 : " + reverseString(dossier.getIdDossierYear()), small));
 			para1_1_1.setAlignment(Paragraph.ALIGN_LEFT);
 			para1_1_1.setSpacingAfter(30);
 
@@ -291,7 +292,7 @@ public class DisplayFolderController implements Initializable {
 			para1.add(new Phrase(codCinLabel.getText() + "\n", big0));
 			para1.add(new Phrase("\u0646\u0648\u0639 \u0627\u0644\u0637\u0644\u0628 : ", normal));
 			para1.add(new Phrase(typeDeDemandeLabel.getText() + "\n", big0));
-			para1.add(new Phrase("\u062a\u0627\u0631\u064a\u064a\u062e \u0625\u064a\u062f\u0627\u0639 \u0627\u0644\u0645\u0644\u0641 : ", normal));
+			para1.add(new Phrase("\u062a\u0627\u0631\u064a\u062e \u0625\u064a\u062f\u0627\u0639 \u0627\u0644\u0645\u0644\u0641 \u003a ", normal));
 			para1.add(new Phrase(DateDepotDossierLabel.getText() + "\n", big0));
 			para1.setAlignment(Paragraph.ALIGN_LEFT);
 			para1.setSpacingAfter(30);
@@ -347,7 +348,7 @@ public class DisplayFolderController implements Initializable {
 			 *the other informations 
 			 */
 			Paragraph para4 = new Paragraph(30);
-			para4.add(new Phrase("\u062a\u0627\u0631\u064a\u062e \u0625\u0631\u0633\u0627\u0644 \u0627\u0644\u0645\u0644\u0641 \u0625\u0644\u0649 \u0645\u0646\u062f\u0648\u0628\u064a\u0629 \u0648\u0643\u0627\u0644\u0629 \u0627\u0644\u062d\u0648\u0636 \u0627\u0644\u0645\u0627\u0626\u064a \u0644\u0627\u0645 \u0627\u0644\u0631\u0628\u064a\u0639 \u0628\u0627\u0644\u062c\u062f\u064a\u062f\u0629 : ", normal));
+			para4.add(new Phrase("\u062a\u0627\u0631\u064a\u062e \u0625\u0631\u0633\u0627\u0644 \u0627\u0644\u0645\u0644\u0641 \u0625\u0644\u0649 \u0645\u0646\u062f\u0648\u0628\u064a\u0629 \u0648\u0643\u0627\u0644\u0629 \u0627\u0644\u062d\u0648\u0636 \u0627\u0644\u0645\u0627\u0626\u064a \u0644\u0623\u0645 \u0627\u0644\u0631\u0628\u064a\u0639 \u0628\u0627\u0644\u062c\u062f\u064a\u062f\u0629 \u003a ", normal));
 			para4.add(new Phrase((dateDenvoiAlabhouerEljaidaLabel.getText().equals("") ? "XXXX-XX-XX" : dateDenvoiAlabhouerEljaidaLabel.getText()) + "\n", big0));
 			para4.add(new Phrase("\u062a\u0627\u0631\u064a\u062e \u0628\u062f\u0627\u064a\u0629 \u0627\u0644\u0628\u062d\u062b \u0627\u0644\u0639\u0644\u0646\u064a : ", normal));
 			para4.add(new Phrase((dateDebutEnquetePublicLabel.getText().equals("") ? "XXXX-XX-XX" : dateDebutEnquetePublicLabel.getText()) + "\n", big0));
@@ -357,9 +358,9 @@ public class DisplayFolderController implements Initializable {
 			para4.add(new Phrase((dateSignaturPVparCEPLabel.getText().equals("") ? "XXXX-XX-XX" : dateSignaturPVparCEPLabel.getText()) + "\n", big0));
 			para4.add(new Phrase("\u0631\u0623\u064a \u0644\u062c\u0646\u0629 \u0627\u0644\u0628\u062d\u062b \u0627\u0644\u0639\u0644\u0646\u064a : ", normal));
 			para4.add(new Phrase(AvisDeCEPLabel.getText() + "\n", big0));
-			para4.add(new Phrase("\u062a\u0627\u0631\u064a\u062e \u0625\u0631\u0633\u0627\u0644 \u0627\u0644\u0645\u062d\u0636\u0631 \u0625\u0644\u0649 \u0645\u0646\u062f\u0648\u0628\u064a\u0629 \u0648\u0643\u0627\u0644\u0629 \u0627\u0644\u062d\u0648\u0636 \u0627\u0644\u0645\u0627\u0626\u064a \u0644\u0627\u0645 \u0627\u0644\u0631\u0628\u064a\u0639 \u0628\u0627\u0644\u062c\u062f\u064a\u062f\u0629 : ", normal));
+			para4.add(new Phrase("\u062a\u0627\u0631\u064a\u062e \u0625\u0631\u0633\u0627\u0644 \u0627\u0644\u0645\u062d\u0636\u0631 \u0625\u0644\u0649 \u0645\u0646\u062f\u0648\u0628\u064a\u0629 \u0648\u0643\u0627\u0644\u0629 \u0627\u0644\u062d\u0648\u0636 \u0627\u0644\u0645\u0627\u0626\u064a \u0644\u0623\u0645 \u0627\u0644\u0631\u0628\u064a\u0639 \u0628\u0627\u0644\u062c\u062f\u064a\u062f\u0629 \u003a ", normal));
 			para4.add(new Phrase((dateEnvoitPvAbhoerEljadidaLabel.getText().equals("") ? "XXXX-XX-XX" : dateEnvoitPvAbhoerEljadidaLabel.getText()) + "\n", big0));
-			para4.add(new Phrase("\u0631\u0623\u064a \u0648\u0643\u0627\u0644\u0629 \u0627\u0644\u062d\u0648\u0636 \u0627\u0644\u0645\u0627\u0626\u064a \u0644\u0627\u0645 \u0627\u0644\u0631\u0628\u064a\u0639 : ", normal));
+			para4.add(new Phrase("\u0631\u0623\u064a \u0648\u0643\u0627\u0644\u0629 \u0627\u0644\u062d\u0648\u0636 \u0627\u0644\u0645\u0627\u0626\u064a \u0644\u0623\u0645 \u0627\u0644\u0631\u0628\u064a\u0639 \u003a ", normal));
 			para4.add(new Phrase(AvisAbhoerLabel.getText() + "\n", big0));
 			para4.add(new Phrase("\u0627\u0644\u0631\u062e\u0635\u0629 : ", normal));
 			para4.add(new Phrase(autorisationLabel.getText() + "\n", big0));
@@ -389,6 +390,13 @@ public class DisplayFolderController implements Initializable {
 			Desktop.getDesktop().open(new File(path+ "\\"+ codCinLabel.getText() + "_fichier.pdf"));
 		}
 
+
+	private String reverseString(String idDossierYear) {
+		String tab[] = idDossierYear.split("/");
+		return tab[1] + "/" + tab[0];
+	}
+
+    
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
@@ -413,6 +421,15 @@ public class DisplayFolderController implements Initializable {
 	
 	
 	private void initializeTextForLabels() {
+		
+		/*  
+		 *this zone for disabling the unused buttons 
+		 */
+		
+		if(dossier.getAttestationDePocession() == null) attestationFileButton.setDisable(true);
+		if(dossier.getCinFile() == null) cinFileButton.setDisable(true);
+		if(dossier.getPlanImmobilier() == null) planImmobilierFileButton.setDisable(true);
+		if(dossier.getDemandeFile() == null) demandeFileButton.setDisable(true);
     	
     	/**
     	 * this zone for demandeur informations
@@ -421,8 +438,8 @@ public class DisplayFolderController implements Initializable {
     	prenomLabel.setText(dossier.getPrenom());
     	codCinLabel.setText(dossier.getCin());
     	typeDeDemandeLabel.setText(dossier.getTypeDemande());
-    	demandeNameLabel.setText(dossier.getCin() + "demande.pdf");
-    	cinFileLabel.setText(dossier.getCin() + "CIN.pdf");
+    	demandeNameLabel.setText(dossier.getDemandeFile() == null ? "\u0644\u0627 \u0634\u064a\u0621" : dossier.getCin() + "demande.pdf");
+    	cinFileLabel.setText(dossier.getCinFile() == null ? "\u0644\u0627 \u0634\u064a\u0621" : dossier.getCin() + "CIN.pdf");
     	DateDepotDossierLabel.setText(dossier.getDateDepotDossier());
     	
     	/**
@@ -434,8 +451,8 @@ public class DisplayFolderController implements Initializable {
     	provinceLabel.setText(dossier.getProvince());
     	communeLabel.setText(dossier.getCommune());
     	douarLabel.setText(dossier.getDouar());
-    	attestationPoscessionImmobilierLabel.setText(dossier.getCin() + "attestation_de_pocession.pdf");
-    	planImmobilierFileNameLabel.setText(dossier.getCin() + "plan_de_l_immobilier.pdf");
+    	attestationPoscessionImmobilierLabel.setText(dossier.getAttestationDePocession() == null ? "\u0644\u0627 \u0634\u064a\u0621" : dossier.getCin() + "attestation_de_pocession.pdf");
+    	planImmobilierFileNameLabel.setText(dossier.getPlanImmobilier() == null ? "\u0644\u0627 \u0634\u064a\u0621" : dossier.getCin() + "plan_de_l_immobilier.pdf");
     	
     	/**
     	 * this zone for point d'eau informations

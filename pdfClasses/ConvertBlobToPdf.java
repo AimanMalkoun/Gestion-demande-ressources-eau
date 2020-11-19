@@ -1,3 +1,4 @@
+package pdfClasses;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -16,7 +17,7 @@ public class ConvertBlobToPdf{
 		
 		try {
 			
-			path = "src/tempFiles" + "/" +filename;
+			path = ConvertBlobToPdf.class.getClassLoader().getResource("tempFiles").getPath() + "/" +filename;
 			
 			savedFile = new File(path);
 			if(!savedFile.exists()) {

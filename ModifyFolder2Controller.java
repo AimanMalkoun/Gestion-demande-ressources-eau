@@ -11,11 +11,14 @@ import java.util.ResourceBundle;
 import Classes.FolderTable;
 import Connectivity.ConnectionClass;
 import Connectivity.ConnectionClassDossier;
+
 import alerts.DeleteConfirmationAlert;
 import alerts.WarningAlert;
+
 import javafx.beans.binding.Bindings;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -99,7 +102,7 @@ public class ModifyFolder2Controller implements Initializable {
 			boolean answer = getFolderInfo(cinInputSearch.getText());
 			if (!answer) {
 				WarningAlert.desplay("\u062a\u0646\u0628\u064a\u0647",
-						"\u0644\u0627 \u064a\u0648\u062c\u062f \u0647\u0630\u0627 \u0627\u0644\u0645\u0644\u0641");
+						"\u0644\u0627 \u064a\u0648\u062c\u062f \u0647\u0630\u0627 \u0627\u0644\u0631\u0642\u0645");
 			}
 		}
 		cinInputSearch.setText("");
@@ -132,9 +135,9 @@ public class ModifyFolder2Controller implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-
+		
 		// delete temporary files
-		File directory = new File("src/tempFiles");
+		File directory = new File(EnregistrerController.class.getClassLoader().getResource("tempFiles").getPath());
 		if (directory.listFiles().length > 0)
 			for (File file : directory.listFiles())
 				if (!file.delete())
@@ -149,9 +152,27 @@ public class ModifyFolder2Controller implements Initializable {
 	public void setMessage(int message) {
 
 		if (message == 0) // in case of modify folder
+		{
 			initializeMenuItems();
+			
+			tableInfo.setOnKeyPressed(event ->{
+				if(event.getCode().equals(KeyCode.ENTER)) {
+					modifyRow(tableInfo.getSelectionModel().getSelectedItem(), event);
+				}else if(event.getCode().equals(KeyCode.DELETE)) {
+					removeRow(tableInfo.getSelectionModel().getSelectedItem());
+				}
+			});
+			
+		}
 		else // in case of show folder
+		{
 			nitializeRowsForMouseClick();
+			tableInfo.setOnKeyPressed(event ->{
+				if(event.getCode().equals(KeyCode.ENTER))
+					goToShowFolderPage(tableInfo.getSelectionModel().getSelectedItem());
+				
+			});
+		}
 
 	}
 
@@ -215,10 +236,10 @@ public class ModifyFolder2Controller implements Initializable {
 				final MenuItem removeMenuItem = new MenuItem("\u062d\u0630\u0641 \u0627\u0644\u0645\u0644\u0641");
 
 				// handle action when you click on remove in the menu
-				modifyMenuItem.setOnAction(event -> modifyRow(row, event));
+				modifyMenuItem.setOnAction(event -> modifyRow(row.getItem(), event));
 
 				// handle action when you click on remove in the menu
-				removeMenuItem.setOnAction(e -> removeRow(row));
+				removeMenuItem.setOnAction(e -> removeRow(row.getItem()));
 
 				contextMenu.getItems().addAll(modifyMenuItem, removeMenuItem);
 
@@ -226,6 +247,13 @@ public class ModifyFolder2Controller implements Initializable {
 				// rows:
 				row.contextMenuProperty()
 						.bind(Bindings.when(row.emptyProperty()).then((ContextMenu) null).otherwise(contextMenu));
+				
+				row.setOnMouseClicked(event -> {
+					if (!row.isEmpty() && event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2) {
+
+						modifyRow(row.getItem(), event);
+					}
+				});
 
 				return row;
 			}
@@ -233,39 +261,37 @@ public class ModifyFolder2Controller implements Initializable {
 		});
 
 	}
-	
-	//this method is for removing a folder from dataBase and the table items
-		private void removeRow(TableRow<FolderTable> row){
-			
-			if (!th.isAlive()) {
-				
-				//first let the user confirm the delete order
-				if(DeleteConfirmationAlert.desplay()) {
-					
-					int result = 0;
-					FolderTable folder = row.getItem();
-			
-					//remove folder from dataBase
-					ConnectionClassDossier connection;
-					try {
-						connection = new ConnectionClassDossier();
-						result= connection.removeFolder(folder.getId());
-					} catch (ClassNotFoundException | SQLException e) {
-						
-						e.printStackTrace();
-					}
-					if(result > 0) {
-						//remove folder from tableView
-						tableInfo.getItems().remove(folder);
-					}
+
+	// this method is for removing a folder from dataBase and the table items
+	private void removeRow(FolderTable folderTable) {
+
+		if (!th.isAlive()) {
+
+			// first let the user confirm the delete order
+			if (DeleteConfirmationAlert.desplay()) {
+
+				int result = 0;
+
+				// remove folder from dataBase
+				ConnectionClassDossier connection;
+				try {
+					connection = new ConnectionClassDossier();
+					result = connection.removeFolder(folderTable.getId());
+				} catch (ClassNotFoundException | SQLException e) {
+
+					e.printStackTrace();
+				}
+				if (result > 0) {
+					// remove folder from tableView
+					tableInfo.getItems().remove(folderTable);
 				}
 			}
+		}
 	}
-
 
 	// this method riderects to modifyFolderIni.fxml in order to modify folder in
 	// the dataBase
-	private void modifyRow(TableRow<FolderTable> row, ActionEvent event) {
+	private void modifyRow(FolderTable folderTable, Event event) {
 
 		if (!th.isAlive()) {
 
@@ -276,10 +302,11 @@ public class ModifyFolder2Controller implements Initializable {
 				Parent modifyFolderRoot = loader.load();
 
 				modifierInfoDuDossierController nextControler = loader.getController();
-				if(nextControler.setMessage(row.getItem().getId()) != 0){
-					
+				if (nextControler.setMessage(folderTable.getId()) != 0) {
+
 					Stage primaryStage = (Stage) rootPane.getScene().getWindow();
-					Scene modifyFolderScene = new Scene(modifyFolderRoot, primaryStage.getWidth(), primaryStage.getHeight());
+					Scene modifyFolderScene = new Scene(modifyFolderRoot, primaryStage.getWidth(),
+							primaryStage.getHeight());
 					primaryStage.setScene(modifyFolderScene);
 				}
 
@@ -298,56 +325,59 @@ public class ModifyFolder2Controller implements Initializable {
 			task.cancel();
 
 		task = new Task<Void>() {
-		    					@Override 
-		    					protected Void call() throws Exception, SQLException {
-		    						
-		    						Connection conection =  ConnectionClass.getConnectionLocal(); 
-		    				    	
-		    						Statement statement = conection.createStatement(), statement2 = conection.createStatement();
-		    						ResultSet result;
-		    						result = statement.executeQuery("SELECT `IdDossier` FROM `dossier` ORDER BY IdDossier DESC");
-		    						
-		    						//get the number of rows
-		    						int rowsCount = getRowCount(conection);
-		    						
-		    						float progress = 0f;
+			@Override
+			protected Void call() throws Exception, SQLException {
 
-	    							//display the progress bar and disable the table 
-	    							progressIndicator.setVisible(true);
-	    							tableInfo.setDisable(true);
-	    							
-	    							tableInfo.getItems().clear();
-		    						while(result.next())
-		    						{
-		    							
-		    							if(this.isCancelled()) {
-		    								System.out.println("canceled!");
-			    							progressIndicator.setVisible(false);
-			    							tableInfo.setDisable(false);
-		    								break;
-		    							}else {
-		    								String sql = "SELECT `nom`, `prenom` , `cin`, `typeDemande`, `idDossierYear` FROM `dossier` WHERE `IdDossier`= " + result.getInt("IdDossier");
+				Connection conection = ConnectionClass.getConnectionLocal();
 
-		    								ResultSet result2 = statement2.executeQuery(sql);
-		    								if(result2.next()) {
-		    									tableInfo.getItems().add( new FolderTable(result.getInt("idDossier"), result2.getString("idDossierYear"), result2.getString("typeDemande"), result2.getString("cin"),  result2.getString("nom") + " " + result2.getString("prenom")) );
+				Statement statement = conection.createStatement(), statement2 = conection.createStatement();
+				ResultSet result;
+				result = statement.executeQuery("SELECT `IdDossier` FROM `dossier` ORDER BY IdDossier DESC");
 
-				    							progress++;
-				    							progressIndicator.setProgress(progress/rowsCount);
-		    								}
-		    								
-			    						}
-		    						}
-		    						
-    								System.out.println("task ended!");
-    								
-    								//hide the progress bar and enable the table 
-	    							progressIndicator.setVisible(false);
-	    							tableInfo.setDisable(false);
-		    						
-		    						return null;
-		    					}
-					};
+				// get the number of rows
+				int rowsCount = getRowCount(conection);
+
+				float progress = 0f;
+
+				// display the progress bar and disable the table
+				progressIndicator.setVisible(true);
+				tableInfo.setDisable(true);
+
+				tableInfo.getItems().clear();
+				while (result.next()) {
+
+					if (this.isCancelled()) {
+						System.out.println("canceled!");
+						progressIndicator.setVisible(false);
+						tableInfo.setDisable(false);
+						break;
+					} else {
+						String sql = "SELECT `nom`, `prenom` , `cin`, `typeDemande`, `idDossierYear` FROM `dossier` WHERE `IdDossier`= "
+								+ result.getInt("IdDossier");
+
+						ResultSet result2 = statement2.executeQuery(sql);
+						if (result2.next()) {
+							tableInfo.getItems()
+									.add(new FolderTable(result.getInt("idDossier"), result2.getString("idDossierYear"),
+											result2.getString("typeDemande"), result2.getString("cin"),
+											result2.getString("nom") + " " + result2.getString("prenom")));
+
+							progress++;
+							progressIndicator.setProgress(progress / rowsCount);
+						}
+
+					}
+				}
+
+				System.out.println("task ended!");
+
+				// hide the progress bar and enable the table
+				progressIndicator.setVisible(false);
+				tableInfo.setDisable(false);
+
+				return null;
+			}
+		};
 		th = new Thread(task);
 		th.setDaemon(true);
 		th.start();
@@ -357,30 +387,30 @@ public class ModifyFolder2Controller implements Initializable {
 
 		if (th.isAlive())
 			task.cancel();
-		
-    	
+
 		try {
 
-			Connection conection =  ConnectionClass.getConnectionLocal(); 
+			Connection conection = ConnectionClass.getConnectionLocal();
 			Statement statement = conection.createStatement();
 			ResultSet result;
 			result = statement.executeQuery(
 					"SELECT `IdDossier`,`nom`, `prenom` , `cin`, `typeDemande`, `idDossierYear` FROM `dossier` WHERE idDossierYear = '"
 							+ idDossierYear + "'");
 			tableInfo.getItems().clear();
-			while(result.next())
-			{
-				
-				tableInfo.getItems().add( new FolderTable(result.getInt("IdDossier"),result.getString("idDossierYear") ,result.getString("typeDemande"), result.getString("cin"),  result.getString("nom") + " " + result.getString("prenom")) );
-				
-				
+			while (result.next()) {
+
+				tableInfo.getItems()
+						.add(new FolderTable(result.getInt("IdDossier"), result.getString("idDossierYear"),
+								result.getString("typeDemande"), result.getString("cin"),
+								result.getString("nom") + " " + result.getString("prenom")));
+
 				return true;
 			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		return false;
 
 	}

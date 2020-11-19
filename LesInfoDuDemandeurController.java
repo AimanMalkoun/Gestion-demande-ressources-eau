@@ -7,9 +7,9 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import Classes.Demandeur;
+import Classes.ImagesOrPdfChooser;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -24,6 +24,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.fxml.Initializable;
 
 public class LesInfoDuDemandeurController implements Initializable{
 	
@@ -167,6 +168,8 @@ public class LesInfoDuDemandeurController implements Initializable{
         	if(file != null) {
         		cinFile = file;
         		cinFilePath.setText(cinFile.getName());
+        	}else {
+        		cinFile = null;
         	}
         	
         	
@@ -177,6 +180,8 @@ public class LesInfoDuDemandeurController implements Initializable{
         	if(file != null) {
         		demandeFile = file;
         		demandeFilePath.setText(demandeFile.getName());
+        	}else {
+        		demandeFile = null;
         	}
         	
         }
@@ -223,15 +228,6 @@ public class LesInfoDuDemandeurController implements Initializable{
 	    		condition = condition && false;
 	    	}
 	    	
-	    	if(cinFile == null) {
-	    		cinFileButton.setStyle("-fx-border-color: red; -fx-background-color: #2b4067;");
-	    		condition = condition && false;
-	    	}
-	    	
-	    	if(demandeFile == null) {
-	    		demandeFileButton.setStyle("-fx-border-color: red; -fx-background-color: #2b4067;");
-	    		condition = condition && false;
-	    	}
 	    	
 	    	return condition;
 	    }

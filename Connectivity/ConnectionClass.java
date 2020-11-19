@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class ConnectionClass {
 	
-	private static Connection sqliteConnection = null; // for local connection
+	private static Connection sqliteConnection = null; 
 	
 
 	

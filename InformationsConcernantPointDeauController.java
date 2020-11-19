@@ -58,8 +58,10 @@ public class InformationsConcernantPointDeauController implements Initializable 
 		 */
 		if (isValideString(locationEau) & isValideFloat(debit) & isValideFloat(profondeur) &  
 				isValideFloat(poinEau)	) {
-			poinDeau = new PointDeau(locationEau.getText().toString(), new Float(debit.getText()),
-					new Float(profondeur.getText()), new Float(poinEau.getText()));
+			poinDeau = new PointDeau(locationEau.getText().isEmpty() ? "X/Y" : locationEau.getText(),
+									new Float(debit.getText().isEmpty() ? "0" : debit.getText()),
+									new Float(profondeur.getText().isEmpty() ? "0" : profondeur.getText()),
+									new Float(poinEau.getText().isEmpty() ? "0" : poinEau.getText()));
 
 			FXMLLoader loader= new FXMLLoader();
 			loader.setLocation(getClass().getResource("Fxml/Enregistrer.fxml"));
@@ -100,7 +102,7 @@ public class InformationsConcernantPointDeauController implements Initializable 
 		 * La méthode a pour but de vérifier est ce que le paramètre texte est du type Float.
 		 */
 		try {
-			float nbr = Float.parseFloat(text.getText());
+			float nbr = Float.parseFloat(text.getText().isEmpty() ? "0" : text.getText());
 			return true;
 		} catch (NumberFormatException e) {
 			text.setStyle("-fx-border-color: red;");
@@ -113,18 +115,13 @@ public class InformationsConcernantPointDeauController implements Initializable 
 		 * La méthode a pour but de vérifier est ce que le paramètre text est du type
 		 * String.
 		 */
-		if (text.getText().isEmpty()) {
+		try {
+			float nbr = Float.parseFloat(text.getText());
 			text.setStyle("-fx-border-color: red;");
 			return false;
-		} else {
-			try {
-				float nbr = Float.parseFloat(text.getText());
-				text.setStyle("-fx-border-color: red;");
-				return false;
-			} catch (NumberFormatException e) {
+		} catch (NumberFormatException e) {
 
-				return true;
-			}
+			return true;
 		}
 	}
 

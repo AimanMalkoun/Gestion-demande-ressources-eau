@@ -1,3 +1,4 @@
+package pdfClasses;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -13,13 +14,18 @@ import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.pdf.PdfWriter;
 
+import javafx.application.Application;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
+import javafx.stage.Stage;
+
 
 
 public class CreatePdfWithImages{
 	
 	public static File createPdf(List<File> imagesList, String fileName) {
 		//get destination path
-		String destPath = "src/tempFiles" + "/" + fileName;
+		String destPath = CreatePdfWithImages.class.getClassLoader().getResource("tempFiles").getPath() + "/" + fileName;
 		
 		//creating pdf writer
 		Document document = new Document();

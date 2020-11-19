@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 
 public class WarningAlert {
 	static boolean answer = false;
+	private static String StringAnswer;
 	public static void desplay(String title, String message) {
 			
 			Stage window = new Stage();
@@ -104,6 +105,7 @@ public class WarningAlert {
 	}
 	public static boolean displayChoice() {
 		
+		answer = (Boolean) null;
 		Stage window = new Stage();
 		window.setResizable(false);
 		window.initModality(Modality.APPLICATION_MODAL);
@@ -154,6 +156,56 @@ public class WarningAlert {
 		window.centerOnScreen();
 		
 		return answer;
+	}
+	
+public static String displayChoice(String title, String message) {
+	
+		StringAnswer = "nothing";
+		Stage window = new Stage();
+		window.setResizable(false);
+		window.initModality(Modality.APPLICATION_MODAL);
+	
+		Button yesButton = new Button("\u0646\u0639\u0645"), noButton = new Button("\u0644\u0627");
+		
+		yesButton.setStyle("-fx-background-color: #2b4067; -fx-text-fill: white;");
+		yesButton.setPrefWidth(40);
+		noButton.setStyle("-fx-background-color: #2b4067; -fx-text-fill: white;");
+		noButton.setPrefWidth(40);;
+		
+	
+		yesButton.setOnMouseClicked(e -> {
+			StringAnswer = "true";
+			window.close();
+		});
+		noButton.setOnMouseClicked(e -> {
+			StringAnswer = "false";
+			window.close();
+		});
+		
+		
+		Label message1 = new Label();
+		message1.setText(message);
+		message1.setAlignment(Pos.CENTER);
+		message1.setStyle("-fx-text-fill: #2b4067; -fx-font-size: 14px");
+		
+		HBox hbox = new HBox(50);
+		hbox.getChildren().addAll(noButton, yesButton);
+		hbox.setAlignment(Pos.CENTER);
+		
+		VBox root = new VBox(15);
+		root.getChildren().addAll(message1, hbox);
+	
+		root.setAlignment(Pos.CENTER);
+		root.setPadding(new Insets(25, 25, 25, 25));
+		Scene scene = new Scene(root);
+		
+		window.setScene(scene);
+		window.setTitle(title);
+		window.getIcons().add(new Image("/Image/Logo5.png"));
+		window.showAndWait();
+		window.centerOnScreen();
+		
+		return StringAnswer;
 	}
 	
 }

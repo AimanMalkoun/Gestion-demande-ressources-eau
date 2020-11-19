@@ -18,6 +18,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -26,10 +29,15 @@ import javafx.stage.Stage;
 public class LoginStageController  implements Initializable{
 
 	private String realPassword;
+	
 	@FXML
 	private PasswordField password;
+	
 	@FXML
 	private Label msgError;
+	
+	@FXML
+    private ToggleButton toggleButton;
 	
 	@FXML
 	void login(ActionEvent event) throws SQLException, IOException {

@@ -1,5 +1,6 @@
 package Connectivity;
 
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -44,14 +45,15 @@ public class ConnectionClassDossier {
 			ResultSet result = stm.executeQuery(sqlRequette);
 			if (result.next()) {
 				dossier.setIdDossier(ID);
+				dossier.setIdDossierYear(result.getString("idDossierYear"));
 
 				dossier.setNom(result.getString("Nom"));
 				dossier.setPrenom(result.getString("Prenom"));
 				dossier.setCin(result.getString("cin"));
 				dossier.setTypeDemande(result.getString("typeDemande"));
 				dossier.setDateDepotDossier(result.getString("DateDepot"));
-				dossier.setCinFile(new SerialBlob(result.getBytes("cinImg")));
-				dossier.setDemandeFile(new SerialBlob(result.getBytes("demandeCreusement")));
+				dossier.setCinFile(result.getBytes("cinImg")== null ? null : new SerialBlob(result.getBytes("cinImg")));
+				dossier.setDemandeFile(result.getBytes("demandeCreusement") == null ? null : new SerialBlob(result.getBytes("demandeCreusement")));
 
 				dossier.setNomImmobilier(result.getString("nomImmobilier"));
 				dossier.setQuiada(result.getString("qiyada"));
@@ -59,8 +61,8 @@ public class ConnectionClassDossier {
 				dossier.setDouar(result.getString("Douar"));
 				dossier.setCommune(result.getString("Commune"));
 				dossier.setProvince(result.getString("Province"));
-				dossier.setAttestationDePocession(new SerialBlob(result.getBytes("attistationPocession")));
-				dossier.setPlanImmobilier(new SerialBlob(result.getBytes("planImmo")));
+				dossier.setAttestationDePocession(result.getBytes("attistationPocession") == null ? null : new SerialBlob(result.getBytes("attistationPocession")));
+				dossier.setPlanImmobilier(result.getBytes("planImmo") == null ? null : new SerialBlob(result.getBytes("planImmo")));
 
 				dossier.setLocalisationPoint(result.getString("localisationPointEau"));
 				dossier.setProfondeur(result.getFloat("Profendeur"));
@@ -71,9 +73,8 @@ public class ConnectionClassDossier {
 				dossier.setAvisDe_CEP((result.getString("AvisDeCEP")));
 
 				dossier.setAutorisation(result.getString("Autorisation"));
-
-				// we need first to convert java.sql.Date to java.time.LocalDate to match the
-				// argument of the setter
+				
+				
 				dossier.setDateDepot(result.getString("DateDepot"));
 				dossier.setDateEnvoiA_LABHOER(result.getString("dateEnvoiABHOER"));
 				dossier.setDateDebutde_EP(result.getString("dateDebut_EP"));
@@ -92,8 +93,6 @@ public class ConnectionClassDossier {
 	}
 
 	public void updateDossierToDatabase(DossierForDownload dossier) throws ClassNotFoundException, SQLException {
-
-		//int resultLocal = 0;
 
 		String sqliteRequete = "UPDATE `dossier` " + // this query is for local database
 				"SET `Nom`=?," + "    `Prenom`=?," + "    `cin`=?," + "    `cinImg`=?," + "    `typeDemande`=?,"
@@ -115,11 +114,11 @@ public class ConnectionClassDossier {
 			stm.setString(1, dossier.getNom());
 			stm.setString(2, dossier.getPrenom());
 			stm.setString(3, dossier.getCin());
-			stm.setBytes(4, IOUtils.toByteArray(dossier.getCinFile().getBinaryStream()));
+			stm.setBytes(4, dossier.getCinFile() == null ? (byte[])null : IOUtils.toByteArray(dossier.getCinFile().getBinaryStream()));
 			stm.setString(5, dossier.getTypeDemande());
-			stm.setBytes(6, IOUtils.toByteArray(dossier.getDemandeFile().getBinaryStream()));
+			stm.setBytes(6, dossier.getDemandeFile() == null ? (byte[])null : IOUtils.toByteArray(dossier.getDemandeFile().getBinaryStream()));
 
-			stm.setBytes(7, IOUtils.toByteArray(dossier.getAttestationDePocession().getBinaryStream()));
+			stm.setBytes(7, dossier.getAttestationDePocession() == null ? (byte[])null : IOUtils.toByteArray(dossier.getAttestationDePocession().getBinaryStream()));
 			stm.setString(8, dossier.getDouar());
 			stm.setString(9, dossier.getCommune());
 			stm.setString(10, dossier.getProvince());
@@ -142,7 +141,7 @@ public class ConnectionClassDossier {
 			stm.setString(24, dossier.getAutorisation());
 
 			stm.setString(25, dossier.getQuiada());
-			stm.setBytes(26, IOUtils.toByteArray(dossier.getPlanImmobilier().getBinaryStream()));
+			stm.setBytes(26, dossier.getPlanImmobilier() == null ? (byte[])null : IOUtils.toByteArray(dossier.getPlanImmobilier().getBinaryStream()));
 			stm.setString(27, dossier.getNomImmobilier());
 
 			stm.setInt(28, dossier.getIdDossier());

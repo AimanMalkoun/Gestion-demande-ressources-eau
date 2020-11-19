@@ -2,6 +2,7 @@ package alerts;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -23,8 +24,10 @@ public class DeleteConfirmationAlert {
 		window.initModality(Modality.APPLICATION_MODAL);
 
 		Button yesButton = new Button("\u0646\u0639\u0645"), noButton = new Button("\u0644\u0627");
+		yesButton.setCursor(Cursor.HAND);
 		yesButton.setPrefSize(60, 30);
 		yesButton.setStyle("-fx-background-color: #2b4067; -fx-text-fill: white");
+		noButton.setCursor(Cursor.HAND);
 		noButton.setPrefSize(60, 30);
 		noButton.setStyle("-fx-background-color: #2b4067; -fx-text-fill: white");
 

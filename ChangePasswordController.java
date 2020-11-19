@@ -1,8 +1,10 @@
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ResourceBundle;
 
 import Classes.PasswordChange;
 import Connectivity.ConnectionClass;
@@ -10,27 +12,42 @@ import alerts.WarningAlert;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
-public class ChangePasswordController {
+public class ChangePasswordController implements Initializable{
 	
 	private String realPassword;
 	
+	
 	@FXML
-    private TextField previousPassword;
+    private ToggleButton previousPasswordToggle;
 
     @FXML
-    private TextField newPassword;
+    private PasswordField previousPassword;
 
     @FXML
-    private TextField confirmedPassword;
+    private ToggleButton newPasswordToggle;
+
+    @FXML
+    private PasswordField newPassword;
+
     @FXML
     private Label warringLabel;
+
+    @FXML
+    private ToggleButton confirmedPasswordToggle;
+
+    @FXML
+    private PasswordField confirmedPassword;
 
     @FXML
     void changePasswordConfirmation(ActionEvent event){
@@ -108,4 +125,9 @@ public class ChangePasswordController {
 		primaryStage.setScene(dashboardScene);
 		
     }
+
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		
+	}
 }

@@ -1,6 +1,4 @@
 
- /* this class has one goal is to send all these informations into data base   */
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,7 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Calendar;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import org.apache.commons.io.IOUtils;
@@ -81,8 +79,7 @@ public class EnregistrerController implements Initializable {
 	// Event Listener on Button[#modifyButton].onAction
 	@FXML
 	public void modifyButtonMethode(ActionEvent event) throws IOException {
-		/*this method aims to return to the InformationsDuDemandeur.fxml page*/
-		
+
 		try {
 
 			FXMLLoader loader = new FXMLLoader();
@@ -104,33 +101,34 @@ public class EnregistrerController implements Initializable {
 	@FXML
 	public void savebuttonMethode(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
 
-		int year = Calendar.getInstance().get(Calendar.YEAR);
-
-		
 		/* connect with the local dataBase */
 		Connection connectionLocal = ConnectionClass.getConnectionLocal();
-		
 		/* get the maximum idDossier */
-		String sqlId = "SELECT MAX(IdDossier)  FROM dossier";
+
+		String sqlId = "SELECT IdDossier, idDossierYear  FROM dossier WHERE idDossier = (SELECT MAX(IdDossier)  FROM dossier)";
+		
 		ResultSet result = connectionLocal.createStatement().executeQuery(sqlId);
 		if (result.next()) {
 
 			idDossier = result.getInt(1) + 1;
-			idDossierYear = idDossier + "/" + year;
+			idDossierYear = getNewIdDossierYear(result.getString(2));
 
+		} else {
+			idDossier = 1;
+			idDossierYear = idDossier + "/" + LocalDate.parse(LesInfoDuDemandeurController.demandeur.getDateDepotDossier()).getYear() ;
 		}
 
 		/*
-		 * Creation of the object InputStream aims to stock it into database
+		 * Creation de l'objet InputStream afin de le stocker dans la base de donn�es
 		 */
 
-		InputStream cinFile = new FileInputStream(LesInfoDuDemandeurController.demandeur.getCinFile());
-		InputStream demandeCreusement = new FileInputStream(LesInfoDuDemandeurController.demandeur.getDemandeFile());
-		InputStream attistation = new FileInputStream(
+		InputStream cinFile = LesInfoDuDemandeurController.demandeur.getCinFile() == null ? null : new FileInputStream(LesInfoDuDemandeurController.demandeur.getCinFile());
+		InputStream demandeCreusement = LesInfoDuDemandeurController.demandeur.getDemandeFile() == null ? null : new FileInputStream(LesInfoDuDemandeurController.demandeur.getDemandeFile());
+		InputStream attistation = LesInfoDelImmobilierController.InfoSurImmobilier.getAttestationDePocession() == null ? null : new FileInputStream(
 				LesInfoDelImmobilierController.InfoSurImmobilier.getAttestationDePocession());
-		InputStream planImmFile = new FileInputStream(
+		InputStream planImmFile = LesInfoDelImmobilierController.InfoSurImmobilier.getPlanImmobilier() == null ? null : new FileInputStream(
 				LesInfoDelImmobilierController.InfoSurImmobilier.getPlanImmobilier());
-		/* The SQL insertion  request  */
+		/* la requite sql de l'insertion */
 
 		String sql = "INSERT INTO `dossier`(`IdDossier`, `Nom`, `Prenom`, `cin`, `cinImg`, `typeDemande`,"
 				+ " `demandeCreusement`, `attistationPocession`, `Douar`, `Commune`, `Province`, `localisationPointEau`"
@@ -140,17 +138,17 @@ public class EnregistrerController implements Initializable {
 				+ "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
 
-			/* insert all of the elements into database*/
-
+			/* l'insertion des el�ments dans la base de donnees */
+			byte nullBytes[] = null; 
 			PreparedStatement stat = connectionLocal.prepareStatement(sql);
 			stat.setInt(1, idDossier);
 			stat.setString(2, LesInfoDuDemandeurController.demandeur.getNom());
 			stat.setString(3, LesInfoDuDemandeurController.demandeur.getPrenom());
 			stat.setString(4, LesInfoDuDemandeurController.demandeur.getCin());
-			stat.setBytes(5, IOUtils.toByteArray(cinFile));
+			stat.setBytes(5, cinFile == null ? nullBytes : IOUtils.toByteArray(cinFile));
 			stat.setString(6, LesInfoDuDemandeurController.demandeur.getTypeDemande());
-			stat.setBytes(7, IOUtils.toByteArray(demandeCreusement));
-			stat.setBytes(8, IOUtils.toByteArray(attistation));
+			stat.setBytes(7, demandeCreusement == null ? nullBytes : IOUtils.toByteArray(demandeCreusement));
+			stat.setBytes(8, attistation == null ? nullBytes : IOUtils.toByteArray(attistation));
 			stat.setString(9, LesInfoDelImmobilierController.InfoSurImmobilier.getDouar());
 			stat.setString(10, LesInfoDelImmobilierController.InfoSurImmobilier.getCommune());
 			stat.setString(11, LesInfoDelImmobilierController.InfoSurImmobilier.getProvince());
@@ -170,26 +168,25 @@ public class EnregistrerController implements Initializable {
 			stat.setString(24, "\u0644\u0627 \u0634\u064a\u0621");
 			stat.setString(25, "\u0644\u0627 \u0634\u064a\u0621");
 			stat.setString(26, LesInfoDelImmobilierController.InfoSurImmobilier.getQuiada());
-			stat.setBytes(27, IOUtils.toByteArray(planImmFile));
+			stat.setBytes(27, planImmFile == null ? nullBytes :IOUtils.toByteArray(planImmFile));
 			stat.setString(28, LesInfoDelImmobilierController.InfoSurImmobilier.getNomImmobilier());
 			stat.setString(29, idDossierYear);
 			stat.execute();
 
 
 			// close the file input stream
-			cinFile.close();
-			demandeCreusement.close();
-			attistation.close();
-			planImmFile.close();
+			if(cinFile != null) cinFile.close();
+			if(demandeCreusement != null) demandeCreusement.close();
+			if(attistation != null) attistation.close();
+			if(planImmFile != null) planImmFile.close();
 
 		} catch (SQLException e) {
 
 			e.printStackTrace();
 		}
+
 		try {
 
-			/*this method aims to return to the AEteEnregistrer.fxml page*/
-			
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("Fxml/AEteEnregistrer.fxml"));
 			Parent AEteEnregistrerRoot = loader.load();
@@ -206,6 +203,20 @@ public class EnregistrerController implements Initializable {
 
 	}
 	
+
+	private String getNewIdDossierYear(String oldIdDossierYear) {
+		String tab[] = oldIdDossierYear.split("/");
+		int id = Integer.parseInt(tab[0]);
+		int year = Integer.parseInt(tab[1]);
+		int current_year = LocalDate.parse(LesInfoDuDemandeurController.demandeur.getDateDepotDossier()).getYear();
+		System.out.println("year = " + year + "current year = " + current_year);
+		if(current_year > year) {
+			return 1 + "/" + current_year;
+		}else {
+			return (id + 1) + "/" + year;
+		}
+	}
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
@@ -216,8 +227,8 @@ public class EnregistrerController implements Initializable {
 		codeCin.setText(LesInfoDuDemandeurController.demandeur.getCin());
 		dateDepot.setText("" + LesInfoDuDemandeurController.demandeur.getDateDepotDossier());
 		typeDemande.setText(LesInfoDuDemandeurController.demandeur.getTypeDemande());
-		cinFile.setText(LesInfoDuDemandeurController.demandeur.getCinFile().getName());
-		demande.setText(LesInfoDuDemandeurController.demandeur.getDemandeFile().getName());
+		cinFile.setText(LesInfoDuDemandeurController.demandeur.getCinFile() == null ? "" : LesInfoDuDemandeurController.demandeur.getCinFile().getName());
+		demande.setText(LesInfoDuDemandeurController.demandeur.getDemandeFile() == null ? "" : LesInfoDuDemandeurController.demandeur.getDemandeFile().getName());
 
 		/* Les information concernant l'mmobilier */
 
@@ -227,9 +238,9 @@ public class EnregistrerController implements Initializable {
 		commune.setText(LesInfoDelImmobilierController.InfoSurImmobilier.getCommune());
 		province.setText(LesInfoDelImmobilierController.InfoSurImmobilier.getProvince());
 		AttestationPossession
-				.setText(LesInfoDelImmobilierController.InfoSurImmobilier.getAttestationDePocession().getName());
+				.setText(LesInfoDelImmobilierController.InfoSurImmobilier.getAttestationDePocession() == null ? "" : LesInfoDelImmobilierController.InfoSurImmobilier.getAttestationDePocession().getName());
 		qiyada.setText(LesInfoDelImmobilierController.InfoSurImmobilier.getQuiada());
-		palnImm.setText(LesInfoDelImmobilierController.InfoSurImmobilier.getPlanImmobilier().getName());
+		palnImm.setText(LesInfoDelImmobilierController.InfoSurImmobilier.getPlanImmobilier() == null ? "" : LesInfoDelImmobilierController.InfoSurImmobilier.getPlanImmobilier().getName());
 
 		/* Les information concernant le point d'eau */
 

@@ -8,6 +8,7 @@ public class DossierForDownload {
 	 * declaration des attributs (private) .
 	 */
 	private int IdDossier;
+	private String idDossierYear;
 	
 	//Demandeur attributs
 	private String nom;
@@ -360,6 +361,16 @@ public class DossierForDownload {
 				+ dateFin_EP + "\n dateSignateureDuPv=" + dateSignateureDuPv + "\n dateEnvoiDuPVa_LABHOER="
 				+ dateEnvoiDuPVa_LABHOER + "\n avisDe_CEP=" + avisDe_CEP + "\n avisABHOER=" + avisABHOER
 				+ "\n autorisation=" + autorisation + "]\n";
+	}
+
+
+	public String getIdDossierYear() {
+		return idDossierYear;
+	}
+
+
+	public void setIdDossierYear(String idDossierYear) {
+		this.idDossierYear = idDossierYear;
 	}
 
 	

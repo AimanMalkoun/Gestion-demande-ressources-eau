@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -15,8 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<ScrollPane fitToHeight="true" fitToWidth="true" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoginStageController">
+<ScrollPane fitToHeight="true" fitToWidth="true" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoginStageController">
    <content>
       <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1130.0">
          <children>
@@ -59,6 +59,7 @@
                               </Label>
                               <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="450.0" style="-fx-background-color: transparent;">
                                  <children>
+                                    <ToggleButton fx:id="toggleButton" mnemonicParsing="false" prefHeight="38.0" prefWidth="37.0" style="-fx-background-color: none;" />
                                     <PasswordField fx:id="password" alignment="CENTER_RIGHT" onKeyPressed="#handleEnterAcion" prefHeight="40.0" prefWidth="246.0" promptText="كلمة المرور " style="-fx-border-color: #2b4067; -fx-border-width: 2px;" HBox.hgrow="ALWAYS">
                                        <HBox.margin>
                                           <Insets right="10.0" />
@@ -97,6 +98,9 @@
                                  <font>
                                     <Font size="18.0" />
                                  </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
                               </Button>
                            </children>
                         </VBox>

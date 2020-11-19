@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import Classes.ImagesOrPdfChooser;
 import Classes.Immobilier;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -171,16 +172,6 @@ public class LesInfoDelImmobilierController implements Initializable {
 
 		if (province.getText().isEmpty()) {
 			province.setStyle("-fx-border-color: red");
-			condition = condition && false;
-		}
-
-		if (attestationFile == null) {
-			attistationFileButton.setStyle("-fx-border-color: red; -fx-background-color: #2b4067;");
-			condition = condition && false;
-		}
-		
-		if (planImmobilierFile == null) {
-			planImmobilierFileButton.setStyle("-fx-border-color: red; -fx-background-color: #2b4067;");
 			condition = condition && false;
 		}
 

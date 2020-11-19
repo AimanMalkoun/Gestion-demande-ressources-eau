@@ -1,9 +1,11 @@
+package Classes;
 
 import java.io.File;
 import java.util.List;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -12,6 +14,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import pdfClasses.CreatePdfWithImages;
 
 public class ImagesOrPdfChooser {
 	
@@ -25,7 +28,11 @@ public class ImagesOrPdfChooser {
 		window.setResizable(false);
 		window.initModality(Modality.APPLICATION_MODAL);
 
-		Button inputImages = new Button("\u0645\u062c\u0645\u0648\u0639\u0629 \u0635\u0648\u0631"), inputPdf = new Button("\u0645\u0644\u0641 pdf");
+		Button inputImages = new Button("\u0645\u062c\u0645\u0648\u0639\u0629 \u0635\u0648\u0631"), 
+			   inputPdf = new Button("\u0645\u0644\u0641 pdf");
+
+		inputImages.setCursor(Cursor.HAND);
+		inputPdf.setCursor(Cursor.HAND);
 		inputImages.setPrefSize(150, 30);
 		inputPdf.setPrefSize(150, 30);
 
@@ -72,7 +79,7 @@ public class ImagesOrPdfChooser {
 		Scene scene = new Scene(layout);
 		window.setScene(scene);
 		window.setTitle(title);
-		window.getIcons().add(new Image("Image/Logo5.png"));
+		window.getIcons().add(new Image("/Image/Logo5.png"));
 		window.showAndWait();
 		
 		

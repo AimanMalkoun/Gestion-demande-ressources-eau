@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="1130.0" style="-fx-background-color: #2b4067;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DisplayFolderController">
+<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="1130.0" style="-fx-background-color: #2b4067;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DisplayFolderController">
    <content>
       <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1130.0" stylesheets="@../GestionDemandeEau/application.css">
          <center>
@@ -60,137 +60,137 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <Label alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="605.0" text="الاسم العائلي                                                                                              :" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER">
+                              <Label alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="605.0" text="الاسم العائلي                                                                                              " GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="602.0" text="الاسم الشخصي                                                                                           :" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                              <Label alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="602.0" text="الاسم الشخصي                                                                                           " GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="48.0" prefHeight="31.0" prefWidth="635.0" text="رقم بطاقة التعريف الوطنية                                                                         :" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="48.0" prefHeight="31.0" prefWidth="635.0" text="رقم بطاقة التعريف الوطنية                                                                         " GridPane.columnIndex="1" GridPane.rowIndex="2">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="84.0" prefHeight="31.0" prefWidth="622.0" text="نوع الطلب                                                                                                  :" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="84.0" prefHeight="31.0" prefWidth="622.0" text="نوع الطلب                                                                                                  " GridPane.columnIndex="1" GridPane.rowIndex="4">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="120.0" prefHeight="31.0" prefWidth="681.0" text="اسم العقار                                                                                                  :" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="120.0" prefHeight="31.0" prefWidth="681.0" text="اسم العقار                                                                                                  " GridPane.columnIndex="1" GridPane.rowIndex="6">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="156.0" prefHeight="31.0" prefWidth="619.0" text="الدوار                                                                                                   :" GridPane.columnIndex="1" GridPane.rowIndex="11">
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="156.0" prefHeight="31.0" prefWidth="619.0" text="الدوار                                                                                                   " GridPane.columnIndex="1" GridPane.rowIndex="11">
                                  <font>
                                     <Font size="17.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="192.0" prefHeight="31.0" prefWidth="643.0" text="الجماعة                                                                                                :" GridPane.columnIndex="1" GridPane.rowIndex="12">
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="192.0" prefHeight="31.0" prefWidth="643.0" text="الجماعة                                                                                                " GridPane.columnIndex="1" GridPane.rowIndex="12">
                                  <font>
                                     <Font size="17.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="228.0" prefHeight="31.0" prefWidth="599.0" text="الإقليم                                                                                                  :" GridPane.columnIndex="1" GridPane.rowIndex="13">
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="228.0" prefHeight="31.0" prefWidth="599.0" text="الإقليم                                                                                                  " GridPane.columnIndex="1" GridPane.rowIndex="13">
                                  <font>
                                     <Font size="17.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="264.0" prefHeight="31.0" prefWidth="743.0" text="إحداثيات الثقب المائي                                                                           :" GridPane.columnIndex="1" GridPane.rowIndex="14">
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="264.0" prefHeight="31.0" prefWidth="743.0" text="إحداثيات الثقب المائي                                                                           " GridPane.columnIndex="1" GridPane.rowIndex="14">
                                  <font>
                                     <Font size="17.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="300.0" prefHeight="31.0" prefWidth="656.0" text="الصبيب                                                                                               :" GridPane.columnIndex="1" GridPane.rowIndex="15">
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="300.0" prefHeight="31.0" prefWidth="656.0" text="الصبيب                                                                                               " GridPane.columnIndex="1" GridPane.rowIndex="15">
                                  <font>
                                     <Font size="17.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="336.0" prefHeight="31.0" prefWidth="653.0" text="مستوى  الماء                                                                                       :" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="17">
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="336.0" prefHeight="31.0" prefWidth="653.0" text="مستوى  الماء                                                                                       " GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="17">
                                  <font>
                                     <Font size="17.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="408.0" prefHeight="31.0" prefWidth="597.0" text="العمق                                                                                                  :" GridPane.columnIndex="1" GridPane.rowIndex="16">
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="408.0" prefHeight="31.0" prefWidth="597.0" text="العمق                                                                                                  " GridPane.columnIndex="1" GridPane.rowIndex="16">
                                  <font>
                                     <Font size="17.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="12.0" prefHeight="31.0" prefWidth="628.0" text="تاريخ نهاية البحث العلني                                                                       :" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="21" GridPane.valignment="CENTER">
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="12.0" prefHeight="31.0" prefWidth="628.0" text="تاريخ نهاية البحث العلني                                                                       " GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="21" GridPane.valignment="CENTER">
                                  <font>
                                     <Font size="17.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="48.0" prefHeight="31.0" prefWidth="624.0" text="تاريخ امضاء المحضر من طرف لجنة البحث العلني                                   :" GridPane.columnIndex="1" GridPane.rowIndex="22">
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="48.0" prefHeight="31.0" prefWidth="624.0" text="تاريخ امضاء المحضر من طرف لجنة البحث العلني                                   " GridPane.columnIndex="1" GridPane.rowIndex="22">
                                  <font>
                                     <Font size="17.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="156.0" prefHeight="31.0" prefWidth="625.0" text="الرخصة                                                                                                :" GridPane.columnIndex="1" GridPane.rowIndex="26">
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="156.0" prefHeight="31.0" prefWidth="625.0" text="الرخصة                                                                                                " GridPane.columnIndex="1" GridPane.rowIndex="26">
                                  <font>
                                     <Font size="17.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="192.0" prefHeight="31.0" prefWidth="601.0" text="رأي وكالة الحوض المائي لام الربيع                                                         :" GridPane.columnIndex="1" GridPane.rowIndex="25">
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="192.0" prefHeight="31.0" prefWidth="601.0" text="رأي وكالة الحوض المائي لأم الربيع                                                         " GridPane.columnIndex="1" GridPane.rowIndex="25">
                                  <font>
                                     <Font size="17.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="228.0" prefHeight="31.0" prefWidth="534.0" text="تاريخ إرسال المحضر إلى مندوبية وكالة الحوض المائي لام الربيع بالجديدة :" GridPane.columnIndex="1" GridPane.rowIndex="24">
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="228.0" prefHeight="31.0" prefWidth="534.0" text="تاريخ إرسال المحضر إلى مندوبية وكالة الحوض المائي لأم الربيع بالجديدة " GridPane.columnIndex="1" GridPane.rowIndex="24">
                                  <font>
                                     <Font size="17.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="264.0" prefHeight="31.0" prefWidth="656.0" text="رأي لجنة البحث العلني                                                                          :" GridPane.columnIndex="1" GridPane.rowIndex="23">
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="264.0" prefHeight="31.0" prefWidth="656.0" text="رأي لجنة البحث العلني                                                                          " GridPane.columnIndex="1" GridPane.rowIndex="23">
                                  <font>
                                     <Font size="17.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="300.0" prefHeight="31.0" prefWidth="682.0" text="تاريخ بداية البحث العلني                                                                       :" GridPane.columnIndex="1" GridPane.rowIndex="20">
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="300.0" prefHeight="31.0" prefWidth="682.0" text="تاريخ بداية البحث العلني                                                                       " GridPane.columnIndex="1" GridPane.rowIndex="20">
                                  <font>
                                     <Font size="17.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="336.0" prefHeight="31.0" prefWidth="591.0" text="تاريخ إرسال الملف إلى مندوبية وكالة الحوض المائي لام الربيع بالجديدة   :" GridPane.columnIndex="1" GridPane.rowIndex="19">
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="336.0" prefHeight="31.0" prefWidth="591.0" text="تاريخ إرسال الملف إلى مندوبية وكالة الحوض المائي لأم الربيع بالجديدة   " GridPane.columnIndex="1" GridPane.rowIndex="19">
                                  <font>
                                     <Font size="17.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="408.0" prefHeight="31.0" prefWidth="587.0" text="تارييخ إيداع الملف                                                                                :" GridPane.columnIndex="1" GridPane.rowIndex="18">
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="408.0" prefHeight="31.0" prefWidth="587.0" text="تارييخ إيداع الملف                                                                                " GridPane.columnIndex="1" GridPane.rowIndex="18">
                                  <font>
                                     <Font size="17.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="143.0" prefHeight="31.0" prefWidth="633.0" text="شهادة ملكية العقار                                                                               :" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="143.0" prefHeight="31.0" prefWidth="633.0" text="شهادة ملكية العقار                                                                               " GridPane.columnIndex="1" GridPane.rowIndex="8">
                                  <font>
                                     <Font size="17.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="74.0" prefHeight="31.0" prefWidth="586.0" text="صورة بطاقة التعريف الوطنية                                                                      :" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="74.0" prefHeight="31.0" prefWidth="586.0" text="صورة بطاقة التعريف الوطنية                                                                      " GridPane.columnIndex="1" GridPane.rowIndex="3">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="151.0" prefHeight="31.0" prefWidth="652.0" text="ملف الطلب                                                                                                :" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                              <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="151.0" prefHeight="31.0" prefWidth="652.0" text="ملف الطلب                                                                                                " GridPane.columnIndex="1" GridPane.rowIndex="5">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="517.0" text="الدائرة                                                                                                  :" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                              <Label alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="517.0" text="الدائرة                                                                                                  " GridPane.columnIndex="1" GridPane.rowIndex="10">
                                  <font>
                                     <Font size="17.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="587.0" text="القيادة                                                                                                 :" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                              <Label alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="587.0" text="القيادة                                                                                                 " GridPane.columnIndex="1" GridPane.rowIndex="9">
                                  <font>
                                     <Font size="17.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="585.0" text="تصميم العقار                                                                                       :" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                              <Label alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="585.0" text="تصميم العقار                                                                                       " GridPane.columnIndex="1" GridPane.rowIndex="7">
                                  <font>
                                     <Font size="17.0" />
                                  </font>
@@ -390,6 +390,9 @@
                                  <font>
                                     <Font size="14.0" />
                                  </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
                               </Button>
                            </children>
                            <StackPane.margin>
