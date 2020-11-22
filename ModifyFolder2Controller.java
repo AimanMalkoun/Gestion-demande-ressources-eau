@@ -137,7 +137,7 @@ public class ModifyFolder2Controller implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
 		// delete temporary files
-		File directory = new File(EnregistrerController.class.getClassLoader().getResource("tempFiles").getPath());
+		File directory = new File("src/tempFiles");
 		if (directory.listFiles().length > 0)
 			for (File file : directory.listFiles())
 				if (!file.delete())

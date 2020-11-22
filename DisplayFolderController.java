@@ -35,7 +35,6 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
-import pdfClasses.ConvertBlobToPdf;
 
 
 public class DisplayFolderController implements Initializable {
@@ -213,7 +212,7 @@ public class DisplayFolderController implements Initializable {
 	    
     private boolean filesHaveBeenDeleted() {
 
-    	File directory = new File(DisplayFolderController.class.getClassLoader().getResource("tempFiles").getPath());
+    	File directory = new File("src/tempFiles");
     	
     	for (File file : directory.listFiles()) {
     		if(!file.delete())
