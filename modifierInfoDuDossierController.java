@@ -330,7 +330,7 @@ public class modifierInfoDuDossierController implements Initializable{
 			File result = ChangeFileAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u0635\u0648\u0631\u0629 \u0628\u0637\u0627\u0642\u0629 \u0627\u0644\u062a\u0639\u0631\u064a\u0641 \u0627\u0644\u0648\u0637\u0646\u064a\u0629", "CIN.pdf");
 			if(result != null){
 				dossier.setCinFile(fileToBlob(result));
-				carteCinPathLabel.setText(result.getPath());
+				carteCinPathLabel.setText(result.getName());
 				hasBeenChanged = true;
 			}
 			
@@ -340,7 +340,7 @@ public class modifierInfoDuDossierController implements Initializable{
 			
 			if(result != null){
 				dossier.setDemandeFile(fileToBlob(result));
-				demandeDeCreusementPathLabel.setText(result.getPath());
+				demandeDeCreusementPathLabel.setText(result.getName());
 				hasBeenChanged = true;
 			}
 			
@@ -360,7 +360,7 @@ public class modifierInfoDuDossierController implements Initializable{
 			
 			if(result != null){
 				dossier.setAttestationDePocession(fileToBlob(result));
-				attestationPoscessionImmobilierLabel.setText(result.getPath());
+				attestationPoscessionImmobilierLabel.setText(result.getName());
 				hasBeenChanged = true;
 			}
 			
@@ -370,7 +370,7 @@ public class modifierInfoDuDossierController implements Initializable{
 			
 			if(result != null){
 				dossier.setPlanImmobilier(fileToBlob(result));
-				planImmobilierFilePathLabel.setText(result.getPath());
+				planImmobilierFilePathLabel.setText(result.getName());
 				hasBeenChanged = true;
 			}
 			
@@ -444,7 +444,7 @@ public class modifierInfoDuDossierController implements Initializable{
 			}
 		}else if(event.getSource() == dateDepotDossierButton) {
 			//date
-			LocalDate result = ChangeDateAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u062a\u0627\u0631\u064a\u062e \u0625\u064a\u062f\u0627\u0639 \u0627\u0644\u0645\u0644\u0641", Date.valueOf(dossier.getDateDepotDossier()).toLocalDate());
+			LocalDate result = ChangeDateAlert.simpleDisplay("\u062a\u063a\u064a\u064a\u0631 \u062a\u0627\u0631\u064a\u062e \u0625\u064a\u062f\u0627\u0639 \u0627\u0644\u0645\u0644\u0641", Date.valueOf(dossier.getDateDepotDossier()).toLocalDate());
 			
 			if(result != null) {
 				dossier.setDateDepotDossier(result.toString());
@@ -455,7 +455,8 @@ public class modifierInfoDuDossierController implements Initializable{
 			
 		}else if(event.getSource() == dateDenvoiAlabhouerEljaidaButton) {
 			//date
-			LocalDate result = ChangeDateAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u062a\u0627\u0631\u064a\u062e \u0625\u0631\u0633\u0627\u0644 \u0627\u0644\u0645\u0644\u0641 \u0625\u0644\u0649 \u0645\u0646\u062f\u0648\u0628\u064a\u0629 \u0648\u0643\u0627\u0644\u0629 \u0627\u0644\u062d\u0648\u0636 \u0627\u0644\u0645\u0627\u0626\u064a \u0644\u0627\u0645 \u0627\u0644\u0631\u0628\u064a\u0639 \u0628\u0627\u0644\u062c\u062f\u064a\u062f\u0629", LocalDate.now());
+			LocalDate result = ChangeDateAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u062a\u0627\u0631\u064a\u062e \u0625\u0631\u0633\u0627\u0644 \u0627\u0644\u0645\u0644\u0641 \u0625\u0644\u0649 \u0645\u0646\u062f\u0648\u0628\u064a\u0629 \u0648\u0643\u0627\u0644\u0629 \u0627\u0644\u062d\u0648\u0636 \u0627\u0644\u0645\u0627\u0626\u064a \u0644\u0627\u0645 \u0627\u0644\u0631\u0628\u064a\u0639 \u0628\u0627\u0644\u062c\u062f\u064a\u062f\u0629",
+					dossier.getDateEnvoiA_LABHOER().isEmpty() ? null : LocalDate.parse(dossier.getDateEnvoiA_LABHOER()), LocalDate.parse(dossier.getDateDepotDossier()));
 
 			if(result != null) {
 				dossier.setDateEnvoiA_LABHOER(result.toString());
@@ -468,7 +469,8 @@ public class modifierInfoDuDossierController implements Initializable{
 			
 		}else if(event.getSource() == dateDebutEnquetePublicButton) {
 			//date
-			LocalDate result = ChangeDateAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u062a\u0627\u0631\u064a\u062e \u0628\u062f\u0627\u064a\u0629 \u0627\u0644\u0628\u062d\u062b \u0627\u0644\u0639\u0644\u0646\u064a", LocalDate.now());
+			LocalDate result = ChangeDateAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u062a\u0627\u0631\u064a\u062e \u0628\u062f\u0627\u064a\u0629 \u0627\u0644\u0628\u062d\u062b \u0627\u0644\u0639\u0644\u0646\u064a",
+					dossier.getDateDebutde_EP().isEmpty() ? null : LocalDate.parse(dossier.getDateDebutde_EP()), LocalDate.parse(dossier.getDateEnvoiA_LABHOER()));
 
 			if(result != null) {
 				dossier.setDateDebutde_EP(result.toString());
@@ -481,7 +483,8 @@ public class modifierInfoDuDossierController implements Initializable{
 			
 		}else if(event.getSource() == dateFinEnquetePublicButton) {
 			//date
-			LocalDate result = ChangeDateAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u062a\u0627\u0631\u064a\u062e \u0646\u0647\u0627\u064a\u0629 \u0627\u0644\u0628\u062d\u062b \u0627\u0644\u0639\u0644\u0646\u064a", LocalDate.now());
+			LocalDate result = ChangeDateAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u062a\u0627\u0631\u064a\u062e \u0646\u0647\u0627\u064a\u0629 \u0627\u0644\u0628\u062d\u062b \u0627\u0644\u0639\u0644\u0646\u064a",
+					dossier.getDateFin_EP().isEmpty() ? null : LocalDate.parse(dossier.getDateFin_EP()), LocalDate.parse(dossier.getDateDebutde_EP()));
 			
 			if(result != null) {
 				dossier.setDateFin_EP(result.toString());
@@ -494,7 +497,8 @@ public class modifierInfoDuDossierController implements Initializable{
 			
 		}else if(event.getSource() == dateSignaturPVparCEPButton) {
 			//date
-			LocalDate result = ChangeDateAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u062a\u0627\u0631\u064a\u062e \u0627\u0645\u0636\u0627\u0621 \u0627\u0644\u0645\u062d\u0636\u0631 \u0645\u0646 \u0637\u0631\u0641 \u0644\u062c\u0646\u0629 \u0627\u0644\u0628\u062d\u062b \u0627\u0644\u0639\u0644\u0646\u064a", LocalDate.now());
+			LocalDate result = ChangeDateAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u062a\u0627\u0631\u064a\u062e \u0627\u0645\u0636\u0627\u0621 \u0627\u0644\u0645\u062d\u0636\u0631 \u0645\u0646 \u0637\u0631\u0641 \u0644\u062c\u0646\u0629 \u0627\u0644\u0628\u062d\u062b \u0627\u0644\u0639\u0644\u0646\u064a",
+					dossier.getDateSignateureDuPv().isEmpty() ? null : LocalDate.parse(dossier.getDateSignateureDuPv()), LocalDate.parse(dossier.getDateFin_EP()));
 			
 			if(result != null) {
 				dossier.setDateSignateureDuPv(result.toString());
@@ -537,7 +541,8 @@ public class modifierInfoDuDossierController implements Initializable{
 			
 		}else if(event.getSource() == dateEnvoitPvAbhoerEljadidaButton) {
 			//date
-			LocalDate result = ChangeDateAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u062a\u0627\u0631\u064a\u062e \u0625\u0631\u0633\u0627\u0644 \u0627\u0644\u0645\u062d\u0636\u0631 \u0625\u0644\u0649 \u0645\u0646\u062f\u0648\u0628\u064a\u0629 \u0648\u0643\u0627\u0644\u0629 \u0627\u0644\u062d\u0648\u0636 \u0627\u0644\u0645\u0627\u0626\u064a \u0644\u0627\u0645 \u0627\u0644\u0631\u0628\u064a\u0639 \u0628\u0627\u0644\u062c\u062f\u064a\u062f\u0629", LocalDate.now());
+			LocalDate result = ChangeDateAlert.desplay("\u062a\u063a\u064a\u064a\u0631 \u062a\u0627\u0631\u064a\u062e \u0625\u0631\u0633\u0627\u0644 \u0627\u0644\u0645\u062d\u0636\u0631 \u0625\u0644\u0649 \u0645\u0646\u062f\u0648\u0628\u064a\u0629 \u0648\u0643\u0627\u0644\u0629 \u0627\u0644\u062d\u0648\u0636 \u0627\u0644\u0645\u0627\u0626\u064a \u0644\u0627\u0645 \u0627\u0644\u0631\u0628\u064a\u0639 \u0628\u0627\u0644\u062c\u062f\u064a\u062f\u0629",
+					dossier.getDateEnvoiDuPVa_LABHOER().isEmpty() ? null : LocalDate.parse(dossier.getDateEnvoiDuPVa_LABHOER()), LocalDate.parse(dossier.getDateSignateureDuPv()));
 			
 			if(result != null) {
 				dossier.setDateEnvoiDuPVa_LABHOER(result.toString());

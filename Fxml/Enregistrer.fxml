@@ -19,7 +19,7 @@
 
 <ScrollPane fitToHeight="true" fitToWidth="true" minWidth="-Infinity" prefHeight="600.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EnregistrerController">
    <content>
-      <BorderPane fx:id="borderPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1130.0" stylesheets="@../GestionDemandeEau/application.css">
+      <BorderPane fx:id="borderPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="610.0" prefWidth="1130.0" stylesheets="@../GestionDemandeEau/application.css">
          <center>
             <ScrollPane fitToWidth="true" prefHeight="470.0" prefWidth="960.0" BorderPane.alignment="CENTER">
                <content>
@@ -309,11 +309,17 @@
                                  <font>
                                     <Font size="14.0" />
                                  </font>
+                                 <GridPane.margin>
+                                    <Insets bottom="10.0" />
+                                 </GridPane.margin>
                               </Button>
                               <Button id="switchButton" fx:id="saveBuuton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#savebuttonMethode" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #2b4067;" stylesheets="@../GestionDemandeEau/application.css" text="حفظ" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="6" GridPane.valignment="CENTER">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
+                                 <GridPane.margin>
+                                    <Insets bottom="10.0" />
+                                 </GridPane.margin>
                               </Button>
                            </children>
                            <padding>

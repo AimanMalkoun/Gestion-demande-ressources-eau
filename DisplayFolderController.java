@@ -5,7 +5,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.Calendar;
 import java.util.ResourceBundle;
 
 import com.itextpdf.text.pdf.PdfException;

@@ -2,6 +2,7 @@ package alerts;
 
 import java.time.LocalDate;
 
+import Classes.CostumDatePicker;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
@@ -19,15 +20,18 @@ public class ChangeDateAlert {
 
 	static LocalDate result = null;
 
-	public static LocalDate desplay(String title, LocalDate selectedValue) {
-
+	public static LocalDate desplay(String title, LocalDate selectedValue, LocalDate startingDate) {
+		System.out.println(selectedValue);
 		Stage window = new Stage();
 		window.setResizable(false);
 		window.initModality(Modality.APPLICATION_MODAL);
 
-		DatePicker input = new DatePicker();
+
+		LocalDate shownDate = selectedValue == null ? LocalDate.now() : selectedValue;
+		System.out.println("date = " + shownDate);
+		DatePicker input = new CostumDatePicker(startingDate);
 		input.setPrefSize(150, 30);
-		input.setValue(selectedValue);
+		input.setValue(shownDate);
 
 		Label textError = new Label("");
 		textError.setStyle("-fx-font-color: red");
@@ -75,6 +79,66 @@ public class ChangeDateAlert {
 		window.showAndWait();
 		window.centerOnScreen();
 		
+		return result;
+
+	}
+
+	public static LocalDate simpleDisplay(String title, LocalDate selectedValue) {
+
+		Stage window = new Stage();
+		window.setResizable(false);
+		window.initModality(Modality.APPLICATION_MODAL);
+
+		DatePicker input = new DatePicker();
+		input.setPrefSize(150, 30);
+		input.setValue(selectedValue);
+
+		Label textError = new Label("");
+		textError.setStyle("-fx-font-color: red");
+
+		Button okButton = new Button("\u062a\u0623\u0643\u064a\u062f"),
+				annulerButton = new Button("\u0625\u0644\u063a\u0627\u0621");
+		okButton.setCursor(Cursor.HAND);
+		annulerButton.setCursor(Cursor.HAND);
+
+		okButton.setStyle("-fx-background-color: #2b4067; -fx-text-fill: white");
+		annulerButton.setStyle("-fx-background-color: #2b4067; -fx-text-fill: white");
+
+		// Handling actions
+		okButton.setOnMouseClicked(event -> {
+
+			result = input.getValue();
+			window.close();
+
+		});
+
+		annulerButton.setOnMouseClicked(e -> {
+			result = null;
+			window.close();
+		});
+
+		window.setOnCloseRequest(e -> {
+			result = null;
+		});
+
+		// Creating scene
+
+		HBox layout = new HBox(30);
+		layout.getChildren().addAll(annulerButton, okButton);
+		layout.setAlignment(Pos.CENTER);
+
+		VBox root = new VBox(10);
+		root.getChildren().addAll(input, layout);
+		root.setAlignment(Pos.CENTER);
+		root.setPadding(new Insets(25, 25, 15, 25));
+
+		Scene scene = new Scene(root);
+		window.setScene(scene);
+		window.setTitle(title);
+		window.getIcons().add(new Image("/Image/Logo5.png"));
+		window.showAndWait();
+		window.centerOnScreen();
+
 		return result;
 
 	}
